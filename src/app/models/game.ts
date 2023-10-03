@@ -6,5 +6,5 @@ export interface Game {
   releaseDate: Date;
   developer: string;
   genre: string;
-  rating: number;
+  averageRating: number;
 }
