@@ -5,7 +5,7 @@
     <ul class="flex flex-col items-center">
       <li *ngFor="let game of games" class="w-2/3 mb-8">
         <div class="game-card bg-white shadow-lg p-4">
-          <img [src]="game.gameImg" alt="{{ game.gameName }}" class="w-full h-40 object-cover rounded-lg mb-4">
+          <img [src]="game.gameImg" alt="{{ game.gameName }}" class="w-full object-cover rounded-lg mb-4">
           <h2 class="text-xl font-semibold">{{ game.gameName }}</h2>
           <p class="text-gray-600">Plataforma: {{ game.platform }}</p>
           <p class="text-gray-600">Fecha de Lanzamiento: {{ game.releaseDate | date }}</p>
