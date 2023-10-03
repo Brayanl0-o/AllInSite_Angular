@@ -1,0 +1,13 @@
+body{
+  display: flex;
+  flex-flow: column wrap;
+  margin: auto;
+  align-self: center;
+
+}
+ul{
+  list-style: none;
+}
+img{
+  width: 50%;
+}
