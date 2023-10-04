@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GameDetailsComponent } from './components/game-details/game-details.com
     GameDetailsComponent
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule
