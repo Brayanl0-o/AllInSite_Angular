@@ -5,7 +5,7 @@
     <div class="flex flex-row">
       <div class="flex-3 ml-4">
         <ul class="flex flex-col items-center">
-      <li *ngFor="let game of games" class="w-2/3 mb-8">
+      <li *ngFor="let game of filteredGames" class="w-2/3 mb-8">
         <div class="game-card bg-white shadow-lg p-4">
           <img [src]="game.gameImg" alt="{{ game.gameName }}" class="w-full object-cover rounded-lg mb-4">
           <h2 class="text-xl font-semibold">{{ game.gameName }}</h2>
