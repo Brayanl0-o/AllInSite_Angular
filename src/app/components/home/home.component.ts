@@ -47,9 +47,15 @@ export class HomeComponent {
         }
       }
 
-      // Verifica si el género del juego está en los géneros seleccionados
-      if (filters.genres.length > 0 && !filters.genres.includes(game.genre)) {
-        return false;
+      // Verifica si al menos uno de los géneros seleccionados está en la lista de géneros del juego
+      if (filters.genres.length > 0) {
+        const hasSelectedGenre = filters.genres.some((genre: string) => // Especifica el tipo como string
+          game.genre.toLowerCase().includes(genre.toLowerCase())
+        );
+
+        if (!hasSelectedGenre) {
+          return false;
+        }
       }
 
       // Si pasa todos los filtros, incluye el juego en la lista filtrada
