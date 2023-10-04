@@ -35,14 +35,19 @@ export class HomeComponent {
   }
 
   applyFilters(filters: any) {
-    console.log('Applying filters:', filters);
-    // Aplica los filtros recibidos a los juegos
     this.filteredGames = this.games.filter((game) => {
-      // Aplica los filtros seleccionados aquí
-      if (filters.platforms.length > 0 && !filters.platforms.includes(game.platform)) {
-        return false;
+      // Verifica si al menos una de las plataformas seleccionadas está en la lista de plataformas del juego
+      if (filters.platforms.length > 0) {
+        const hasSelectedPlatform = filters.platforms.some((platform: string) =>
+          game.platform.toLowerCase().includes(platform.toLowerCase())
+        );
+
+        if (!hasSelectedPlatform) {
+          return false;
+        }
       }
 
+      // Verifica si el género del juego está en los géneros seleccionados
       if (filters.genres.length > 0 && !filters.genres.includes(game.genre)) {
         return false;
       }
