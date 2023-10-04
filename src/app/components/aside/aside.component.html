@@ -1,1 +1,77 @@
-<p>aside works!</p>
+<div class="w-1/7 ml-4 bg-white p-4 rounded shadow fixed right-0 top-15">
+  <h3 class="text-lg font-semibold mb-4">Filtrar por:</h3>
+  <div class="mb-4">
+    <label for="platform" class="text-sm font-medium">Plataforma:</label>
+    <div *ngFor="let platform of availablePlatforms">
+
+        <input
+          type="checkbox"
+          id="platform-{{ platform }}"
+          [(ngModel)]="selectedFilters.platforms"
+          [value]="platform"
+          class="mr-2 cursor-pointer"
+        />
+
+        <label class="block cursor-pointer"> {{ platform }}</label>
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="genre" class="text-sm font-medium">Género:</label>
+    <div *ngFor="let genre of availableGenres">
+
+        <input
+          type="checkbox"
+          id="genre-{{ genre }}"
+          [(ngModel)]="selectedFilters.genres"
+          [value]="genre"
+          class="mr-2 cursor-pointer"
+        />
+        <label class="block cursor-pointer">  {{ genre }}
+      </label>
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="developer" class="text-sm font-medium">Desarrollador:</label>
+    <div *ngFor="let developer of availableDevelopers">
+
+        <input
+          type="checkbox"
+          id="developer-{{ developer }}"
+          [(ngModel)]="selectedFilters.developers"
+          [value]="developer"
+          class="mr-2 cursor-pointer"
+        />
+        <label class="block cursor-pointer">     {{ developer }}
+      </label>
+    </div>
+  </div>
+  <div class="mb-4">
+    <label for="highRating" class="text-sm font-medium">Calificación Más Alta:</label>
+
+      <input
+        type="checkbox"
+        id="highRating"
+        [(ngModel)]="selectedFilters.highRating"
+        class="mr-2 cursor-pointer"
+      />
+      <label class="block cursor-pointer">   Alta
+    </label>
+  </div>
+  <div class="mb-4">
+    <label for="lowRating" class="text-sm font-medium">Calificación Más Baja:</label>
+      <input
+        type="checkbox"
+        id="lowRating"
+        [(ngModel)]="selectedFilters.lowRating"
+        class="mr-2 cursor-pointer"
+      />
+      <label class="block cursor-pointer">   Baja
+    </label>
+  </div>
+  <button
+    (click)="applyFilters()"
+    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+    Aplicar Filtros
+  </button>
+</div>
