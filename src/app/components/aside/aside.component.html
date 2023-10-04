@@ -3,70 +3,34 @@
   <div class="mb-4">
     <label for="platform" class="text-sm font-medium">Plataforma:</label>
     <div *ngFor="let platform of availablePlatforms">
-
+      <label class="block cursor-pointer">
         <input
           type="checkbox"
           id="platform-{{ platform }}"
-          [(ngModel)]="selectedFilters.platforms"
+          [checked]="selectedFilters.platforms.includes(platform)"
+          (change)="togglePlatform(platform)"
           [value]="platform"
           class="mr-2 cursor-pointer"
         />
 
-        <label class="block cursor-pointer"> {{ platform }}</label>
+         {{ platform }}</label>
     </div>
   </div>
   <div class="mb-4">
     <label for="genre" class="text-sm font-medium">Género:</label>
     <div *ngFor="let genre of availableGenres">
-
+      <label class="block cursor-pointer">
         <input
           type="checkbox"
           id="genre-{{ genre }}"
-          [(ngModel)]="selectedFilters.genres"
-          [value]="genre"
+          [checked]="selectedFilters.genres.includes(genre)"
+          (change)="toggleGenre(genre)"
+
           class="mr-2 cursor-pointer"
         />
-        <label class="block cursor-pointer">  {{ genre }}
+         {{ genre }}
       </label>
     </div>
-  </div>
-  <div class="mb-4">
-    <label for="developer" class="text-sm font-medium">Desarrollador:</label>
-    <div *ngFor="let developer of availableDevelopers">
-
-        <input
-          type="checkbox"
-          id="developer-{{ developer }}"
-          [(ngModel)]="selectedFilters.developers"
-          [value]="developer"
-          class="mr-2 cursor-pointer"
-        />
-        <label class="block cursor-pointer">     {{ developer }}
-      </label>
-    </div>
-  </div>
-  <div class="mb-4">
-    <label for="highRating" class="text-sm font-medium">Calificación Más Alta:</label>
-
-      <input
-        type="checkbox"
-        id="highRating"
-        [(ngModel)]="selectedFilters.highRating"
-        class="mr-2 cursor-pointer"
-      />
-      <label class="block cursor-pointer">   Alta
-    </label>
-  </div>
-  <div class="mb-4">
-    <label for="lowRating" class="text-sm font-medium">Calificación Más Baja:</label>
-      <input
-        type="checkbox"
-        id="lowRating"
-        [(ngModel)]="selectedFilters.lowRating"
-        class="mr-2 cursor-pointer"
-      />
-      <label class="block cursor-pointer">   Baja
-    </label>
   </div>
   <button
     (click)="applyFilters()"
