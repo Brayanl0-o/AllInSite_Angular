@@ -21,6 +21,7 @@ export class HomeComponent {
     this.loadGameData();
 
     this.filterService.filters$.subscribe((filters) => {
+      console.log('Filters received in HomeComponent:', filters);
       this.applyFilters(filters);
     });
   }
@@ -34,6 +35,7 @@ export class HomeComponent {
   }
 
   applyFilters(filters: any) {
+    console.log('Applying filters:', filters);
     // Aplica los filtros recibidos a los juegos
     this.filteredGames = this.games.filter((game) => {
       // Aplica los filtros seleccionados aquí
@@ -42,18 +44,6 @@ export class HomeComponent {
       }
 
       if (filters.genres.length > 0 && !filters.genres.includes(game.genre)) {
-        return false;
-      }
-
-      if (filters.developers.length > 0 && !filters.developers.includes(game.developer)) {
-        return false;
-      }
-
-      if (filters.highRating && game.averageRating === null) {
-        return false;
-      }
-
-      if (filters.lowRating && game.averageRating !== null) {
         return false;
       }
 
