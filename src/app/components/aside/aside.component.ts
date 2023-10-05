@@ -15,7 +15,7 @@ export class AsideComponent {
   };
 
   availablePlatforms: string[] = ['PC', 'PlayStation 4', 'Xbox One', 'Nintendo Switch'];
-  availableGenres: string[] = ['Sandbox', 'Acción y Aventura', 'Aventura', /* Agrega más géneros aquí */];
+  availableGenres: string[] = ['Sandbox', 'Acción y Aventura', 'Aventura'];
 
 constructor(private filterService: FilterService)
 { console.log('filtrSelected from asideC',this.selectedFilters) }
@@ -25,6 +25,7 @@ applyFilters() {
   this.filterService.updateFilters(this.selectedFilters);
 
 }
+
 togglePlatform(platform: string) {
   if (this.selectedFilters.platforms.includes(platform)) {
     this.selectedFilters.platforms = this.selectedFilters.platforms.filter(p => p !== platform);
