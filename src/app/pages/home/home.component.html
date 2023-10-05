@@ -1,0 +1,30 @@
+<body class="bg-gray-300">
+  <app-header></app-header>
+  <h1 class="text-center text-2xl mt-8">Últimas publicaciones</h1>
+  <div class="container mx-auto mt-4">
+    <div class="flex flex-row">
+      <div class="flex-3 ml-4">
+        <ul class="flex flex-col items-center">
+      <li *ngFor="let game of filteredGames" class="w-2/3 mb-8">
+        <div class="game-card bg-white shadow-lg p-4">
+          <img [src]="game.gameImg" alt="{{ game.gameName }}" class="w-full object-cover rounded-lg mb-4">
+          <h2 class="text-xl font-semibold">{{ game.gameName }}</h2>
+          <p class="text-gray-600">Plataforma: {{ game.platform }}</p>
+          <p class="text-gray-600">Fecha de Lanzamiento: {{ game.releaseDate | date }}</p>
+          <p class="text-gray-600">Desarrollador: {{ game.developer }}</p>
+          <p class="text-gray-600">Género: {{ game.genre }}</p>
+          <p class="text-gray-600">Calificación: {{ game.averageRating }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="flex-1">
+    <app-aside></app-aside>
+  </div>
+
+</div>
+
+  </div>
+
+
+</body>
