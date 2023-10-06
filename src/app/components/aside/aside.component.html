@@ -1,6 +1,4 @@
-
-
-<div data-dial-init class="fixed top-35 right-6 group z-10">
+<div data-dial-init class="fixed top-32 right-6 group z-10">
   <button type="button" data-dial-toggle="speed-dial-menu-top-right" aria-controls="speed-dial-menu-top-right" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
 
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -11,13 +9,14 @@
       </svg>
       <span class="sr-only">Open actions menu</span>
   </button>
+
   <div id="speed-dial-menu-top-right" class=" flex-col items-center hidden mt-4 space-y-2" >
-    <div class="h-full w-1/7  ml-4 bg-white p-4 rounded shadow fixed right-0 ">
+    <div class="h-1/2 w-80 bg-white p-4 rounded shadow fixed right-0  overflow-auto">
       <h3 class="text-lg font-semibold mb-4">Filtrar por:</h3>
 
       <div class="mb-4">
 
-        <ul class="h-screen overflow-y-auto px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+        <ul class="px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
           <div>
             <label for="platform" class="flex items-center flex-row justify-center text-sm font-medium" (click)="togglePlatformDropdown()">Plataformas
               <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -86,10 +85,10 @@
           </div>
 
           <div class="mb-4 mt-5">
-            <label for="developer " class="flex items-center flex-row justify-center text-sm font-medium" (click)="toggleDeveloperDropdown()">
+            <label for="order" class="flex items-center flex-row justify-center text-sm font-medium" (click)="toggleDeveloperDropdown()">
               Orden Calificación:
              </label>
-             <select [(ngModel)]="selectedFilters.order" id="states" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+             <select [(ngModel)]="selectedFilters.order" id="states" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
               <option value="asc"> Ascendente</option>
               <option value="desc">Descendente</option>
@@ -98,17 +97,20 @@
           </div>
 
           <div class="mb-4">
-            <label for="startDate" class="text-sm font-medium">Fecha de inicio:</label>
+            <label for="startDate" class="flex items-center flex-row justify-center text-sm font-medium">Fecha de inicio:</label>
+            <div class="flex justify-center">
             <input
               type="date"
               id="startDate"
               [(ngModel)]="selectedFilters.startDate"
-              class="mr-2 cursor-pointer"
+              class=" mr-2 cursor-pointer "
             />
+          </div>
           </div>
 
           <div class="mb-4">
-            <label for="endDate" class="text-sm font-medium">Fecha de finalización:</label>
+            <label for="endDate" class="flex items-center flex-row justify-center text-sm font-medium">Fecha de finalización:</label>
+            <div class="flex justify-center">
             <input
               type="date"
               id="endDate"
@@ -116,16 +118,12 @@
               class="mr-2 cursor-pointer"
             />
           </div>
-          <button (click)="applyFilters()"
-          class=" bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-          Aplicar Filtros
-        </button>
+        </div>
         </ul>
-
-
-
-
-
+        <button (click)="applyFilters()"
+        class=" w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        Aplicar Filtros
+      </button>
     </div>
   </div>
 </div>
