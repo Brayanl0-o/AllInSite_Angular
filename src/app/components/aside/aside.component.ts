@@ -11,13 +11,14 @@ export class AsideComponent {
   selectedFilters = {
     platforms: [] as string[], // Define platforms as an array of strings
     genres: [] as string[],
-    developers: [] as string []
+    developers: [] as string [],
+    order: ''
 
   };
 
   availablePlatforms: string[] = [ 'Android','PC','PlayStation Vita','PSP','PlayStation 1','PlayStation 2', 'PlayStation 3','PlayStation 4','Xbox 360','Xbox One','Xbox One X','Xbox Series X/S','Wii','Wii U','Nintendo 3DS','Nintendo Switch'];
   availableGenres: string[] = [ 'Acción', 'Avetura','RPG','Estrategia','Deportes','Carreras','Lucha','Shooter','Plataformas','Sandbox','Simulación'];
-  availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Sony Interactive Entertainment','Square Enix','Ubisoft']
+  availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Santa Monica Studio','Sony Interactive Entertainment','Square Enix','Ubisoft']
 
 constructor(private filterService: FilterService)
 { console.log('filtrSelected from asideC',this.selectedFilters) }
@@ -35,6 +36,13 @@ toggleGenreDropdown() {
 showDeveloperDropdown: boolean = false;
 toggleDeveloperDropdown() {
   this.showDeveloperDropdown = !this.showDeveloperDropdown;
+}
+
+showOrderDropdown: boolean = false;
+toggleOrderDropdown(order: string) {
+  this.selectedFilters.order = order; // Actualiza el valor de order según lo seleccionado por el usuario
+  this.showOrderDropdown = false; // Cierra el menú desplegable
+  this.applyFilters();
 }
 
 applyFilters() {
@@ -66,4 +74,6 @@ this.selectedFilters.developers = this.selectedFilters.developers.filter(d => d 
     this.selectedFilters.developers.push(developer)
   }
 }
+
+
 }

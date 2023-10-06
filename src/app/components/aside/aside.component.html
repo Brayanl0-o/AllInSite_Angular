@@ -17,7 +17,7 @@
 
       <div class="mb-4">
 
-        <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+        <ul class="h-60 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
           <div>
             <label for="platform" class="flex items-center flex-row justify-center text-sm font-medium" (click)="togglePlatformDropdown()">Plataformas
               <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -83,6 +83,16 @@
                   </label>
               </div>
             </div>
+          </div>
+
+          <div class="mb-4 mt-5">
+            <label for="developer " class="flex items-center flex-row justify-center text-sm font-medium" (click)="toggleDeveloperDropdown()">
+              Orden Calificación:
+             </label>
+            <select [(ngModel)]="selectedFilters.order">
+              <option value="asc">Ascendente</option>
+              <option value="desc">Descendente</option>
+            </select>
           </div>
         </ul>
         <button (click)="applyFilters()"
