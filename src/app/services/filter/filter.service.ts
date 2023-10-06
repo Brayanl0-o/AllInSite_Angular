@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 export class FilterService {
   private selectedFilters = {
     platforms: [],
-    genres: []
+    genres: [],
+    developers: []
   };
 
   private filtersSubject = new BehaviorSubject(this.selectedFilters);
