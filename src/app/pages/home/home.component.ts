@@ -35,8 +35,8 @@ export class HomeComponent {
   }
 
   applyFilters(filters: any) {
+    // Aplica los filtros de plataforma, género y desarrollador
     this.filteredGames = this.games.filter((game) => {
-      // Verifica si al menos una de las plataformas seleccionadas está en la lista de plataformas del juego
       if (filters.platforms.length > 0) {
         const hasSelectedPlatform = filters.platforms.some((platform: string) =>
           game.platform.toLowerCase().includes(platform.toLowerCase())
@@ -47,9 +47,8 @@ export class HomeComponent {
         }
       }
 
-      // Verifica si al menos uno de los géneros seleccionados está en la lista de géneros del juego
       if (filters.genres.length > 0) {
-        const hasSelectedGenre = filters.genres.some((genre: string) => // Especifica el tipo como string
+        const hasSelectedGenre = filters.genres.some((genre: string) =>
           game.genre.toLowerCase().includes(genre.toLowerCase())
         );
 
@@ -58,16 +57,28 @@ export class HomeComponent {
         }
       }
 
-      if(filters.developers.length > 0){
-        const hasSelectedDeveloper = filters.developers.some((developer:string)=>
-        game.developer.toLowerCase().includes(developer.toLowerCase())
+      if (filters.developers.length > 0) {
+        const hasSelectedDeveloper = filters.developers.some((developer: string) =>
+          game.developer.toLowerCase().includes(developer.toLowerCase())
         );
-        if(!hasSelectedDeveloper){
+
+        if (!hasSelectedDeveloper) {
           return false;
         }
       }
+
       // Si pasa todos los filtros, incluye el juego en la lista filtrada
       return true;
     });
+
+    // Aplica la ordenación basada en filters.order
+    console.log('Order:', filters.order);
+    if (filters.order === 'asc') {
+      this.filteredGames.sort((a, b) => a.averageRating - b.averageRating);
+    } else if (filters.order === 'desc') {
+      this.filteredGames.sort((a, b) => b.averageRating - a.averageRating);
+    }
   }
+
+
 }
