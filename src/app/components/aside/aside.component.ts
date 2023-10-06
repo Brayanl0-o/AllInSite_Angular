@@ -20,6 +20,16 @@ export class AsideComponent {
 constructor(private filterService: FilterService)
 { console.log('filtrSelected from asideC',this.selectedFilters) }
 
+showPlatformDropdown: boolean = false;
+togglePlatformDropdown() {
+  this.showPlatformDropdown = !this.showPlatformDropdown;
+}
+
+showGenreDropdown: boolean = false;
+toggleGenreDropdown() {
+  this.showGenreDropdown = !this.showGenreDropdown;
+}
+
 applyFilters() {
   // Llama al método updateFilters del servicio FilterService para actualizar los filtros
   this.filterService.updateFilters(this.selectedFilters);
