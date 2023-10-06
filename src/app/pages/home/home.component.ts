@@ -58,6 +58,14 @@ export class HomeComponent {
         }
       }
 
+      if(filters.developers.length > 0){
+        const hasSelectedDeveloper = filters.developers.some((developer:string)=>
+        game.developer.toLowerCase().includes(developer.toLowerCase())
+        );
+        if(!hasSelectedDeveloper){
+          return false;
+        }
+      }
       // Si pasa todos los filtros, incluye el juego en la lista filtrada
       return true;
     });
