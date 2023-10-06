@@ -9,7 +9,9 @@ export class FilterService {
     platforms: [],
     genres: [],
     developers: [],
-    order: ''
+    order: '',
+    startDate: '',
+    endDate: ''
   };
 
   private filtersSubject = new BehaviorSubject(this.selectedFilters);
