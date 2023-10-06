@@ -66,6 +66,20 @@ export class HomeComponent {
           return false;
         }
       }
+      // Verifica la fecha de lanzamiento
+      if (filters.startDate && filters.endDate) {
+        const gameDate = new Date(game.releaseDate); // Suponiendo que la fecha de lanzamiento está en el formato adecuado
+        const startDate = new Date(filters.startDate);
+        const endDate = new Date(filters.endDate);
+
+        // Comprueba si la fecha de lanzamiento del juego está dentro del rango seleccionado
+        if (gameDate >= startDate && gameDate <= endDate) {
+          return true; // Incluye el juego si cumple con el rango de fechas
+        } else {
+          return false; // Excluye el juego si no cumple con el rango de fechas
+        }
+      }
+
 
       // Si pasa todos los filtros, incluye el juego en la lista filtrada
       return true;
