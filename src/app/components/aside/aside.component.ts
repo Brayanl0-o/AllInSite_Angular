@@ -12,7 +12,9 @@ export class AsideComponent {
     platforms: [] as string[], // Define platforms as an array of strings
     genres: [] as string[],
     developers: [] as string [],
-    order: ''
+    order: '',
+    startDate: '',
+    endDate: ''
 
   };
 
