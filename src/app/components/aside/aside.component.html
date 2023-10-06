@@ -89,12 +89,20 @@
             <label for="developer " class="flex items-center flex-row justify-center text-sm font-medium" (click)="toggleDeveloperDropdown()">
               Orden Calificación:
              </label>
-            <select [(ngModel)]="selectedFilters.order">
-              <option value="asc">Ascendente</option>
+             <select [(ngModel)]="selectedFilters.order" id="states" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+              <option value="asc"> Ascendente</option>
               <option value="desc">Descendente</option>
+
             </select>
           </div>
         </ul>
+
+
+
+
+
+
         <button (click)="applyFilters()"
           class="mt-10 ml-8 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
           Aplicar Filtros
