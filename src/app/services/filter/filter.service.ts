@@ -8,7 +8,8 @@ export class FilterService {
   private selectedFilters = {
     platforms: [],
     genres: [],
-    developers: []
+    developers: [],
+    order: ''
   };
 
   private filtersSubject = new BehaviorSubject(this.selectedFilters);
