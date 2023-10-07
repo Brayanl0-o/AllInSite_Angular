@@ -26,6 +26,15 @@ export class HomeComponent {
     });
   }
 
+  showPopover = false;
+  showPopoverMouseEnter(game:any) {
+   game.showPopover = true;
+  }
+
+  hidePopoverMouseLeave(game:any) {
+    game.showPopover = false;
+  }
+
   private loadGameData() {
     this.homeService.getGame().subscribe((data: Game[]) => {
       this.games = data;
