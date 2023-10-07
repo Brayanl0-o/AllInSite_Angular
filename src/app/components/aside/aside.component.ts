@@ -17,14 +17,19 @@ export class AsideComponent {
     endDate: ''
 
   };
-
+  showFilters = false;
   availablePlatforms: string[] = [ 'Android','PC','PlayStation Vita','PSP','PlayStation 1','PlayStation 2', 'PlayStation 3','PlayStation 4','Xbox 360','Xbox One','Xbox One X','Xbox Series X/S','Wii','Wii U','Nintendo 3DS','Nintendo Switch'];
-  availableGenres: string[] = [ 'Acción', 'Avetura','RPG','Estrategia','Deportes','Carreras','Lucha','Shooter','Plataformas','Sandbox','Simulación'];
+  availableGenres: string[] = [ 'Acción', 'Aventura','RPG','Estrategia','Deportes','Carreras','Lucha','Shooter','Plataformas','Sandbox','Simulación'];
   availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Santa Monica Studio','Sony Interactive Entertainment','Square Enix','Ubisoft']
 
 constructor(private filterService: FilterService)
 { console.log('filtrSelected from asideC',this.selectedFilters) }
+ngOnInit(){
 
+}
+toggleFilters() {
+  this.showFilters = !this.showFilters;
+}
 resetForm(){
  this.selectedFilters={
   platforms: [] as string[],
