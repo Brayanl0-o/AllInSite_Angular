@@ -25,12 +25,24 @@ export class AsideComponent {
 constructor(private filterService: FilterService)
 { console.log('filtrSelected from asideC',this.selectedFilters) }
 
+resetForm(){
+ this.selectedFilters={
+  platforms: [] as string[],
+    genres: [] as string[],
+    developers: [] as string [],
+    order: '',
+    startDate: '',
+    endDate: ''
+ }
+ this.filterService.updateFilters(this.selectedFilters);
+}
+
 showPlatformDropdown: boolean = false;
 togglePlatformDropdown() {
   this.showPlatformDropdown = !this.showPlatformDropdown;
 }
 
-showGenreDropdown: boolean = false;
+showGenreDropdown: boolean = true;
 toggleGenreDropdown() {
   this.showGenreDropdown = !this.showGenreDropdown;
 }
