@@ -8,6 +8,7 @@ import { AsideComponent } from './components/aside/aside.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { FormsModule } from '@angular/forms';
+import { VideogamesComponent } from './pages/videogames/videogames.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     AsideComponent,
     HeaderComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    VideogamesComponent
   ],
   imports: [
     FormsModule,
