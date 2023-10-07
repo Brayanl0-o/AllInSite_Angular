@@ -7,4 +7,5 @@ export interface Game {
   developer: string;
   genre: string;
   averageRating: number;
+  showPopover: false;
 }
