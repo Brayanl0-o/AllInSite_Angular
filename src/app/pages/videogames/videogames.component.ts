@@ -53,6 +53,10 @@ export class VideogamesComponent {
     );
   }
 
+  onSearchValueChanged(searchTerm: string) {
+    this.searchTerm = searchTerm; // Actualiza el término de búsqueda
+    this.searchGames(); // Llama a la función de búsqueda
+  }
   showPopover = false;
   showPopoverMouseEnter(game:any) {
    game.showPopover = true;
