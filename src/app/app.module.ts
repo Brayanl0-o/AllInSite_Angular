@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { VideogamesComponent } from './pages/videogames/videogames.component';
 import { SliderGamesComponent } from './components/slider-games/slider-games.component';
 import { CommonModule } from '@angular/common';
+import { HeaderSearchComponent } from './components/header-search/header-search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     GameDetailsComponent,
     VideogamesComponent,
-    SliderGamesComponent
+    SliderGamesComponent,
+    HeaderSearchComponent
   ],
   imports: [
     CommonModule,
