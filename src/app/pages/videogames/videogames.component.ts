@@ -75,13 +75,12 @@ export class VideogamesComponent {
       if (this.totalGames && this.pageSize) {
         // Calcular totalPages
         this.totalPages = Math.ceil(this.totalGames / this.pageSize);
-
+      }
+      if(this.totalPages !== undefined){
         // Crea un array de números de página desde 1 hasta totalPages
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+        console.log('currentPage', this.currentPage,'totalPages', this.totalPages,'pages', this.pages);
       }
-
-      console.log('currentPage', this.currentPage,'totalPages', this.totalPages,'pages', this.pages);
-
     });
   }
 
