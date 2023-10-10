@@ -12,19 +12,89 @@ export class VideogamesComponent {
   games: Game[] = [];
   filteredGames: Game[] = [];
 
+  currentPage = 1; // Página actual
+  pageSize = 9;  // Juegos por página
+  totalGames = 13;// Total de juegos (necesario para la paginación)
+  totalPages: number = 2;
+  pages!:  number[];
   constructor(
     private videogamesService: VideogamesService,
     private filterService: FilterService
   ) {}
+  previousPage() {
+    console.log('Previous Page Clicked');
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadGameData(this.currentPage, this.pageSize);
+    }
+  }
+
+  nextPage() {
+    console.log('Next page');
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadGameData(this.currentPage, this.pageSize);
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
+      this.currentPage = page;
+      this.loadGameData(this.currentPage, this.pageSize);
+    }
+  }
 
   ngOnInit(): void {
-    this.loadGameData();
+    this.currentPage = 1; // Establece la página inicial
+    this.pageSize = 9; // Establece el tamaño de página deseado
+
+    // Obtener el número total de juegos desde tu servicio o donde sea que lo obtengas
+    this.videogamesService.getGame(this.currentPage, this.pageSize).subscribe((response: any) => {
+      this.games = response.games;
+      this.totalGames = response.totalGames;
+
+      // Verifica si totalGames y pageSize son valores válidos antes de calcular totalPages
+      if (this.totalGames && this.pageSize) {
+        // Calcular totalPages
+        this.totalPages = Math.ceil(this.totalGames / this.pageSize);
+
+        // Crea un array de números de página desde 1 hasta totalPages
+        this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+      }
+
+      console.log('currentPage', this.currentPage);
+      console.log('totalPages', this.totalPages);
+      console.log('pages', this.pages);
+    });
 
     this.filterService.filters$.subscribe((filters) => {
       console.log('Filters received in HomeComponent:', filters);
       this.applyFilters(filters);
     });
+
+    this.loadGameData(this.currentPage, this.pageSize);
+    console.log('loadGameDatareceived in HomeComponent:', this.loadGameData);
   }
+
+  // Función para cambiar de página
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.loadGameData(page, this.pageSize);
+  }
+
+  private loadGameData(page: number, pageSize: number) {
+    console.log('Loading game data for page', page);
+    this.videogamesService.getGame(page, pageSize).subscribe((response: any) => {
+       console.log('Game data response:', response);
+      this.games = response.games; // Asigna la matriz de juegos desde la respuesta de la API
+      this.totalGames = response.totalGames; // Actualiza el total de juegos
+      this.currentPage = response.currentPage; // Actualiza la página actual
+      this.filteredGames = [...this.games];
+      console.log('dataload', response.games);
+      console.log('dataload loadGAMEDATA', this.filteredGames);
+    });
+  }
+
   searchTerm: string = '';
   searchGames() {
     // Filtra los juegos en función del término de búsqueda
@@ -32,6 +102,7 @@ export class VideogamesComponent {
       game.gameName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+
   showPopover = false;
   showPopoverMouseEnter(game:any) {
    game.showPopover = true;
@@ -39,14 +110,6 @@ export class VideogamesComponent {
 
   hidePopoverMouseLeave(game:any) {
     game.showPopover = false;
-  }
-
-  private loadGameData() {
-    this.videogamesService.getGame().subscribe((data: Game[]) => {
-      this.games = data;
-      this.filteredGames = [...this.games];
-      // console.log('dataload',data);
-    });
   }
 
   applyFilters(filters: any) {
