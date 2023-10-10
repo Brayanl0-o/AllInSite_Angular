@@ -14,8 +14,8 @@ export class VideogamesService {
 
   constructor(private http: HttpClient) { }
 
-  getGame(): Observable<Game[]>{
-    const url= `${this.apiUrl}games/`;
+  getGame(page: number, pageSize: number): Observable<Game[]>{
+    const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
     return this.http.get<Game[]>(url).pipe(
       tap((games) => {
         console.log('Juegos obtenidos:', games);
