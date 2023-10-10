@@ -25,7 +25,13 @@ export class VideogamesComponent {
       this.applyFilters(filters);
     });
   }
-
+  searchTerm: string = '';
+  searchGames() {
+    // Filtra los juegos en función del término de búsqueda
+    this.filteredGames = this.games.filter((game) =>
+      game.gameName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
   showPopover = false;
   showPopoverMouseEnter(game:any) {
    game.showPopover = true;
