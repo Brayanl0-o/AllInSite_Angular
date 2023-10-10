@@ -23,16 +23,16 @@ export class AsideComponent {
   availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Santa Monica Studio','Sony Interactive Entertainment','Square Enix','Ubisoft']
 
 constructor(private filterService: FilterService)
-{ console.log('filtrSelected from asideC',this.selectedFilters) }
-ngOnInit(){
-
+{
+  // console.log('filtrSelected from asideC',this.selectedFilters)
 }
+
 toggleFilters() {
   this.showFilters = !this.showFilters;
 }
 resetForm(){
  this.selectedFilters={
-  platforms: [] as string[],
+    platforms: [] as string[],
     genres: [] as string[],
     developers: [] as string [],
     order: '',
@@ -67,7 +67,6 @@ toggleOrderDropdown(order: string) {
 applyFilters() {
   // Llama al método updateFilters del servicio FilterService para actualizar los filtros
   this.filterService.updateFilters(this.selectedFilters);
-
 }
 
 togglePlatform(platform: string) {
@@ -88,7 +87,7 @@ toggleGenre(genre: string) {
 
 toggleDeveloper(developer:string){
   if(this.selectedFilters.developers.includes(developer)){
-this.selectedFilters.developers = this.selectedFilters.developers.filter(d => d != developer);
+    this.selectedFilters.developers = this.selectedFilters.developers.filter(d => d != developer);
   }else{
     this.selectedFilters.developers.push(developer)
   }
