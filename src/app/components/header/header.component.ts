@@ -13,7 +13,7 @@ export class HeaderComponent {
       this.optionsVisible = !this.optionsVisible;
     }
 
-    menuVisible = false;
+    menuVisible = true;
 
     showMenu(){
       this.menuVisible = !this.menuVisible;
