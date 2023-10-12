@@ -12,6 +12,7 @@ import { VideogamesComponent } from './pages/videogames/videogames.component';
 import { SliderGamesComponent } from './components/slider-games/slider-games.component';
 import { CommonModule } from '@angular/common';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HeaderSearchComponent } from './components/header-search/header-search.
     GameDetailsComponent,
     VideogamesComponent,
     SliderGamesComponent,
-    HeaderSearchComponent
+    HeaderSearchComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
