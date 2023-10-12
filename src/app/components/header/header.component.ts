@@ -12,4 +12,11 @@ export class HeaderComponent {
     showOptions(){
       this.optionsVisible = !this.optionsVisible;
     }
+
+    menuVisible = false;
+
+    showMenu(){
+      this.menuVisible = !this.menuVisible;
+    }
+
 }
