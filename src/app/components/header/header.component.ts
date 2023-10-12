@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+    optionsVisible = false;
+
+    showOptions(){
+      this.optionsVisible = !this.optionsVisible;
+    }
 }
