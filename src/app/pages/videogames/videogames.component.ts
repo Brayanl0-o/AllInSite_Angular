@@ -26,7 +26,7 @@ export class VideogamesComponent {
 
   ngOnInit(): void {
     this.loadGameData(this.currentPage, this.pageSize);
-    console.log('loadGameDatareceived in HomeComponent:', this.loadGameData);
+    // console.log('loadGameDatareceived in HomeComponent:', this.loadGameData);
 
     this.pagination()
 
@@ -34,14 +34,14 @@ export class VideogamesComponent {
   }
 
   private loadGameData(page: number, pageSize: number) {
-    console.log('Loading game data for page', page);
+    // console.log('Loading game data for page', page);
     this.videogamesService.getGame(page, pageSize).subscribe((response: any) => {
-       console.log('Game data response:', response);
+      //  console.log('Game data response:', response);
       this.games = response.games; // Asigna la matriz de juegos desde la respuesta de la API
       this.totalGames = response.totalGames; // Actualiza el total de juegos
       this.currentPage = response.currentPage; // Actualiza la página actual
       this.filteredGames = [...this.games];
-      console.log('dataload', response.games);
+      // console.log('dataload', response.games);
     });
   }
 
@@ -83,7 +83,7 @@ export class VideogamesComponent {
       if(this.totalPages !== undefined){
         // Crea un array de números de página desde 1 hasta totalPages
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-        console.log('currentPage', this.currentPage,'totalPages', this.totalPages,'pages', this.pages);
+        // console.log('currentPage', this.currentPage,'totalPages', this.totalPages,'pages', this.pages);
       }
     });
   }
@@ -117,7 +117,7 @@ export class VideogamesComponent {
 
   subscribeFilter(){
     this.filterService.filters$.subscribe((filters) => {
-      console.log('Filters received in HomeComponent:', filters);
+      // console.log('Filters received in HomeComponent:', filters);
       this.applyFilters(filters);
     });
 
@@ -175,7 +175,7 @@ export class VideogamesComponent {
     });
 
     // Aplica la ordenación basada en filters.order
-    console.log('Order:', filters.order);
+    // console.log('Order:', filters.order);
     if (filters.order === 'asc') {
       this.filteredGames.sort((a, b) => a.averageRating - b.averageRating);
     } else if (filters.order === 'desc') {
