@@ -60,7 +60,7 @@ export class RegisterComponent {
       );
   }
 
-  defaultUserImgUrl = 'https://assets.stickpng.com/images/585e4bcdcb11b227491c3396.png';
+  defaultUserImgUrl = 'https://p1.hiclipart.com/preview/403/536/937/internet-logo-user-user-profile-symbol-wifi-user-account-computer-avatar-png-clipart.jpg';
 
   initFrom(): FormGroup {
     return this.fb.group({
