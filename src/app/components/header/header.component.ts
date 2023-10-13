@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HeaderComponent {
     @Input() user: User | null = null;
     users: User []= [];
-
+    userId: string | null = null;
 
     constructor(private userShared: SharedUsersService,
       private authService: AuthService,
@@ -19,7 +19,7 @@ export class HeaderComponent {
 
 
       ngOnInit(){
-        // this.dataUser();
+        this.dataUser();
       }
 
     isUserLoggedIn() {
@@ -36,6 +36,8 @@ export class HeaderComponent {
       console.log('loggedInUserId:', loggedInUserId);
 
       if (loggedInUserId) {
+        // Asignar el userId obtenido al userId del componente
+        this.userId = loggedInUserId;
         this.route.paramMap.subscribe(paramMap => {
 
           // Obtiene el ID de usuario de la URL
