@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home/:id', component: HomeComponent },
   { path: 'videogames', component: VideogamesComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'resetPassword', component: ResetPasswordComponent }
   // Ruta wildcard para manejar errores 404
   // { path: '**', component: PageNotFoundComponent }
