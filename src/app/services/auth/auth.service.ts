@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { enviroment } from 'src/environments/environment.dev';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
-import { User } from 'src/app/models/user';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, tap, throwError, BehaviorSubject } from 'rxjs';
+import { enviroment } from 'src/environments/environment.dev';
+import { User } from 'src/app/models/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,21 +33,33 @@ export class AuthService {
       );
   }
 
-  public signIn(user: any) {
+  public login(user: any) {
     return this.http.post<any>(this.URL + 'auth/login', user).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token)
+        // Añadir esta línea para indicar que el usuario ha iniciado sesión
+        this.isLoggedIn$.next(true);
       })
     )
+
   }
 
-  loggedIn() {
-    return !!localStorage.getItem('token');
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
+  loggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiration = new Date(payload.exp * 1000); // Convierte el tiempo de expiración a una fecha
+      const now = new Date();
+      return now < expiration; // Devuelve verdadero si el token no ha caducado
+    }
+    return false; // Devuelve falso si no hay token o ha caducado
   }
 
   logout() {
     localStorage.removeItem('token')
-    this.router.navigate(['/'])
+    this.router.navigate(['/home'])
   }
   /// Obtener el Id del usuario logeado desde el token almacenado
   getLoggedInUserId(): string | null {
@@ -58,7 +70,7 @@ export class AuthService {
       if (payload.id) {
         return payload.id;
       }
-
+      console.log('carga U: ', payload)
     }
     return null;
   }
@@ -67,4 +79,5 @@ export class AuthService {
     // Realiza una solicitud al servidor para obtener la información del usuario por su ID
     return this.http.get<User>(`${this.URL}users/${userId}`);
   }
+
 }

@@ -18,7 +18,7 @@ export class VideogamesService {
     const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
     return this.http.get<Game[]>(url).pipe(
       tap((games) => {
-        console.log('Juegos obtenidos:', games);
+        // console.log('Juegos obtenidos:', games);
       })
     );
 
