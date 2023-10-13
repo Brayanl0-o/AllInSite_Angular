@@ -5,7 +5,8 @@ import { VideogamesComponent } from './pages/videogames/videogames.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'home/:id', component: HomeComponent },
   { path: 'videogames', component: VideogamesComponent },
   { path: 'register', component: RegisterComponent }
   // Ruta wildcard para manejar errores 404
