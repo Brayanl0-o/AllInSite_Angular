@@ -9,5 +9,5 @@ export interface User{
   phoneNumber: string,
   country: string,
   years:number,
-  desriptionUser: string
+  descriptionUser: string
 }
