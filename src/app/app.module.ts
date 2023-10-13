@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
     SliderGamesComponent,
     HeaderSearchComponent,
     RegisterComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    ResetPasswordComponent,
+    ProfileComponent,
+
   ],
   imports: [
     CommonModule,
