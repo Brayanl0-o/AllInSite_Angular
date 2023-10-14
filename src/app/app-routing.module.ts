@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: ProfileComponent },
   {path: 'send-email', component: SendEmailComponent },
-  { path: 'resetPassword', component: ResetPasswordComponent }
+  { path: 'reset-password/:token', component: ResetPasswordComponent }
   // Ruta wildcard para manejar errores 404
   // { path: '**', component: PageNotFoundComponent }
 
