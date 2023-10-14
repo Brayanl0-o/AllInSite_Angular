@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SliderGamesInterface } from 'src/app/models/slider-games';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,9 +18,17 @@ export class HomeComponent {
     {url: '../../../assets/img/shadow.jpg',title:'ejemplo'},
     {url: '../../../assets/img/half_life_3.jpeg',title:'ejemplo'},
   ];
-  constructor(
-  ) {}
+  userId: string | null = null;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    // Llama a esta función para obtener el userId cuando el componente se carga.
+    this.userId = this.authService.getLoggedInUserId();
+  }
+
+  isUserLoggedIn() {
+    // Comprueba si el usuario ha iniciado sesión o si tienes el userId.
+    return this.authService.loggedIn() || !!this.userId;
   }
 }
