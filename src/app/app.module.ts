@@ -16,6 +16,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { SendEmailComponent } from './pages/send-email/send-email.component';
+import { ResetPasswordService } from './services/reset-password/reset-password.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ModalLoginComponent,
     ResetPasswordComponent,
     ProfileComponent,
+    SendEmailComponent,
 
   ],
   imports: [
@@ -41,7 +44,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ResetPasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

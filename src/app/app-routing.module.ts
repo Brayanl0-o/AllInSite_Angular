@@ -5,6 +5,7 @@ import { VideogamesComponent } from './pages/videogames/videogames.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { SendEmailComponent } from './pages/send-email/send-email.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'videogames', component: VideogamesComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  {path: 'send-email', component: SendEmailComponent },
   { path: 'resetPassword', component: ResetPasswordComponent }
   // Ruta wildcard para manejar errores 404
   // { path: '**', component: PageNotFoundComponent }
