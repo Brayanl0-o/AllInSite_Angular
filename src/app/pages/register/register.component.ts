@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
-
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,10 +18,8 @@ export class RegisterComponent {
     private router: Router,
   ) { }
 
-
   ngOnInit(): void {
     this.contactForm = this.initFrom();
-
   }
 
   onSubmit(): void {
@@ -61,7 +58,13 @@ export class RegisterComponent {
   }
 
   defaultUserImgUrl = 'https://p1.hiclipart.com/preview/403/536/937/internet-logo-user-user-profile-symbol-wifi-user-account-computer-avatar-png-clipart.jpg';
-
+  numbersOnlyValidator(control: FormControl) {
+    const value = control.value;
+    if (value && !/^\d+$/.test(value)) {
+      return { numbersOnly: true };
+    }
+    return null;
+  }
   initFrom(): FormGroup {
     return this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
@@ -69,7 +72,7 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       years: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [this.numbersOnlyValidator]],
       country: ['Colombia'],
       userImg: [this.defaultUserImgUrl],
     })
