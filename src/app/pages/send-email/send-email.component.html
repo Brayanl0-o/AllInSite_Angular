@@ -12,10 +12,22 @@
                 <input type="email" id="email" name="email" [(ngModel)]="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com" required>
               </div>
-              <div class="flex items-center justify-center">
-                <button  type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
-              </div>
+
+              <!-- Mostrar mensaje de error si el correo no es válido -->
+              <div *ngIf="!isEmailValid" class="text-red-500 text-sm mb-4">Correo electrónico no válido.</div>
+
+              <div class="flex items-center justify-evenly">
+                <button  type="submit" class= " md:w-1/4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
+
+                <button type="button" (click)="cancel()" aria-label="Botón para cancelar"
+                  class="w-full md:w-1/4 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded">
+                  Cancelar
+                </button>
+            </div>
             </form>
+            <!-- Mostrar mensaje de éxito si el correo se envía -->
+            <div *ngIf="isEmailSent" class="text-green-500 text-sm mt-4">Correo de restablecimiento de contraseña enviado con
+              éxito.</div>
           </div>
       </div>
     </div>

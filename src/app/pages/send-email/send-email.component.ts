@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-send-email',
   templateUrl: './send-email.component.html',
@@ -11,7 +11,8 @@ export class SendEmailComponent {
   isEmailValid: boolean= true;
   isEmailSent:boolean = false;
 
-  constructor(private resetPasswordService: ResetPasswordService){}
+  constructor(private resetPasswordService: ResetPasswordService,
+    private router: Router){}
 
   private validateEmail(email: string): boolean {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -37,5 +38,8 @@ export class SendEmailComponent {
       this.isEmailValid = false;
     }
   }
-
+  cancel() {
+    // Redirige al usuario a la página de inicio
+    this.router.navigate(['/home']);
+  }
 }
