@@ -6,11 +6,13 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
+import { DetailsGameComponent } from './pages/details-game/details-game.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'videogames', component: VideogamesComponent },
+  { path: 'details-game/:id', component: DetailsGameComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'send-email', component: SendEmailComponent },

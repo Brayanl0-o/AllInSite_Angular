@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { HeaderComponent } from './components/header/header.component';
-import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VideogamesComponent } from './pages/videogames/videogames.component';
 import { SliderGamesComponent } from './components/slider-games/slider-games.component';
@@ -18,6 +17,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
 import { ResetPasswordService } from './services/reset-password/reset-password.service';
+import { DetailsGameComponent } from './pages/details-game/details-game.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
     HomeComponent,
     AsideComponent,
     HeaderComponent,
-    GameDetailsComponent,
     VideogamesComponent,
     SliderGamesComponent,
     HeaderSearchComponent,
@@ -34,6 +33,7 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
     ResetPasswordComponent,
     ProfileComponent,
     SendEmailComponent,
+    DetailsGameComponent,
 
   ],
   imports: [
