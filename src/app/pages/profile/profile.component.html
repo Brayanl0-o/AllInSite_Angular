@@ -1,16 +1,14 @@
-<body class="bg-gray-300 min-h-screen">
-
+<body class="bg-gray-300 min-h-screen ">
   <app-header></app-header>
 
-
-  <div class="relative max-w-2xl mx-auto my-3 mt-40">
-    <div class="w-full lg:auto mt-28 px-4 mx-auto">
+  <div class="relative pt-20 max-w-2xl mx-auto my-3">
+    <div class="w-full lg:auto mt-28 px-4 mx-auto ">
       <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl hover:shadow rounded-lg mt-16">
         <div class="px-6">
           <div class="flex flex-wrap justify-center">
             <div class="w-full px-4  flex justify-center">
               <div class="relative  rounded-full">
-                <img alt="..." src="../../../assets/img/half_life_3.jpeg"  class="w-72 h-72 -mt-20 ml-0 mb-0 align-middle rounded-full shadow-lg border-none ">
+                <img alt="..." [src]="user?.userImg "   class="w-72 h-72 -mt-20 ml-0 mb-0 align-middle rounded-full shadow-lg border-none ">
               </div>
             </div>
           </div>
