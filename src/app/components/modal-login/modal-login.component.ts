@@ -21,15 +21,11 @@ export class ModalLoginComponent {
     this.contactForm = this.initFrom();
   }
 
-    // isVisibleModal = false;
-    // isLoggedIn = false;
-    // subscribeLoggedIn(){
-    //   this.authService.isLoggedIn$.subscribe((loggedIn) => {
-    //     this.isLoggedIn = loggedIn;
-    //     this.isVisibleModal = !loggedIn;
-    //     this.closeModal()
-    //   })
-    // }
+    capsLockOn = false;
+
+    checkCapsLock(event: KeyboardEvent) {
+      this.capsLockOn = event.getModifierState('CapsLock');
+    }
 
     login(){
       this.errorMessage = null;
