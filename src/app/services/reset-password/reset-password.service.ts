@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { enviroment } from 'src/environments/environment.dev';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,28 @@ export class ResetPasswordService {
     return this.http.post(sendPasswordLinkUrl, requestBody);
   }
 
+  private getHttpOptions(token: string): { headers: HttpHeaders } {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-access-token': token, // Agrega el token al encabezado
+      }),
+    };
+
+    return httpOptions;
+  }
+  changePassword(password: string, token: string): Observable<any> {
+    const url = `${this.URL}auth/change-password`;
+
+    const httpOptions = this.getHttpOptions(token);
+
+    const requestBody = {
+      password: password,
+    };
+
+    return this.http.post(url, requestBody, httpOptions);
+  }
 
 
 
