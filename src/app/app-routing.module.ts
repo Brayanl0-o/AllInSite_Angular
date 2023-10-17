@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
+import { Error404Component } from './components/errors/error404/error404.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,9 +26,9 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'send-email', component: SendEmailComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   // Ruta wildcard para manejar errores 404
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: Error404Component }
 
 ];
 

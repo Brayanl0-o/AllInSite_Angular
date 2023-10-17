@@ -18,6 +18,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
 import { ResetPasswordService } from './services/reset-password/reset-password.service';
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
+import { Error404Component } from './components/errors/error404/error404.component';
+import { Error500Component } from './components/errors/error500/error500.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DetailsGameComponent } from './pages/details-game/details-game.componen
     ProfileComponent,
     SendEmailComponent,
     DetailsGameComponent,
+    Error404Component,
+    Error500Component,
 
   ],
   imports: [
