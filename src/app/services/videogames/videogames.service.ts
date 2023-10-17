@@ -26,7 +26,7 @@ export class VideogamesService {
   getGameById(userId: string | null, gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${userId}/${gameId}`;
     console.log('game id S:',gameId)
-    console.log('game id S:',userId)
+    console.log('user id S:',userId)
     return this.http.get<Game>(url);
   }
 }
