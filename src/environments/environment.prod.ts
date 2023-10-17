@@ -2,5 +2,5 @@
 
 export const enviroment = {
   production: true,
-  // apiUrl: ''
+  apiUrl: 'https://allin-api-67ck.onrender.com/'
 };
