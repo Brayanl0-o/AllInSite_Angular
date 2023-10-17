@@ -12,7 +12,15 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'home/:id', component: HomeComponent },
   { path: 'videogames', component: VideogamesComponent },
-  { path: 'details-game/:id', component: DetailsGameComponent},
+  {
+    path: 'details-game/:gameId',
+    component: DetailsGameComponent
+  },
+  // Ruta para usuarios logeados
+  {
+    path: 'details-game/:userId/:gameId',
+    component: DetailsGameComponent
+  },
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'send-email', component: SendEmailComponent },
