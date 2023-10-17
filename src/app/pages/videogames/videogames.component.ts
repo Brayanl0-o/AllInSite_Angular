@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { FilterService } from 'src/app/services/filter/filter.service';
+import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 import { Game } from 'src/app/models/game';
-
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-videogames',
   templateUrl: './videogames.component.html',
@@ -18,20 +21,59 @@ export class VideogamesComponent {
   totalPages: number = 2;
   pages!:  number[];
 
+
   constructor(
     private videogamesService: VideogamesService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private userShared: SharedUsersService,
+      private authService: AuthService,
+      private route:ActivatedRoute
   ) {}
+
+  isUserLoggedIn(){
+    return this.authService.loggedIn()
+  }
+
+  @Input()user:User | null = null;
+  userId: string| null= null;
+  dataUser(){
+    // Obtiene el ID del usuario logueado desde el servicio de autenticación
+    const loggedInUserId = this.authService.getLoggedInUserId();
+    console.log('loggedInUserId:', loggedInUserId);
+
+    if (loggedInUserId) {
+      // Asignar el userId obtenido al userId del componente
+      this.userId = loggedInUserId;
+      this.route.paramMap.subscribe(paramMap => {
+
+        // Obtiene el ID de usuario de la URL
+          const id = paramMap.get('id');
+          console.log('Id Login: ', id)
+
+          // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
+          if (id === loggedInUserId) {
+            this.userShared.getUser(id).subscribe(data => {
+              this.user = data;
+              // console.log('Data User prfile', data)
+            });
+          } else {
+            console.error('Error ids diferentes no coinciden')
+            // this.router.navigate(['/error']);
+          }
+        });
+      }
+  }
 
 
   ngOnInit(): void {
     this.loadGameData(this.currentPage, this.pageSize);
     // console.log('loadGameDatareceived in HomeComponent:', this.loadGameData);
-
+    this.dataUser()
     this.pagination()
 
     this.subscribeFilter()
   }
+
 
   private loadGameData(page: number, pageSize: number) {
     // console.log('Loading game data for page', page);
