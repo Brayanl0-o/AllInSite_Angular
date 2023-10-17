@@ -23,9 +23,10 @@ export class VideogamesService {
     );
   }
 
-  getGameById(gameId: string): Observable<Game>{
-    const url = `${this.apiUrl}games/${gameId}`;
+  getGameById(userId: string | null, gameId: string): Observable<Game>{
+    const url = `${this.apiUrl}games/${userId}/${gameId}`;
     console.log('game id S:',gameId)
+    console.log('game id S:',userId)
     return this.http.get<Game>(url);
   }
 }
