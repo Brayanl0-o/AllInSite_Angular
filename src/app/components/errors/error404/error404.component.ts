@@ -52,7 +52,5 @@ export class Error404Component {
         });
       }
     }
-  redirectToHome(){
-    this.router.navigate(['/'])
-  }
+
 }
