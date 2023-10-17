@@ -21,13 +21,20 @@ export class DetailsGameComponent {
     this.loadDataGame();
   }
 
-  loadDataGame(){
+   loadDataGame() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.gameId = params.get('id');
-      if (this.gameId) {
-        console.log('user id:',this.gameId)
-        this.gameDetails$ = this.videogameService.getGameById(this.gameId);
+      const userId = params.get('userId');
+      const gameId = params.get('gameId');
+      if (gameId) {
+        console.log('game id:', gameId);
+
+        if (userId) {
+          this.gameDetails$ = this.videogameService.getGameById(userId, gameId as string);
+        } else {
+          this.gameDetails$ = this.videogameService.getGameById('', gameId as string);
+        }
       }
     });
   }
+
 }
