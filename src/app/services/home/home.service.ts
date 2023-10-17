@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
-import { enviroment } from 'src/environments/environment.dev';
+import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class HomeService {
 
-  private apiUrl = enviroment.apiUrl
+  private apiUrl = environment.apiUrl
 
   constructor(private http: HttpClient) { }
 

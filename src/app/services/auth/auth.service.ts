@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, tap, throwError, BehaviorSubject } from 'rxjs';
-import { enviroment } from 'src/environments/environment.dev';
+import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
 
 
@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = enviroment.apiUrl
+  private URL = environment.apiUrl
 
   constructor(
     private http: HttpClient,
