@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class DetailsGameComponent {
   gameDetails$: Observable<Game>;
   gameId: string | null = null;
-
+  gameImgUrl: string | null = null;
   constructor(private videogameService: VideogamesService, private route: ActivatedRoute) {
     this.gameDetails$ = new Observable<Game>();
   }
@@ -21,7 +21,7 @@ export class DetailsGameComponent {
     this.loadDataGame();
   }
 
-   loadDataGame() {
+  loadDataGame() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const userId = params.get('userId');
       const gameId = params.get('gameId');
@@ -30,11 +30,18 @@ export class DetailsGameComponent {
 
         if (userId) {
           this.gameDetails$ = this.videogameService.getGameById(userId, gameId as string);
+         // Asigna la URL de la imagen del juego directamente desde los detalles del juego
+         this.gameDetails$.subscribe((game) => {
+          this.gameImgUrl = game.gameImg; // Asumiendo que la URL de la imagen se encuentra en el objeto Game
+        });
         } else {
           this.gameDetails$ = this.videogameService.getGameById('', gameId as string);
+          // Asigna la URL de la imagen del juego directamente desde los detalles del juego
+          this.gameDetails$.subscribe((game) => {
+            this.gameImgUrl = game.gameImg; // Asumiendo que la URL de la imagen se encuentra en el objeto Game
+          });
         }
       }
     });
   }
-
 }
