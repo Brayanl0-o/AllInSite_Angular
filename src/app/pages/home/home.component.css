@@ -1,1 +1,45 @@
 
+.slider-home{
+ width: 100vh;
+ height: 55vh;
+ margin: 0 auto;
+
+}
+@media screen and (max-width: 950px) {
+  .slider-home{
+    width: 80vh;
+    height: 40vh;
+    margin: 0 auto;
+   }
+
+}
+
+@media screen and (max-width:700px) {
+  .slider-home{
+    width: 50vh;
+    height: 25vh;
+    margin: 0 auto;
+   }
+
+}
+@media screen and (max-width: 450px) {
+  .slider-home{
+    width: 35vh;
+    height: 25vh;
+    margin: 0 auto;
+   }
+
+  .containerImages {
+    flex-direction: column;
+    gap:0;
+
+  }
+  .containerImage {
+    padding-bottom: 0px;
+    margin-top: 1rem;
+  }
+  .containerImages>a {
+
+    height: 24vh;
+  }
+}
