@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class HomeService {
 
-  private apiUrl = environment.apiUrl
+  // private apiUrl = environment.apiUrl
 
   constructor(private http: HttpClient) { }
 

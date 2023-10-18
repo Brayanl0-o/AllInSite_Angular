@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = environment.apiUrl
+  private apiUrl = environment.apiUrl
 
   constructor(
     private http: HttpClient,
@@ -24,7 +24,7 @@ export class AuthService {
 
   //Logueor, registro & cerrar sesión
   public signUp(user: any): Observable<any> {
-    return this.http.post<any>(this.URL + 'auth/signup', user)
+    return this.http.post<any>(this.apiUrl + 'auth/signup', user)
       .pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud de registro:', error);
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   public login(user: any) {
-    return this.http.post<any>(this.URL + 'auth/login', user).pipe(
+    return this.http.post<any>(this.apiUrl + 'auth/login', user).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token)
         // Añadir esta línea para indicar que el usuario ha iniciado sesión
@@ -77,7 +77,7 @@ export class AuthService {
 
   getUserById(userId: string): Observable<User> {
     // Realiza una solicitud al servidor para obtener la información del usuario por su ID
-    return this.http.get<User>(`${this.URL}users/${userId}`);
+    return this.http.get<User>(`${this.apiUrl}users/${userId}`);
   }
 
 }
