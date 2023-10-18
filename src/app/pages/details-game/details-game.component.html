@@ -1,21 +1,15 @@
 
-<body class="bg-gray-300 min-h-screen mt-10">
+<body class="bg-gray-300 min-h-screen" *ngIf="gameDetails$ | async as gameDetails">
 
     <app-header></app-header>
 
-
-    <!-- <div class=" -z-50 fixed top-16 w-full h-2/5 bg-center bg-cover" [style.background-image]="'url(' + gameImgUrl + ')'">
-      <span  class="w-full h-full absolute opacity-50 bg-black"></span> -->
-
-
-    <!-- </div> -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
 
     <section class="-z-10 h-500-px">
       <div class="absolute top-0 w-full h-full bg-center bg-cover"
-      [style.background-image]="'url(' + gameImgUrl + ')'"
-            >
-        <span  class="w-full h-full absolute opacity-50 bg-black"></span>
+      [style.background-image]="'url(' + gameImgUrl + ')'">
+            <!-- <img [src]="gameDetails.gameImg" alt=""> -->
+        <span  class="w-full h-full absolute opacity-60 bg-black"></span>
       </div>
       <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
         <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
@@ -25,15 +19,24 @@
 
     </section>
 
-
-    <div class="mt-96 flex relative top-20" *ngIf="gameDetails$ | async as gameDetails">
+    <div class="flex relative top-64 bg-slate-400" >
       <img class="w-1/2" [src]="gameDetails.gameImg" alt="">
-      <div class="w-1/2 pl-8">
-        <h2 class="text-2xl font-bold">{{ gameDetails.gameName }}</h2>
-        <p class="text-gray-600">{{ gameDetails.developer }}</p>
+      <div class="w-1/2 pl-8 p-10">
+        <h2 class="text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
+        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p>
+        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.developer }}</p>
+        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.releaseDate}}</p>
+        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.genre }}</p>
+        <p class=" font-semibold text-gray-700 dark:text-gray-400 py-10">
+          <span class= " inline-block bg-blue-100/50 text-blue-800 text-6xl font-semibold mr-2 px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
+            {{ gameDetails.averageRating }}
+          </span>
+          <svg class="w-14 h-14 inline-block text-yellow-300 mr-1 -mt-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+        </svg>
+        </p>
       </div>
     </div>
-
 
 <!-- component -->
 <!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
