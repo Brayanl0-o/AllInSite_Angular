@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SliderGamesInterface } from 'src/app/models/slider-games';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +20,7 @@ export class HomeComponent {
     {url: '../../../assets/img/half_life_3.jpeg',title:'ejemplo'},
   ];
   userId: string | null = null;
-
+ public env: string = environment.apiUrl
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
