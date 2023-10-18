@@ -14,7 +14,7 @@
         <img class="w-8 h-8 rounded-full" [src]="user?.userImg" alt="imagen de usuario">
       </button>
       <!-- Dropdown menu -->
-      <div *ngIf="optionsVisible" class="dropdown absolute right-0 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 transform translate-x-1/2" style="min-width: 10rem;">
+      <div *ngIf="optionsVisible" class="z-50 dropdown absolute right-0 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 transform translate-x-1/2" style="min-width: 10rem;">
         <div class="px-4 py-3 bg-gray-300">
           <span class="block text-sm text-gray-900 dark:text-white">{{user?.userName}}</span>
           <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{user?.email}}</span>
@@ -42,19 +42,22 @@
         </div>
       </div>
     </div>
-    <button (click)="showMenu()" data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+    <button (click)="showMenu()" data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 open-menu-btn" aria-controls="navbar-user" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
       </svg>
     </button>
-    <div *ngIf="menuVisible" class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-user">
-      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+
+    <!-- Menú en el header en pantallas medianas y grandes -->
+    <div class="hidden md:block">
+      <ul class="flex flex-row font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
           <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Videojuegos</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Videojuegos</a>
         </li>
         <li>
           <a [routerLink]="isUserLoggedIn() ? ['/music', { id: userId }] : ['/music']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Música</a>
@@ -67,5 +70,29 @@
         </li>
       </ul>
     </div>
+
+    <!-- Menú en el header en pantallas peques -->
+    <div *ngIf="menuVisible" class="md:hidden" id="navbar-user">
+      <ul class="flex flex-col font-medium p-4 border border-gray-100 rounded-lg bg-white  dark:bg-gray-700 dark:border-gray-600" style="position: absolute; top:100%; right: 0; left: 0;">
+        <li>
+          <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Videojuegos</a>
+        </li>
+        <li>
+          <a [routerLink]="isUserLoggedIn() ? ['/music', { id: userId }] : ['/music']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Música</a>
+        </li>
+        <li>
+          <a [routerLink]="isUserLoggedIn() ? ['/movies', { id: userId }] : ['/movies']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md-dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Películas</a>
+        </li>
+        <li>
+          <a [routerLink]="isUserLoggedIn() ? ['/register', { id: userId }] : ['/register']" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md-dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Unirme</a>
+        </li>
+      </ul>
+    </div>
+
+
+
   </div>
 </nav>
