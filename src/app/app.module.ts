@@ -22,6 +22,9 @@ import { Error404Component } from './components/errors/error404/error404.compone
 import { Error500Component } from './components/errors/error500/error500.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-videogames/skeleton-videogames.component';
+import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
+import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Error404Component,
     Error500Component,
     UpdateUserComponent,
+    SkeletonVideogamesComponent,
+    SkeletonProfileComponent,
+    SkeletonHeaderComponent,
 
   ],
   imports: [
