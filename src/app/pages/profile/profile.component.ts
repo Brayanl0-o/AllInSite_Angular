@@ -1,13 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
-
+import { animate, trigger, style, transition } from '@angular/animations';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  animations: [
+    trigger('bounce', [
+      transition('* => *', [
+        animate('0.2s', style({ transform: 'scale(1.2)' })),
+        animate('0.2s', style({ transform: 'scale(1)' })),
+      ]),
+    ]),
+  ],
 })
 export class ProfileComponent {
   @Input() user: User | null = null;
@@ -15,10 +23,12 @@ export class ProfileComponent {
 
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
-   private route: ActivatedRoute){     }
+   private route: ActivatedRoute,
+   private renderer: Renderer2){     }
 
     ngOnInit(){
       this.dataUser();
+      this.userShared.$modal.subscribe((valu) => { this.isModalVisible = valu })
     }
 
     dataUser(){
@@ -43,6 +53,22 @@ export class ProfileComponent {
             }
         })
       }
+    }
+    isModalVisible!: boolean;
+    openModal(user: User | null): void {
+      if (user) {
+        this.isModalVisible = true
+        this.renderer.setStyle(document.body, 'overflow', 'hidden');
+        this.userShared.sendUserData(user);
+        console.log('dataUser profileComp: ', user)
+      }
+    }
+
+    showContentOne = true;
+    showContentTwo = false;
+    toggleContent() {
+      this.showContentOne = !this.showContentOne;
+      this.showContentTwo = !this.showContentTwo;
     }
 
 }
