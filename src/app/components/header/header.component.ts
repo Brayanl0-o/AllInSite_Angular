@@ -12,7 +12,7 @@ export class HeaderComponent {
     @Input() user: User | null = null;
     users: User []= [];
     userId: string | null = null;
-
+    loadingData: boolean = true;
     constructor(private userShared: SharedUsersService,
       private authService: AuthService,
       private route: ActivatedRoute){}
@@ -20,6 +20,7 @@ export class HeaderComponent {
 
       ngOnInit(){
         this.dataUser();
+
       }
 
     isUserLoggedIn() {
@@ -48,6 +49,7 @@ export class HeaderComponent {
           if (id === loggedInUserId) {
             this.userShared.getUser(id).subscribe(data => {
               this.user = data;
+              this.loadingData = false;
               // console.log('Data User prfile', data)
             });
           } else {
