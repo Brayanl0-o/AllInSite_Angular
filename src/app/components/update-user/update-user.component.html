@@ -1,0 +1,131 @@
+<body>
+  <section class="relative max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md ">
+
+    <div class="flex items-center justify-between  mt-6">
+      <h2 class="text-lg font-semibold text-black capitalize" tabindex="0"
+      aria-label="Formulario para actualizar mis datos">Actualizar perfil</h2>
+      <button (click)="closeModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform bg-[#006186] rounded-full hover:bg-blue-600 focus:outline-none focus:bg-gray-600">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+    </div>
+
+
+
+    <form class="mt-12" [formGroup]="contactForm">
+
+
+      <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+
+        <div class="relative">
+          <label class="text-black " for="name">
+            Nombres</label>
+          <input id="firstName" type="text" name="firstName" formControlName="firstName" placeholder="Inserte sus nombres"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+            required>
+          <!-- Validators of names-->
+          <div
+            *ngIf="contactForm.controls['firstName'].invalid && (contactForm.controls['firstName'].dirty || contactForm.controls['firstName'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="contactForm.controls['firstName'].errors?.['required']">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="contactForm.controls['firstName'].errors?.['pattern']">
+              Este campo no admite caracteres especiales.
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <label class="text-black" for="lastName">
+            Apellidos
+          </label>
+          <input id="lastName" name="lastName" formControlName="lastName" type="text"
+            placeholder="Inserte sus Apellidos"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+          <div
+            *ngIf="contactForm.controls['lastName'].invalid && (contactForm.controls['lastName'].dirty || contactForm.controls['surNames'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="contactForm.controls['lastName'].errors?.['required']">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="contactForm.controls['lastName'].errors?.['pattern']">
+              Este campo no admite caracteres especiales.
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <label class="text-black" for="email">
+           Email
+          </label>
+          <input id="email" name="email" formControlName="email" type="text"
+            placeholder="Inserte sus Apellidos"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+
+          <div
+            *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['surNames'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="contactForm.controls['email'].errors?.['required']">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="contactForm.controls['email'].errors?.['pattern']">
+              Este campo no admite caracteres especiales.
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <label class="text-black " for="years">Edad
+          </label>
+          <input id="years" type="number" name="years" formControlName="years" placeholder="Ingrese su edad"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+          <!--Validators years-->
+          <div *ngIf="contactForm.get('years')?.touched && contactForm.get('years')?.errors?.['required']"
+            class="alert alert-danger">Este campo es obligatorio.</div>
+          <div *ngIf="contactForm.get('years')?.touched && contactForm.get('years')?.errors?.['minlength']"
+            class="alert alert-danger">Este campo debe tener minimo 2
+            {{contactForm.get('years')?.errors?.['minlength'].requiredlength}} digitos.</div>
+
+        </div>
+
+        <div class="relative">
+          <label class="text-black " for="phoneNumber">
+            Celular
+          </label>
+          <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+            placeholder="Inserte su número de celular"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+          <!--Validators phoneNumber-->
+          <div *ngIf="contactForm.get('phoneNumber')?.touched && contactForm.get('phoneNumber')?.errors?.['required']"
+            class="alert alert-danger">Este campo es obligatorio.
+          </div>
+        </div>
+
+        <div class="relative">
+          <label class="text-black " for="country">
+            Pais
+          </label>
+          <input id="country" name="country" formControlName="country" placeholder="Colombia"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+        </div>
+
+        <div class="relative">
+          <label class="text-black " for="descriptionUser">
+            Descripcion del perfil
+          </label>
+          <input type="text" id="descriptionUser" name="descriptionUser" formControlName="descriptionUser"
+            placeholder="Ingrese la descripción de su perfil"
+            class="block w-full px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+        </div>
+
+      </div>
+
+      <div class="flex justify-end mt-6">
+        <button (click)="updateUserData()"
+          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
+      </div>
+    </form>
+  </section>
+</body>
