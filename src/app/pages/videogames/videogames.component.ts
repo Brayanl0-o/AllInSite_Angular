@@ -21,6 +21,7 @@ export class VideogamesComponent {
   totalPages: number = 2;
   pages!:  number[];
 
+  loadingData: boolean = true;
 
   constructor(
     private videogamesService: VideogamesService,
@@ -79,6 +80,7 @@ export class VideogamesComponent {
     // console.log('Loading game data for page', page);
     this.videogamesService.getGame(page, pageSize).subscribe((response: any) => {
       //  console.log('Game data response:', response);
+      this.loadingData = false;
       this.games = response.games; // Asigna la matriz de juegos desde la respuesta de la API
       this.totalGames = response.totalGames; // Actualiza el total de juegos
       this.currentPage = response.currentPage; // Actualiza la página actual
