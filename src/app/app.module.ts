@@ -20,6 +20,8 @@ import { ResetPasswordService } from './services/reset-password/reset-password.s
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
 import { Error404Component } from './components/errors/error404/error404.component';
 import { Error500Component } from './components/errors/error500/error500.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { Error500Component } from './components/errors/error500/error500.compone
     DetailsGameComponent,
     Error404Component,
     Error500Component,
+    UpdateUserComponent,
 
   ],
   imports: [
@@ -46,7 +49,8 @@ import { Error500Component } from './components/errors/error500/error500.compone
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [ResetPasswordService],
   bootstrap: [AppComponent]
