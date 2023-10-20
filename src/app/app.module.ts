@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-videogames/skeleton-videogames.component';
 import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
 import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
+import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/
     SkeletonVideogamesComponent,
     SkeletonProfileComponent,
     SkeletonHeaderComponent,
+    SkeletonHomeComponent,
 
   ],
   imports: [
