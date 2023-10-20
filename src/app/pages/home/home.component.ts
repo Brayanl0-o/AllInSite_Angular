@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  public env: string = environment.apiUrl
+  userId: string | null = null;
 
   slides: SliderGamesInterface[]= [
     {url: '../../../assets/img/dantes.jpg',title:'ejemplo'},
@@ -19,8 +21,7 @@ export class HomeComponent {
     {url: '../../../assets/img/shadow.jpg',title:'ejemplo'},
     {url: '../../../assets/img/half_life_3.jpeg',title:'ejemplo'},
   ];
-  userId: string | null = null;
- public env: string = environment.apiUrl
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class HomeComponent {
   }
 
   isUserLoggedIn() {
-    // Comprueba si el usuario ha iniciado sesión o si tienes el userId.
+    // Comprueba si el usuario ha iniciado sesion
     return this.authService.loggedIn() || !!this.userId;
   }
 }
