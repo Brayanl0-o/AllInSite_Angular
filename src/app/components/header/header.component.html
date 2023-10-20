@@ -12,8 +12,8 @@
     <!-- dropdown -->
 
     <div *ngIf="isUserLoggedIn()" class="relative md:order-2">
-      <ng-container (click)="showOptions()" *ngIf="loadingData; else userImageContent">
-        <app-skeleton-header></app-skeleton-header>
+      <ng-container  *ngIf="loadingData; else userImageContent">
+        <app-skeleton-header (click)="showOptions()" ></app-skeleton-header>
       </ng-container>
       <ng-template #userImageContent>
         <button (click)="showOptions()" type="button" class="flex mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false">
