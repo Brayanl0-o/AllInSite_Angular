@@ -20,7 +20,7 @@ import { animate, trigger, style, transition } from '@angular/animations';
 export class ProfileComponent {
   @Input() user: User | null = null;
   userId: string | null = null;
-
+  loadDataProfile: boolean = true;
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
    private route: ActivatedRoute,
@@ -45,6 +45,7 @@ export class ProfileComponent {
             if (id === loggedInUserId) {
               this.userShared.getUser(id).subscribe(data => {
                 this.user = data;
+                this.loadDataProfile = false;
                 // console.log('Data User prfile', data)
               });
             } else {

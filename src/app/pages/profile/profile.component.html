@@ -1,7 +1,12 @@
-<body class="bg-gray-300 h-auto ">
+<body class="bg-gray-300 min-h-screen max-h-screen h-auto ">
   <app-header></app-header>
 
+  <ng-container>
+    <app-skeleton-profile *ngIf="loadDataProfile; else userData"></app-skeleton-profile>
+  </ng-container>
+<ng-template #userData >
   <div class="relative pt-20 max-w-2xl mx-auto my-3 bottom-10">
+
     <div class="w-full lg:auto mt-28 px-4 mx-auto ">
       <div class=" relative flex flex-col min-w-0 break-words  bg-white w-full shadow-xl hover:shadow rounded-lg mt-16">
         <div class="px-6 mb-5">
@@ -86,4 +91,5 @@
       </div>
     </div>
   </div>
+</ng-template>
 </body>
