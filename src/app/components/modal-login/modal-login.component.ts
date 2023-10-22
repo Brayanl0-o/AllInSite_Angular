@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ModalLoginComponent {
   contactForm!: FormGroup;
+  public isLoading: boolean = false;
   public errorMessage: string | null = null;
   constructor(private authService:AuthService,
     private router: Router,
@@ -28,6 +29,7 @@ export class ModalLoginComponent {
     }
 
     login(){
+      this.isLoading = true;
       this.errorMessage = null;
         this.authService.login(this.contactForm.value).subscribe(
           (res)=>{
@@ -42,10 +44,12 @@ export class ModalLoginComponent {
             }else{
               console.log('No id found')
             }
+            this.isLoading = false;
           },
           (err) => {
             console.log(err);
             this.errorMessage = ' Usuario o contraseña incorrectos'; // Asignar mensaje de error
+            this.isLoading = false;
 
             setTimeout(() => {
               this.errorMessage = null;
