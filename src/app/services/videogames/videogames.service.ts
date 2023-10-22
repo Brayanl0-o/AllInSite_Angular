@@ -14,15 +14,22 @@ export class VideogamesService {
 
   constructor(private http: HttpClient) { }
 
-  getGame(page: number, pageSize: number): Observable<Game[]>{
-    const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
+  // getGame(page: number, pageSize: number): Observable<Game[]>{
+  //   const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
+  //   return this.http.get<Game[]>(url).pipe(
+  //     tap((games) => {
+  //       // console.log('Juegos obtenidos:', games);
+  //     })
+  //   );
+  // }
+  getGame(): Observable<Game[]>{
+    const url= `${this.apiUrl}games/`;
     return this.http.get<Game[]>(url).pipe(
       tap((games) => {
-        // console.log('Juegos obtenidos:', games);
+        console.log('Juegos obtenidos:', games);
       })
     );
   }
-
   getGameById(userId: string | null, gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${userId}/${gameId}`;
     console.log('game id S:',gameId)
