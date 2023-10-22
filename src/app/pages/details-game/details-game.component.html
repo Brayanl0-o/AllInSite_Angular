@@ -1,10 +1,10 @@
 
-<body class="bg-gray-300 min-h-screen" *ngIf="gameDetails$ | async as gameDetails">
+<body class="bg-gray-300 min-h-screen">
 
     <app-header></app-header>
 
     <!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
-
+  <div  *ngIf="gameDetails$ | async as gameDetails">
     <section class="-z-10 h-500-px">
       <div class="absolute top-0 w-full h-full bg-center bg-cover"
       [style.background-image]="'url(' + gameImgUrl + ')'">
@@ -37,7 +37,7 @@
         </p>
       </div>
     </div>
-
+  </div>
 <!-- component -->
 <!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
   <div class="col-start-1 row-start-1 bg-gray-800 bg-opacity-70 w-full h-full"></div>
