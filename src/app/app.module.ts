@@ -26,6 +26,7 @@ import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-vid
 import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
 import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
 import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
+import { PaginationVideogamesComponent } from './components/pagination-videogames/pagination-videogames.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skel
     SkeletonProfileComponent,
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
+    PaginationVideogamesComponent,
 
   ],
   imports: [
