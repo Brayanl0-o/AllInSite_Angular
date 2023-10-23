@@ -28,6 +28,7 @@ import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/
 import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
 import { PaginationVideogamesComponent } from './components/pagination-videogames/pagination-videogames.component';
 
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,6 @@ import { PaginationVideogamesComponent } from './components/pagination-videogame
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
     PaginationVideogamesComponent,
-
   ],
   imports: [
     CommonModule,
@@ -60,7 +60,9 @@ import { PaginationVideogamesComponent } from './components/pagination-videogame
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
+
   ],
   providers: [ResetPasswordService],
   bootstrap: [AppComponent]
