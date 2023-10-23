@@ -18,9 +18,8 @@
                   <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
                     aria-label="Boton para actualizar imagen de perfil"
                     style="clip-path:polygon(0 100%, 100% 100%, 100% 80%, 0 80%);"
-                    class="rounded-full bg-slate-600/50  w-72 h-72 -mt-20 ml-0 mb-0 absolute z-50 text-gray-500 hover:text-blue-500 focus:outline-none">
-                  <mat-icon class=" h-20 w-20 mt-60 ml-0 mb-0 hover:scale-150 hover:transition-transform text-black ">brush</mat-icon>
-
+                    class="rounded-full bg-slate-600/30  backdrop-blur-sm w-72 h-72 -mt-20 ml-0 mb-0 absolute z-50 text-gray-500 hover:text-blue-500 focus:outline-none">
+                    <mat-icon class=" h-20 w-20 mt-60 ml-0 blur-none mb-0 hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
                 </button>
                 <!-- <img src="../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg" alt=""> -->
                   <img alt="..." [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'"  class="w-72 h-72 -mt-20 ml-0 mb-0 align-middle rounded-full hover:shadow shadow-lg border-none ">
@@ -46,13 +45,15 @@
             </div>
             <div class="text-center mt-4">
               <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 ">
-                {{user?.userName}}
+                {{user?.firstName}} {{user?.lastName}}
+
+                <!-- {{user?.userName}} -->
               </h3>
               <span class="my-3">{{user?.email}}</span>
           <div class="flex flex-col items-center mt-4 sm:mx-auto">
               <button type="submit" class="text-blue-700 text-lg sm:text-xl flex flex-col items-center"
                 tabindex="0" aria-label="Mi ubicación de perfil">
-                <mat-icon class="text-2xl bounce-animation" >location_on</mat-icon>
+                <mat-icon class="text-2xl bounce-animation" >pin_drop</mat-icon>
                 <span tabindex="0"> {{ user?.country}}</span>
               </button>
 
