@@ -8,19 +8,12 @@ import { animate, trigger, style, transition } from '@angular/animations';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  animations: [
-    trigger('bounce', [
-      transition('* => *', [
-        animate('0.2s', style({ transform: 'scale(1.2)' })),
-        animate('0.2s', style({ transform: 'scale(1)' })),
-      ]),
-    ]),
-  ],
 })
 export class ProfileComponent {
   @Input() user: User | null = null;
   userId: string | null = null;
   loadDataProfile: boolean = true;
+
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
    private route: ActivatedRoute,
@@ -55,6 +48,37 @@ export class ProfileComponent {
         })
       }
     }
+
+    userImg = '';
+    newUserImg = '';
+    isEditingImg = false;
+    updateUserImg(){
+      if(!this.user){
+        console.error('Error: No hay datos de actualizacíón')
+        return;
+      }
+      const updatedData = {
+        userImg: this.newUserImg
+      };
+      this.userShared.updateUser(this.user._id, updatedData).subscribe(
+        (response)=> {
+          if(this.user){
+            this.user.userImg = this.newUserImg
+          }
+        },
+        (error) => {
+          console.error('Error al updated', error);
+        }
+      );
+      this.isEditingImg = false;
+      window.location.reload()
+    }
+
+    cancelEditImg(){
+      this.newUserImg = this.userImg;
+      this.isEditingImg = false;
+    }
+
     isModalVisible!: boolean;
     openModal(user: User | null): void {
       if (user) {
