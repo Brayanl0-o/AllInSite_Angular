@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { FilterService } from 'src/app/services/filter/filter.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
@@ -23,8 +23,25 @@ export class VideogamesComponent {
     private filterService: FilterService,
     private userShared: SharedUsersService,
     private authService: AuthService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private renderer: Renderer2
   ) {}
+
+
+  isModalVisible!: boolean;
+  openModal() {
+    this.isModalVisible = true;
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+  }
+
+
+  ngOnInit(): void {
+    this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible = valu })
+
+    this.dataUser()
+    this.loadGameData();
+    this.subscribeFilter()
+  }
 
   isUserLoggedIn(){
     return this.authService.loggedIn()
@@ -55,11 +72,6 @@ export class VideogamesComponent {
       }
   }
 
-  ngOnInit(): void {
-    this.dataUser()
-    this.loadGameData();
-    this.subscribeFilter()
-  }
 
   private loadGameData() {
     this.videogamesService.getGame().subscribe((data: Game[]) => {
