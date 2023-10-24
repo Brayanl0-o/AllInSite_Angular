@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
-
+import { EventEmitter } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
 export class VideogamesService {
 
   private apiUrl = environment.apiUrl
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -35,5 +37,12 @@ export class VideogamesService {
     console.log('game id S:',gameId)
     console.log('user id S:',userId)
     return this.http.get<Game>(url);
+  }
+  $modal = new EventEmitter<any>();
+
+  updateGame(id: string,gameData: any): Observable<any> {
+    const url = `${this.apiUrl}games/update/${id}`;
+    console.log('gameData service', gameData)
+    return this.http.put(url, gameData);
   }
 }
