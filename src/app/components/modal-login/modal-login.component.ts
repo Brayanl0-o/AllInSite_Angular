@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +14,8 @@ export class ModalLoginComponent {
   public errorMessage: string | null = null;
   constructor(private authService:AuthService,
     private router: Router,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private renderer: Renderer2
   ){}
 
   ngOnInit(){
@@ -71,8 +72,10 @@ export class ModalLoginComponent {
     modalIsVisible = false;
     showModal(){
       this.modalIsVisible = !this.modalIsVisible;
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
     }
     closeModal(){
       this.modalIsVisible = false;
+      this.renderer.removeStyle(document.body, 'overflow');
     }
   }
