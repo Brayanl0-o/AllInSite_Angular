@@ -7,7 +7,7 @@
   <div  *ngIf="gameDetails$ | async as gameDetails">
     <section class="-z-10 h-500-px">
       <div class="absolute top-0 w-full h-full bg-center bg-cover"
-      [style.background-image]="'url(' + gameImgUrl + ')'">
+      [style.background-image]="gameImgUrl ? 'url(' + gameImgUrl + ')' : 'none'">
             <!-- <img [src]="gameDetails.gameImg" alt=""> -->
         <span  class="w-full h-full absolute opacity-60 bg-black"></span>
       </div>
