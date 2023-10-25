@@ -33,7 +33,13 @@ export class ModalLoginComponent {
       }
 
     }
-
+    public isPasswordVisible: boolean = false;
+    togglePasswordVisibility() {
+      this.isPasswordVisible = !this.isPasswordVisible;
+    }
+    isTextOrPassword() {
+      return this.isPasswordVisible ? 'text' : 'password';
+    }
     login(){
       this.isLoading = true;
       this.errorMessage = null;
