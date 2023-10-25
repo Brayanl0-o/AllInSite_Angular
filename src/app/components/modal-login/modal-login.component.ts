@@ -26,7 +26,12 @@ export class ModalLoginComponent {
     capsLockOn = false;
 
     checkCapsLock(event: KeyboardEvent) {
-      this.capsLockOn = event.getModifierState('CapsLock');
+      if(event.getModifierState){
+        this.capsLockOn = event.getModifierState('CapsLock');
+      } else {
+        this.capsLockOn = false;
+      }
+
     }
 
     login(){
