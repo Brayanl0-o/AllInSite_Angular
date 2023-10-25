@@ -3,7 +3,7 @@ import { VideogamesService } from 'src/app/services/videogames/videogames.servic
 import { FilterService } from 'src/app/services/filter/filter.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from 'src/app/models/game';
 import { User } from 'src/app/models/user';
 @Component({
@@ -17,14 +17,14 @@ export class VideogamesComponent {
   games: Game[] = [];
   filteredGames: Game[] = [];
   loadingData: boolean = true;
-
   constructor(
     private videogamesService: VideogamesService,
     private filterService: FilterService,
     private userShared: SharedUsersService,
     private authService: AuthService,
     private route:ActivatedRoute,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router:Router
   ) {}
 
 
@@ -67,6 +67,30 @@ export class VideogamesComponent {
           }
         });
       }
+  }
+  navigateToVideogames(userId: string | null) {
+
+    let baseRoute = '/videogames';
+
+    if (userId) {
+      baseRoute = `${baseRoute}/${userId}`;
+    }
+    this.router.navigateByUrl(baseRoute);
+  }
+
+  deleteGame(gameId: string) {
+
+    this.videogamesService.deleteGame(gameId).subscribe(
+      (response) => {
+        this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
+        console.log('Game eliminada exitosamente', response);
+      //  window.location.reload();
+      this.navigateToVideogames(null);
+      },
+      (error) => {
+        console.error('Error al eliminar game', error);
+      }
+    );
   }
 
   private loadGameData() {
