@@ -53,7 +53,8 @@ export class AddVideogameComponent {
         releaseDate: ['',Validators.required],
         developer:['',Validators.required],
         genre:['',Validators.required],
-        averageRating:['',Validators.required]
+        averageRating:['',Validators.required],
+        descriptionGame:['',Validators.required]
 
       })
     }
