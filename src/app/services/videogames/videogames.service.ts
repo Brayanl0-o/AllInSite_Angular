@@ -51,4 +51,9 @@ export class VideogamesService {
     console.log('gameData service', gameData)
     return this.http.put(url, gameData);
   }
+
+  deleteGame(gameId: string): Observable<any> {
+    const url = `${this.apiUrl}games/delete/${gameId}`;
+    return this.http.delete(url);
+  }
 }
