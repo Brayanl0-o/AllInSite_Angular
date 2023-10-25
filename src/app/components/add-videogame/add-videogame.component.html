@@ -29,8 +29,8 @@
           <input id="gameImg" name=" gameImg" formControlName="gameImg" type="text"
             placeholder="Inserte su  gameImg"
             class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
         </div>
+
         <div class="relative">
           <label class="text-black" for=" platform">
             platform
@@ -38,18 +38,13 @@
           <input id="platform" name="platform" formControlName="platform" type="text"
             placeholder="Inserte sus platform"
             class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
-
         </div>
 
         <div class="relative">
           <label class="text-black " for="releaseDate">releaseDate
           </label>
-          <input id="releaseDate" type="number" name="releaseDate" formControlName="releaseDate" placeholder="Ingrese su releaseDate"
-            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
-
-
+          <input id="releaseDate" type="date" name="releaseDate" formControlName="releaseDate"
+          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"/>
         </div>
 
         <div class="relative">
@@ -59,8 +54,6 @@
           <input id="developer" name="developer" formControlName="developer"
             placeholder="Inserte su número de developer"
             class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
-
         </div>
 
         <div class="relative">
@@ -71,15 +64,21 @@
             class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
         </div>
 
-        <div class="relative col-span-2">
-          <label class="text-black " for="averageRating">
-            averageRating
+        <div class="relative ">
+          <label class="text-black " for="descriptionGame">
+            descriptionGame
           </label>
-          <input type="text" id="averageRating" name="averageRating" formControlName="averageRating"
-            placeholder="Ingrese averageRating"
+          <input type="text" id="descriptionGame" name="descriptionGame" formControlName="descriptionGame"
+            placeholder="Ingrese  descriptionGame"
             class="block w-full px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
         </div>
 
+        <div class="relative">
+          <label class="text-black " for="averageRating">averageRating
+          </label>
+          <input id="averageRating" type="number" name="averageRating" formControlName="averageRating" placeholder="Ingrese su averageRating"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+        </div>
       </div>
 
       <div class="flex justify-end mt-6">
