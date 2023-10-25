@@ -53,6 +53,7 @@ export class ModalLoginComponent {
 
             if(userId){
               this.router.navigate(['/home',userId])
+              this.renderer.removeStyle(document.body, 'overflow');
             }else{
               console.log('No id found')
             }
