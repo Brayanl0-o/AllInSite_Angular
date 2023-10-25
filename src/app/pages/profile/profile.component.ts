@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
-import { animate, trigger, style, transition } from '@angular/animations';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
