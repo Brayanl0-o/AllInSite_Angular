@@ -40,6 +40,12 @@ export class VideogamesService {
   }
   $modal = new EventEmitter<any>();
 
+  createGame(gameData: any): Observable<any> {
+    const url = `${this.apiUrl}games/create`;
+    console.log('gameData service', gameData)
+    return this.http.post(url, gameData);
+  }
+
   updateGame(id: string,gameData: any): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
     console.log('gameData service', gameData)
