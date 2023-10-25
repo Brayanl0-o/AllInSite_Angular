@@ -28,19 +28,17 @@ export class VideogamesComponent {
   ) {}
 
 
+  ngOnInit(): void {
+    this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible = valu })
+    this.dataUser()
+    this.loadGameData();
+    this.subscribeFilter()
+  }
+
   isModalVisible!: boolean;
   openModal() {
     this.isModalVisible = true;
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
-  }
-
-
-  ngOnInit(): void {
-    this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible = valu })
-
-    this.dataUser()
-    this.loadGameData();
-    this.subscribeFilter()
   }
 
   isUserLoggedIn(){
@@ -55,7 +53,6 @@ export class VideogamesComponent {
     if (loggedInUserId) {
       this.userId = loggedInUserId;
       this.route.paramMap.subscribe(paramMap => {
-
           const id = paramMap.get('id');
           console.log('Id Login: ', id)
 
@@ -71,7 +68,6 @@ export class VideogamesComponent {
         });
       }
   }
-
 
   private loadGameData() {
     this.videogamesService.getGame().subscribe((data: Game[]) => {
@@ -118,7 +114,6 @@ export class VideogamesComponent {
         const hasSelectedPlatform = filters.platforms.some((platform: string) =>
           game.platform.toLowerCase().includes(platform.toLowerCase())
         );
-
         if (!hasSelectedPlatform) {
           return false;
         }
@@ -128,7 +123,6 @@ export class VideogamesComponent {
         const hasSelectedGenre = filters.genres.some((genre: string) =>
           game.genre.toLowerCase().includes(genre.toLowerCase())
         );
-
         if (!hasSelectedGenre) {
           return false;
         }
@@ -138,7 +132,6 @@ export class VideogamesComponent {
         const hasSelectedDeveloper = filters.developers.some((developer: string) =>
           game.developer.toLowerCase().includes(developer.toLowerCase())
         );
-
         if (!hasSelectedDeveloper) {
           return false;
         }
@@ -148,7 +141,6 @@ export class VideogamesComponent {
         const gameDate = new Date(game.releaseDate);
         const startDate = new Date(filters.startDate);
         const endDate = new Date(filters.endDate);
-
         // Comprueba si la fecha de lanzamiento del juego está dentro del rango seleccionado
         if (gameDate >= startDate && gameDate <= endDate) {
           return true; // Incluye el juego si cumple con el rango de fechas
@@ -158,8 +150,6 @@ export class VideogamesComponent {
       }
       return true;
     });
-
-    // Aplica la ordenación basada en filters.order
     // console.log('Order:', filters.order);
     if (filters.order === 'asc') {
       this.filteredGames.sort((a, b) => a.averageRating - b.averageRating);
