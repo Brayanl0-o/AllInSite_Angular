@@ -10,8 +10,8 @@
       </button>
 
     </div>
-    [formGroup]="contactForm"
-    <form class="mt-12" >
+
+    <form class="mt-12"  [formGroup]="contactForm">
       <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 
         <div class="relative">
@@ -23,10 +23,10 @@
         </div>
 
         <div class="relative">
-          <label class="text-black" for=" gameImg">
+          <label class="text-black" for="gameImg">
             gameImg
           </label>
-          <input id="gameImg" name=" gameImg" formControlName=" gameImge" type="text"
+          <input id="gameImg" name=" gameImg" formControlName="gameImg" type="text"
             placeholder="Inserte su  gameImg"
             class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
 
@@ -83,7 +83,7 @@
       </div>
 
       <div class="flex justify-end mt-6">
-        <button (click)="addGameData()"
+        <button (click)="createGameData()"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
       </div>
     </form>
