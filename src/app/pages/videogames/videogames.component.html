@@ -63,11 +63,12 @@
                 </a>
                 <div class="game-card bg-white shadow-lg p-2">
                   <div>
-                    <p>{{game.descriptionGame}}
+                    <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
+                    <ng-template #defaultText>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       Ratione quae iste ab quibusdam recusandae maiores, eos quas placeat aperiam...
-                      <!-- nostrum veritatis fugiat esse eius assumenda dignissimos iure voluptate porro enim. -->
-                    </p>
+                    </ng-template>
+
                   </div>
                   <p class="mb-2 font-semibold text-gray-700 dark:text-gray-400">Calificación:
                     <span class= " inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
