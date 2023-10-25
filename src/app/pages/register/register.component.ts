@@ -65,7 +65,7 @@ export class RegisterComponent {
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      years: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
+      years: ['',[Validators.required, this.numbersOnlyValidator, Validators.minLength(2), Validators.maxLength(3)]],
       phoneNumber: ['', [this.numbersOnlyValidator]],
       country: ['Colombia'],
       userImg: [this.defaultUserImgUrl],
