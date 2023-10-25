@@ -69,13 +69,8 @@ export class VideogamesComponent {
       }
   }
   navigateToVideogames(userId: string | null) {
-
-    let baseRoute = '/videogames';
-
-    if (userId) {
-      baseRoute = `${baseRoute}/${userId}`;
-    }
-    this.router.navigateByUrl(baseRoute);
+    const route = userId ? `/videogames;id=${userId}` : '/videogames';
+    this.router.navigateByUrl(route);
   }
 
   deleteGame(gameId: string) {
@@ -85,7 +80,7 @@ export class VideogamesComponent {
         this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
         console.log('Game eliminada exitosamente', response);
       //  window.location.reload();
-      this.navigateToVideogames(null);
+      this.navigateToVideogames(this.userId);
       },
       (error) => {
         console.error('Error al eliminar game', error);
