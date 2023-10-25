@@ -57,7 +57,7 @@ export class RegisterComponent {
       );
   }
 
-  defaultUserImgUrl = 'https://p1.hiclipart.com/preview/403/536/937/internet-logo-user-user-profile-symbol-wifi-user-account-computer-avatar-png-clipart.jpg';
+  defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
   numbersOnlyValidator(control: FormControl) {
     const value = control.value;
     if (value && !/^\d+$/.test(value)) {
