@@ -28,6 +28,8 @@ export class RegisterComponent {
       this.signUp();
     }
   }
+  isRegisterOk: boolean = false;
+
 
   // Var para guardar y manejar el error
   errorResponseMessage: string | null = null;
@@ -36,22 +38,14 @@ export class RegisterComponent {
   signUp() {
     this.authService.signUp(this.contactForm.value)
       .subscribe(res => {
-        // console.log(res)
-        localStorage.setItem('token', res.token)
-
-        // Obtiene el ID del usuario logueado.
-        const userId = this.authService.getLoggedInUserId();
-        // Redirige al perfil del usuario si los IDs coinciden.
-        if (userId) {
-          this.router.navigate(['/']);
-        } else {
-          console.log('No se encontro id')
-        }
+        this.contactForm = this.initFrom();
+        this.isRegisterOk= true;
       },
         err => {
           // console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.errorResponseMessage = err.error.message;
+            this.isRegisterOk= false;
           }
         }
       );
