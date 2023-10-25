@@ -12,7 +12,7 @@ export class HomeComponent {
   userId: string | null = null;
 
   slides: SliderGamesInterface[]= [
-    {url: '../../../assets/img/dantes.jpg',title:'ejemplo'},
+    {url: '../../../assets/img/dantes.webp',title:'ejemplo'},
     {url: '../../../assets/img/shadow2.jpg',title:'ejemplo'},
     {url: '../../../assets/img/half_life_2-black-whit.jpeg',title:'ejemplo'},
     {url: '../../../assets/img/Mafia1.jpg',title:'ejemplo'},
