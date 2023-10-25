@@ -79,10 +79,6 @@ export class RegisterComponent {
 
   }
 
-  saveForm(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-  }
-
   formRegisterAlert(): void {
     window.alert('Todos los campos con * son obligatorios')
   }
