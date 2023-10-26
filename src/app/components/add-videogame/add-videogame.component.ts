@@ -4,7 +4,7 @@ import { Renderer2 } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Game } from 'src/app/models/game';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
@@ -44,17 +44,17 @@ export class AddVideogameComponent {
       }
     }
 
-    defaultUserImgUrl = 'https://p1.hiclipart.com/preview/403/536/937/internet-logo-user-user-profile-symbol-wifi-user-account-computer-avatar-png-clipart.jpg';
+    defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
-        gameName: ['',[Validators.required]],
+        gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25),Validators.pattern('[A-Za-z\\s]+')]],
         gameImg: [this.defaultUserImgUrl],
-        platform:['',Validators.required],
-        releaseDate: ['',Validators.required],
-        developer:['',Validators.required],
-        genre:['',Validators.required],
-        averageRating:['',Validators.required],
-        descriptionGame:['',Validators.required]
+        platform:['',[Validators.required, Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
+        releaseDate: ['',[Validators.required]],
+        developer:['',[Validators.required, Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
+        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
+        averageRating:['',[Validators.required,Validators.minLength(1),Validators.maxLength(2)]],
+        descriptionGame:['',[Validators.required, Validators.maxLength(150),Validators.pattern('[A-Za-z\\s]+')]]
 
       })
     }
