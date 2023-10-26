@@ -7,7 +7,7 @@
 
   <div >
     <button type="submit" aria-label="Boton para subir un videojuego"
-        class="fixed top-56 right-24  mb-10 text-white bg-[#006186] transition-colors h-14 w-32 rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
+        class="fixed top-52 right-24  mb-10 text-white bg-[#006186] transition-colors h-14 w-32 rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
         (click)="openModal()">
         <div class="flex flex-row items-center justify-evenly">
         <mat-icon >library_add</mat-icon>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="fixed top-56 right-64 ">
+    <div class="fixed top-52 right-64 ">
       <app-aside></app-aside>
     </div>
   </div>
@@ -66,14 +66,15 @@
 
               <div class="px-5 pb-5">
                 <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
-                  <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ game.gameName }}</h5>
+                  <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white ">{{ game.gameName }}</h5>
                 </a>
-                <div class="game-card bg-white shadow-lg p-2">
-                  <div>
+                <div class="rounded-s-md bg-white shadow-lg p-2 hover:shadow-sm hover:bg-slate-500/10">
+                  <div class="game-card-description mb-2">
                     <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
                     <ng-template #defaultText>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Ratione quae iste ab quibusdam recusandae maiores, eos quas placeat aperiam...
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Sed omnis, fugit delectus commodi corporis reprehenderit modi
+                      velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
                     </ng-template>
 
                   </div>
