@@ -100,12 +100,12 @@ export class AddVideogameComponent {
       return this.fb.group({
         gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25),Validators.pattern('[A-Za-z\\s]+')]],
         gameImg: [this.defaultUserImgUrl],
-        platform:['',[Validators.required, Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
+        platform:['',[Validators.required,Validators.maxLength(40)]],
         releaseDate: ['',[Validators.required]],
-        developer:['',[Validators.required, Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
-        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40),Validators.pattern('[A-Za-z\\s]+')]],
-        averageRating:['',[Validators.required,Validators.minLength(1),Validators.maxLength(2)]],
-        descriptionGame:['',[Validators.required, Validators.maxLength(150),Validators.pattern('[A-Za-z\\s]+')]]
+        developer:['',[ Validators.maxLength(40)]],
+        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+        averageRating:['',[Validators.minLength(1),Validators.maxLength(2)]],
+        descriptionGame:['',[Validators.required, Validators.maxLength(150)]]
 
       })
     }
