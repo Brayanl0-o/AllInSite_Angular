@@ -6,7 +6,8 @@ import { Game } from 'src/app/models/game';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-add-videogame',
   templateUrl: './add-videogame.component.html',
@@ -15,11 +16,59 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AddVideogameComponent {
   // @Input() game:Game = {} as Game;
   contactForm!: FormGroup;
+  selectedFile: File | null = null;
+
+  onFileSelected(event: Event):void {
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement?.files?.[0];
+
+    if (file){
+      this.selectedFile = file;
+    }
+  }
+  uploadForm(){
+    this.uploadImage();
+    this.createGameData();
+
+
+  }
+  percentDone: number = 0;
+  uploadSuccess!: boolean;
+
+  uploadImageAndProgress(files:File[]) {
+    console.log(files);
+    var formData = new FormData();
+    Array.from(files).forEach((f)=> formData.append('file',f))
+    const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
+
+    this.http.post(apiUrl,formData, {
+      reportProgress:true,
+      observe:'events',
+    })
+    .subscribe((event) => {
+      if(event.type === HttpEventType.UploadProgress){
+        if(event.total)
+        this.percentDone = Math.round((100* event.loaded) / event.total);
+      }else if(event instanceof HttpResponse){
+        this.uploadSuccess = true;
+      }
+    });
+  }
+
+  uploadImage():void{
+    if(this.selectedFile){
+      this.uploadImageAndProgress([this.selectedFile])
+    }else {
+      console.error('Error upload image')
+    }
+  }
+
 
   constructor(private videoGamesService: VideogamesService,
     private authService: AuthService,
     private renderer: Renderer2,
     private router:Router,
+    private http: HttpClient,
     private fb: FormBuilder) { }
 
 
@@ -28,9 +77,11 @@ export class AddVideogameComponent {
     }
     errorResponseMessage = '';
     createGameData() {
-      if (this.contactForm.valid) {
+      console.log('execute create game')
+      if (this.selectedFile && this.contactForm.valid) {
+        const formData = new FormData();
         const gameData = this.contactForm.value;
-
+        formData.append('gameImg', this.selectedFile);
         this.videoGamesService.createGame(gameData).subscribe(
           (response) => {
             console.log('Juego agregado correctamente', response);
