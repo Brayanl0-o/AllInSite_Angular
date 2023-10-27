@@ -1,3 +1,11 @@
+.name-game {
+  max-height: 100px; /* Altura máxima de la descripción */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si se corta el texto */
+  white-space: nowrap; /* Evita saltos de línea */
+}
+
+
 .game-card-description,
 .game-card-description > p {
   max-height: 100px; /* Altura máxima de la descripción */
