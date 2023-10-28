@@ -6,11 +6,10 @@
     <!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
   <div  *ngIf="gameDetails$ | async as gameDetails">
     <section class="-z-10 h-500-px">
-      <div class="absolute top-0 w-full h-full bg-center bg-cover"
-      [style.background-image]="gameImgUrl ? 'url(' + gameImgUrl + ')' : 'none'">
-            <!-- <img [src]="gameDetails.gameImg" alt=""> -->
-        <span  class="w-full h-full absolute opacity-60 bg-black"></span>
-      </div>
+
+      <img loading="lazy" class="absolute top-0 w-full h-full bg-center bg-cover" [src]="gameDetails.gameImg" alt="">
+      <span  class="w-full h-full absolute opacity-60 bg-black"></span>
+
       <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
         <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
           <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
@@ -20,6 +19,7 @@
     </section>
 
     <div class="flex relative top-64 bg-slate-400" >
+      <!-- [src]="imageUrl + gameDetails.gameImg" -->
       <img class="w-1/2" [src]="gameDetails.gameImg" alt="">
       <div class="w-1/2 pl-8 p-10">
         <h2 class="text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
@@ -41,6 +41,9 @@
         </svg>
         </p>
       </div>
+      <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+        <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
+      </button>
     </div>
   </div>
 <!-- component -->
