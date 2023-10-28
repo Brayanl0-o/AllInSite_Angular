@@ -40,10 +40,21 @@ export class VideogamesService {
   }
   $modal = new EventEmitter<any>();
 
-  createGame(gameData: any): Observable<any> {
+  createGame(gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/create`;
-    console.log('gameData service', gameData)
-    return this.http.post(url, gameData);
+
+    // Crea un objeto FormData para enviar tanto los datos del juego como la imagen
+    const formData = new FormData();
+    formData.append('gameName', gameData.gameName);
+    formData.append('platform', gameData.platform);
+    formData.append('releaseDate', gameData.releaseDate);
+    formData.append('developer', gameData.developer);
+    formData.append('genre', gameData.genre);
+    formData.append('averageRating', gameData.averageRating);
+    formData.append('descriptionGame', gameData.descriptionGame);
+    formData.append('gameImg', gameImg);
+
+    return this.http.post(url, formData);
   }
 
   updateGame(id: string,gameData: any): Observable<any> {
