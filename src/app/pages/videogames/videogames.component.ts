@@ -54,13 +54,13 @@ export class VideogamesComponent {
   dataUser(){
     // Obtiene el ID del usuario logueado desde el servicio de autenticación
     const loggedInUserId = this.authService.getLoggedInUserId();
-    console.log('loggedInUserId:', loggedInUserId);
+    // console.log('loggedInUserId:', loggedInUserId);
 
     if (loggedInUserId) {
       this.userId = loggedInUserId;
       this.route.paramMap.subscribe(paramMap => {
           const id = paramMap.get('id');
-          console.log('Id Login: ', id)
+          // console.log('Id Login: ', id)
 
           if (id === loggedInUserId) {
             this.userShared.getUser(id).subscribe(data => {
