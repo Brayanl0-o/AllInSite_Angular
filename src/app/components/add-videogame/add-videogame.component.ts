@@ -93,14 +93,14 @@ export class AddVideogameComponent {
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
-        gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25),Validators.pattern('[A-Za-z\\s]+')]],
+        gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
         // gameImg: [this.defaultUserImgUrl],
-        platform:['',[Validators.maxLength(40)]],
+        platform:['',[Validators.required,Validators.maxLength(40)]],
         releaseDate: ['',[]],
         developer:['',[ Validators.maxLength(40)]],
-        genre:['',[, Validators.minLength(3), Validators.maxLength(40)]],
-        averageRating:['',[Validators.minLength(1),Validators.maxLength(2)]],
-        descriptionGame:['',[, Validators.maxLength(150)]]
+        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+        averageRating:['',[Validators.maxLength(2)]],
+        descriptionGame:['',[Validators.required, Validators.maxLength(400)]]
 
       })
     }
