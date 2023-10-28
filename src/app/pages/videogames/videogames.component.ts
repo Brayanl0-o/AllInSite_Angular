@@ -6,6 +6,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from 'src/app/models/game';
 import { User } from 'src/app/models/user';
+import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType}  from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+const apiBaseUrl= environment.apiUrl;
+
 @Component({
   selector: 'app-videogames',
   templateUrl: './videogames.component.html',
@@ -17,7 +21,9 @@ export class VideogamesComponent {
   games: Game[] = [];
   filteredGames: Game[] = [];
   loadingData: boolean = true;
+  imageUrl!: string;
   constructor(
+    private http: HttpClient,
     private videogamesService: VideogamesService,
     private filterService: FilterService,
     private userShared: SharedUsersService,
@@ -27,9 +33,9 @@ export class VideogamesComponent {
     private router:Router
   ) {}
 
-
   ngOnInit(): void {
-    this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible = valu })
+
+    this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.dataUser()
     this.loadGameData();
     this.subscribeFilter()
@@ -90,6 +96,7 @@ export class VideogamesComponent {
 
   private loadGameData() {
     this.videogamesService.getGame().subscribe((data: Game[]) => {
+      this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
       this.games = data;
       this.loadingData = false;
       this.filteredGames = [...this.games];
