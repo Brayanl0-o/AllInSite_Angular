@@ -11,7 +11,7 @@
 
     </div>
 
-    <form class="mt-12"  [formGroup]="contactForm">
+    <form class="mt-12"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()">
       <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 
         <div class="relative">
@@ -137,7 +137,7 @@
       </div>
 
       <div class="flex justify-end mt-6">
-        <button (click)="createGameData()"
+        <button type="submit"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
       </div>
     </form>
