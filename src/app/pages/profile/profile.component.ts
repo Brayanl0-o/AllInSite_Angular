@@ -31,7 +31,7 @@ export class ProfileComponent {
         this.route.paramMap.subscribe(paramMap => {
             // Obtiene el ID de usuario de la URL
             const id = paramMap.get('id');
-            console.log('Id Login: ', id)
+            // console.log('Id Login: ', id)
 
             // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
             if (id === loggedInUserId) {
@@ -84,7 +84,7 @@ export class ProfileComponent {
         this.isModalVisible = true
         this.renderer.setStyle(document.body, 'overflow', 'hidden');
         this.userShared.sendUserData(user);
-        console.log('dataUser profileComp: ', user)
+        // console.log('dataUser profileComp: ', user)
       }
     }
 

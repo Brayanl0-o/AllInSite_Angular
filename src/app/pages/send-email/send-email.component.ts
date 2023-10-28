@@ -22,7 +22,6 @@ export class SendEmailComponent {
   }
 
   sendEmailResetPassword(){
-    console.log(this.isEmailSent)
 
     if(this.validateEmail(this.email)){
       this.isLoading = true;
@@ -31,7 +30,7 @@ export class SendEmailComponent {
       .subscribe(
         ()=>{
           this.isEmailSent = true;
-          console.log(this.isEmailSent)
+          // console.log(this.isEmailSent)
           this.isLoading = false;
 
 
