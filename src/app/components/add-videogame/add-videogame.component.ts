@@ -26,10 +26,9 @@ export class AddVideogameComponent {
       this.selectedFile = file;
     }
   }
-  uploadForm(){
-    this.uploadImage();
+  onFormSubmit(){
     this.createGameData();
-
+    this.uploadImage()
 
   }
   percentDone: number = 0;
@@ -38,7 +37,7 @@ export class AddVideogameComponent {
   uploadImageAndProgress(files:File[]) {
     console.log(files);
     var formData = new FormData();
-    Array.from(files).forEach((f)=> formData.append('file',f))
+    Array.from(files).forEach((f)=> formData.append('gameImg',f))
     const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
 
     this.http.post(apiUrl,formData, {
@@ -63,26 +62,14 @@ export class AddVideogameComponent {
     }
   }
 
-
-  constructor(private videoGamesService: VideogamesService,
-    private authService: AuthService,
-    private renderer: Renderer2,
-    private router:Router,
-    private http: HttpClient,
-    private fb: FormBuilder) { }
-
-
-    ngOnInit(): void{
-      this.contactForm =  this.initFrom();
-    }
     errorResponseMessage = '';
     createGameData() {
       console.log('execute create game')
       if (this.selectedFile && this.contactForm.valid) {
-        const formData = new FormData();
+        // const formData = new FormData();
         const gameData = this.contactForm.value;
-        formData.append('gameImg', this.selectedFile);
-        this.videoGamesService.createGame(gameData).subscribe(
+        // formData.append('gameImg', this.selectedFile);
+        this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
           (response) => {
             console.log('Juego agregado correctamente', response);
             this.closeModalAndReloadPage()
@@ -94,18 +81,26 @@ export class AddVideogameComponent {
         );
       }
     }
+    constructor(private videoGamesService: VideogamesService,
+      private renderer: Renderer2,
+      private http: HttpClient,
+      private fb: FormBuilder) { }
+
+      ngOnInit(): void{
+        this.contactForm =  this.initFrom();
+      }
 
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
         gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25),Validators.pattern('[A-Za-z\\s]+')]],
-        gameImg: [this.defaultUserImgUrl],
-        platform:['',[Validators.required,Validators.maxLength(40)]],
-        releaseDate: ['',[Validators.required]],
+        // gameImg: [this.defaultUserImgUrl],
+        platform:['',[Validators.maxLength(40)]],
+        releaseDate: ['',[]],
         developer:['',[ Validators.maxLength(40)]],
-        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+        genre:['',[, Validators.minLength(3), Validators.maxLength(40)]],
         averageRating:['',[Validators.minLength(1),Validators.maxLength(2)]],
-        descriptionGame:['',[Validators.required, Validators.maxLength(150)]]
+        descriptionGame:['',[, Validators.maxLength(150)]]
 
       })
     }
