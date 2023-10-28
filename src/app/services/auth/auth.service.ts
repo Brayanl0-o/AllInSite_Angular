@@ -70,7 +70,7 @@ export class AuthService {
       if (payload.id) {
         return payload.id;
       }
-      console.log('carga U: ', payload)
+      // console.log('carga U: ', payload)
     }
     return null;
   }

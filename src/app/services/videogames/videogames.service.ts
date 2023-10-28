@@ -28,14 +28,13 @@ export class VideogamesService {
     const url= `${this.apiUrl}games/`;
     return this.http.get<Game[]>(url).pipe(
       tap((games) => {
-        console.log('Juegos obtenidos:', games);
+        // console.log('Juegos obtenidos:', games);
       })
     );
   }
   getGameById(userId: string | null, gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${userId}/${gameId}`;
-    console.log('game id S:',gameId)
-    console.log('user id S:',userId)
+    // console.log('game id S:',gameId, 'user id S:',userId);
     return this.http.get<Game>(url);
   }
   $modal = new EventEmitter<any>();
@@ -59,7 +58,7 @@ export class VideogamesService {
 
   updateGame(id: string,gameData: any): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
-    console.log('gameData service', gameData)
+    // console.log('gameData service', gameData)
     return this.http.put(url, gameData);
   }
 
