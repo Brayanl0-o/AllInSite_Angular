@@ -41,9 +41,20 @@
         </svg>
         </p>
       </div>
-      <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
-        <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
-      </button>
+    <div class="flex flex-col ">
+        <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+          <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
+        </button>
+        <button (click)="openModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+          <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
+        </button>
+        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
+          <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
+          <div class="bg-white p-4 rounded-lg shadow-lg z-10 max-h-[80vh] overflow-y-auto">
+            <app-edit-videogame></app-edit-videogame>
+          </div>
+        </div>
+    </div>
     </div>
   </div>
 <!-- component -->
