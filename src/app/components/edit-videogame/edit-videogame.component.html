@@ -10,7 +10,7 @@
 
     </div>
 
-    <form class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()">
+    <form class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()" novalidate>
       <span class="bg-black/10 p-2 pl-1 text-sm">Los campos con * son necesarios: </span>
 
       <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">

@@ -10,7 +10,7 @@
 
     </div>
 
-    <form class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()">
+    <form class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()" novalidate>
       <span class="bg-black/10 p-2 pl-1 text-sm">Los campos con * son necesarios: </span>
 
       <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">
@@ -38,16 +38,21 @@
             <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080  <br> </span>
             <span class="text-xs ml-4">• Tamaños no superiores a 5 Mb (Megabytes)  <br></span>
             </span>
+
+            <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >{{ errorResponseMessage }}</span>
+
             <!-- <input id="gameImg" name=" gameImg" formControlName="gameImg" type="text"
               placeholder="Inserte su  gameImg"
               class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"> -->
               <input type="file" name="gameImg" accept=".jpg,.png" id="fileInput"
                (change)="onFileSelected($event)"
                class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
-                <!-- <p class="text-center py-4">Porcentaje de carga: {{percentDone}}% </p> <br />
+               <!-- <p class="text-center py-4">Porcentaje de carga: {{percentDone}}% </p> <br />
                 <ng-container *ngIf="uploadSuccess" class="success">
                   <p class="sucess">Carga exitosa</p>
                 </ng-container> -->
+
+
           </div>
 
           <div class="relative ">
