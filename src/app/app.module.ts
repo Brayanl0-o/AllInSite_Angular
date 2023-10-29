@@ -30,6 +30,7 @@ import { PaginationVideogamesComponent } from './components/pagination-videogame
 
 import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
+import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { AddVideogameComponent } from './components/add-videogame/add-videogame.
     SkeletonHomeComponent,
     PaginationVideogamesComponent,
     AddVideogameComponent,
+    EditVideogameComponent,
   ],
   imports: [
     CommonModule,
