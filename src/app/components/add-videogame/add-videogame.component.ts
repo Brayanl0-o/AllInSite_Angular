@@ -28,38 +28,6 @@ export class AddVideogameComponent {
   }
   onFormSubmit(){
     this.createGameData();
-    this.uploadImage()
-
-  }
-  percentDone: number = 0;
-  uploadSuccess!: boolean;
-
-  uploadImageAndProgress(files:File[]) {
-    console.log(files);
-    var formData = new FormData();
-    Array.from(files).forEach((f)=> formData.append('gameImg',f))
-    const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
-
-    this.http.post(apiUrl,formData, {
-      reportProgress:true,
-      observe:'events',
-    })
-    .subscribe((event) => {
-      if(event.type === HttpEventType.UploadProgress){
-        if(event.total)
-        this.percentDone = Math.round((100* event.loaded) / event.total);
-      }else if(event instanceof HttpResponse){
-        this.uploadSuccess = true;
-      }
-    });
-  }
-
-  uploadImage():void{
-    if(this.selectedFile){
-      this.uploadImageAndProgress([this.selectedFile])
-    }else {
-      console.error('Error upload image')
-    }
   }
 
     errorResponseMessage = '';
@@ -68,6 +36,17 @@ export class AddVideogameComponent {
       if (this.selectedFile && this.contactForm.valid) {
         // const formData = new FormData();
         const gameData = this.contactForm.value;
+
+        const formData = new FormData();
+        formData.append('gameName', gameData.gameName);
+        formData.append('platform', gameData.platform);
+        formData.append('releaseDate', gameData.releaseDate);
+        formData.append('developer', gameData.developer);
+        formData.append('genre', gameData.genre);
+        formData.append('averageRating', gameData.averageRating);
+        formData.append('descriptionGame', gameData.descriptionGame);
+        formData.append('gameImg', this.selectedFile);
+
         // formData.append('gameImg', this.selectedFile);
         this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
           (response) => {
@@ -117,4 +96,35 @@ export class AddVideogameComponent {
       this.videoGamesService.$modal.emit(false)
       console.log('Modal cerrado');
     }
+
+   // percentDone: number = 0;
+  // uploadSuccess!: boolean;
+
+  // uploadImageAndProgress(files:File[]) {
+  //   console.log(files);
+  //   var formData = new FormData();
+  //   Array.from(files).forEach((f)=> formData.append('gameImg',f))
+  //   const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
+
+  //   this.http.post(apiUrl,formData, {
+  //     reportProgress:true,
+  //     observe:'events',
+  //   })
+  //   .subscribe((event) => {
+  //     if(event.type === HttpEventType.UploadProgress){
+  //       if(event.total)
+  //       this.percentDone = Math.round((100* event.loaded) / event.total);
+  //     }else if(event instanceof HttpResponse){
+  //       this.uploadSuccess = true;
+  //     }
+  //   });
+  // }
+
+  // uploadImage():void{
+  //   if(this.selectedFile){
+  //     this.uploadImageAndProgress([this.selectedFile])
+  //   }else {
+  //     console.error('Error upload image')
+  //   }
+  // }
 }
