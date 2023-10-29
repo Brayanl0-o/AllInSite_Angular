@@ -39,8 +39,35 @@ export class EditVideogameComponent {
   }
 
   onFormSubmit(){
-    this.uploadImage()
+    if (this.selectedFile) {
+      this.uploadImage();
+      this.updateDataGame(this.selectedFile);
+    } else {
+      // Aquí puedes manejar el caso en el que selectedFile sea null, si es necesario.
+      console.error('No se ha seleccionado ningún archivo.');
+    }
   }
+
+  errorResponseMessage = '';
+  updateDataGame(gameImg: File): void {
+   if(!this.game){
+    console.error('Error: No se proporcionaron datos para la actualización.');
+    return;
+   }
+
+   this.game = { ...this.game, ...this.contactForm.value};
+
+   this.videoGamesService.updateGame(this.game._id, this.game, gameImg).subscribe(
+    (response) =>{
+      this.closeModalAndReloadPage();
+      console.log('Datos act con exito:', response);
+    },
+    (error) => {
+      console.error('Error al actualizar los datos:', error);
+    }
+    )
+  }
+
   percentDone: number = 0;
   uploadSuccess!: boolean;
 
@@ -99,24 +126,6 @@ export class EditVideogameComponent {
       console.log('Modal cerrado');
     }
 
-    // errorResponseMessage = '';
-    // createGameData() {
-    //   console.log('execute create game')
-    //   if (this.selectedFile && this.contactForm.valid) {
-    //     // const formData = new FormData();
-    //     const gameData = this.contactForm.value;
-    //     // formData.append('gameImg', this.selectedFile);
-    //     this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
-    //       (response) => {
-    //         console.log('Juego agregado correctamente', response);
-    //         this.closeModalAndReloadPage()
-    //       },
-    //       (error) => {
-    //         console.error('Error al agregar el juego', error);
-    //         this.errorResponseMessage = 'Error al agregar el juego';
-    //       }
-    //     );
-    //   }
-    // }
+
 }
 
