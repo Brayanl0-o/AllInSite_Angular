@@ -7,7 +7,7 @@
   <div  *ngIf="gameDetails$ | async as gameDetails">
     <section class="-z-10 h-500-px">
 
-      <img loading="lazy" class="absolute top-0 w-full h-full bg-center bg-cover" [src]="gameDetails.gameImg" alt="">
+      <img loading="lazy" class="absolute top-0 w-full h-full bg-center bg-cover"[src]="imageUrl + gameDetails.gameImg" alt="">
       <span  class="w-full h-full absolute opacity-60 bg-black"></span>
 
       <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
@@ -20,7 +20,7 @@
 
     <div class="flex relative top-64 bg-slate-400" >
       <!-- [src]="imageUrl + gameDetails.gameImg" -->
-      <img class="w-1/2" [src]="gameDetails.gameImg" alt="">
+      <img class="object-cover  w-1/2 rounded-lg mb-4" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
       <div class="w-1/2 pl-8 p-10">
         <h2 class="text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
         <p class="text-gray-800 text-2xl py-2" *ngIf="gameDetails.descriptionGame; else textDefault">{{ gameDetails.descriptionGame }}</p>
