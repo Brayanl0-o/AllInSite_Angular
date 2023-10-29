@@ -40,7 +40,7 @@ export class EditVideogameComponent {
 
   onFormSubmit(){
     if (this.selectedFile) {
-      this.uploadImage();
+      // this.uploadImage();
       this.updateDataGame(this.selectedFile);
     } else {
       // Aquí puedes manejar el caso en el que selectedFile sea null, si es necesario.
@@ -66,37 +66,6 @@ export class EditVideogameComponent {
       console.error('Error al actualizar los datos:', error);
     }
     )
-  }
-
-  percentDone: number = 0;
-  uploadSuccess!: boolean;
-
-  uploadImageAndProgress(files:File[]) {
-    console.log(files);
-    var formData = new FormData();
-    Array.from(files).forEach((f)=> formData.append('gameImg',f))
-    const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
-
-    this.http.post(apiUrl,formData, {
-      reportProgress:true,
-      observe:'events',
-    })
-    .subscribe((event) => {
-      if(event.type === HttpEventType.UploadProgress){
-        if(event.total)
-        this.percentDone = Math.round((100* event.loaded) / event.total);
-      }else if(event instanceof HttpResponse){
-        this.uploadSuccess = true;
-      }
-    });
-  }
-
-  uploadImage():void{
-    if(this.selectedFile){
-      this.uploadImageAndProgress([this.selectedFile])
-    }else {
-      console.error('Error upload image')
-    }
   }
 
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
@@ -125,6 +94,36 @@ export class EditVideogameComponent {
       this.videoGamesService.$modal.emit(false)
       console.log('Modal cerrado');
     }
+  // percentDone: number = 0;
+  // uploadSuccess!: boolean;
+
+  // uploadImageAndProgress(files:File[]) {
+  //   console.log(files);
+  //   var formData = new FormData();
+  //   Array.from(files).forEach((f)=> formData.append('gameImg',f))
+  //   const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
+
+  //   this.http.post(apiUrl,formData, {
+  //     reportProgress:true,
+  //     observe:'events',
+  //   })
+  //   .subscribe((event) => {
+  //     if(event.type === HttpEventType.UploadProgress){
+  //       if(event.total)
+  //       this.percentDone = Math.round((100* event.loaded) / event.total);
+  //     }else if(event instanceof HttpResponse){
+  //       this.uploadSuccess = true;
+  //     }
+  //   });
+  // }
+
+  // uploadImage():void{
+  //   if(this.selectedFile){
+  //     this.uploadImageAndProgress([this.selectedFile])
+  //   }else {
+  //     console.error('Error upload image')
+  //   }
+  // }
 
 
 }
