@@ -14,9 +14,18 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./add-videogame.component.css']
 })
 export class AddVideogameComponent {
-  // @Input() game:Game = {} as Game;
+  constructor(private videoGamesService: VideogamesService,
+    private renderer: Renderer2,
+    private http: HttpClient,
+    private fb: FormBuilder) { }
+
+
   contactForm!: FormGroup;
   selectedFile: File | null = null;
+
+  ngOnInit(): void{
+    this.contactForm =  this.initFrom();
+  }
 
   onFileSelected(event: Event):void {
     const inputElement = event.target as HTMLInputElement;
@@ -26,6 +35,7 @@ export class AddVideogameComponent {
       this.selectedFile = file;
     }
   }
+
   onFormSubmit(){
     this.createGameData();
   }
@@ -55,19 +65,12 @@ export class AddVideogameComponent {
           },
           (error) => {
             console.error('Error al agregar el juego', error);
-            this.errorResponseMessage = 'Error al agregar el juego';
+            this.errorResponseMessage = 'Imagen duplicada';
           }
         );
       }
     }
-    constructor(private videoGamesService: VideogamesService,
-      private renderer: Renderer2,
-      private http: HttpClient,
-      private fb: FormBuilder) { }
 
-      ngOnInit(): void{
-        this.contactForm =  this.initFrom();
-      }
 
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
