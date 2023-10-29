@@ -17,14 +17,18 @@ export class EditVideogameComponent {
     private renderer: Renderer2,
     private http: HttpClient,
     private fb: FormBuilder) { }
-    @Input() game: Game[] = {} as Game[];
+    @Input() game: Game = {} as Game;
+    // @Input() game: Game | null = null;
     contactForm!: FormGroup;
     selectedFile: File | null = null;
 
     ngOnInit(): void{
       this.contactForm =  this.initFrom();
+
       this.contactForm.patchValue(this.game);
+      console.log(this.game)
     }
+
   onFileSelected(event: Event):void {
     const inputElement = event.target as HTMLInputElement;
     const file = inputElement?.files?.[0];
@@ -33,10 +37,9 @@ export class EditVideogameComponent {
       this.selectedFile = file;
     }
   }
-  onFormSubmit(){
-    this.createGameData();
-    this.uploadImage()
 
+  onFormSubmit(){
+    this.uploadImage()
   }
   percentDone: number = 0;
   uploadSuccess!: boolean;
@@ -69,26 +72,6 @@ export class EditVideogameComponent {
     }
   }
 
-    errorResponseMessage = '';
-    createGameData() {
-      console.log('execute create game')
-      if (this.selectedFile && this.contactForm.valid) {
-        // const formData = new FormData();
-        const gameData = this.contactForm.value;
-        // formData.append('gameImg', this.selectedFile);
-        this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
-          (response) => {
-            console.log('Juego agregado correctamente', response);
-            this.closeModalAndReloadPage()
-          },
-          (error) => {
-            console.error('Error al agregar el juego', error);
-            this.errorResponseMessage = 'Error al agregar el juego';
-          }
-        );
-      }
-    }
-
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
@@ -109,12 +92,31 @@ export class EditVideogameComponent {
       window.location.reload();
     }
 
-
     closeModal() {
       console.log('close modal')
       this.renderer.removeStyle(document.body, 'overflow');
       this.videoGamesService.$modal.emit(false)
       console.log('Modal cerrado');
     }
+
+    // errorResponseMessage = '';
+    // createGameData() {
+    //   console.log('execute create game')
+    //   if (this.selectedFile && this.contactForm.valid) {
+    //     // const formData = new FormData();
+    //     const gameData = this.contactForm.value;
+    //     // formData.append('gameImg', this.selectedFile);
+    //     this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
+    //       (response) => {
+    //         console.log('Juego agregado correctamente', response);
+    //         this.closeModalAndReloadPage()
+    //       },
+    //       (error) => {
+    //         console.error('Error al agregar el juego', error);
+    //         this.errorResponseMessage = 'Error al agregar el juego';
+    //       }
+    //     );
+    //   }
+    // }
 }
 
