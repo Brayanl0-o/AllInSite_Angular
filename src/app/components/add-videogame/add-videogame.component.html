@@ -10,7 +10,7 @@
 
     </div>
 
-    <form class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()" novalidate>
+    <form  class="mt-2"  [formGroup]="contactForm"  (ngSubmit)="onFormSubmit()" novalidate>
       <span class="bg-black/10 p-2 pl-1 text-sm">Los campos con * son necesarios: </span>
 
       <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">
@@ -24,7 +24,7 @@
           <div *ngIf="contactForm.controls['gameName'].invalid && (contactForm.controls['gameName'].dirty || contactForm.controls['gameName'].touched)"
             class="alert alert-danger font-bold text-red-900/90 ">
             <div *ngIf="contactForm.controls['gameName'].errors?.['required']">
-              Este campo es requerido.
+              Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
             </div>
           </div>
 
@@ -39,7 +39,9 @@
             <span class="text-xs ml-4">• Tamaños no superiores a 5 Mb (Megabytes)  <br></span>
             </span>
 
-            <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >{{ errorResponseMessage }}</span>
+            <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
+              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+            </span>
 
             <!-- <input id="gameImg" name=" gameImg" formControlName="gameImg" type="text"
               placeholder="Inserte su  gameImg"
@@ -66,10 +68,10 @@
             <div *ngIf="contactForm.controls['descriptionGame'].invalid && (contactForm.controls['descriptionGame'].dirty || contactForm.controls['descriptionGame'].touched)"
               class="alert alert-danger font-bold text-red-900/90 ">
               <div *ngIf="contactForm.controls['descriptionGame'].errors?.['required']">
-                Este campo es requerido.
+                Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
               </div>
               <div *ngIf="contactForm.controls['descriptionGame'].errors?.['maxlength']">
-                Superó el limite de caracteres permitidos.
+                Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
               </div>
             </div>
           </div>
@@ -89,7 +91,7 @@
               <div *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
                 class="alert alert-danger text-red-900/90 font-bold -mt-2">
                 <div *ngIf="contactForm.controls['platform'].errors?.['required']">
-                  Este campo es requerido.
+                  Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
                 </div>
               </div>
           </div>
@@ -105,7 +107,7 @@
               <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
                 class="alert alert-danger font-bold text-red-900/90">
                 <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales.
+                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
                 </div>
               </div>
           </div>
@@ -120,7 +122,7 @@
             <div *ngIf="contactForm.controls['genre'].invalid && (contactForm.controls['genre'].dirty || contactForm.controls['genre'].touched)"
               class="alert alert-danger font-bold -mt-4 text-red-900/90">
               <div *ngIf="contactForm.controls['genre'].errors?.['required']">
-                Este campo es requerido.
+                Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
               </div>
             </div>
           </div>
@@ -141,7 +143,7 @@
             <div *ngIf="contactForm.controls['averageRating'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)"
               class="alert alert-danger font-bold -mt-4 text-red-900/90">
                 <div *ngIf="contactForm.controls['averageRating'].errors?.['maxlength']">
-                  Debe tener maximo dos 2 numeros.
+                  Debe tener maximo dos 2 numeros. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
                 </div>
             </div>
 
@@ -149,8 +151,11 @@
         </div>
       </div>
     </div>
-
+    <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
+      <mat-icon class="material-symbols-outlined">error</mat-icon>  {{ errorResponseMessageForm }}
+    </span>
       <div class="flex justify-end mr-24 mt-4 ">
+
         <button type="submit"
           class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Subir videojuego</button>
       </div>
