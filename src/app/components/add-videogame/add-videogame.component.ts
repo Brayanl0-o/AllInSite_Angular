@@ -4,7 +4,7 @@ import { Renderer2 } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Game } from 'src/app/models/game';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -35,9 +35,15 @@ export class AddVideogameComponent {
       this.selectedFile = file;
     }
   }
-
+  errorResponseMessageForm = '';
   onFormSubmit(){
-    this.createGameData();
+    if (this.contactForm.valid) {
+      // El formulario es válido, puedes enviar los datos.
+      this.createGameData();
+    } else {
+      // El formulario tiene errores, puedes mostrar un mensaje o manejarlos de otra manera.
+      this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
+    }
   }
 
     errorResponseMessage = '';
