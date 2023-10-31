@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { environment } from 'src/environments/environment';
-
+const apiBaseUrl = environment.apiUrl
 @Component({
   selector: 'app-edit-videogame',
   templateUrl: './edit-videogame.component.html',
@@ -21,10 +21,10 @@ export class EditVideogameComponent {
     // @Input() game: Game | null = null;
     contactForm!: FormGroup;
     selectedFile: File | null = null;
-
+    imageUrl = '';
     ngOnInit(): void{
       this.contactForm =  this.initFrom();
-
+      this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
       this.contactForm.patchValue(this.game);
       console.log(this.game)
     }
@@ -39,13 +39,14 @@ export class EditVideogameComponent {
   }
 
   onFormSubmit(){
-    if (this.selectedFile) {
-      // this.uploadImage();
-      this.updateDataGame(this.selectedFile);
-    } else {
-      // Aquí puedes manejar el caso en el que selectedFile sea null, si es necesario.
-      console.error('No se ha seleccionado ningún archivo.');
-    }
+    this.updateDataGame(this.selectedFile!);
+    // if (this.selectedFile) {
+    //   // this.uploadImage();
+    //   this.updateDataGame(this.selectedFile);
+    // } else {
+    //   // Aquí puedes manejar el caso en el que selectedFile sea null, si es necesario.
+    //   console.error('No se ha seleccionado ningún archivo.');
+    // }
   }
 
   errorResponseMessage = '';
@@ -72,7 +73,7 @@ export class EditVideogameComponent {
     initFrom(): FormGroup{
       return this.fb.group({
         gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
-        // gameImg: [this.defaultUserImgUrl],
+        gameImg: [this.selectedFile],
         platform:['',[Validators.required,Validators.maxLength(40)]],
         releaseDate: ['',[]],
         developer:['',[ Validators.maxLength(40)]],
