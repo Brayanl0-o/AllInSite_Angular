@@ -3,7 +3,8 @@
 
     <div class="flex items-center justify-between mt-4">
       <h2 class="text-xl text-center mb-4 mx-auto font-semibold text-black capitalize" tabindex="0"
-      aria-label="Formulario para actualizar mis datos">Datos para editar</h2>
+      aria-label="Formulario para actualizar mis datos">Datos para editar
+      <mat-icon class="-mb-1 text-xl">videogame_asset</mat-icon></h2>
       <button (click)="closeModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
         <mat-icon class="w-6 h-6 text-black">close</mat-icon>
       </button>
@@ -29,9 +30,10 @@
           </div>
 
           <div class="relative top-4">
-            <label class="text-black/80 font-semibold " for="gameImg">
+            <label class="text-black/80 font-semibold " for="gameImg" >
               * Imagen del juego:
               <br>
+
               <img class="object-cover h-[200px] w-full rounded-lg mb-4" [src]="imageUrl + contactForm.get('gameImg')?.value" alt="{{game.gameName}}">
             </label>
 
@@ -41,7 +43,7 @@
             <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte)  <br></span>
             </span>
 
-              <input type="file" name="gameImg" accept=".jpg,.png" id="fileInput"
+              <input type="file"  name="gameImg" accept=".jpg,.png" id="fileInput"
                (change)="onFileSelected($event)"
                class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40"/>
 
@@ -53,7 +55,7 @@
             </label>
             <textarea type="text" id="descriptionGame" name="descriptionGame" formControlName="descriptionGame"
               placeholder="Ingrese la descripción del videojuego" required
-              class="block  p-2 h-24 w-full resize-none px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              class="block  h-24 w-full resize-none  mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
             </textarea>
             <div *ngIf="contactForm.controls['descriptionGame'].invalid && (contactForm.controls['descriptionGame'].dirty || contactForm.controls['descriptionGame'].touched)"
               class="alert alert-danger font-bold text-red-900/90 ">
