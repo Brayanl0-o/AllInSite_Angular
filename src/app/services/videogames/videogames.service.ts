@@ -59,6 +59,10 @@ export class VideogamesService {
   updateGame(id: string,gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
     const formData = new FormData();
+    if (gameImg) {
+      // Si gameImg es diferente de null, agrega la nueva imagen al formData.
+      formData.append('gameImg', gameImg);
+    }
     formData.append('gameName', gameData.gameName);
     formData.append('platform', gameData.platform);
     formData.append('releaseDate', gameData.releaseDate);
@@ -66,7 +70,7 @@ export class VideogamesService {
     formData.append('genre', gameData.genre);
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
-    formData.append('gameImg', gameImg);
+    // formData.append('gameImg', gameImg);
     console.log('gameData service', formData)
     return this.http.put(url, formData);
   }
