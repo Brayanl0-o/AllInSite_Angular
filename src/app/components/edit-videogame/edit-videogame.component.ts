@@ -48,9 +48,19 @@ export class EditVideogameComponent {
     reader.readAsDataURL(file);
     }
   }
-
+  errorResponseMessageForm = '';
   onFormSubmit(){
-    this.updateDataGame(this.selectedFile!);
+
+    if (this.contactForm.valid) {
+      // El formulario es válido, puedes enviar los datos.
+      this.updateDataGame(this.selectedFile!);
+    } else {
+      // El formulario tiene errores, puedes mostrar un mensaje o manejarlos de otra manera.
+      this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
+        setTimeout(() => {
+          this.errorResponseMessageForm = '';
+        }, 5000);
+    }
   }
 
   errorResponseMessage = '';
