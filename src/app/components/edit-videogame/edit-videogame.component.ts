@@ -18,15 +18,21 @@ export class EditVideogameComponent {
     private http: HttpClient,
     private fb: FormBuilder) { }
     @Input() game: Game = {} as Game;
-    // @Input() game: Game | null = null;
     contactForm!: FormGroup;
     selectedFile: File | null = null;
     imageUrl = '';
+
     ngOnInit(): void{
       this.contactForm =  this.initFrom();
       this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
       this.contactForm.patchValue(this.game);
-      console.log(this.game)
+
+
+      if (this.game?.gameImg) {
+        this.contactForm.get('gameImg')?.setValue(this.game?.gameImg);
+      }
+
+      console.log(this.contactForm)
     }
 
   onFileSelected(event: Event):void {
@@ -35,11 +41,18 @@ export class EditVideogameComponent {
 
     if (file){
       this.selectedFile = file;
+       // Convierte el archivo en una URL de datos para la vista previa
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.contactForm.get('gameImg')?.setValue(reader.result);
+    };
+    reader.readAsDataURL(file);
     }
   }
 
   onFormSubmit(){
     this.updateDataGame(this.selectedFile!);
+
     // if (this.selectedFile) {
     //   // this.uploadImage();
     //   this.updateDataGame(this.selectedFile);
