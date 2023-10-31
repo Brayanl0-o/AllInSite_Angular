@@ -22,14 +22,19 @@
 
       <!-- [src]="imageUrl + gameDetails.gameImg" -->
       <img class="object-cover  w-1/2 rounded-lg mb-4" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
-      <div class="w-1/2 pl-8 p-10">
+      <div class=" pl-8 p-8">
 
         <h2 class="text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
-        <p class="text-gray-800 text-2xl py-2 " *ngIf="gameDetails.descriptionGame; else textDefault">{{ gameDetails.descriptionGame }}</p>
-        <ng-template #textDefault>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Nam voluptatum illo quaerat, molestias necessitatibus dicta illum!
-        </ng-template>
+        <div class="game-description  text-gray-800 text-lg p-2">
+          <p *ngIf="gameDetails.descriptionGame; else defaultText">{{gameDetails.descriptionGame}}   </p>
+          <ng-template #defaultText>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Sed omnis, fugit delectus commodi corporis reprehenderit modi
+            velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
+          </ng-template>
+
+        </div>
+
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.developer }}</p>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.releaseDate}}</p>
@@ -44,11 +49,11 @@
         </p>
       </div>
 
-      <div class="flex flex-col ">
+      <div class="flex flex-col">
         <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
           <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
         </button>
-        <button (click)="openModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+        <button (click)="openModal()" class="p-2 w-10 h-10  text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
           <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
         </button>
         <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
@@ -57,7 +62,7 @@
             <app-edit-videogame  [game]="gameDetails"></app-edit-videogame>
           </div>
         </div>
-    </div>
+      </div>
 
     </div>
   </div>
