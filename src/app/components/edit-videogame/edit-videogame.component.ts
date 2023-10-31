@@ -41,7 +41,6 @@ export class EditVideogameComponent {
 
     if (file){
       this.selectedFile = file;
-       // Convierte el archivo en una URL de datos para la vista previa
     const reader = new FileReader();
     reader.onload = (e) => {
       this.contactForm.get('gameImg')?.setValue(reader.result);
@@ -52,14 +51,6 @@ export class EditVideogameComponent {
 
   onFormSubmit(){
     this.updateDataGame(this.selectedFile!);
-
-    // if (this.selectedFile) {
-    //   // this.uploadImage();
-    //   this.updateDataGame(this.selectedFile);
-    // } else {
-    //   // Aquí puedes manejar el caso en el que selectedFile sea null, si es necesario.
-    //   console.error('No se ha seleccionado ningún archivo.');
-    // }
   }
 
   errorResponseMessage = '';
@@ -86,7 +77,7 @@ export class EditVideogameComponent {
     initFrom(): FormGroup{
       return this.fb.group({
         gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
-        gameImg: [this.selectedFile],
+        gameImg: [this.game.gameImg],
         platform:['',[Validators.required,Validators.maxLength(40)]],
         releaseDate: ['',[]],
         developer:['',[ Validators.maxLength(40)]],
