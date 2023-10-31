@@ -1,11 +1,11 @@
 
-<body class="bg-gray-300 min-h-screen">
+<body class="bg-gray-300 min-h-screen ">
 
     <app-header></app-header>
 
     <!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
   <div  *ngIf="gameDetails$ | async as gameDetails">
-    <section class="-z-10 h-500-px">
+    <section class=" h-500-px">
 
       <img loading="lazy" class="absolute top-0 w-full h-full bg-center bg-cover"[src]="imageUrl + gameDetails.gameImg" alt="">
       <span  class="w-full h-full absolute opacity-60 bg-black"></span>
@@ -21,10 +21,10 @@
     <div class="flex relative top-64 bg-slate-400" >
 
       <!-- [src]="imageUrl + gameDetails.gameImg" -->
-      <img class="object-cover  w-1/2 rounded-lg mb-4" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
-      <div class=" pl-8 p-8">
+      <img class="object-cover  w-2/5 rounded-lg " [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
+      <div class="sm:w-3/5 md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6">
 
-        <h2 class="text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
+        <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
         <div class="game-description  text-gray-800 text-lg p-2">
           <p *ngIf="gameDetails.descriptionGame; else defaultText">{{gameDetails.descriptionGame}}   </p>
           <ng-template #defaultText>
