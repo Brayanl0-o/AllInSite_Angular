@@ -43,6 +43,9 @@ export class AddVideogameComponent {
     } else {
       // El formulario tiene errores, puedes mostrar un mensaje o manejarlos de otra manera.
       this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
+        setTimeout(() => {
+          this.errorResponseMessageForm = '';
+        }, 5000);
     }
   }
 
@@ -72,6 +75,7 @@ export class AddVideogameComponent {
           (error) => {
             console.error('Error al agregar el juego', error);
             this.errorResponseMessage = 'Imagen duplicada';
+
           }
         );
       }

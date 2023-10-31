@@ -3,7 +3,8 @@
 
     <div class="flex items-center justify-between mt-4">
       <h2 class="text-xl text-center mb-4 mx-auto font-semibold text-black capitalize" tabindex="0"
-      aria-label="Formulario para actualizar mis datos">Ingresa los siguientes datos del juego</h2>
+      aria-label="Formulario para actualizar mis datos">Ingresa los datos del juego
+      <mat-icon class="-mb-1 text-xl">videogame_asset</mat-icon></h2>
       <button (click)="closeModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
         <mat-icon class="w-6 h-6 text-black">close</mat-icon>
       </button>
@@ -24,7 +25,7 @@
           <div *ngIf="contactForm.controls['gameName'].invalid && (contactForm.controls['gameName'].dirty || contactForm.controls['gameName'].touched)"
             class="alert alert-danger font-bold text-red-900/90 ">
             <div *ngIf="contactForm.controls['gameName'].errors?.['required']">
-              Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+              Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
             </div>
           </div>
 
@@ -40,7 +41,7 @@
             </span>
 
             <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
-              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
             </span>
 
             <!-- <input id="gameImg" name=" gameImg" formControlName="gameImg" type="text"
@@ -68,10 +69,10 @@
             <div *ngIf="contactForm.controls['descriptionGame'].invalid && (contactForm.controls['descriptionGame'].dirty || contactForm.controls['descriptionGame'].touched)"
               class="alert alert-danger font-bold text-red-900/90 ">
               <div *ngIf="contactForm.controls['descriptionGame'].errors?.['required']">
-                Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
               </div>
               <div *ngIf="contactForm.controls['descriptionGame'].errors?.['maxlength']">
-                Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
               </div>
             </div>
           </div>
@@ -91,7 +92,7 @@
               <div *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
                 class="alert alert-danger text-red-900/90 font-bold -mt-2">
                 <div *ngIf="contactForm.controls['platform'].errors?.['required']">
-                  Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
               </div>
           </div>
@@ -107,7 +108,7 @@
               <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
                 class="alert alert-danger font-bold text-red-900/90">
                 <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
               </div>
           </div>
@@ -122,7 +123,7 @@
             <div *ngIf="contactForm.controls['genre'].invalid && (contactForm.controls['genre'].dirty || contactForm.controls['genre'].touched)"
               class="alert alert-danger font-bold -mt-4 text-red-900/90">
               <div *ngIf="contactForm.controls['genre'].errors?.['required']">
-                Este campo es requerido. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
               </div>
             </div>
           </div>
@@ -143,7 +144,7 @@
             <div *ngIf="contactForm.controls['averageRating'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)"
               class="alert alert-danger font-bold -mt-4 text-red-900/90">
                 <div *ngIf="contactForm.controls['averageRating'].errors?.['maxlength']">
-                  Debe tener maximo dos 2 numeros. <mat-icon class="material-symbols-outlined"> warning </mat-icon>
+                  Debe tener maximo dos 2 numeros. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
             </div>
 
@@ -152,7 +153,7 @@
       </div>
     </div>
     <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
-      <mat-icon class="material-symbols-outlined">error</mat-icon>  {{ errorResponseMessageForm }}
+      <mat-icon class="material-symbols-outlined -mb-1.5 ">error</mat-icon>  {{ errorResponseMessageForm }}
     </span>
       <div class="flex justify-end mr-24 mt-4 ">
 
