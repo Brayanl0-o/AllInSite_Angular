@@ -2,15 +2,14 @@
 <body class="bg-gray-300 min-h-screen max-h-screen h-auto">
   <app-header></app-header>
   <h1 class="text-center  mt-10 pt-12 pb-8 font-extrabold text-gray-900 dark:text-white sm:text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text  bg-gradient-to-br to-cyan-d via-purple-d  from-redpink-d" >¡BIENVENID@!</h1>
-<!-- <h2>VER ENTORNO  cambio desde dev {{env}}</h2> -->
   <div class="slider-home">
     <app-slider-games [slides]="slides"></app-slider-games>
   </div>
 
-    <div class=" containerImages flex flex-row items-center justify-center gap-x-10 ">
+    <div class="containerImages flex flex-row items-center justify-center gap-x-10 ">
       <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" >
         <div class="containerImage flex flex-col items-center justify-center mt-16 pb-10">
-          <img class="w-24 h-24  mb-3 rounded-full shadow-lg" src="../../../assets/img/logoVideoGames2.png" alt="Videogames image"/>
+          <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="../../../assets/img/logoVideoGames2.png" alt="Videogames image"/>
           <button class="relative inline-flex items-center justify-center w-32 p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
             <a class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
               Videogames</a>
@@ -39,7 +38,7 @@
         </div>
       </a>
       <a [routerLink]="isUserLoggedIn() ? ['/cinema', { id: userId }] : ['/cinema']" >
-        <div class="containerImage flex flex-col items-center  mt-16 pb-10">
+        <div class="containerImage flex flex-col items-center mt-16 pb-10">
           <img class="w-24 h-24  mb-3 rounded-full shadow-lg" src="../../../assets/img/logoMovie2.webp" alt="Videogames image"/>
           <button class="relative inline-flex items-center justify-center w-32  p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
             <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
