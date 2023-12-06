@@ -52,7 +52,8 @@ export class VideogamesService {
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
-
+    console.log('urlSingUpp', url)
+    console.log('formData service', formData)
     return this.http.post(url, formData);
   }
 
