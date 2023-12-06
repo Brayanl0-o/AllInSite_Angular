@@ -17,7 +17,9 @@
       </ng-container>
       <ng-template #userImageContent>
         <button (click)="showOptions()" type="button" class="flex mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false">
-          <img class="w-8 h-8 rounded-full" [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'" alt="imagen de usuario">
+          <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-8 h-8 rounded-full" >
+
+          <!-- <img class="w-8 h-8 rounded-full" [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'" alt="imagen de usuario"> -->
         </button>
       </ng-template>
 
