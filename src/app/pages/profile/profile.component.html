@@ -46,11 +46,30 @@
                 </div>
               </div>
               <div *ngIf="isEditingImg" class="border fixed inset-0 flex flex-col items-center justify-center  bg-black bg-opacity-50 mb-4 z-50">
-                <input [(ngModel)]="newUserImg" placeholder="Ingrese una URL Valida" tabindex="0"
-                  class="flex px-4 py-2 w-2/12 text-black bg-white border border-black rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring  mb-4">
+                <!-- <input [(ngModel)]="newUserImg" placeholder="Ingrese una URL Valida" tabindex="0"
+                  class="flex px-4 py-2 w-2/12 text-black bg-white border border-black rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring  mb-4"> -->
+                  <div class="relative top-4">
+                    <label class="text-black/80 font-semibold " for="userImg">
+                      * Imagen de Perfil:
+                      <br>
+                    </label>
+                    <span class="text-sm ml-0">Recomendaciones: <br></span>
+                    <span class="text-xs ml-4">• Formatos wpeb, avi o en su defecto png, jpeg y jpg <br>
+                    <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080  <br> </span>
+                    <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte)  <br></span>
+                    </span>
 
+                    <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
+                      {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                    </span> -->
+
+
+                      <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
+                      (change)="onFileSelectedUser($event)"
+                       class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
+                  </div>
                 <div class="flex space-x-4">
-                  <button (click)="updateUserImg()" tabindex="0" aria-label="Botón para guardar nueva URL"
+                  <button (click)="updateDataUser(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
                     class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
                     Guardar
                   </button>
