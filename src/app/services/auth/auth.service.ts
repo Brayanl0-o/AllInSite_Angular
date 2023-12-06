@@ -22,13 +22,46 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
+  public signUp(userData: any, userImg:any): Observable<any> {
+
+
+    // Agregamos el objeto userData directamente al FormData
+    const formData = new FormData();
+    formData.append('firstName', userData.firstName);
+    formData.append('lastName', userData.lastName);
+    formData.append('email', userData.email);
+    formData.append('phoneNumber', userData.phoneNumber);
+    formData.append('password', userData.password);
+    formData.append('years', userData.years);
+    formData.append('country', userData.country);
+
+    if (userImg) {
+        formData.append('userImg', userImg);
+    }
+
+
+    console.log('userData service', userData);
+    console.log('formData service', formData);
+    console.log('userImg  service', userImg);
+
+    // const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
+    // return this.http.post(url, formData)
+    return this.http.post(this.apiUrl + 'auth/signup', formData, { observe: 'response' }).pipe(
+      catchError((error: any) => {
+        console.error('Error en la solicitud de registro signUp USERDATA:', error);
+        return throwError(error);
+      })
+    );;
+}
+
+
   //Logueor, registro & cerrar sesión
-  public signUp(user: any): Observable<any> {
+  public signUpU(user: any): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'auth/signup', user)
       .pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud de registro:', error);
-          return throwError(error); // Puedes lanzar un error personalizado aquí si es necesario.
+          return throwError(error);
         })
       );
   }
