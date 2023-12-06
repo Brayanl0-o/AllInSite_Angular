@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
+import { environment } from 'src/environments/environment';
+const apiBaseUrl= environment.apiUrl;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -12,7 +14,7 @@ export class ProfileComponent {
   @Input() user: User | null = null;
   userId: string | null = null;
   loadDataProfile: boolean = true;
-
+  imageUrl!: string;
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
    private route: ActivatedRoute,
@@ -32,6 +34,7 @@ export class ProfileComponent {
             // Obtiene el ID de usuario de la URL
             const id = paramMap.get('id');
             // console.log('Id Login: ', id)
+            this.imageUrl = `${apiBaseUrl}uploads/users/`;
 
             // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
             if (id === loggedInUserId) {
