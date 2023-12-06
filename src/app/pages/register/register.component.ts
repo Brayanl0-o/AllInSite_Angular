@@ -89,18 +89,25 @@ export class RegisterComponent {
       this.authService.signUp(userData, this.selectedFile).subscribe(
         (response) => {
           console.log('Usuario registrado correctamente', response);
-          // this.contactForm = this.initFrom();
+          this.contactForm = this.initFrom();
+
+          const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+          if(fileInput){
+            fileInput.value= '';
+          }
+
+          this.selectedFile = null;
+          this.isRegisterOk= true;
         },
         (error) => {
           console.error('Error al registrarse in subscribe', error);
           if (error instanceof HttpErrorResponse) {
             this.errorResponseMessage = error.error.message;
+            this.isRegisterOk= false;
+
           }
         }
       )
-      // .add(() => {
-      //   console.log('Esta línea se ejecutará siempre después de la suscripción.');
-      // });
     } else {
       setTimeout(() => {
         this.errorResponseMessage = '';
