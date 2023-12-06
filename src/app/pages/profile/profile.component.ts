@@ -15,6 +15,8 @@ export class ProfileComponent {
   userId: string | null = null;
   loadDataProfile: boolean = true;
   imageUrl!: string;
+  selectedFile: File | null = null;
+
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
    private route: ActivatedRoute,
@@ -31,12 +33,11 @@ export class ProfileComponent {
       if(loggedInUserId){
         this.userId = loggedInUserId;
         this.route.paramMap.subscribe(paramMap => {
-            // Obtiene el ID de usuario de la URL
+
             const id = paramMap.get('id');
-            // console.log('Id Login: ', id)
             this.imageUrl = `${apiBaseUrl}uploads/users/`;
 
-            // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
+
             if (id === loggedInUserId) {
               this.userShared.getUser(id).subscribe(data => {
                 this.user = data;
@@ -51,10 +52,23 @@ export class ProfileComponent {
       }
     }
 
+    onFileSelectedUser(event: Event):void {
+      const inputElement = event.target as HTMLInputElement;
+      const file = inputElement?.files?.[0];
+      if (file){
+        this.selectedFile = file;
+      }
+    }
+
     userImg = '';
     newUserImg = '';
     isEditingImg = false;
-    updateUserImg(){
+
+
+    updateDataUser(userImg:File):void{
+      console.log('execute updateDataUser')
+      console.log('file selected ', this.selectedFile)
+
       if(!this.user){
         console.error('Error: No hay datos de actualizacíón')
         return;
@@ -62,18 +76,20 @@ export class ProfileComponent {
       const updatedData = {
         userImg: this.newUserImg
       };
-      this.userShared.updateUser(this.user._id, updatedData).subscribe(
+
+      this.userShared.updateUserImg(this.user._id, updatedData, userImg).subscribe(
         (response)=> {
           if(this.user){
             this.user.userImg = this.newUserImg
           }
+          console.log('Datos act con exito:', response);
         },
         (error) => {
           console.error('Error al updated', error);
         }
       );
       this.isEditingImg = false;
-      window.location.reload()
+      // window.location.reload()
     }
 
     cancelEditImg(){
