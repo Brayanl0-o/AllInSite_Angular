@@ -81,15 +81,17 @@ export class ProfileComponent {
         (response)=> {
           if(this.user){
             this.user.userImg = this.newUserImg
+
           }
           console.log('Datos act con exito:', response);
+          window.location.reload();
         },
         (error) => {
           console.error('Error al updated', error);
         }
       );
       this.isEditingImg = false;
-      // window.location.reload()
+
     }
 
     cancelEditImg(){
