@@ -10,6 +10,7 @@ import { EventEmitter } from '@angular/core';
 export class SharedUsersService {
 
   private URL = environment.apiUrl
+  private apiUrl = environment.apiUrl
 
   $modal = new EventEmitter<any>();
   userData = new EventEmitter<any>();
@@ -39,4 +40,25 @@ export class SharedUsersService {
     console.log('userData service', userData)
     return this.http.put(url, userData);
   }
+
+
+  updateUserImg(id: string,userData: any, userImg: File): Observable<any> {
+    const url = `${this.URL}users/update/${id}`;
+    console.log('url service updateUser Img', url)
+    const formData = new FormData();
+    if (userImg) {
+      // Si gameImg es diferente de null, agrega la nueva imagen al formData.
+      formData.append('userImg', userImg);
+    }
+    formData.append('gameName', userData.gameName);
+    formData.append('platform', userData.platform);
+    formData.append('releaseDate', userData.releaseDate);
+    formData.append('developer', userData.developer);
+    formData.append('genre', userData.genre);
+    formData.append('averageRating', userData.averageRating);
+    formData.append('descriptionGame', userData.descriptionGame);
+    console.log('userData service', formData)
+    return this.http.put(url, formData);
+  }
+
 }
