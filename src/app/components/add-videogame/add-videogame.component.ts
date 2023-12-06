@@ -16,7 +16,7 @@ import { environment } from 'src/environments/environment';
 export class AddVideogameComponent {
   constructor(private videoGamesService: VideogamesService,
     private renderer: Renderer2,
-    private http: HttpClient,
+    // private http: HttpClient,
     private fb: FormBuilder) { }
 
 
@@ -53,10 +53,12 @@ export class AddVideogameComponent {
     createGameData() {
       console.log('execute create game')
       if (this.selectedFile && this.contactForm.valid) {
-        // const formData = new FormData();
+        console.log('Funcion createGameDatax2EjecuteSuccess');
         const gameData = this.contactForm.value;
 
         const formData = new FormData();
+
+        console.log('formData', formData);
         formData.append('gameName', gameData.gameName);
         formData.append('platform', gameData.platform);
         formData.append('releaseDate', gameData.releaseDate);
@@ -85,7 +87,7 @@ export class AddVideogameComponent {
     defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
-        gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
+        gameName: ['',[Validators.required, Validators.minLength(5),Validators.maxLength(25)]],
         // gameImg: [this.defaultUserImgUrl],
         platform:['',[Validators.required,Validators.maxLength(40)]],
         releaseDate: ['',[]],
