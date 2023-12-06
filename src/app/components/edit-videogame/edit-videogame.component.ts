@@ -52,10 +52,8 @@ export class EditVideogameComponent {
   onFormSubmit(){
 
     if (this.contactForm.valid) {
-      // El formulario es válido, puedes enviar los datos.
       this.updateDataGame(this.selectedFile!);
     } else {
-      // El formulario tiene errores, puedes mostrar un mensaje o manejarlos de otra manera.
       this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
         setTimeout(() => {
           this.errorResponseMessageForm = '';
