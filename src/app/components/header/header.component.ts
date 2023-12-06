@@ -3,6 +3,9 @@ import { User } from 'src/app/models/user';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+const apiBaseUrl= environment.apiUrl;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,6 +16,8 @@ export class HeaderComponent {
     users: User []= [];
     userId: string | null = null;
     loadingData: boolean = true;
+    imageUrl!: string;
+
     constructor(private userShared: SharedUsersService,
       private authService: AuthService,
       private route: ActivatedRoute){}
@@ -40,6 +45,7 @@ export class HeaderComponent {
         // Asignar el userId obtenido al userId del componente
         this.userId = loggedInUserId;
         this.route.paramMap.subscribe(paramMap => {
+        this.imageUrl = `${apiBaseUrl}uploads/users/`;
 
           // Obtiene el ID de usuario de la URL
           const id = paramMap.get('id');
