@@ -8,6 +8,7 @@
 
 .game-card-description,
 .game-card-description > p {
+  font-size: small;
   max-height: 100px; /* Altura máxima de la descripción */
   overflow: hidden;
   text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si se corta el texto */
