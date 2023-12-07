@@ -1,10 +1,10 @@
-<nav class="bg-white  dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
+<nav class="bg-white dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
 
 
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center">
-      <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  class="mr-2" alt="Logo Allin" />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap ">AllIn</span>
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5">
+    <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center mr-20">
+      <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  class="mr-0" alt="Logo Allin" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap">AllIn</span>
     </a>
     <div class="flex items-center md:order-2">
       <app-modal-login></app-modal-login>
@@ -16,20 +16,19 @@
         <app-skeleton-header (click)="showOptions()" ></app-skeleton-header>
       </ng-container>
       <ng-template #userImageContent>
-        <button (click)="showOptions()" type="button" class="flex mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false">
+        <button (click)="showOptions()" type="button" class="flex text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"  aria-expanded="false">
           <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-8 h-8 rounded-full" >
-
           <!-- <img class="w-8 h-8 rounded-full" [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'" alt="imagen de usuario"> -->
         </button>
       </ng-template>
 
       <!-- Dropdown menu -->
-      <div *ngIf="optionsVisible" class="z-50 dropdown absolute right-28 mt-2 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 transform translate-x-1/2" style="min-width: 10rem;">
+      <div *ngIf="optionsVisible" class="z-50 dropdown absolute right-28 mt-1 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 transform translate-x-1/2" >
         <div class="px-4 py-3 bg-gray-300">
           <span class="block text-sm text-gray-900 dark:text-white">{{user?.userName}}</span>
           <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{user?.email}}</span>
         </div>
-        <div class="w-auto text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <div class="w-auto text-gray-900 bg-white border border-gray-200 rounded-lg ">
           <button [routerLink]="['/profile', userId]" type="button" class="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
             <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
@@ -60,31 +59,34 @@
 
     <!-- Menú en el header en pantallas medianas y grandes -->
     <div class="hidden md:block">
-      <ul class="flex flex-row font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul class="z-50 flex flex-row font-medium md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:mt-0 md:border-0 md:bg-white  ">
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']"  class="block py-2 pl-4 pr-4 text-gray-900 rounded-sm  md:p-0  hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950   " >Home</a>
+
+          <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']"  class="flex items-center my-2 mx-4 gap-1 text-gray-900 rounded-sm m-auto text-center md:p-0 border-b-2 hover:text-blue-700 hover:bg-sky-700/5 hover:rounded-lg hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2" >
+            <mat-icon class="text-blue-800  text-md text-center hover:transform hover:scale-125">home</mat-icon> Home
+          </a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="block py-2 pl-3 pr-4 text-gray-900 rounded-sm  md:p-0   hover:text-blue-700 hover:transform hover:scale-110 - hover:border-blue-950 ">Videojuegos</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="block my-2  text-gray-900 rounded-sm  md:p-0 border-b-2  hover:text-blue-700 hover:transform hover:scale-110 - hover:border-blue-950 hover:border-b-2 ">Videojuegos</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/music', { id: userId }] : ['/music']" class="block py-2 pl-3 pr-4 text-gray-900 rounded-sm  md:p-0  hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 ">Música</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/music', { id: userId }] : ['/music']" class="block my-2 text-gray-900 rounded-sm  md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2 ">Música</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/books', { id: userId }] : ['/books']" class="block py-2 pl-3 pr-4 text-gray-900 rounded-sm  md:p-0  hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 ">Literatura</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/books', { id: userId }] : ['/books']" class="block my-2 mx-0 text-gray-900 rounded-sm  md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2 ">Literatura</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/cinema', { id: userId }] : ['/cinema']" class="block py-2 pl-3 pr-4 text-gray-900 rounded-sm md:p-0  hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950 ">Cine</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/cinema', { id: userId }] : ['/cinema']" class="block my-2 text-gray-900 rounded-sm md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950 hover:border-b-2 ">Cine</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/register', { id: userId }] : ['/register']" class="block py-2 pl-3 pr-4 text-gray-900 rounded-sm md:p-0  hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950 ">Unirme</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/register', { id: userId }] : ['/register']" class="block my-2 text-gray-900 rounded-sm md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950 hover:border-b-2 ">Unirme</a>
         </li>
       </ul>
     </div>
 
     <!-- Menú en el header en pantallas peques -->
-    <div *ngIf="menuVisible" class="md:hidden" >
-      <ul class="flex flex-col font-medium p-4 border border-gray-100 rounded-lg bg-white  dark:bg-gray-700 dark:border-gray-600" style="position: absolute; top:100%; right: 0; left: 0;">
+    <div *ngIf="menuVisible" class="md:hidden  " >
+      <ul class=" absolute top-full right-0 left-0 flex flex-col font-medium p-4 border border-gray-100 rounded-lg bg-white " >
         <li>
           <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']"  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover-text-blue-700 md:p-0 dark-text-white md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent dark-border-gray-700">Home</a>
         </li>
