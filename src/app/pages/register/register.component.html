@@ -1,12 +1,15 @@
 
-<body class="bg-gray-300 min-h-screen mt-8">
+<body class="bg-gray-300 min-h-screen h-auto mt-8">
   <app-header></app-header>
 
-  <div class="flex flex-col items-center justify-center  w-full pt-8 ">
-    <nav class="flex items-start justify-start mb-5 mt-10 ml-10 w-1/3" aria-label="Breadcrumb" id="navbar-user">
+  <div class="flex flex-col items-center justify-center w-full pt-8">
+
+    <h2 class="sm:text-center mt-6 mb-2 pb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl text-transparent bg-clip-text bg-gradient-to-r to-slate-900 from-sky-800">Formulario de registro</h2>
+
+    <nav class="flex items-start justify-start mb-5 ml-10 w-1/3" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
-          <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+          <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
             <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
             </svg>
@@ -18,19 +21,18 @@
             <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
             </svg>
-            <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Unirme</span>
+            <span class="text-sm font-medium text-gray-500 md:ml-2">Unirme</span>
           </div>
         </li>
 
       </ol>
     </nav>
 
-    <h2 class="sm:text-center mb-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Formulario de registro</h2>
 
-    <form  [formGroup]="contactForm"  (ngSubmit)="onSubmit()" class="sm:w-3/4 lg:w-1/2 xl:w-1/3 bg-slate-200 shadow-md rounded-lg py-10 px-16 mb-20"  >
+    <form [formGroup]="contactForm"  (ngSubmit)="onSubmit()" class="sm:w-3/4 lg:w-1/2 xl:w-1/3 bg-slate-200 shadow-md rounded-lg py-10 px-16 mb-14 "  >
       <div class="relative z-0 w-full mb-6 group">
         <input type="text" formControlName="firstName" name="firstName" id="firstName" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="firstName" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre*</label>
+        <label for="firstName" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre*</label>
       </div>
       <!-- Validators of names-->
       <div *ngIf="contactForm.controls['firstName'].invalid && (contactForm.controls['firstName'].dirty || contactForm.controls['firstName'].touched)"
@@ -45,8 +47,8 @@
 
 
       <div class="relative z-0 w-full mb-6 group">
-        <input type="text" formControlName="lastName" name="lastName" id="lastName" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="lastName" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido*</label>
+        <input type="text" formControlName="lastName" name="lastName" id="lastName" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="lastName" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido*</label>
       </div>
       <!-- Validators of names-->
       <div *ngIf="contactForm.controls['lastName'].invalid && (contactForm.controls['lastName'].dirty || contactForm.controls['lastName'].touched)"
@@ -60,8 +62,8 @@
       </div>
 
       <div class="relative z-0 w-full mb-6 group">
-          <input type="email" formControlName="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo electrónico*</label>
+          <input type="email" formControlName="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo electrónico*</label>
       </div>
       <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
         class="alert alert-danger font-bold -mt-4">Este campo es obligatorio.
@@ -70,15 +72,15 @@
         class="alert alert-danger font-bold -mt-4">Este campo tiene que ser un correo electrónico válido.</div>
 
       <div class="relative z-0 w-full mb-6 group">
-          <input type="password" formControlName="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-          <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password*</label>
+          <input type="password" formControlName="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+          <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password*</label>
       </div>
       <!--Validators password-->
       <div *ngIf="contactForm.get('password')?.touched && contactForm.get('password')?.errors?.['required']"
       class="alert alert-danger  font-bold -mt-4">Este campo es obligatorio.</div>
 
       <div class="relative z-0 w-full mb-6 group">
-        <input type="text" formControlName="phoneNumber"  name="phoneNumber" id="phoneNumber" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <input type="text" formControlName="phoneNumber"  name="phoneNumber" id="phoneNumber" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
         <label for="phoneNumber" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
       </div>
 
@@ -88,7 +90,7 @@
 
       <div class="grid md:grid-cols-2 md:gap-6">
         <div class="relative z-0 w-full mb-6 group">
-          <input type="text" formControlName="years" name="years" id="years" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
+          <input type="text" formControlName="years" name="years" id="years" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required />
           <label for="years" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Edad</label>
         </div>
         <!--Validators years-->
@@ -100,23 +102,20 @@
         {{contactForm.get('years')?.errors?.['minlength'].requiredlength}} digitos.</div>
 
         <div class="relative z-0 w-full mb-6 group">
-            <input type="text" formControlName="country" name="country" id="country" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  required />
+            <input type="text" formControlName="country" name="country" id="country" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  s:outline-none focus:ring-0 focus:border-blue-600 peer"  required />
             <label for="country" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pais</label>
         </div>
       </div>
-      <!-- <div class="relative z-0 w-full mt-10 mb-6 group">
-        <input type="text" formControlName="userImg" name="userImg" id="userImg" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label for="userImg" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sube la imagen:</label>
-      </div> -->
-      <div class="relative top-4">
-        <label class="text-black/80 font-semibold " for="userImg">
-          * Imagen de Perfil:
+
+      <div class="relative top-2">
+        <label class="text-black/60 font-semibold" for="userImg">
+         Imagen de Perfil
           <br>
         </label>
-        <span class="text-sm ml-0">Recomendaciones: <br></span>
-        <span class="text-xs ml-4">• Formatos wpeb, avi o en su defecto png, jpeg y jpg <br>
-        <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080  <br> </span>
-        <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte)  <br></span>
+        <span class="text-sm ml-3">Recomendaciones: <br></span>
+        <span class="text-xs ml-4">• Formatos wpeb, avi, png, jpeg y jpg.
+        <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte). <br> </span>
+        <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080. <br></span>
         </span>
 
         <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
@@ -130,9 +129,11 @@
       </div>
 
       <div class="flex items-center justify-center">
-        <button  type="submit" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrarse</button>
+        <button type="submit" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrarse</button>
       </div>
-      <div *ngIf="isRegisterOk" class="text-logo-blue flex items-center justify-center font-bold text-md mt-4">Usuario registrado correctamente</div>
+      <div *ngIf="isRegisterOk" class="flex items-center justify-center font-bold text-lg text-logo-blue m-auto mt-4 border-2 border-blue-600 shadow-xl rounded-md w-max p-2">
+        <mat-icon >how_to_reg</mat-icon>
+        Usuario registrado correctamente</div>
     </form>
 
   </div>
