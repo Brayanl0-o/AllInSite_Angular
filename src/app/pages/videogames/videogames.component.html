@@ -14,7 +14,7 @@
         </ng-container>
 
         <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-10 mt-2">
-          <li *ngFor="let game of filteredGames" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow">
+          <li *ngFor="let game of filteredGames" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60 hover:transform hover:scale-105 hover:z-10 hover:bg-slate-500 hover:border-none">
             <a class="relative" [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
               <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover h-[400px] w-full rounded-lg ">
               <button (click)="deleteGame(game._id)" class="absolute w-12 h-10 bottom-6 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
@@ -26,7 +26,7 @@
                 <mat-icon class="w-5 h-5 transition-transform group-hover:rotate-45">info</mat-icon>
               </button>
               <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-end absolute top-10 right-4 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
-                  <div class="px-3 py-2 bg-gray-400 w-max rounded-md rounded-b-sm">
+                  <div class="px-3 py-2 bg-gray-400 w-max rounded-md ">
                       <h3 class="font-semibold text-gray-90">Información extra</h3>
                   </div>
                   <div class="px-3 py-2 bg-gray-200 rounded-lg rounded-t-md text-xs">
@@ -42,7 +42,7 @@
               <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
                 <h5 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h5>
               </a>
-              <div class="rounded-s-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
+              <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
                 <div class="game-card-description mb-2">
                   <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
                   <ng-template #defaultText>
