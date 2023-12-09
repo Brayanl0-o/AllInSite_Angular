@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -59,6 +60,7 @@ import { EditVideogameComponent } from './components/edit-videogame/edit-videoga
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,
