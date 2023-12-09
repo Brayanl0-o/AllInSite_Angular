@@ -7,89 +7,90 @@
   <div class="container mx-auto ">
     <div class="flex flex-col">
 
-        <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
+      <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
 
-        <ng-container *ngIf="loadingData">
-          <app-skeleton-videogames></app-skeleton-videogames>
-        </ng-container>
+      <ng-container *ngIf="loadingData">
+        <app-skeleton-videogames></app-skeleton-videogames>
+      </ng-container>
 
-        <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-10 mt-2">
-          <li *ngFor="let game of filteredGames" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60 hover:transform hover:scale-105 hover:z-10 hover:bg-slate-500 hover:border-none">
-            <a class="relative" [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
-              <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover h-[400px] w-full rounded-lg ">
-              <button (click)="deleteGame(game._id)" class="absolute w-12 h-10 bottom-6 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
-                <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
-              </button>
-              <div class="absolute top-0 left-0 m-2 bg-black bg-opacity-50 text-white p-2 rounded">
-                {{ game.genre }}</div>
-              <button (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" type="button" class="absolute top-1 right-1 bg-black bg-opacity-30 text-white p-1 rounded-xl">
-                <mat-icon class="w-5 h-5 transition-transform group-hover:rotate-45">info</mat-icon>
-              </button>
-              <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-end absolute top-10 right-4 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
-                  <div class="px-3 py-2 bg-gray-400 w-max rounded-md ">
-                      <h3 class="font-semibold text-gray-90">Información extra</h3>
-                  </div>
-                  <div class="px-3 py-2 bg-gray-200 rounded-lg rounded-t-md text-xs">
-                    <p class="mb-1 text-gray-800 font-semibold">Plataformas: <span class="font-normal">{{ game.platform }}</span> </p>
-                    <p class="mb-1 text-gray-800 font-semibold">Desarrollador: <span class="font-normal">{{ game.developer }}</span> </p>
-                    <p class="mb-1 text-gray-800 font-semibold">Fecha de Lanzamiento: <span class="font-normal">{{ game.releaseDate | date }}</span> </p>
-                  </div>
-                  <div data-popper-arrow></div>
-              </div>
+      <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-10 mt-2">
+        <li *ngFor="let game of filteredGames | paginate: { itemsPerPage: 8, currentPage: page }" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60 hover:transform hover:scale-105 hover:z-10 hover:bg-slate-500 hover:border-none">
+          <a class="relative" [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
+            <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover h-[400px] w-full rounded-lg ">
+            <button (click)="deleteGame(game._id)" class="absolute w-12 h-10 bottom-6 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
+              <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
+            </button>
+            <div class="absolute top-0 left-0 m-2 bg-black bg-opacity-50 text-white p-2 rounded">
+              {{ game.genre }}</div>
+            <button (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" type="button" class="absolute top-1 right-1 bg-black bg-opacity-30 text-white p-1 rounded-xl">
+              <mat-icon class="w-5 h-5 transition-transform group-hover:rotate-45">info</mat-icon>
+            </button>
+            <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-end absolute top-10 right-4 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
+                <div class="px-3 py-2 bg-gray-400 w-max rounded-md ">
+                    <h3 class="font-semibold text-gray-90">Información extra</h3>
+                </div>
+                <div class="px-3 py-2 bg-gray-200 rounded-lg rounded-t-md text-xs">
+                  <p class="mb-1 text-gray-800 font-semibold">Plataformas: <span class="font-normal">{{ game.platform }}</span> </p>
+                  <p class="mb-1 text-gray-800 font-semibold">Desarrollador: <span class="font-normal">{{ game.developer }}</span> </p>
+                  <p class="mb-1 text-gray-800 font-semibold">Fecha de Lanzamiento: <span class="font-normal">{{ game.releaseDate | date }}</span> </p>
+                </div>
+                <div data-popper-arrow></div>
+            </div>
+          </a>
+
+          <div class="px-4 pb-4 bg-gray-100/60">
+            <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
+              <h5 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h5>
             </a>
+            <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
+              <div class="game-card-description mb-2">
+                <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
+                <ng-template #defaultText>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Sed omnis, fugit delectus commodi corporis reprehenderit modi
+                  velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
+                </ng-template>
 
-            <div class="px-4 pb-4 bg-gray-100/60">
-              <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
-                <h5 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h5>
+              </div>
+              <p class="mb-2 font-semibold text-gray-700">Calificación:
+                <span class= "inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-1">
+                  {{ game.averageRating }}
+                </span>
+                <svg class="w-4 h-4 inline-block text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+              </svg>
+              </p>
+              <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" class="inline-flex items-center font-semibold px-2 py-1 text-sm text-center text-blue-900 rounded-lg hover:text-white hover:bg-blue-800/80 hover:transform hover:scale-110 hover:duration-300">
+                Más
+                <mat-icon class="w-3.5 h-3.5 ml-2 text-blue-900">read_more</mat-icon>
               </a>
-              <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
-                <div class="game-card-description mb-2">
-                  <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
-                  <ng-template #defaultText>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sed omnis, fugit delectus commodi corporis reprehenderit modi
-                    velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
-                  </ng-template>
-
-                </div>
-                <p class="mb-2 font-semibold text-gray-700">Calificación:
-                  <span class= "inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-1">
-                    {{ game.averageRating }}
-                  </span>
-                  <svg class="w-4 h-4 inline-block text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                </svg>
-                </p>
-                <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" class="inline-flex items-center font-semibold px-2 py-1 text-sm text-center text-blue-900 rounded-lg hover:text-white hover:bg-blue-800/80 hover:transform hover:scale-110 hover:duration-300">
-                  Más
-                  <mat-icon class="w-3.5 h-3.5 ml-2 text-blue-900">read_more</mat-icon>
-                </a>
-              </div>
             </div>
-          </li>
-        </ul>
-          <!-- Botones -->
-          <div class="flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
-            <div class="fixed top-56 xl:right-20 lg:right-16 md:right-4 sm:right-2 z-50">
-              <div class="mb-4">
-                <app-aside></app-aside>
-              </div>
-              <button type="submit" aria-label="Boton para subir un videojuego"
-                  class="  text-white bg-[#006186] transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
-                  (click)="openModal()">
-                  <div class="flex flex-row items-center justify-evenly">
-                    <mat-icon >library_add</mat-icon>
-                    <span class="hidden xl:inline lg:inline md:hidden sm:hidden " >Subir juego</span>
-                  </div>
-              </button>
+          </div>
+        </li>
+      </ul>
 
-              <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center -z-50" *ngIf="isModalVisible">
-                <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
-                <div class="bg-white p-4 rounded-lg shadow-lg z-10 max-h-[80vh] overflow-y-auto">
-                  <app-add-videogame></app-add-videogame>
-                </div>
+      <pagination-controls class="pagination m-auto mb-10" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
+
+      <div class="flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
+        <div class="fixed top-56 xl:right-20 lg:right-16 md:right-4 sm:right-2 z-50">
+          <div class="mb-4">
+            <app-aside></app-aside>
+          </div>
+          <button type="submit" aria-label="Boton para subir un videojuego"
+              class="  text-white bg-[#006186] transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
+              (click)="openModal()">
+              <div class="flex flex-row items-center justify-evenly">
+                <mat-icon >library_add</mat-icon>
+                <span class="hidden xl:inline lg:inline md:hidden sm:hidden " >Subir juego</span>
               </div>
+          </button>
+          <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center -z-50" *ngIf="isModalVisible">
+            <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
+            <div class="bg-white p-4 rounded-lg shadow-lg z-10 max-h-[80vh] overflow-y-auto">
+              <app-add-videogame></app-add-videogame>
             </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
