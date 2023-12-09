@@ -1,29 +1,25 @@
 
-<body class="bg-gray-300 min-h-screen ">
-
+<body class="bg-black min-h-min h-auto "  >
     <app-header></app-header>
 
-    <!-- <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
-  <div  *ngIf="gameDetails$ | async as gameDetails">
-    <section class=" h-500-px">
+  <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" class="absolute top-0 w-full h-full bg-center bg-cover object-cover max-sm:min-h-[150vh]  sm:min-h-[200vh]  md:min-h-screen lg:min-h-screen  xl:min-h-screen">
+    <!-- <section class="h-500-px " >
 
-      <img loading="lazy" class="absolute top-0 w-full h-full bg-center bg-cover"[src]="imageUrl + gameDetails.gameImg" alt="">
-      <span  class="w-full h-full absolute opacity-60 bg-black"></span>
 
-      <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
-        <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-          <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
+    </section> -->
+    <!-- <span  class="w-full h-full absolute opacity-40 bg-black"></span>
 
-    </section>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div> -->
+    <span  class="w-full h-full absolute opacity-60 bg-black"></span>
+    <div class="flex justify-center relative top-40 bg-slate-400/30  m-auto h-auto  w-auto" >
 
-    <div class="flex relative top-64 bg-slate-400" >
+      <img class="object-cover h-auto w-1/4 rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
 
-      <!-- [src]="imageUrl + gameDetails.gameImg" -->
-      <img class="object-cover  w-2/5 rounded-lg " [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
-      <div class="sm:w-3/5 md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6">
-
+      <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
         <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
         <div class="game-description  text-gray-800 text-lg p-2">
           <p *ngIf="gameDetails.descriptionGame; else defaultText">{{gameDetails.descriptionGame}}   </p>
@@ -34,38 +30,38 @@
           </ng-template>
 
         </div>
-
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.developer }}</p>
-        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.releaseDate}}</p>
+        <p class="text-gray-800 text-xl py-2">{{ gameDetails.releaseDate}}</p>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.genre }}</p>
         <p class=" font-semibold text-gray-700 dark:text-gray-400 py-10">
-          <span class= " inline-block bg-blue-100/50 text-blue-800 text-6xl font-semibold mr-2 px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
+          <span class= " inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
             {{ gameDetails.averageRating }}
           </span>
-          <svg class="w-14 h-14 inline-block text-yellow-300 mr-1 -mt-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+          <svg class="w-10 h-10 inline-block text-yellow-300 mr-1 -mt-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
         </svg>
         </p>
-      </div>
 
-      <div class="flex flex-col">
-        <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
-          <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
-        </button>
-        <button (click)="openModal()" class="p-2 w-10 h-10  text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
-          <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
-        </button>
-        <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
-          <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
-          <div class="bg-white p-4 rounded-lg shadow-lg z-10 max-h-[80vh] overflow-y-auto">
-            <app-edit-videogame  [game]="gameDetails"></app-edit-videogame>
+        <div class="absolute top-0 right-0 bg-black/20">
+          <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform  hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+            <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
+          </button>
+          <button (click)="openModal()" class="p-2 w-10 h-10  text-white transition-colors duration-300 transform hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+            <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
+          </button>
+          <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
+            <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
+            <div class="bg-white p-4 rounded-lg shadow-lg z-10 max-h-[80vh] overflow-y-auto">
+              <app-edit-videogame  [game]="gameDetails"></app-edit-videogame>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
+</body>
+
 <!-- component -->
 <!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
   <div class="col-start-1 row-start-1 bg-gray-800 bg-opacity-70 w-full h-full"></div>
@@ -79,5 +75,3 @@
   <h1 class="font-semibold text-4xl tracking-wide">I have overlay</h1>
   <p class="text-xs text-center leading-tight">Overlay applied using pseudo CSS element. where parent css is position relative and then sudo class is applied as absolute positioned</p>
   </div> -->
-</body>
-
