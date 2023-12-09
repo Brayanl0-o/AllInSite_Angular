@@ -10,13 +10,16 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  contactForm!: FormGroup;
 
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
   ) { }
+  contactForm!: FormGroup;
+  isRegisterOk: boolean = false;
+  selectedFile: File | null = null;
+  errorResponseMessage: string | null = null;
 
   ngOnInit(): void {
     this.contactForm = this.initFrom();
@@ -28,29 +31,7 @@ export class RegisterComponent {
       this.signUp();
     }
   }
-  isRegisterOk: boolean = false;
-  selectedFile: File | null = null;
 
-
-  // Var para guardar y manejar el error
-  errorResponseMessage: string | null = null;
-
-  // Metodo para manejar el registro del usuario
-  // signUp() {
-  //   this.authService.signUp(this.contactForm.value)
-  //     .subscribe(res => {
-  //       this.contactForm = this.initFrom();
-  //       this.isRegisterOk= true;
-  //     },
-  //       err => {
-  //         // console.log(err);
-  //         if (err instanceof HttpErrorResponse) {
-  //           this.errorResponseMessage = err.error.message;
-  //           this.isRegisterOk= false;
-  //         }
-  //       }
-  //     );
-  // }
   onFileSelectedUser(event: Event):void {
     const inputElement = event.target as HTMLInputElement;
     const file = inputElement?.files?.[0];
@@ -66,13 +47,14 @@ export class RegisterComponent {
     console.log('contactform antes del if',this.contactForm.value);
     console.log('selectedFile',this.selectedFile);
 
-    if (this.selectedFile && this.contactForm.valid) {
+    if (this.contactForm.valid) {
       console.log('Funcion signUpx2EjecuteSuccess');
 
       const userData = this.contactForm.value;
       const formData = new FormData();
 
       console.log('formData', formData);
+
       formData.append('firstName', userData.firstName);
       formData.append('lastName', userData.lastName);
       formData.append('email', userData.email);
@@ -80,7 +62,7 @@ export class RegisterComponent {
       formData.append('password', userData.password);
       formData.append('years', userData.years);
       formData.append('country', userData.country);
-      formData.append('userImg', this.selectedFile);
+      formData.append('userImg', this.selectedFile!);
 
       console.log('userData before service call:', userData);
       console.log('userImg before service call:', this.selectedFile);
