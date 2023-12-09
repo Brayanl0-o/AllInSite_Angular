@@ -1,22 +1,23 @@
-<body class="bg-gray-300 min-h-screen h-auto ">
+<body class="bg-gray-300 min-h-screen h-auto">
   <app-header></app-header>
 
   <ng-container>
     <app-skeleton-profile *ngIf="loadDataProfile; else userData"></app-skeleton-profile>
   </ng-container>
+
   <ng-template #userData >
-    <div class="relative pt-20 max-w-2xl mx-auto my-3 bottom-10">
+    <div class="relative pt-24 max-w-2xl mx-auto my-3 bottom-10">
 
       <div class="w-full lg:auto mt-28 px-4 mx-auto ">
-        <div class=" relative flex flex-col min-w-0 break-words  bg-white w-full shadow-xl hover:shadow rounded-lg mt-16">
+        <div class="relative flex flex-col min-w-0 break-words  bg-white w-full shadow-xl hover:shadow rounded-lg mt-16">
           <div class="px-6 mb-5">
             <div class="flex flex-wrap justify-center">
               <div class="absolute top-4 right-2 flex flex-col sm:flex-row justify-center items-center ">
-                <div class="">
+                <div>
                   <button type="submit" aria-label="Boton para actualizar mis datos"
                     class=" bg-[none] transition-colors  w-full rounded-lg  sm:text-xl "
                     (click)="openModal(user)">
-                    <mat-icon class="  text-4xl text-blue-800  hover:transform hover:scale-125 pr-10 pb-20 " >edit_note</mat-icon>
+                    <mat-icon class="text-4xl text-blue-800 hover:transform hover:scale-125 pr-10 pb-20">edit_note</mat-icon>
 
                   </button>
                   <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
@@ -26,60 +27,53 @@
                     </div>
                   </div>
                 </div>
-
               </div>
+
               <div class="w-full px-4 flex justify-center">
-
                 <div class="relative">
-
-
                   <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
                     aria-label="Boton para actualizar imagen de perfil"
                     style="clip-path:polygon(0 100%, 100% 100%, 100% 80%, 0 80%);"
-                    class="rounded-full bg-slate-600/30  backdrop-blur-sm w-72 h-72 -mt-20 ml-0 mb-0 absolute z-0 text-gray-500 hover:text-blue-500 focus:outline-none">
-                    <mat-icon class=" h-20 w-20 mt-60 ml-0 blur-none mb-0 hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
+                    class="rounded-full bg-slate-600/30  backdrop-blur-sm w-80 h-80 -mt-20 ml-0 mb-0 absolute z-0 text-gray-500 hover:text-blue-500 focus:outline-none">
+                    <mat-icon class="h-20 w-20 mt-64 ml-0 blur-none mb-0 hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
                   </button>
-                  <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-72 h-72 -mt-20 ml-0 mb-0 align-middle rounded-full hover:shadow shadow-lg border-none ">
-
-                  <!-- <img alt="..." [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'"  class="w-72 h-72 -mt-20 ml-0 mb-0 align-middle rounded-full hover:shadow shadow-lg border-none "> -->
+                  <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-80 h-80 -mt-20 ml-0 mb-0 align-middle rounded-full hover:shadow shadow-lg border-none ">
 
                 </div>
               </div>
-              <div *ngIf="isEditingImg" class="border fixed inset-0 flex flex-col items-center justify-center  bg-black bg-opacity-50 mb-4 z-50">
-                <!-- <input [(ngModel)]="newUserImg" placeholder="Ingrese una URL Valida" tabindex="0"
-                  class="flex px-4 py-2 w-2/12 text-black bg-white border border-black rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring  mb-4"> -->
+              <!-- *ngIf="isEditingImg"  -->
+              <div *ngIf="isEditingImg" class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
+                <div class="rounded-md fixed flex flex-col items-center justify-center w-max h-max m-auto inset-64 bg-slate-200 mb-4 z-50 p-4">
                   <div class="relative top-4">
                     <label class="text-black/80 font-semibold " for="userImg">
-                      * Imagen de Perfil:
+                      Sube la Imagen de Perfil:
                       <br>
                     </label>
                     <span class="text-sm ml-0">Recomendaciones: <br></span>
-                    <span class="text-xs ml-4">• Formatos wpeb, avi o en su defecto png, jpeg y jpg <br>
-                    <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080  <br> </span>
-                    <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte)  <br></span>
+                    <span class="text-xs ml-4">• Formatos wpeb, avi, png, jpeg y jpg.
+                    <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte). <br> </span>
+                    <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080. <br></span>
                     </span>
-
                     <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
                       {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                     </span> -->
-
-
-                      <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
-                      (change)="onFileSelectedUser($event)"
-                       class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
+                    <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
+                    (change)="onFileSelectedUser($event)"
+                      class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
                   </div>
-                <div class="flex space-x-4">
-                  <button (click)="updateDataUser(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
-                    class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-                    Guardar
-                  </button>
-                  <button (click)="cancelEditImg()" tabindex="0"
-                    class="flex-grow px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                    Cancelar
-                  </button>
+
+                  <div class="flex space-x-4">
+                    <button (click)="updateDataUser(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
+                      class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                      Guardar
+                    </button>
+                    <button (click)="cancelEditImg()" tabindex="0"
+                      class="flex-grow px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                      Cancelar
+                    </button>
+                  </div>
                 </div>
               </div>
-
             </div>
             <div class="text-center mt-4">
               <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 ">
@@ -122,12 +116,12 @@
 
                         <div class="pb-6 ">
                           <div class=" h-6 min-w-full overflow-hidden translate-y-6 rounded-br-xl">
-                            <div class=" flex  rounded-b-2xl">
-                                <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-amber-400/90 group-hover:bg-amber-600/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg] bg-amber-300/90 group-hover:bg-amber-500/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-amber-200/90 group-hover:bg-amber-400/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-amber-100/90 group-hover:bg-amber-300/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-amber-50/90 group-hover:bg-amber-200/90 "></div>
+                            <div class=" flex rounded-b-2xl">
+                                <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg]  bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
                             </div>
                           </div>
                         </div>
@@ -143,3 +137,8 @@
     </div>
   </ng-template>
 </body>
+<!-- <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-amber-400/90 group-hover:bg-amber-600/90 "></div>
+<div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg] bg-amber-300/90 group-hover:bg-amber-500/90 "></div>
+<div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-amber-200/90 group-hover:bg-amber-400/90 "></div>
+<div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-amber-100/90 group-hover:bg-amber-300/90 "></div>
+<div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-amber-50/90 group-hover:bg-amber-200/90 "></div> -->
