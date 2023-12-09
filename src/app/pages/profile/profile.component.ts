@@ -37,7 +37,6 @@ export class ProfileComponent {
             const id = paramMap.get('id');
             this.imageUrl = `${apiBaseUrl}uploads/users/`;
 
-
             if (id === loggedInUserId) {
               this.userShared.getUser(id).subscribe(data => {
                 this.user = data;
