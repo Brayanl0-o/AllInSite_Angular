@@ -22,6 +22,8 @@ export class VideogamesComponent {
   filteredGames: Game[] = [];
   loadingData: boolean = true;
   imageUrl!: string;
+  page: number = 1;
+
   constructor(
     private http: HttpClient,
     private videogamesService: VideogamesService,
