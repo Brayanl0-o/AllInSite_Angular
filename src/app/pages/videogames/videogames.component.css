@@ -17,3 +17,8 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
+.pagination::ng-deep
+.ngx-pagination
+.current{
+  background: rgba(31, 31, 41, 0.842);
+}
