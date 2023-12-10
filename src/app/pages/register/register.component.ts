@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
@@ -98,8 +98,18 @@ export class RegisterComponent {
     }
   }
 
+  initFrom(): FormGroup {
+    return this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
+      lastName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
+      email: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(100), Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      password: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(25)]],
+      years: ['',[this.rangoNumericoValidator, this.numbersOnlyValidator]],
+      phoneNumber: ['', [this.numbersOnlyValidator, Validators.minLength(3),Validators.maxLength(15)]],
+      country: ['Colombia',[Validators.minLength(3),Validators.maxLength(25)]],
+    })
 
-  defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
+  }
   numbersOnlyValidator(control: FormControl) {
     const value = control.value;
     if (value && !/^\d+$/.test(value)) {
@@ -107,20 +117,15 @@ export class RegisterComponent {
     }
     return null;
   }
-  initFrom(): FormGroup {
-    return this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
-      lastName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
-      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
-      years: ['',[Validators.required, this.numbersOnlyValidator, Validators.minLength(2), Validators.maxLength(3)]],
-      phoneNumber: ['', [this.numbersOnlyValidator]],
-      country: ['Colombia'],
-      // userImg: [this.defaultUserImgUrl],
-    })
+  rangoNumericoValidator(control:AbstractControl) {
+    const valor = control.value;
 
+    if (isNaN(valor) || valor < 0 || valor > 150) {
+      return { 'rangoNumerico': true };
+    }
+
+    return null;
   }
-
   formRegisterAlert(): void {
     window.alert('Todos los campos con * son obligatorios')
   }
