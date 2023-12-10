@@ -4,7 +4,7 @@ import { Renderer2 } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { Game } from 'src/app/models/game';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -82,23 +82,27 @@ export class AddVideogameComponent {
         );
       }
     }
-
-
-    defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
-        gameName: ['',[Validators.required, Validators.minLength(5),Validators.maxLength(25)]],
-        // gameImg: [this.defaultUserImgUrl],
-        platform:['',[Validators.required,Validators.maxLength(40)]],
+        gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
+        platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
         releaseDate: ['',[]],
-        developer:['',[ Validators.maxLength(40)]],
-        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-        averageRating:['',[Validators.maxLength(2)]],
-        descriptionGame:['',[Validators.required, Validators.maxLength(400)]]
+        developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
+        genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
+        averageRating:['',[this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+        descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
 
       })
     }
+    rangoNumericoValidator(control:AbstractControl) {
+      const valor = control.value;
 
+      if (isNaN(valor) || valor < 0 || valor > 10) {
+        return { 'rangoNumerico': true };
+      }
+
+      return null;
+    }
     closeModalAndReloadPage() {
       this.closeModal();
       window.location.reload();
