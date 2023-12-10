@@ -89,10 +89,17 @@ export class AddVideogameComponent {
         releaseDate: ['',[]],
         developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
         genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-        averageRating:['',[this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+        averageRating:['',[this.rangoNumericoValidator,this.numbersOnlyValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
         descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
 
       })
+    }
+    numbersOnlyValidator(control: FormControl) {
+      const value = control.value;
+      if (value && !/^\d+$/.test(value)) {
+        return { numbersOnly: true };
+      }
+      return null;
     }
     rangoNumericoValidator(control:AbstractControl) {
       const valor = control.value;
