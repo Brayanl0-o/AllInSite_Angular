@@ -1,6 +1,6 @@
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Renderer2, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { environment } from 'src/environments/environment';
@@ -81,19 +81,27 @@ export class EditVideogameComponent {
     )
   }
 
-    defaultUserImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIip2Y--IFllD0cow5w64ZrJD-S7oC9pjhc1mELWbqIuk3m2RF';
     initFrom(): FormGroup{
       return this.fb.group({
-        gameName: ['',[Validators.required, Validators.minLength(3),Validators.maxLength(25)]],
+        gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
         gameImg: [this.game.gameImg],
-        platform:['',[Validators.required,Validators.maxLength(40)]],
+        platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
         releaseDate: ['',[]],
-        developer:['',[ Validators.maxLength(40)]],
-        genre:['',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-        averageRating:['',[Validators.maxLength(2)]],
-        descriptionGame:['',[Validators.required, Validators.maxLength(400)]]
+        developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
+        genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
+        averageRating:['',[this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+        descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
 
       })
+    }
+    rangoNumericoValidator(control:AbstractControl) {
+      const valor = control.value;
+
+      if (isNaN(valor) || valor < 0 || valor > 10) {
+        return { 'rangoNumerico': true };
+      }
+
+      return null;
     }
 
     closeModalAndReloadPage() {
