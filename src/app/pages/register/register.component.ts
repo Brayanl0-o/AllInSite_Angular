@@ -24,11 +24,16 @@ export class RegisterComponent {
   ngOnInit(): void {
     this.contactForm = this.initFrom();
   }
-
+  errorResponseMessageForm = '';
   onSubmit() {
     // console.log('form ->', this.contactForm.value);
     if (this.contactForm.valid) {
       this.signUp();
+    }else {
+      this.errorResponseMessageForm = 'Verifique el formulario! ';
+        setTimeout(() => {
+          this.errorResponseMessageForm = '';
+        }, 5000);
     }
   }
 
