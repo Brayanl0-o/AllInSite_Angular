@@ -1,5 +1,5 @@
 import { Component, Input, Renderer2 } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
 import { Validators } from '@angular/forms';
@@ -21,32 +21,18 @@ export class UpdateUserComponent {
       this.contactForm = this.initFrom();
       this.contactForm.patchValue(this.user);
     }
-
-    defaultUserImgUrl = 'https://p1.hiclipart.com/preview/403/536/937/internet-logo-user-user-profile-symbol-wifi-user-account-computer-avatar-png-clipart.jpg';
-
-    numbersOnlyValidator(control: FormControl) {
-      const value = control.value;
-      if (value && !/^\d+$/.test(value)) {
-        return { numbersOnly: true };
+    errorResponseMessageForm = '';
+    onSubmit(){
+      if(this.contactForm.valid){
+        this.updateUserData();
+      }else {
+        this.errorResponseMessageForm = 'Verifique el formulario! ';
+          setTimeout(() => {
+            this.errorResponseMessageForm = '';
+          }, 5000);
       }
-      return null;
     }
-    initFrom(): FormGroup {
-      return this.fb.group({
-        firstName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
-        lastName: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[A-Za-z\\s]+')]],
-        email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        years: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-        phoneNumber: ['', [this.numbersOnlyValidator]],
-        country: ['Colombia'],
-        userImg: [this.defaultUserImgUrl],
-        descriptionUser: ['Sin Descripcion...'],
-      })
-    }
-
     updateUserData(): void {
-
       if (!this.user) {
         console.error('Error: No se proporcionaron datos para la actualización.');
         return;
@@ -65,6 +51,37 @@ export class UpdateUserComponent {
         }
       );
     }
+
+    initFrom(): FormGroup {
+      return this.fb.group({
+        firstName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
+        lastName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
+        email: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(100), Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+        years: ['',[this.rankValidator, this.numberOnlyValidator]],
+        phoneNumber: ['', [this.numberOnlyValidator, Validators.minLength(3),Validators.maxLength(15)]],
+        country: ['Colombia',[Validators.minLength(3),Validators.maxLength(25)]],
+        // userImg: [this.defaultUserImgUrl],
+        descriptionUser: ['Sin Descripcion...',[Validators.maxLength(400)]],
+
+      })
+    }
+    numberOnlyValidator(control:FormControl){
+      const value = control.value;
+      if (value && !/^\d+$/.test(value)){
+        return {numbersOnly: true};
+      }
+      return null;
+    }
+
+    rankValidator(control: AbstractControl){
+      const number = control.value;
+
+      if(isNaN(number) || number < 0 || number > 150){
+          return {rankNumber: true};
+      }
+      return null;
+    }
+
 
     closeModalAndReloadPage() {
       this.closeModal();
