@@ -54,9 +54,8 @@ export class VideogamesComponent {
   }
 
   dataUser(){
-    // Obtiene el ID del usuario logueado desde el servicio de autenticación
+
     const loggedInUserId = this.authService.getLoggedInUserId();
-    // console.log('loggedInUserId:', loggedInUserId);
 
     if (loggedInUserId) {
       this.userId = loggedInUserId;
@@ -70,7 +69,7 @@ export class VideogamesComponent {
               // console.log('Data User prfile', data)
             });
           } else {
-            console.error('Error ids diferentes no coinciden')
+            console.error('No login')
             // this.router.navigate(['/error']);
           }
         });
