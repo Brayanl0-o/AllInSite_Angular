@@ -11,13 +11,13 @@
     </div>
     <!-- dropdown -->
 
-    <div *ngIf="isUserLoggedIn()" class="relative md:order-2 m-auto">
+    <div *ngIf="isUserLoggedIn()" class="relative md:order-2 max-md:m-auto">
       <ng-container  *ngIf="loadingData; else userImageContent">
         <app-skeleton-header (click)="showOptions()" ></app-skeleton-header>
       </ng-container>
 
       <ng-template #userImageContent>
-        <button (click)="showOptions()" type="button" class="flex text-sm m-auto rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"  aria-expanded="false">
+        <button (click)="showOptions()" type="button" class="flex text-sm max-md:m-auto rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"  aria-expanded="false">
           <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-8 h-8 rounded-full" >
         </button>
       </ng-template>
@@ -58,8 +58,8 @@
     </button>
 
     <!-- Menú en el header en pantallas medianas y grandes -->
-    <div class="hidden md:block">
-      <ul class="z-50 flex flex-row font-medium md:p-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-6 mt-0 md:border-0 md:bg-white  ">
+    <div class="hidden md:block ">
+      <ul class="z-50 flex flex-row justify-center items-center ml-10 font-medium md:p-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-6 mt-0 md:border-0 md:bg-white  ">
         <li>
           <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']"  class="flex items-center my-2 mr-6 gap-1 text-gray-900 rounded-sm m-auto text-center md:p-0 border-b-2 hover:text-blue-700 hover:bg-sky-700/5 hover:rounded-lg hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2" >
             <mat-icon class="text-blue-800  text-md text-center hover:transform hover:scale-125">home</mat-icon> Home
