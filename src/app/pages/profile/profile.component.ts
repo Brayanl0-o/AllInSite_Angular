@@ -44,7 +44,7 @@ export class ProfileComponent {
                 // console.log('Data User prfile', data)
               });
             } else {
-              console.error('Error ids diferentes no coinciden')
+              console.error('No login')
               // this.router.navigate(['/error']);
             }
         })
