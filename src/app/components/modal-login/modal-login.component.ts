@@ -12,6 +12,7 @@ export class ModalLoginComponent {
   contactForm!: FormGroup;
   public isLoading: boolean = false;
   public errorMessage: string | null = null;
+
   constructor(private authService:AuthService,
     private router: Router,
     private readonly fb: FormBuilder,
@@ -24,7 +25,6 @@ export class ModalLoginComponent {
   }
 
     capsLockOn = false;
-
     checkCapsLock(event: KeyboardEvent) {
       if(event.getModifierState){
         this.capsLockOn = event.getModifierState('CapsLock');
@@ -33,13 +33,16 @@ export class ModalLoginComponent {
       }
 
     }
+
     public isPasswordVisible: boolean = false;
     togglePasswordVisibility() {
       this.isPasswordVisible = !this.isPasswordVisible;
     }
+
     isTextOrPassword() {
       return this.isPasswordVisible ? 'text' : 'password';
     }
+
     login(){
       this.isLoading = true;
       this.errorMessage = null;
