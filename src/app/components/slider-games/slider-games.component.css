@@ -45,3 +45,12 @@
 .scale-170 {
   transform: scale(1.6);
 }
+@media screen and(max-width: 880px) {
+  .slide {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+}
