@@ -2,23 +2,23 @@
 
 
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5">
-    <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center mr-20">
+    <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center ">
       <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  class="mr-1" alt="Logo Allin" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap">AllIn</span>
     </a>
-    <div class="flex items-center md:order-2">
+    <div class="flex items-center  max-md:m-auto  md:order-2 ">
       <app-modal-login></app-modal-login>
     </div>
     <!-- dropdown -->
 
-    <div *ngIf="isUserLoggedIn()" class="relative md:order-2">
+    <div *ngIf="isUserLoggedIn()" class="relative md:order-2 m-auto">
       <ng-container  *ngIf="loadingData; else userImageContent">
         <app-skeleton-header (click)="showOptions()" ></app-skeleton-header>
       </ng-container>
+
       <ng-template #userImageContent>
-        <button (click)="showOptions()" type="button" class="flex text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"  aria-expanded="false">
+        <button (click)="showOptions()" type="button" class="flex text-sm m-auto rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300"  aria-expanded="false">
           <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-8 h-8 rounded-full" >
-          <!-- <img class="w-8 h-8 rounded-full" [src]="user?.userImg || '../../../assets/img/neon-zombie-hand-icon-on-dark-brick-background-vector-27034558.jpg'" alt="imagen de usuario"> -->
         </button>
       </ng-template>
 
@@ -50,18 +50,17 @@
         </div>
       </div>
     </div>
-    <button (click)="showMenu()" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 open-menu-btn"  aria-expanded="false">
+
+    <button (click)="showMenu()" type="button" class="inline-flex items-center fixed right-0 p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"  aria-expanded="false">
       <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
       </svg>
     </button>
 
-
     <!-- Menú en el header en pantallas medianas y grandes -->
     <div class="hidden md:block">
-      <ul class="z-50 flex flex-row font-medium md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:mt-0 md:border-0 md:bg-white  ">
+      <ul class="z-50 flex flex-row font-medium md:p-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-6 mt-0 md:border-0 md:bg-white  ">
         <li>
-
           <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']"  class="flex items-center my-2 mr-6 gap-1 text-gray-900 rounded-sm m-auto text-center md:p-0 border-b-2 hover:text-blue-700 hover:bg-sky-700/5 hover:rounded-lg hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2" >
             <mat-icon class="text-blue-800  text-md text-center hover:transform hover:scale-125">home</mat-icon> Home
           </a>
@@ -73,7 +72,7 @@
           <a [routerLink]="isUserLoggedIn() ? ['/music', { id: userId }] : ['/music']" class="block my-2 text-gray-900 rounded-sm  md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2 ">Música</a>
         </li>
         <li>
-          <a [routerLink]="isUserLoggedIn() ? ['/books', { id: userId }] : ['/books']" class="block my-2 mx-0 text-gray-900 rounded-sm  md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2 ">Literatura</a>
+          <a [routerLink]="isUserLoggedIn() ? ['/books', { id: userId }] : ['/books']" class="block my-2  text-gray-900 rounded-sm  md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110 hover:border-blue-950 hover:border-b-2 ">Literatura</a>
         </li>
         <li>
           <a [routerLink]="isUserLoggedIn() ? ['/cinema', { id: userId }] : ['/cinema']" class="block my-2 text-gray-900 rounded-sm md:p-0 border-b-2 hover:text-blue-700 hover:transform hover:scale-110  hover:border-blue-950 hover:border-b-2 ">Cine</a>
