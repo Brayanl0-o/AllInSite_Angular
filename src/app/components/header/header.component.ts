@@ -39,7 +39,7 @@ export class HeaderComponent {
     dataUser() {
       // Obtiene el ID del usuario logueado desde el servicio de autenticación
       const loggedInUserId = this.authService.getLoggedInUserId();
-      console.log('loggedInUserId:', loggedInUserId);
+      // console.log('loggedInUserId:', loggedInUserId);
 
       if (loggedInUserId) {
         // Asignar el userId obtenido al userId del componente
@@ -49,7 +49,7 @@ export class HeaderComponent {
 
           // Obtiene el ID de usuario de la URL
           const id = paramMap.get('id');
-          console.log('Id Login: ', id)
+           // console.log('Id Login: ', id)
 
           // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
           if (id === loggedInUserId) {
@@ -59,7 +59,7 @@ export class HeaderComponent {
               // console.log('Data User prfile', data)
             });
           } else {
-            console.error('Error ids diferentes no coinciden')
+            // console.error('No login')
             // this.router.navigate(['/error']);
           }
         });
