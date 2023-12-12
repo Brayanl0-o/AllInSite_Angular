@@ -1,8 +1,8 @@
 
 .slider-home{
- width: 100vh;
+ width: 80%;
  height: 55vh;
- margin: 0 auto;
+ margin: auto;
 }
 
 @media screen and (max-width: 1050px) {
@@ -29,10 +29,17 @@
   }
 
 }
+@media screen and (max-width: 768px) {
+  .slider-home{
+    width: 90%;
+    height: 40vh;
+    margin: 0 auto;
+   }
+}
 @media screen and (max-width: 450px) {
   .slider-home{
-    width: 30vh;
-    height: 20vh;
+    width: auto;
+    height: 30vh;
     margin: 0 auto;
   }
 
@@ -51,8 +58,8 @@
 }
 @media screen and (max-width: 350px) {
   .slider-home{
-    width: 25vh;
-    height: 15vh;
+    width: auto;
+    height: 30vh;
     margin: 0 auto;
    }
 }
