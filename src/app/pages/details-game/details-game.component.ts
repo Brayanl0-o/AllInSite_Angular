@@ -54,7 +54,6 @@ export class DetailsGameComponent {
       const userId = params.get('userId');
       const gameId = params.get('gameId');
       if (gameId) {
-        console.log('game id:', gameId);
 
         if (userId) {
           this.gameDetails$ = this.videogamesService.getGameById(userId, gameId as string);
@@ -62,7 +61,6 @@ export class DetailsGameComponent {
           // console.log('Valor de game:', game);
           if (game && game.gameImg) {
             this.gameImgUrl = game.gameImg;
-            console.log('Valor de gameImgUrl:', this.gameImgUrl);
           } else {
             console.error('Game o gameImg son nulos o indefinidos.');
             this.gameImgUrl = '';
@@ -74,11 +72,10 @@ export class DetailsGameComponent {
           this.gameDetails$.subscribe((game) => {
             if (game && game.gameImg) {
               this.gameImgUrl = game.gameImg;
-              // console.log('Valor de gameImgUrl:', this.gameImgUrl);
             } else {
               console.error('Game o gameImg son nulos o indefinidos.');
               this.gameImgUrl = '';
-            }// Asumiendo que la URL de la imagen se encuentra en el objeto Game
+            }
           });
         }
       }
