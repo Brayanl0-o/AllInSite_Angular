@@ -28,7 +28,15 @@ export class DetailsGameComponent {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.imageUrl = `${apiUrl}uploads/videogames/`
     this.loadDataGame();
+    this.isAdminOrNot();
   }
+  isAdmin: boolean = false;
+  isAdminOrNot(){
+    const logginRoles = this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador';
+    this.isAdmin = logginRoles.includes(allowedRole)
+  }
+
   isModalVisible!: boolean;
   openModal() {
     this.isModalVisible = true;
