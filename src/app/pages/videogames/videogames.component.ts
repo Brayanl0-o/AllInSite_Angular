@@ -35,12 +35,25 @@ export class VideogamesComponent {
     private router:Router
   ) {}
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.dataUser()
     this.loadGameData();
-    this.subscribeFilter()
+    this.subscribeFilter();
+    this.IsAdminOrUser();
+  }
+
+  isAdmin: boolean = false;
+  IsAdminOrUser(){
+    const getRoleUser = this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador'
+
+    if(getRoleUser == allowedRole){
+      this.isAdmin = true;
+    } else{
+      console.warn('El usuario no tiene el rol de administrador algunas funciones no se mostraran');
+    }
   }
 
   isModalVisible!: boolean;
@@ -54,14 +67,12 @@ export class VideogamesComponent {
   }
 
   dataUser(){
-
     const loggedInUserId = this.authService.getLoggedInUserId();
 
     if (loggedInUserId) {
       this.userId = loggedInUserId;
       this.route.paramMap.subscribe(paramMap => {
           const id = paramMap.get('id');
-          // console.log('Id Login: ', id)
 
           if (id === loggedInUserId) {
             this.userShared.getUser(id).subscribe(data => {
@@ -69,25 +80,25 @@ export class VideogamesComponent {
               // console.log('Data User prfile', data)
             });
           } else {
-            console.error('No login')
+            // console.error('No login')
             // this.router.navigate(['/error']);
           }
         });
       }
   }
+
   navigateToVideogames(userId: string | null) {
     const route = userId ? `/videogames;id=${userId}` : '/videogames';
     this.router.navigateByUrl(route);
   }
 
   deleteGame(gameId: string) {
-
     this.videogamesService.deleteGame(gameId).subscribe(
       (response) => {
         this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
-        console.log('Game eliminada exitosamente', response);
-      //  window.location.reload();
-      this.navigateToVideogames(this.userId);
+          console.log('Game eliminada exitosamente', response);
+          //  window.location.reload();
+          this.navigateToVideogames(this.userId);
       },
       (error) => {
         console.error('Error al eliminar game', error);
