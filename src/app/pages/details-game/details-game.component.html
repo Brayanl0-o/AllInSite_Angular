@@ -47,7 +47,7 @@
           <button (click)="backVideogames()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform  hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
             <mat-icon class="w-6 h-6 text-black">undo</mat-icon>
           </button>
-          <button (click)="openModal()" class="p-2 w-10 h-10  text-white transition-colors duration-300 transform hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
+          <button *ngIf="isAdmin" (click)="openModal()" class="p-2 w-10 h-10  text-white transition-colors duration-300 transform hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
             <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
           </button>
           <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
