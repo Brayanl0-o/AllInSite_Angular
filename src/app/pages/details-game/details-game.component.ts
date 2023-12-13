@@ -17,6 +17,7 @@ export class DetailsGameComponent {
   gameDetails$: Observable<Game>;
   gameId: string | null = null;
   gameImgUrl: string | null = null;
+
   constructor(private videogamesService: VideogamesService,
     private authService: AuthService,
     private renderer: Renderer2,
@@ -24,12 +25,14 @@ export class DetailsGameComponent {
     private router: Router) {
     this.gameDetails$ = new Observable<Game>();
   }
+
   ngOnInit() {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.imageUrl = `${apiUrl}uploads/videogames/`
     this.loadDataGame();
     this.isAdminOrNot();
   }
+
   isAdmin: boolean = false;
   isAdminOrNot(){
     const logginRoles = this.authService.getLoggedUserRole();
@@ -42,10 +45,12 @@ export class DetailsGameComponent {
     this.isModalVisible = true;
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
+
   navigateToVideogames(userId?: string | null) {
     const route = userId ? `/videogames;id=${userId}` : '/videogames';
     this.router.navigateByUrl(route);
   }
+
   imageUrl!: string;
   backVideogames() {
     const userId = this.authService.getLoggedInUserId();
@@ -55,7 +60,6 @@ export class DetailsGameComponent {
       this.navigateToVideogames();
     }
   }
-
 
   loadDataGame() {
     this.route.paramMap.subscribe((params: ParamMap) => {
