@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
 import { environment } from 'src/environments/environment';
@@ -78,6 +78,12 @@ export class VideogamesService {
 
   deleteGame(gameId: string): Observable<any> {
     const url = `${this.apiUrl}games/delete/${gameId}`;
-    return this.http.delete(url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-access-token': localStorage.getItem('token') || '', // Agrega el token al encabezado
+      }),
+    };
+    return this.http.delete(url, httpOptions);
   }
 }
