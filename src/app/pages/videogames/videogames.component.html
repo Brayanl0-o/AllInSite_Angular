@@ -76,8 +76,8 @@
           <div class="mb-4">
             <app-aside></app-aside>
           </div>
-          <button type="submit" aria-label="Boton para subir un videojuego"
-              class="  text-white bg-[#006186] transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
+          <button *ngIf="isAdmin" type="submit" aria-label="Boton para subir un videojuego"
+              class="text-white bg-[#006186] transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#008999]"
               (click)="openModal()">
               <div class="flex flex-row items-center justify-evenly">
                 <mat-icon >library_add</mat-icon>
