@@ -47,11 +47,6 @@ export class RegisterComponent {
   }
 
   signUp() {
-    console.log('Funcion signUpEjecuteSuccess');
-    console.log('contactform antes del if',this.contactForm.valid);
-    console.log('contactform antes del if',this.contactForm.value);
-    console.log('selectedFile',this.selectedFile);
-
     if (this.contactForm.valid) {
       console.log('Funcion signUpx2EjecuteSuccess');
 
