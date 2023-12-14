@@ -63,10 +63,8 @@ export class VideogamesService {
 
   updateGame(id: string,gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
+
     const formData = new FormData();
-    if (gameImg) {
-      formData.append('gameImg', gameImg);
-    }
     formData.append('gameName', gameData.gameName);
     formData.append('platform', gameData.platform);
     formData.append('releaseDate', gameData.releaseDate);
@@ -74,9 +72,18 @@ export class VideogamesService {
     formData.append('genre', gameData.genre);
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
+    if (gameImg) {
+      formData.append('gameImg', gameImg);
+    }
+    console.log('data', gameData.releaseDate, gameData.averageRating)
     // formData.append('gameImg', gameImg);
-    console.log('gameData service', formData)
-    return this.http.put(url, formData);
+    // console.log('gameData service', formData)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token') || '', // Agrega el token al encabezado
+      }),
+    };
+    return this.http.patch(url, formData, httpOptions);
   }
 
   deleteGame(gameId: string): Observable<any> {
