@@ -42,7 +42,6 @@ export class VideogamesService {
   createGame(gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/create`;
 
-    // Crea un objeto FormData para enviar tanto los datos del juego como la imagen
     const formData = new FormData();
     formData.append('gameName', gameData.gameName);
     formData.append('platform', gameData.platform);
@@ -52,16 +51,20 @@ export class VideogamesService {
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
-    console.log('urlSingUpp', url)
-    console.log('formData service', formData)
-    return this.http.post(url, formData);
+    // console.log('urlSingUpp', url)
+    // console.log('formData service', formData)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.post(url, formData, httpOptions);
   }
 
   updateGame(id: string,gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
     const formData = new FormData();
     if (gameImg) {
-      // Si gameImg es diferente de null, agrega la nueva imagen al formData.
       formData.append('gameImg', gameImg);
     }
     formData.append('gameName', gameData.gameName);
