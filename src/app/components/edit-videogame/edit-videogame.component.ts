@@ -86,10 +86,10 @@ export class EditVideogameComponent {
         gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
         gameImg: [this.game.gameImg],
         platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
-        releaseDate: ['',[]],
+        releaseDate: ['',[Validators.required]],
         developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
         genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-        averageRating:['',[this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+        averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
         descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
 
       })
