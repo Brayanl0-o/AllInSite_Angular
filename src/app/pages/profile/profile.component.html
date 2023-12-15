@@ -12,12 +12,12 @@
         <div class="relative flex flex-col min-w-0 break-words  bg-white w-full shadow-xl hover:shadow rounded-lg mt-16">
           <div class="px-6 mb-5">
             <div class="flex flex-wrap justify-center">
-              <div class="absolute top-4 right-2 flex flex-col sm:flex-row justify-center items-center ">
+              <div class="absolute top-4 right-2 max-sm:right-0 flex flex-col sm:flex-row justify-center items-center ">
                 <div>
                   <button type="submit" aria-label="Boton para actualizar mis datos"
-                    class=" bg-[none] transition-colors  w-full rounded-lg  sm:text-xl "
+                    class=" bg-[none] transition-colors w-full max-sm:w-8  rounded-lg  sm:text-xl "
                     (click)="openModal(user)">
-                    <mat-icon class="text-4xl text-blue-800 hover:transform hover:scale-125 pr-10 pb-20">edit_note</mat-icon>
+                    <mat-icon class="text-4xl max-sm:text-3xl text-blue-800 hover:transform hover:scale-125 pr-10 pb-20">edit_note</mat-icon>
 
                   </button>
                   <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50" *ngIf="isModalVisible">
@@ -28,16 +28,15 @@
                   </div>
                 </div>
               </div>
-
               <div class="w-full px-4 flex justify-center">
                 <div class="relative">
                   <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
                     aria-label="Boton para actualizar imagen de perfil"
                     style="clip-path:polygon(0 100%, 100% 100%, 100% 80%, 0 80%);"
-                    class="rounded-full bg-slate-600/30  backdrop-blur-sm w-80 h-80 -mt-20 ml-0 mb-0 absolute z-0 text-gray-500 hover:text-blue-500 focus:outline-none">
-                    <mat-icon class="h-20 w-20 mt-64 ml-0 blur-none mb-0 hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
+                    class="blur-editing absolute rounded-full bg-slate-600/30  backdrop-blur-sm w-80 h-80 max-sm:w-64 max-sm:h-64 -mt-20 z-0 text-gray-500 hover:text-blue-500 focus:outline-none">
+                    <mat-icon class="h-20 w-20 fixed bottom-5 max-sm:bottom-2 left-1/2 transform -translate-x-1/2  blur-none hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
                   </button>
-                  <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="w-80 h-80 -mt-20 ml-0 mb-0 align-middle rounded-full hover:shadow shadow-lg border-none ">
+                  <img loading="lazy" [src]="imageUrl + user?.userImg" alt="{{user?.firstName}} {{user?.lastName}}" class="editing w-80 h-80 max-sm:w-64 max-sm:h-64 -mt-20 m-auto rounded-full hover:shadow shadow-lg border-none ">
 
                 </div>
               </div>
@@ -82,57 +81,55 @@
                 <!-- {{user?.userName}} -->
               </h3>
               <span class="my-3">{{user?.email}}</span>
-          <div class="flex flex-col items-center mt-4 sm:mx-auto">
-              <button type="submit" class="text-blue-700 text-lg sm:text-xl flex flex-col items-center"
-                tabindex="0" aria-label="Mi ubicación de perfil">
-                <mat-icon class="text-2xl bounce-animation" >pin_drop</mat-icon>
-                <span tabindex="0"> {{ user?.country}}</span>
-              </button>
+              <div class="flex flex-col items-center mt-4 sm:mx-auto">
+                  <button type="submit" class="text-blue-700 text-lg sm:text-xl flex flex-col items-center"
+                    tabindex="0" aria-label="Mi ubicación de perfil">
+                    <mat-icon class="text-2xl bounce-animation" >pin_drop</mat-icon>
+                    <span tabindex="0"> {{ user?.country}}</span>
+                  </button>
 
-            </div>
-            </div>
+                </div>
+                </div>
 
-            <hr class="mt-8">
+                <hr class="mt-8">
 
-            <div class="flex p-4">
-              <div class="w-1/2 text-center">
-                <span class="font-bold">1.8 k</span> Followers
-              </div>
-              <div class="w-0 border border-gray-300">
-              </div>
-              <div class="w-1/2 text-center">
-                <span class="font-bold">2.0 k</span> Following
-              </div>
-            </div>
+                <div class="flex p-4">
+                  <div class="w-1/2 text-center">
+                    <span class="font-bold">1.8 k</span> Followers
+                  </div>
+                  <div class="w-0 border border-gray-300">
+                  </div>
+                  <div class="w-1/2 text-center">
+                    <span class="font-bold">2.0 k</span> Following
+                  </div>
+                </div>
 
-            <div class=" border-t border-blueGray-200 text-center ">
-              <div class=" w-full group max-w-md min-w-full mx-auto mt-6 mb-6 break-words bg-white border shadow-2xl dark:bg-gray-800 dark:border-gray-700 md:max-w-sm rounded-xl">
-                <div class="flex flex-wrap justify-center">
-                    <div class="w-full ">
-                        <p class="text-lg leading-relaxed text-blueGray-700 p-5">
-                          {{user?.descriptionUser}}</p>
-                        <!-- <a class="font-normal text-pink-500">
-                          Show more</a> -->
+                <div class=" border-t border-blueGray-200 text-center ">
+                  <div class=" w-full group max-w-md min-w-full mx-auto mt-6 mb-6 break-words bg-white border shadow-2xl dark:bg-gray-800 dark:border-gray-700 md:max-w-sm rounded-xl">
+                    <div class="flex flex-wrap justify-center">
+                        <div class="w-full ">
+                            <p class="text-lg leading-relaxed text-blueGray-700 p-5">
+                              {{user?.descriptionUser}}</p>
+                            <!-- <a class="font-normal text-pink-500">
+                              Show more</a> -->
 
-                        <div class="pb-6 ">
-                          <div class=" h-6 min-w-full overflow-hidden translate-y-6 rounded-br-xl">
-                            <div class=" flex rounded-b-2xl">
-                                <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg]  bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
-                                <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                            <div class="pb-6 ">
+                              <div class=" h-6 min-w-full overflow-hidden translate-y-6 rounded-br-xl">
+                                <div class=" flex rounded-b-2xl">
+                                    <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                    <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg]  bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                    <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                    <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                    <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
                         </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-
-          </div>
-        </div>
       </div>
     </div>
   </ng-template>
