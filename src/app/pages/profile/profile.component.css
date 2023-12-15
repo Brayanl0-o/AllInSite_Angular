@@ -14,3 +14,12 @@
     transform: translateY(-5px);
   }
 }
+@media (max-width: 380px) {
+  .blur-editing,
+  .editing {
+    width: 12rem;
+    height: 12rem;
+
+  }
+
+}
