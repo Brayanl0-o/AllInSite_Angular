@@ -42,6 +42,7 @@ export class VideogamesComponent {
     this.loadGameData();
     this.subscribeFilter();
     this.IsAdminOrUser();
+
   }
 
   isAdmin: boolean = false;
