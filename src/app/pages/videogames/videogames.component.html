@@ -27,7 +27,7 @@
             </button>
             <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-end absolute top-10 right-4 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
                 <div class="px-3 py-2 bg-gray-400 w-max rounded-md ">
-                    <h3 class="font-semibold text-gray-90">Información extra</h3>
+                    <span class="font-semibold text-gray-90">Información extra</span>
                 </div>
                 <div class="px-3 py-2 bg-gray-200 rounded-lg rounded-t-md text-xs">
                   <p class="mb-1 text-gray-800 font-semibold">Plataformas: <span class="font-normal">{{ game.platform }}</span> </p>
@@ -40,7 +40,7 @@
 
           <div class="px-4 pb-4 bg-gray-100/60">
             <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
-              <h5 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h5>
+              <h2 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h2>
             </a>
             <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
               <div class="game-card-description mb-2">
