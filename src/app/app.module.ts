@@ -32,6 +32,7 @@ import { PaginationVideogamesComponent } from './components/pagination-videogame
 import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { EditVideogameComponent } from './components/edit-videogame/edit-videoga
     PaginationVideogamesComponent,
     AddVideogameComponent,
     EditVideogameComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     CommonModule,
