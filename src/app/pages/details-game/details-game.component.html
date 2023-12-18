@@ -1,6 +1,9 @@
 
-<body class="bg-black min-h-min h-auto "  >
-    <app-header></app-header>
+<app-header></app-header>
+
+<app-loading-screen  *ngIf="isLoading" ></app-loading-screen>
+
+<body class="bg-black min-h-min h-auto"  >
 
   <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" class="absolute top-0 w-full h-full bg-center bg-cover object-cover max-sm:min-h-[150vh]  sm:min-h-[200vh]  md:min-h-screen lg:min-h-screen  xl:min-h-screen">
     <!-- <section class="h-500-px " >
