@@ -17,7 +17,6 @@ export class DetailsGameComponent {
   gameDetails$: Observable<Game>;
   gameId: string | null = null;
   gameImgUrl: string | null = null;
-
   constructor(private videogamesService: VideogamesService,
     private authService: AuthService,
     private renderer: Renderer2,
@@ -61,22 +60,28 @@ export class DetailsGameComponent {
     }
   }
 
+  isLoading: boolean = true;
   loadDataGame() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const userId = params.get('userId');
       const gameId = params.get('gameId');
+
       if (gameId) {
 
         if (userId) {
           this.gameDetails$ = this.videogamesService.getGameById(userId, gameId as string);
-         this.gameDetails$.subscribe((game) => {
+          this.gameDetails$.subscribe((game) => {
           // console.log('Valor de game:', game);
-          if (game && game.gameImg) {
-            this.gameImgUrl = game.gameImg;
-          } else {
-            console.error('Game o gameImg son nulos o indefinidos.');
-            this.gameImgUrl = '';
-          }
+          this.gameImgUrl = game.gameImg;
+          this.isLoading = false;
+          // if (game && game.gameImg) {
+          //   this.gameImgUrl = game.gameImg;
+          //   this.isLoading = false;
+
+          // } else {
+          //   console.error('Game o gameImg son nulos o indefinidos.');
+          //   this.gameImgUrl = '';
+          // }
         });
         } else {
           this.gameDetails$ = this.videogamesService.getGameById('', gameId as string);
@@ -84,6 +89,8 @@ export class DetailsGameComponent {
           this.gameDetails$.subscribe((game) => {
             if (game && game.gameImg) {
               this.gameImgUrl = game.gameImg;
+              this.isLoading = false;
+
             } else {
               console.error('Game o gameImg son nulos o indefinidos.');
               this.gameImgUrl = '';
