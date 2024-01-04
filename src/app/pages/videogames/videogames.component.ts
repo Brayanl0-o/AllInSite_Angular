@@ -123,6 +123,7 @@ export class VideogamesComponent {
     this.filteredGames = this.games.filter((game) =>
       game.gameName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+    this.page = 1;
   }
 
   onSearchValueChanged(searchTerm: string) {
@@ -195,6 +196,8 @@ export class VideogamesComponent {
     } else if (filters.order === 'desc') {
       this.filteredGames.sort((a, b) => b.averageRating - a.averageRating);
     }
+    this.page = 1;
+
   }
 
 }
