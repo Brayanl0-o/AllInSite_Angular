@@ -12,14 +12,17 @@ export class HomeComponent {
   userId: string | null = null;
 
   slides: SliderGamesInterface[]= [
-    {url: '../../../assets/img/dantes.webp',title:'ejemplo'},
-    {url: '../../../assets/img/shadow2.jpg',title:'ejemplo'},
-    {url: '../../../assets/img/half_life_2-black-whit.jpeg',title:'ejemplo'},
-    {url: '../../../assets/img/Mafia1.jpg',title:'ejemplo'},
-    {url: '../../../assets/img/halo.jpg',title:'ejemplo'},
-    {url: '../../../assets/img/madison.png',title:'ejemplo'},
-    {url: '../../../assets/img/shadow.jpg',title:'ejemplo'},
-    {url: '../../../assets/img/half_life_3.jpeg',title:'ejemplo'},
+    {url: '../../../assets/img/slider-home/videogames2.webp',title:'videogames2'},
+    {url: '../../../assets/img/slider-home/dantes.webp',title:'dantes'},
+    {url: '../../../assets/img/slider-home/shadow2.webp',title:'shadow2'},
+    {url: '../../../assets/img/slider-home/half_life_2-black-whit.webp',title:'half life 2'},
+    {url: '../../../assets/img/slider-home/Mafia1.webp',title:'Mafia1'},
+    {url: '../../../assets/img/slider-home/halo.webp',title:'halo'},
+    {url: '../../../assets/img/slider-home/madison.webp',title:'madison'},
+    {url: '../../../assets/img/slider-home/shadow.webp',title:'shadow'},
+    {url: '../../../assets/img/slider-home/half_life_3.webp',title:'half life 3'},
+    {url: '../../../assets/img/slider-home/videogames.webp',title:'videogames'},
+
   ];
 
   constructor(private authService: AuthService) {}
