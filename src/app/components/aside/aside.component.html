@@ -18,6 +18,33 @@
       <div class="mb-2">
 
         <ul class="px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+
+          <div class=" mt-2 ">
+            <label for="order" class="flex items-center flex-row justify-center text-lg font-medium dark:text-white" (click)="toggleDeveloperDropdown()">
+              Calificación
+                <svg class="w-4 h-4 text-yellow-400 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                </svg>
+            </label>
+            <div class="flex flex-row-reverse justify-center items-center text-lg w-auto p-2 gap-6">
+              <button class="cursor-pointer " (click)="toggleOrderDropdown('asc')">
+                <mat-icon class=" text-4xl max-sm:text-3xl pr-10 pb-10 bg-slate-500/40 rounded-full hover:transform hover:scale-105  hover:border-blue-800/60  material-symbols-outlined">
+                trending_down
+                </mat-icon>
+              </button>
+              <button class="cursor-pointer" (click)="toggleOrderDropdown('desc')">
+                <mat-icon class="  text-4xl max-sm:text-3xl pr-10 pb-10 bg-slate-500/40 rounded-full hover:transform hover:scale-105 focus:border-20 focus: border-solid focus:border-blue-700 hover:border-blue-800/60 material-symbols-outlined">
+                trending_up
+                </mat-icon>
+              </button>
+            </div>
+
+            <!-- <select [(ngModel)]="selectedFilters.order" id="states" (change)="toggleOrderDropdown(selectedFilters.order)" class="w-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="asc"><mat-icon>arrow_drop__circle</mat-icon></option>
+              <option value="desc"><mat-icon>arrow_drop_down_circle</mat-icon></option>
+            </select> -->
+          </div>
+
           <div class="mb-4 mt-1">
             <label for="genre" class="flex items-center flex-row justify-center mt-0 text-lg font-medium" (click)="toggleGenreDropdown()">
               Género
@@ -84,31 +111,33 @@
             </div>
           </div>
 
-
-
-          <div class="mb-4">
-            <label for="order" class="flex items-center flex-row justify-center text-xl font-medium" (click)="toggleDeveloperDropdown()">
+          <div>
+            <label for="order" class=" flex items-center flex-row justify-center text-xl font-medium mb-2" (click)="toggleDeveloperDropdown()">
               Fecha de lanzamiento:
-             </label>
-            <label for="startDate" class="flex items-center flex-row justify-center text-sm font-medium">Desde:</label>
-            <div class="flex justify-center">
-              <input
-                type="date"
-                id="startDate"
-                [(ngModel)]="selectedFilters.startDate"
-                class=" mr-2 cursor-pointer "
-              />
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label for="endDate" class="flex items-center flex-row justify-center text-sm font-medium">Haasta:</label>
-            <div class="flex justify-center">
-              <input
-                type="date"
-                id="endDate"
-                [(ngModel)]="selectedFilters.endDate"
-                class="mr-2 cursor-pointer"/>
+            </label>
+            <div class="mb-4 flex items-center flex-row justify-center">
+              <div>
+                <label for="startDate" class="flex items-center flex-row justify-center text-sm font-medium">Desde:</label>
+                <div class="flex justify-center">
+                  <input
+                    type="date"
+                    id="startDate"
+                    [(ngModel)]="selectedFilters.startDate"
+                    class="w-9/12 cursor-pointer "
+                  />
+                </div>
+              </div>
+              <span>-</span>
+              <div>
+                <label for="endDate" class="flex items-center flex-row justify-center text-sm font-medium">Hasta:</label>
+                <div class="flex justify-center">
+                  <input
+                    type="date"
+                    id="endDate"
+                    [(ngModel)]="selectedFilters.endDate"
+                    class="w-9/12 cursor-pointer"/>
+                </div>
+              </div>
             </div>
           </div>
       </ul>
@@ -140,28 +169,4 @@
 
 
 
-<div class="mb-4 mt-5  ">
-  <label for="order" class="flex items-center flex-row justify-center text-lg font-medium dark:text-white" (click)="toggleDeveloperDropdown()">
-    Calificación
-      <svg class="w-4 h-4 text-yellow-400 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-      </svg>
-  </label>
-  <div class="flex flex-row-reverse justify-start items-start text-lg  w-full ">
-    <button class="cursor-pointer w-full max-sm:w-full" (click)="toggleOrderDropdown('asc')">
-      <mat-icon class=" -z-10 absolute text-4xl max-sm:text-3xl pr-10 pb-10 bg-slate-500/40 rounded-full hover:transform hover:scale-105 hover:border-2 hover:border-solid hover:border-blue-800/60  material-symbols-outlined">
-      trending_down
-      </mat-icon>
-    </button>
-    <button class="cursor-pointer" (click)="toggleOrderDropdown('desc')">
-      <mat-icon class=" -z-10 absolute text-4xl max-sm:text-3xl pr-10 pb-10 bg-slate-500/40 rounded-full hover:transform hover:scale-105 hover:border-2 hover:border-solid hover:border-blue-800/60 material-symbols-outlined">
-      trending_up
-      </mat-icon>
-    </button>
-  </div>
 
-  <!-- <select [(ngModel)]="selectedFilters.order" id="states" (change)="toggleOrderDropdown(selectedFilters.order)" class="w-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg border-l-gray-100 dark:border-l-gray-700 border-l-2 focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-    <option value="asc"><mat-icon>arrow_drop__circle</mat-icon></option>
-    <option value="desc"><mat-icon>arrow_drop_down_circle</mat-icon></option>
-  </select> -->
-</div>
