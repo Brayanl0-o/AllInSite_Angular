@@ -44,15 +44,15 @@
             </select> -->
           </div>
 
-          <div class="mb-4 mt-1">
-            <label for="genre" class="flex items-center flex-row justify-center mt-0 text-lg text-gray-600 font-semibold " (click)="toggleGenreDropdown()">
+          <div class="mb-4 mt-1 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+            <label for="genre" class=" flex items-center flex-row justify-center text-center py-1 text-lg text-gray-600 font-semibold " (click)="toggleGenreDropdown()">
               Género
               <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </label>
-            <div *ngIf="showGenreDropdown" class="mt-2 h-28 overflow-auto" >
-              <div *ngFor="let genre of availableGenres" class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
+            <div *ngIf="showGenreDropdown" class="h-28 overflow-auto border-t-2" >
+              <div *ngFor="let genre of availableGenres" class="flex items-center pl-2  rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
                 <label  class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                 <input
                     type="checkbox"
@@ -66,13 +66,13 @@
             </div>
           </div>
 
-          <div>
-            <label for="platform" class="flex items-center flex-row justify-center text-lg text-gray-600 font-semibold " (click)="togglePlatformDropdown()">Plataformas
+          <div class="mb-4 mt-5 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+            <label for="platform" class=" flex items-center flex-row justify-center text-lg py-1 text-gray-600 font-semibold " (click)="togglePlatformDropdown()">Plataformas
               <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </label>
-            <div *ngIf="showPlatformDropdown" class="mt-2 h-28 overflow-auto">
+            <div *ngIf="showPlatformDropdown" class="h-28 overflow-auto border-t-2">
               <div *ngFor="let platform of availablePlatforms" class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                 <label class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                   <input
@@ -87,14 +87,14 @@
             </div>
           </div>
 
-          <div class="mb-4 mt-5">
-            <label for="developer " class="flex items-center flex-row justify-center text-lg text-gray-600 font-semibold" (click)="toggleDeveloperDropdown()">
+          <div class="mb-4 mt-5 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+            <label for="developer " class="flex items-center flex-row justify-center text-lg py-1 text-gray-600 font-semibold" (click)="toggleDeveloperDropdown()">
              Desarrollador
               <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
               </svg>
             </label>
-            <div *ngIf="showDeveloperDropdown" class="mt-2 h-28 overflow-auto" >
+            <div *ngIf="showDeveloperDropdown" class="h-28 overflow-auto border-t-2" >
               <div *ngFor="let developer of availableDevelopers" class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
                 <label  class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                 <input
