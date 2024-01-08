@@ -3,25 +3,14 @@
 
 <app-loading-screen  *ngIf="isLoading" ></app-loading-screen>
 
-<body class="bg-black min-h-min h-auto"  >
+  <!-- [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" -->
+  <!-- <div *ngIf="gameDetails$ | async as gameDetails"  class="bg-black absolute top-0 w-full h-full bg-center bg-cover object-cover max-sm:min-h-[150vh]  sm:min-h-[200vh]  md:min-h-screen lg:min-h-screen  xl:min-h-screen"> -->
+  <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'"  class=" absolute top-0 w-full h-auto bg-center bg-cover object-cover ">
 
-  <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" class="absolute top-0 w-full h-full bg-center bg-cover object-cover max-sm:min-h-[150vh]  sm:min-h-[200vh]  md:min-h-screen lg:min-h-screen  xl:min-h-screen">
-    <!-- <section class="h-500-px " >
-
-
-    </section> -->
-    <!-- <span  class="w-full h-full absolute opacity-40 bg-black"></span>
-
-    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
-      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
-      </svg>
-    </div> -->
     <span  class="w-full h-full absolute opacity-60 bg-black"></span>
-    <div class="flex justify-center relative top-40 bg-slate-400/30  m-auto h-auto  w-auto" >
 
+    <div class="flex justify-center relative mt-36 bg-slate-400/30 m-auto h-auto w-auto" >
       <img class="object-cover h-auto w-1/4 rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
-
       <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
         <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
         <div class="game-description  text-gray-800 text-lg p-2">
@@ -31,7 +20,6 @@
             Sed omnis, fugit delectus commodi corporis reprehenderit modi
             velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
           </ng-template>
-
         </div>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p>
         <p class="text-gray-800 text-2xl py-2">{{ gameDetails.developer }}</p>
@@ -43,7 +31,7 @@
           </span>
           <svg class="w-10 h-10 inline-block text-yellow-300 mr-1 -mt-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
+          </svg>
         </p>
 
         <div class="absolute top-0 right-0 bg-black/20">
@@ -62,8 +50,18 @@
         </div>
       </div>
     </div>
+
+
+   <div class="flex justify-center bg-slate-400/10 m-auto h-[50vh] w-auto mt-2 mb-10" >
+      <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
+        <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
+        <div class="game-description  text-gray-800 text-lg p-2">
+
+        </div>
+
+      </div>
+    </div>
   </div>
-</body>
 
 <!-- component -->
 <!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
@@ -78,3 +76,16 @@
   <h1 class="font-semibold text-4xl tracking-wide">I have overlay</h1>
   <p class="text-xs text-center leading-tight">Overlay applied using pseudo CSS element. where parent css is position relative and then sudo class is applied as absolute positioned</p>
   </div> -->
+
+
+      <!-- <section class="h-500-px " >
+
+
+    </section>
+    <span  class="w-full h-full absolute opacity-40 bg-black"></span>
+
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div> -->
