@@ -7,4 +7,27 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  ngOnInit(){
+    this.scrollListener();
+  }
+
+  scrollListener(){
+    let prevScroll = window.pageYOffset;
+
+
+    window.onscroll =  () => {
+      const currentScroll = window.pageYOffset;
+
+      const footerElement = document.querySelector('footer');
+
+      if (footerElement) {
+        if (prevScroll < currentScroll || currentScroll + window.innerHeight >= document.documentElement.scrollHeight) {
+          footerElement.classList.remove('footer-hidden');
+        } else {
+          footerElement.classList.add('footer-hidden');
+        }
+      }
+      prevScroll = currentScroll;
+    }
+  }
 }
