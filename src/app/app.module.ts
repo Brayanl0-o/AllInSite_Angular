@@ -33,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     AddVideogameComponent,
     EditVideogameComponent,
     LoadingScreenComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
