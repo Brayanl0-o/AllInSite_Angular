@@ -1,0 +1,19 @@
+/* Estilo inicial del footer */
+footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Clase para ocultar el footer */
+.footer-hidden {
+  transform: translateY(100%);
+}
