@@ -38,12 +38,12 @@ export class SharedUsersService {
   updateUser(id: string, userData: any): Observable<any> {
     const url = `${this.URL}users/update/${id}`;
     console.log('userData service', userData)
-    return this.http.put(url, userData);
+    return this.http.patch(url, userData);
   }
 
 
   updateUserImg(id: string,userData: any, userImg: File): Observable<any> {
-    const url = `${this.URL}users/update/${id}`;
+    const url = `${this.URL}users/updateImg/${id}`;
     console.log('url service updateUser Img', url)
     const formData = new FormData();
     if (userImg) {
@@ -58,7 +58,7 @@ export class SharedUsersService {
     formData.append('averageRating', userData.averageRating);
     formData.append('descriptionGame', userData.descriptionGame);
     console.log('userData service', formData)
-    return this.http.put(url, formData);
+    return this.http.patch(url, formData);
   }
 
 }
