@@ -41,13 +41,14 @@
                 </div>
               </div>
               <!-- *ngIf="isEditingImg"  -->
-              <div *ngIf="isEditingImg" class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
+              <div *ngIf="isEditingImg"  class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
                 <div class="rounded-md fixed flex flex-col items-center justify-center w-max h-max m-auto max-sm:w-[80%] bg-slate-200 mb-4 z-50 p-4">
                   <div class="relative top-4">
                     <label class="text-black/80 font-semibold " for="userImg">
                       Sube la Imagen de Perfil:
                       <br>
                     </label>
+                    <p class="text-sm font-semibold ml-2 text-slate-900/80  w-10/12  ">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
 
                     <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
                       {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
