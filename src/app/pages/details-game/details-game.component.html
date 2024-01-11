@@ -23,7 +23,7 @@
         </div>
         <!-- <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p> -->
         <p class="text-gray-800 text-2xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer }}</span> </p>
-        <p class="text-gray-800 text-xl py-2"> Fecha:<span class="font-semibold"> {{ gameDetails.releaseDate}}</span> </p>
+        <p class="text-gray-800 text-xl py-2"> Fecha:<span class="font-semibold"> {{ gameDetails.releaseDate | date: 'yyyy-MM-dd'}}</span> </p>
         <p class="text-gray-800 text-2xl py-2">Genero: <span class="font-semibold">{{ gameDetails.genre }}</span> </p>
         <p class=" font-semibold text-gray-700 dark:text-gray-400 py-10">
           <span class= " inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
