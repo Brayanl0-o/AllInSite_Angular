@@ -12,7 +12,7 @@
     <div class="flex justify-center relative mt-36 bg-slate-400/30 m-auto h-auto w-auto" >
       <img class="object-cover h-auto w-1/4 rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
       <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
-        <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
+        <h1 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h1>
         <div class="game-description  text-gray-800 text-lg p-2">
           <p *ngIf="gameDetails.descriptionGame; else defaultText">{{gameDetails.descriptionGame}}   </p>
           <ng-template #defaultText>
@@ -21,10 +21,10 @@
             velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
           </ng-template>
         </div>
-        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p>
-        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.developer }}</p>
-        <p class="text-gray-800 text-xl py-2">{{ gameDetails.releaseDate}}</p>
-        <p class="text-gray-800 text-2xl py-2">{{ gameDetails.genre }}</p>
+        <!-- <p class="text-gray-800 text-2xl py-2">{{ gameDetails.platform }}</p> -->
+        <p class="text-gray-800 text-2xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer }}</span> </p>
+        <p class="text-gray-800 text-xl py-2"> Fecha:<span class="font-semibold"> {{ gameDetails.releaseDate}}</span> </p>
+        <p class="text-gray-800 text-2xl py-2">Genero: <span class="font-semibold">{{ gameDetails.genre }}</span> </p>
         <p class=" font-semibold text-gray-700 dark:text-gray-400 py-10">
           <span class= " inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
             {{ gameDetails.averageRating }}
@@ -51,17 +51,24 @@
       </div>
     </div>
 
-
-   <div class="flex justify-center bg-slate-400/10 m-auto h-[50vh] w-auto mt-2 mb-10" >
-      <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
-        <h2 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h2>
-        <div class="game-video  text-gray-800 text-lg p-2">
-
+    <div class="flex row-auto justify-evenly bg-slate-400/10 m-auto w-auto mt-2 mb-20" >
+      <div class=" flex row-auto justify-evenly gap-40 w-auto pl-6 p-6 text-center  bg-slate-400/80 rounded-sm relative">
+        <div class=" text-gray-800 text-lg p-2">
+          <h2 class="text-4xl font-bold py-6"> Requisitos: </h2>
+          <ul class="text-start">
+            <li class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span>
+            <li class="text-gray-800 text-2xl py-2">Tamaño: <span class="font-semibold">68.89 GBs</span>
+            <li class="text-gray-800 text-2xl py-2">RAM: <span class="font-semibold">8 - 10 Gbs </span>
+            <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">Intel core i3 3.1 ghz</span>
+            <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">Intel UHD Graphics 630 </span>
+          </ul>
         </div>
-
+        <div class="m-auto z-50 w-auto " >
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
-  </div>
+</div>
 
 <!-- component -->
 <!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
