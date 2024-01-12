@@ -32,7 +32,7 @@
                 <div class="px-3 py-2 bg-gray-200 rounded-lg rounded-t-md text-xs">
                   <p class="mb-1 text-gray-800 font-semibold">Plataformas: <span class="font-normal">{{ game.platform }}</span> </p>
                   <p class="mb-1 text-gray-800 font-semibold">Desarrollador: <span class="font-normal">{{ game.developer }}</span> </p>
-                  <p class="mb-1 text-gray-800 font-semibold">Fecha de Lanzamiento: <span class="font-normal">{{ game.releaseDate | date }}</span> </p>
+                  <p class="mb-1 text-gray-800 font-semibold">Fecha de Lanzamiento: <span class="font-normal">{{ game.releaseDate | date:'yyyy-MM-dd' }}</span> </p>
                 </div>
                 <div data-popper-arrow></div>
             </div>
