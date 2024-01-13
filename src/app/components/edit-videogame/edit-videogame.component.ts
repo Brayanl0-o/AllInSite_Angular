@@ -28,26 +28,15 @@ export class EditVideogameComponent {
       this.contactForm.patchValue(this.game);
 
 
-      if (this.game?.gameImg) {
-        this.contactForm.get('gameImg')?.setValue(this.game?.gameImg);
-      }
+      // if (this.game?.gameImg) {
+      //   this.contactForm.get('gameImg')?.setValue(this.game?.gameImg);
+      // }
 
       console.log(this.contactForm)
     }
 
-  onFileSelected(event: Event):void {
-    const inputElement = event.target as HTMLInputElement;
-    const file = inputElement?.files?.[0];
 
-    if (file){
-      this.selectedFile = file;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      this.contactForm.get('gameImg')?.setValue(reader.result);
-    };
-    reader.readAsDataURL(file);
-    }
-  }
+
   errorResponseMessageForm = '';
   onFormSubmit(){
 
@@ -70,7 +59,7 @@ export class EditVideogameComponent {
 
    this.game = { ...this.game, ...this.contactForm.value};
 
-   this.videoGamesService.updateGame(this.game._id, this.game, gameImg).subscribe(
+   this.videoGamesService.updateGame(this.game._id, this.game).subscribe(
     (response) =>{
       this.closeModalAndReloadPage();
       console.log('Datos act con exito:', response);
