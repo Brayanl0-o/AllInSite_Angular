@@ -35,7 +35,7 @@
              </div>
           </div>
 
-          <div class="relative top-4">
+          <!-- <div class="relative top-4">
             <label class="text-black/80 font-semibold " for="gameImg" >
               * Imagen del juego:
               <br>
@@ -44,16 +44,11 @@
             </label>
             <p class="text-sm font-semibold ml-2 text-slate-900/80">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
 
-            <!-- <span class="text-sm ml-0">Recomendaciones: <br></span>
-            <span class="text-xs ml-4">• Formatos wpeb, avi o en su defecto png, jpeg y jpg <br>
-            <span class="text-xs ml-4">• Resoluciones entre 500 x 500 y 1920 x 1080  <br> </span>
-            <span class="text-xs ml-4">• Tamaños no superiores a 1 Mb (Megabyte)  <br></span>
-            </span> -->
 
               <input type="file"  name="gameImg" accept=".jpg,.png" id="fileInput"
                (change)="onFileSelected($event)"
                class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40"/>
-          </div>
+          </div> -->
 
           <div class="relative ">
             <label class="text-black/80 font-semibold " for="descriptionGame">
@@ -147,6 +142,7 @@
           </div>
 
           <div class="relative">
+            <!-- <span>Fecha: {{game.releaseDate}}</span> -->
             <label class="text-black/90 font-semibold " for="releaseDate">Fecha de lanzamiento:
             </label>
             <input id="releaseDate" type="date" name="releaseDate" formControlName="releaseDate"
