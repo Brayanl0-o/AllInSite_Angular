@@ -97,6 +97,13 @@ export class ProfileComponent {
     cancelEditImg(){
       this.newUserImg = this.userImg;
       this.isEditingImg = false;
+      this.renderer.removeStyle(document.body, 'overflow');
+
+    }
+
+    openModalImg(){
+      this.isEditingImg = true;
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
     }
 
     isModalVisible!: boolean;
