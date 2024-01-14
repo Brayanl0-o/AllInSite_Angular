@@ -50,7 +50,7 @@ export class AuthService {
       tap((response) => {
         // console.log('Respuesta del servidor:', response);
         const token = response.token;
-        console.log('Contenido del payload del token decodificado:', atob(token.split('.')[1]));
+        // console.log('Contenido del payload del token decodificado:', atob(token.split('.')[1]));
 
         localStorage.setItem('token', response.token)
 
