@@ -63,7 +63,7 @@ export class DetailsGameComponent {
         (response) => {
           // Actualiza el gameDetails$ si es necesario
           this.gameDetails$ = this.videogamesService.getGameById(this.userId, this.gameId);
-          console.log('Datos act con exito:', response);
+          // console.log('Datos act con exito:', response);
           this.loadDataGame()
         },
         (error) => {
