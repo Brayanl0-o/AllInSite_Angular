@@ -1,16 +1,53 @@
+<body>
+  <app-header></app-header>
 
-<app-header></app-header>
+  <app-loading-screen  *ngIf="isLoading" ></app-loading-screen>
 
-<app-loading-screen  *ngIf="isLoading" ></app-loading-screen>
 
-  <!-- [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" -->
-  <!-- <div *ngIf="gameDetails$ | async as gameDetails"  class="bg-black absolute top-0 w-full h-full bg-center bg-cover object-cover max-sm:min-h-[150vh]  sm:min-h-[200vh]  md:min-h-screen lg:min-h-screen  xl:min-h-screen"> -->
   <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'"  class=" absolute top-0 w-full h-auto bg-center bg-cover object-cover ">
 
     <span  class="w-full h-full absolute opacity-60 bg-black"></span>
+    <!-- style="clip-path:polygon(0 100%, 100% 100%, 100% 80%, 0 80%);" -->
 
     <div class="flex justify-center relative mt-36 bg-slate-400/30 m-auto h-auto w-auto" >
+
+      <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
+      aria-label="Boton para actualizar imagen de perfil"
+      class="blur-editing absolute left-36 mt-36  bg-slate-600/30  backdrop-blur-sm w-80 h-80 max-sm:w-64 max-sm:h-64 z-20 text-gray-500 hover:text-blue-500 focus:outline-none">
+      <mat-icon class="h-20 w-20 fixed bottom-5 max-sm:bottom-2 left-1/2 transform -translate-x-1/2  blur-none hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
+      </button>
       <img class="object-cover h-auto w-1/4 rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
+
+      <div *ngIf="isEditingImg"  class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
+        <div class="rounded-md fixed flex flex-col items-center justify-center w-max h-max m-auto max-sm:w-[80%] bg-slate-200 mb-4 z-50 p-4">
+          <div class="relative top-4">
+            <label class="text-black/80 font-semibold " for="userImg">
+              Sube la Portada del juego:
+              <br>
+            </label>
+            <p class="text-sm font-semibold ml-2 text-slate-900/80  w-10/12  ">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
+
+            <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
+              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </span> -->
+            <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
+            (change)="onFileSelectedGame($event)"
+              class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
+          </div>
+
+          <div class="flex space-x-4">
+            <button (click)="updatedGameImg(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
+              class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+              Guardar
+            </button>
+            <button (click)="cancelEditImg()" tabindex="0"
+              class="flex-grow px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="sm:w-auto md:w-3/5 lg:w-3/5 xl:w-3/5 pl-6 p-6 max-w-[70%]  bg-slate-400/80 rounded-sm relative">
         <h1 class="text-3xl lg:text-6xl font-bold py-6">{{ gameDetails.gameName }}</h1>
         <div class="game-description  text-gray-800 text-lg p-2">
@@ -63,36 +100,10 @@
             <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">Intel UHD Graphics 630 </span>
           </ul>
         </div>
-        <div class="m-auto z-20 w-auto " >
+        <!-- <div class="m-auto z-20 w-auto " >
           <iframe width="560" height="315" src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe>
-        </div>
+        </div> -->
       </div>
     </div>
-</div>
-
-<!-- component -->
-<!-- <div class="h-96 text-white text-center grid bg-cover bg-[url('https://images.unsplash.com/photo-1683009427540-c5bd6a32abf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop')]">
-  <div class="col-start-1 row-start-1 bg-gray-800 bg-opacity-70 w-full h-full"></div>
-  <div class="col-start-1 row-start-1 mx-auto my-auto">
-      <h1 class="font-bold text-2xl">Hero Message</h1>
-      <p>Something interesting about hero message</p>
   </div>
-  </div>
-
-  <div class="grid text-center text-black place-content-center min-h-[500px] relative isolate  after:absolute after:z-[-1] after:inset-0 after:bg-pink-700 after:opacity-90 after:bg-[url('https://images.unsplash.com/photo-1604050170221-aed634784f64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80')] after:bg-top after:bg-cover ">
-  <h1 class="font-semibold text-4xl tracking-wide">I have overlay</h1>
-  <p class="text-xs text-center leading-tight">Overlay applied using pseudo CSS element. where parent css is position relative and then sudo class is applied as absolute positioned</p>
-  </div> -->
-
-
-      <!-- <section class="h-500-px " >
-
-
-    </section>
-    <span  class="w-full h-full absolute opacity-40 bg-black"></span>
-
-    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
-      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
-      </svg>
-    </div> -->
+</body>
