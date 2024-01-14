@@ -49,14 +49,11 @@ export class AddVideogameComponent {
 
     errorResponseMessage = '';
     createGameData() {
-      console.log('execute create game')
       if (this.selectedFile && this.contactForm.valid) {
-        console.log('Funcion createGameDatax2EjecuteSuccess');
         const gameData = this.contactForm.value;
 
         const formData = new FormData();
 
-        console.log('formData', formData);
         formData.append('gameName', gameData.gameName);
         formData.append('platform', gameData.platform);
         formData.append('releaseDate', gameData.releaseDate);
@@ -69,7 +66,7 @@ export class AddVideogameComponent {
         // formData.append('gameImg', this.selectedFile);
         this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
           (response) => {
-            console.log('Juego agregado correctamente', response);
+            // console.log('Juego agregado correctamente', response);
             this.closeModalAndReloadPage()
           },
           (error) => {
@@ -115,10 +112,8 @@ export class AddVideogameComponent {
 
 
     closeModal() {
-      console.log('close modal')
       this.renderer.removeStyle(document.body, 'overflow');
       this.videoGamesService.$modal.emit(false)
-      console.log('Modal cerrado');
     }
 
    // percentDone: number = 0;
