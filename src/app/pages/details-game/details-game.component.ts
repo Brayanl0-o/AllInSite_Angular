@@ -79,16 +79,15 @@ export class DetailsGameComponent {
   cancelEditImg(){
     this.newGameImg = this.gameImg;
     this.isEditingImg = false;
+    this.renderer.removeStyle(document.body, 'overflow');
+
   }
 
-  isModalImgVisible!: boolean;
-  openModalImg(game: Game | null): void {
-    if (game) {
-      this.isModalVisible = true
+  openModalImg(){
+      this.isEditingImg = true;
       this.renderer.setStyle(document.body, 'overflow', 'hidden');
-
-    }
   }
+
   isAdmin: boolean = false;
   isAdminOrNot(){
     const logginRoles = this.authService.getLoggedUserRole();
