@@ -42,21 +42,15 @@ export class SharedUsersService {
   }
 
 
-  updateUserImg(id: string,userData: any, userImg: File): Observable<any> {
+  updateUserImg(id: string,userImg: File): Observable<any> {
     const url = `${this.URL}users/updateImg/${id}`;
-    console.log('url service updateUser Img', url)
+    // console.log('url service updateUser Img', url)
     const formData = new FormData();
     if (userImg) {
       // Si gameImg es diferente de null, agrega la nueva imagen al formData.
       formData.append('userImg', userImg);
     }
-    formData.append('gameName', userData.gameName);
-    formData.append('platform', userData.platform);
-    formData.append('releaseDate', userData.releaseDate);
-    formData.append('developer', userData.developer);
-    formData.append('genre', userData.genre);
-    formData.append('averageRating', userData.averageRating);
-    formData.append('descriptionGame', userData.descriptionGame);
+
     console.log('userData service', formData)
     return this.http.patch(url, formData);
   }
