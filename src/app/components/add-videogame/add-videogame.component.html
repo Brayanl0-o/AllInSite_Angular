@@ -60,7 +60,7 @@
             </label>
             <textarea type="text" id="descriptionGame" name="descriptionGame" formControlName="descriptionGame"
               placeholder="Ingrese la descripción del videojuego" required
-              class="block p-2 h-24 w-full resize-none px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              class="block p-2 h-48 w-full resize-none px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
             </textarea>
             <div *ngIf="contactForm.controls['descriptionGame'].invalid && (contactForm.controls['descriptionGame'].dirty || contactForm.controls['descriptionGame'].touched)"
               class="alert alert-danger font-bold text-red-900/90 ">
@@ -75,31 +75,30 @@
               </div>
             </div>
           </div>
-
-          <div class="relative top-4">
-            <label class="text-black/80 font-semibold " for="developer">
-              Desarrollador:
-            </label>
-            <input id="developer" name="developer" formControlName="developer"
-              placeholder="Ingrese el Desarrollador"
-              class="block w-full mb-6 pr-12 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
-              <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
-                class="alert alert-danger font-bold text-red-900/90">
-                <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['developer'].errors?.['minlength']">
-                   Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['developer'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-          </div>
         </div>
         <div class="relative">
           <div class="flex flex-col justify-center items-center">
+            <div class="relative top-4">
+              <label class="text-black/80 font-semibold " for="developer">
+                Desarrollador:
+              </label>
+              <input id="developer" name="developer" formControlName="developer"
+                placeholder="Ingrese el Desarrollador"
+                class="block w-full mb-6 pr-12 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+
+                <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
+                  class="alert alert-danger font-bold text-red-900/90">
+                  <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
+                    Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  </div>
+                  <div *ngIf="contactForm.controls['developer'].errors?.['minlength']">
+                     Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  </div>
+                  <div *ngIf="contactForm.controls['developer'].errors?.['maxlength']">
+                    Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  </div>
+                </div>
+            </div>
 
             <div class="relative">
               <label class="text-black/80 font-semibold" for="platform">
