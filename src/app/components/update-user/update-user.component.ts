@@ -43,7 +43,7 @@ export class UpdateUserComponent {
       this.userShared.updateUser(this.user._id, this.user).subscribe(
         (response) => {
           this.closeModalAndReloadPage();
-          console.log('Datos act con exito:', response);
+          // console.log('Datos act con exito:', response);
           // console.log('carga de userData:', this.user);
         },
         (error) => {
@@ -89,9 +89,7 @@ export class UpdateUserComponent {
     }
 
     closeModal() {
-      console.log('close modal')
       this.renderer.removeStyle(document.body, 'overflow');
       this.userShared.$modal.emit(false)
-      console.log('Modal cerrado');
     }
 }
