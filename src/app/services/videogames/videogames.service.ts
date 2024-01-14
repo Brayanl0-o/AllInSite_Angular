@@ -31,7 +31,6 @@ export class VideogamesService {
   }
   getGameById(userId: string | null, gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${userId}/${gameId}`;
-    // console.log('game id S:',gameId, 'user id S:',userId);
     return this.http.get<Game>(url);
   }
 
@@ -47,8 +46,6 @@ export class VideogamesService {
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
-    // console.log('urlSingUpp', url)
-    // console.log('formData service', formData)
     const httpOptions = {
       headers: new HttpHeaders({
         'x-access-token':localStorage.getItem('token')|| '',
@@ -69,13 +66,16 @@ export class VideogamesService {
 
   updatedGameImg(id:string, gameImg: File){
     const url = `${this.apiUrl}games/updatedGameImg/${id}`;
-    console.log(url)
     const formData = new FormData()
     if(gameImg){
       formData.append('gameImg', gameImg)
     }
-
-    return this.http.patch(url,formData).pipe(
+    const httpOptions = {
+      headers:new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.patch(url,formData,httpOptions).pipe(
       catchError((error) => {
         console.error('Error en la solicitud:', error);
         throw error;
