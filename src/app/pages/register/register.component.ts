@@ -48,12 +48,10 @@ export class RegisterComponent {
 
   signUp() {
     if (this.contactForm.valid) {
-      console.log('Funcion signUpx2EjecuteSuccess');
 
       const userData = this.contactForm.value;
       const formData = new FormData();
 
-      console.log('formData', formData);
 
       formData.append('firstName', userData.firstName);
       formData.append('lastName', userData.lastName);
@@ -64,13 +62,10 @@ export class RegisterComponent {
       formData.append('country', userData.country);
       formData.append('userImg', this.selectedFile!);
 
-      console.log('userData before service call:', userData);
-      console.log('userImg before service call:', this.selectedFile);
-
 
       this.authService.signUp(userData, this.selectedFile).subscribe(
         (response) => {
-          console.log('Usuario registrado correctamente', response);
+          // console.log('Usuario registrado correctamente', response);
           this.contactForm = this.initFrom();
 
           const fileInput = document.getElementById('fileInput') as HTMLInputElement;
@@ -93,7 +88,7 @@ export class RegisterComponent {
     } else {
       setTimeout(() => {
         this.errorResponseMessage = '';
-        console.log('Error al enviar el formulario en if de SignUp ', this.errorResponseMessage);
+        console.error('Error al enviar el formulario en if de SignUp ', this.errorResponseMessage);
       }, 1000);
     }
   }
