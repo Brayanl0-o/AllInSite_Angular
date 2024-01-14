@@ -11,16 +11,20 @@ const apiBaseUrl= environment.apiUrl;
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-  @Input() user: User | null = null;
-  userId: string | null = null;
-  loadDataProfile: boolean = true;
-  imageUrl!: string;
-  selectedFile: File | null = null;
 
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
    private route: ActivatedRoute,
    private renderer: Renderer2){     }
+
+   @Input() user: User | null = null;
+   userId: string | null = null;
+   loadDataProfile: boolean = true;
+   imageUrl!: string;
+   selectedFile: File | null = null;
+   userImg = '';
+   newUserImg = '';
+   isEditingImg = false;
 
     ngOnInit(){
       this.dataUser();
@@ -59,14 +63,11 @@ export class ProfileComponent {
       }
     }
 
-    userImg = '';
-    newUserImg = '';
-    isEditingImg = false;
-
 
     updateDataUser(userImg:File):void{
-      console.log('execute updateDataUser')
-      console.log('file selected ', this.selectedFile)
+      // console.log('execute updateDataUser')
+      // console.log('file selected ', this.selectedFile)
+      console.log('game', this.user)
 
       if(!this.user){
         console.error('Error: No hay datos de actualizacíón')
@@ -76,7 +77,7 @@ export class ProfileComponent {
         userImg: this.newUserImg
       };
 
-      this.userShared.updateUserImg(this.user._id, updatedData, userImg).subscribe(
+      this.userShared.updateUserImg(this.user._id, userImg).subscribe(
         (response)=> {
           if(this.user){
             this.user.userImg = this.newUserImg
