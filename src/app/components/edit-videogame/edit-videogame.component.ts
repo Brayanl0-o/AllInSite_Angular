@@ -26,15 +26,7 @@ export class EditVideogameComponent {
       this.contactForm =  this.initFrom();
       this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
       this.contactForm.patchValue(this.game);
-
-
-      // if (this.game?.gameImg) {
-      //   this.contactForm.get('gameImg')?.setValue(this.game?.gameImg);
-      // }
-
-      console.log(this.contactForm)
     }
-
 
 
   errorResponseMessageForm = '';
@@ -62,7 +54,7 @@ export class EditVideogameComponent {
    this.videoGamesService.updateGame(this.game._id, this.game).subscribe(
     (response) =>{
       this.closeModalAndReloadPage();
-      console.log('Datos act con exito:', response);
+      // console.log('Datos act con exito:', response);
     },
     (error) => {
       console.error('Error al actualizar los datos:', error);
@@ -99,10 +91,8 @@ export class EditVideogameComponent {
     }
 
     closeModal() {
-      console.log('close modal')
       this.renderer.removeStyle(document.body, 'overflow');
       this.videoGamesService.$modal.emit(false)
-      console.log('Modal cerrado');
     }
   // percentDone: number = 0;
   // uploadSuccess!: boolean;
