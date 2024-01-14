@@ -11,12 +11,15 @@
 
     <div class="flex justify-center relative mt-36 bg-slate-400/30 m-auto h-auto w-auto" >
 
-      <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
-      aria-label="Boton para actualizar imagen de perfil"
-      class="blur-editing absolute left-36 mt-36  bg-slate-600/30  backdrop-blur-sm w-80 h-80 max-sm:w-64 max-sm:h-64 z-20 text-gray-500 hover:text-blue-500 focus:outline-none">
-      <mat-icon class="h-20 w-20 fixed bottom-5 max-sm:bottom-2 left-1/2 transform -translate-x-1/2  blur-none hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
-      </button>
-      <img class="object-cover h-auto w-1/4 rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
+      <div class="h-auto w-1/4 relative">
+        <button  (click)="isEditingImg = true" *ngIf="!isEditingImg"
+        aria-label="Boton para actualizar imagen de perfil"
+        class="blur-editing absolute left-4 top-12  bg-slate-600/30  backdrop-blur-sm w-auto h-auto z-20 text-gray-500 hover:text-blue-500 focus:outline-none">
+        <mat-icon class="h-20 w-20 fixed bottom-5 max-sm:bottom-2 left-1/2 transform -translate-x-1/2  blur-none hover:scale-150 hover:transition-transform text-blue-600">brush</mat-icon>
+        </button>
+        <img class="object-cover h-full w-full rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
+
+      </div>
 
       <div *ngIf="isEditingImg"  class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
         <div class="rounded-md fixed flex flex-col items-center justify-center w-max h-max m-auto max-sm:w-[80%] bg-slate-200 mb-4 z-50 p-4">
