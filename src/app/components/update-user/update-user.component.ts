@@ -43,8 +43,7 @@ export class UpdateUserComponent {
       this.userShared.updateUser(this.user._id, this.user).subscribe(
         (response) => {
           this.closeModalAndReloadPage();
-          // console.log('Datos act con exito:', response);
-          // console.log('carga de userData:', this.user);
+
         },
         (error) => {
           console.error('Error al actualizar los datos:', error);
