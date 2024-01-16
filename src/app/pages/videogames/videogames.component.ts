@@ -98,7 +98,6 @@ export class VideogamesComponent {
       (response) => {
         this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
           console.log('Game eliminada exitosamente', response);
-          //  window.location.reload();
           this.navigateToVideogames(this.userId);
       },
       (error) => {
