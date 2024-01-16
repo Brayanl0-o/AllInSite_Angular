@@ -28,7 +28,6 @@ export class Error404Component {
     dataUser() {
       // Obtiene el ID del usuario logueado desde el servicio de autenticación
       const loggedInUserId = this.authService.getLoggedInUserId();
-      console.log('loggedInUserId:', loggedInUserId);
 
       if (loggedInUserId) {
         // Asignar el userId obtenido al userId del componente
@@ -37,7 +36,6 @@ export class Error404Component {
 
           // Obtiene el ID de usuario de la URL
           const id = paramMap.get('id');
-          console.log('Id Login: ', id)
 
           // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
           if (id === loggedInUserId) {
