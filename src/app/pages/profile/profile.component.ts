@@ -65,10 +65,6 @@ export class ProfileComponent {
 
 
     updateDataUser(userImg:File):void{
-      // console.log('execute updateDataUser')
-      // console.log('file selected ', this.selectedFile)
-      console.log('game', this.user)
-
       if(!this.user){
         console.error('Error: No hay datos de actualizacíón')
         return;
@@ -83,7 +79,7 @@ export class ProfileComponent {
             this.user.userImg = this.newUserImg
 
           }
-          console.log('Datos act con exito:', response);
+          // console.log('Datos act con exito:', response);
           this.dataUser();
         },
         (error) => {
@@ -112,7 +108,6 @@ export class ProfileComponent {
         this.isModalVisible = true
         this.renderer.setStyle(document.body, 'overflow', 'hidden');
         this.userShared.sendUserData(user);
-        // console.log('dataUser profileComp: ', user)
       }
     }
 
