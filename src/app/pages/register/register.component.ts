@@ -26,7 +26,6 @@ export class RegisterComponent {
   }
   errorResponseMessageForm = '';
   onSubmit() {
-    // console.log('form ->', this.contactForm.value);
     if (this.contactForm.valid) {
       this.signUp();
     }else {
