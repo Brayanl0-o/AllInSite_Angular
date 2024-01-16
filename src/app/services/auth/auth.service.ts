@@ -114,7 +114,6 @@ export class AuthService {
 
       }),
     };
-    console.log('Cabeceras:', httpOptions.headers);
     return this.http.get<User>(url, httpOptions);
   }
 
