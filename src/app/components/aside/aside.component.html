@@ -10,7 +10,7 @@
       </svg>
       <span class="sr-only">Open actions menu</span>
   </button>
-  <div *ngIf="showFilters"   class=" flex-col items-center  mt-4 space-y-2 z-50" >
+  <div *ngIf="showFilters"   class=" flex-col items-center  mt-4 space-y-2 " >
     <div class="h-2/3 w-80 bg-white p-4 rounded shadow fixed right-0  overflow-y-auto  overflow-x-hidden">
       <h3 class="text-md font-semibold mb-0">Filtrar por:</h3>
 
@@ -142,7 +142,7 @@
       </ul>
 
       <div class="flex justify-center gap-6" >
-        <button (click)="applyFilters()" class=" w-auto bg-[#004f99] text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        <button (click)="applyFilters()" class=" w-auto z-50 bg-[#004f99] text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
           Aplicar Filtros
         </button>
         <button (click)="resetForm()" data-popover-target="popover-bottom" data-popover-placement="bottom" type="button"
@@ -154,7 +154,7 @@
             <path d="M721.185 345.717v-84.641H164.437z" fill="#030504" /><path d="M633.596 235.166l-228.054-71.773 31.55-99.3 228.055 71.773z" fill="#FF3B30" />
             <path d="M847.401 324.783c-2.223 0-4.475-0.333-6.706-1.034L185.038 117.401c-11.765-3.703-18.298-16.239-14.592-27.996 3.706-11.766 16.241-18.288 27.993-14.595l655.656 206.346c11.766 3.703 18.298 16.239 14.592 27.996-2.995 9.531-11.795 15.631-21.286 15.631z" fill="#FF3B30" />
           </svg>
-          <div data-popover id="popover-bottom" role="tooltip" class="w-40 absolute z-10 invisible inline-block text-lg dark:text-red-800 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:border-gray-600 dark:bg-gray-800">
+          <div data-popover id="popover-bottom" role="tooltip" class="w-40 absolute  invisible inline-block text-lg dark:text-red-800 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:border-gray-600 dark:bg-gray-800">
             <div class="  px-2 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700 dark:text-red-800" >
                 <span class="font-semibold  dark:text-red-800">Limpiar Filtros</span>
             </div>
