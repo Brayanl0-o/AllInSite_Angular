@@ -42,7 +42,6 @@ export class SharedUsersService {
   sendUserData(user: any): void {
     // Emitir datos del user al componente modal
     this.userData.emit(user);
-    // console.log('dataUser switchService: ', user)
   }
 
   // Metodo para actualizar los datos del usuario
@@ -53,14 +52,12 @@ export class SharedUsersService {
         'x-access-token':localStorage.getItem('token')|| '',
       })
     }
-    // console.log('userData service', userData)
     return this.http.patch(url, userData, httpOptions);
   }
 
   // Metodo para actualizar la imagen del usuario
   updateUserImg(id: string,userImg: File): Observable<any> {
     const url = `${this.URL}users/updateImg/${id}`;
-    // console.log('url service updateUser Img', url)
     const formData = new FormData();
     if (userImg) {
       // Si gameImg es diferente de null, agrega la nueva imagen al formData.
@@ -71,7 +68,6 @@ export class SharedUsersService {
         'x-access-token': localStorage.getItem('token') || '',
       })
     }
-    // console.log('userData service', formData)
     return this.http.patch(url, formData, httpOptions);
   }
 
