@@ -84,7 +84,7 @@ export class ProfileComponent {
 
           }
           console.log('Datos act con exito:', response);
-          window.location.reload();
+          this.dataUser();
         },
         (error) => {
           console.error('Error al updated', error);
