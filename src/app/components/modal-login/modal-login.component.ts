@@ -48,7 +48,7 @@ export class ModalLoginComponent {
       this.errorMessage = null;
         this.authService.login(this.contactForm.value).subscribe(
           (res)=>{
-            console.log(res);
+            // console.log(res);
 
             localStorage.setItem('token', res.token);
 
@@ -58,12 +58,12 @@ export class ModalLoginComponent {
               this.router.navigate(['/home',userId])
               this.renderer.removeStyle(document.body, 'overflow');
             }else{
-              console.log('No id found')
+              console.error('No id found')
             }
             this.isLoading = false;
           },
           (err) => {
-            console.log(err);
+            console.error(err);
             this.errorMessage = ' Usuario o contraseña incorrectos'; // Asignar mensaje de error
             this.isLoading = false;
 
