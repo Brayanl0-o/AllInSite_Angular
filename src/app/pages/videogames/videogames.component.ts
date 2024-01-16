@@ -97,7 +97,7 @@ export class VideogamesComponent {
     this.videogamesService.deleteGame(gameId).subscribe(
       (response) => {
         this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
-          console.log('Game eliminada exitosamente', response);
+          // console.log('Game eliminada exitosamente', response);
           this.navigateToVideogames(this.userId);
       },
       (error) => {
