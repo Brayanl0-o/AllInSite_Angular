@@ -112,22 +112,30 @@ export class VideogamesComponent {
       this.games = data;
       this.loadingData = false;
       this.filteredGames = [...this.games];
-      // console.log('dataload',data);
     });
   }
-
+  notResults: boolean = false;
   searchTerm: string = '';
   searchGames() {
-    // Filtra los juegos en función del término de búsqueda
-    this.filteredGames = this.games.filter((game) =>
+
+    // Filter the games fot search word
+    const results = this.filteredGames = this.games.filter((game) =>
       game.gameName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-    this.page = 1;
+
+    // Validate result's number
+    if(results.length === 0){
+      this.notResults = true;
+    }else{
+      this.filteredGames = results;
+      this.notResults = false;
+      this.page = 1;
+    }
   }
 
   onSearchValueChanged(searchTerm: string) {
-    this.searchTerm = searchTerm; // Actualiza el término de búsqueda
-    this.searchGames(); // Llama a la función de búsqueda
+    this.searchTerm = searchTerm; // upload search Term
+    this.searchGames(); // Calling to the function 'searchTerm'
   }
 
   showPopover = false;
