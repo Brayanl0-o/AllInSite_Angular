@@ -12,7 +12,8 @@
       <ng-container *ngIf="loadingData">
         <app-skeleton-videogames></app-skeleton-videogames>
       </ng-container>
-      <div *ngIf="notResults" class="z-0" >
+      <!-- "notResultsOne || notResultsTwo"  -->
+      <div *ngIf="notResultsOne || notResultsTwo" class="z-0" >
        <app-no-results></app-no-results>
       </div>
       <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-8 mt-2">
