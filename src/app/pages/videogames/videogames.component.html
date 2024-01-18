@@ -12,8 +12,8 @@
       <ng-container *ngIf="loadingData">
         <app-skeleton-videogames></app-skeleton-videogames>
       </ng-container>
-      <div *ngIf="notResults">
-        <h1>No resultados</h1>
+      <div *ngIf="notResults" class="z-0" >
+       <app-no-results></app-no-results>
       </div>
       <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-8 mt-2">
         <li *ngFor="let game of filteredGames | paginate: { itemsPerPage: 8, currentPage: page }" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60  hover:transform hover:scale-105  hover:bg-slate-500 hover:border-none max-sm:hover:scale-95">
@@ -75,7 +75,7 @@
 
       <div class="flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
         <div class="fixed top-56 xl:right-20 lg:right-16 md:right-4 sm:right-2 ">
-          <div class="mb-4">
+          <div class="mb-4 z-50">
             <app-aside></app-aside>
           </div>
           <button *ngIf="isAdmin" type="submit" arial-label="Boton para subir un videojuego"
@@ -88,7 +88,7 @@
           </button>
           <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center" *ngIf="isModalVisible">
             <div class="fixed top-0 left-0 w-full h-full bg-black/70"></div>
-            <div class="bg-white p-4 rounded-lg shadow-lg z-0 max-h-[80vh] overflow-y-auto">
+            <div class="bg-white p-4 rounded-lg shadow-lg z-30 max-h-[80vh] overflow-y-auto">
               <app-add-videogame></app-add-videogame>
             </div>
           </div>
