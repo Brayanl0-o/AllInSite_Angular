@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, Input, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { FilterService } from 'src/app/services/filter/filter.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
@@ -32,7 +32,8 @@ export class VideogamesComponent {
     private authService: AuthService,
     private route:ActivatedRoute,
     private renderer: Renderer2,
-    private router:Router
+    private router:Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
 
@@ -42,7 +43,7 @@ export class VideogamesComponent {
     this.loadGameData();
     this.subscribeFilter();
     this.IsAdminOrUser();
-
+    this.applyFilters({});
   }
 
   isAdmin: boolean = false;
@@ -53,7 +54,9 @@ export class VideogamesComponent {
     if(getRoleUser == allowedRole){
       this.isAdmin = true;
     } else{
-      console.warn('El usuario no tiene el rol de administrador algunas funciones no se mostraran');
+      this.isAdmin = false;
+
+      // console.warn('El usuario no tiene el rol de administrador algunas funciones no se mostraran');
     }
   }
 
@@ -114,7 +117,7 @@ export class VideogamesComponent {
       this.filteredGames = [...this.games];
     });
   }
-  notResults: boolean = false;
+  notResultsOne: boolean = false;
   searchTerm: string = '';
   searchGames() {
 
@@ -125,10 +128,10 @@ export class VideogamesComponent {
 
     // Validate result's number
     if(results.length === 0){
-      this.notResults = true;
+      this.notResultsOne = true;
     }else{
       this.filteredGames = results;
-      this.notResults = false;
+      this.notResultsOne = false;
       this.page = 1;
     }
   }
@@ -154,9 +157,13 @@ export class VideogamesComponent {
     });
   }
 
+
+
+  notResultsTwo: boolean = false
   applyFilters(filters: any) {
     // Aplica los filtros de plataforma, género y desarrollador
-    this.filteredGames = this.games.filter((game) => {
+  if (filters && filters.platforms && filters.genres && filters.developers) {
+    const filteredGames = this.games.filter((game) => {
       if (filters.platforms.length > 0) {
         const hasSelectedPlatform = filters.platforms.some((platform: string) =>
           game.platform.toLowerCase().includes(platform.toLowerCase())
@@ -197,13 +204,34 @@ export class VideogamesComponent {
       }
       return true;
     });
-    // console.log('Order:', filters.order);
+
     if (filters.order === 'asc') {
-      this.filteredGames.sort((a, b) => a.averageRating - b.averageRating);
+      filteredGames.sort((a, b) => a.averageRating - b.averageRating);
     } else if (filters.order === 'desc') {
-      this.filteredGames.sort((a, b) => b.averageRating - a.averageRating);
+      filteredGames.sort((a, b) => b.averageRating - a.averageRating);
     }
+    // Actualiza la lista filtrada
+    this.filteredGames = filteredGames;
+
+    // Actualiza la bandera de noResults solo si no hay resultados y se han aplicado filtros
+    this.notResultsTwo = filters.platforms.length > 0 || filters.genres.length > 0 || filters.developers.length > 0
+    ? filteredGames.length === 0
+    : false;
+    this.cdr.detectChanges();
     this.page = 1;
+
+    // if(this.filteredGames .length == 0){
+    //   console.log('filtred games es igual a:(inside)',this.filteredGames .length)
+    //   this.notResults = false;
+
+    // }else{
+    //   this.notResults = true;
+    //   this.filteredGames = [...this.filteredGames ];
+    //   this.page = 1;
+
+    // }
+
+  }
 
   }
 
