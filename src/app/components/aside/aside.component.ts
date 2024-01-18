@@ -27,6 +27,9 @@ constructor(private filterService: FilterService)
   // console.log('filtrSelected from asideC',this.selectedFilters)
 }
 
+ngOnInit(){
+  this.resetForm();
+}
 toggleFilters() {
   this.showFilters = !this.showFilters;
 }
