@@ -7,6 +7,10 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent {
+  constructor(private filterService: FilterService)
+  {
+    // console.log('filtrSelected from asideC',this.selectedFilters)
+  }
 
   selectedFilters = {
     platforms: [] as string[], // Define platforms as an array of strings
@@ -22,79 +26,75 @@ export class AsideComponent {
   availableGenres: string[] = [ 'Acción', 'Aventura','RPG','Estrategia','Deportes','Carreras','Lucha','Shooter','Plataformas','Sandbox','Simulación'];
   availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Santa Monica Studio','Sony Interactive Entertainment','Square Enix','Ubisoft']
 
-constructor(private filterService: FilterService)
-{
-  // console.log('filtrSelected from asideC',this.selectedFilters)
-}
 
-ngOnInit(){
-  this.resetForm();
-}
-toggleFilters() {
-  this.showFilters = !this.showFilters;
-}
-resetForm(){
- this.selectedFilters={
-    platforms: [] as string[],
-    genres: [] as string[],
-    developers: [] as string [],
-    order: '',
-    startDate: '',
-    endDate: ''
- }
- this.filterService.updateFilters(this.selectedFilters);
-}
+  ngOnInit(){
+    this.resetForm();
+  }
 
-showPlatformDropdown: boolean = false;
-togglePlatformDropdown() {
-  this.showPlatformDropdown = !this.showPlatformDropdown;
-}
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
 
-showGenreDropdown: boolean = true;
-toggleGenreDropdown() {
-  this.showGenreDropdown = !this.showGenreDropdown;
-}
-
-showDeveloperDropdown: boolean = false;
-toggleDeveloperDropdown() {
-  this.showDeveloperDropdown = !this.showDeveloperDropdown;
-}
-
-showOrderDropdown: boolean = false;
-toggleOrderDropdown(order: string) {
-  this.selectedFilters.order = order; // Actualiza el valor de order según lo seleccionado por el usuario
-  this.showOrderDropdown = false; // Cierra el menú desplegable
-  this.applyFilters();
-}
-
-applyFilters() {
-  // Llama al método updateFilters del servicio FilterService para actualizar los filtros
+  resetForm(){
+  this.selectedFilters={
+      platforms: [] as string[],
+      genres: [] as string[],
+      developers: [] as string [],
+      order: '',
+      startDate: '',
+      endDate: ''
+  }
   this.filterService.updateFilters(this.selectedFilters);
-}
-
-togglePlatform(platform: string) {
-  if (this.selectedFilters.platforms.includes(platform)) {
-    this.selectedFilters.platforms = this.selectedFilters.platforms.filter(p => p !== platform);
-  } else {
-    this.selectedFilters.platforms.push(platform);
   }
-}
 
-toggleGenre(genre: string) {
-  if (this.selectedFilters.genres.includes(genre)) {
-    this.selectedFilters.genres = this.selectedFilters.genres.filter(g => g !== genre);
-  } else {
-    this.selectedFilters.genres.push(genre);
+  showPlatformDropdown: boolean = false;
+  togglePlatformDropdown() {
+    this.showPlatformDropdown = !this.showPlatformDropdown;
   }
-}
 
-toggleDeveloper(developer:string){
-  if(this.selectedFilters.developers.includes(developer)){
-    this.selectedFilters.developers = this.selectedFilters.developers.filter(d => d != developer);
-  }else{
-    this.selectedFilters.developers.push(developer)
+  showGenreDropdown: boolean = true;
+  toggleGenreDropdown() {
+    this.showGenreDropdown = !this.showGenreDropdown;
   }
-}
 
+  showDeveloperDropdown: boolean = false;
+  toggleDeveloperDropdown() {
+    this.showDeveloperDropdown = !this.showDeveloperDropdown;
+  }
 
+  showOrderDropdown: boolean = false;
+  toggleOrderDropdown(order: string) {
+    this.selectedFilters.order = order; // Actualiza el valor de order según lo seleccionado por el usuario
+    this.showOrderDropdown = false; // Cierra el menú desplegable
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    // Llama al método updateFilters del servicio FilterService para actualizar los filtros
+    this.filterService.updateFilters(this.selectedFilters);
+  }
+
+  togglePlatform(platform: string) {
+    if (this.selectedFilters.platforms.includes(platform)) {
+      this.selectedFilters.platforms = this.selectedFilters.platforms.filter(p => p !== platform);
+    } else {
+      this.selectedFilters.platforms.push(platform);
+    }
+  }
+
+  toggleGenre(genre: string) {
+    if (this.selectedFilters.genres.includes(genre)) {
+      this.selectedFilters.genres = this.selectedFilters.genres.filter(g => g !== genre);
+    } else {
+      this.selectedFilters.genres.push(genre);
+    }
+  }
+
+  toggleDeveloper(developer:string){
+    if(this.selectedFilters.developers.includes(developer)){
+      this.selectedFilters.developers = this.selectedFilters.developers.filter(d => d != developer);
+    }else{
+      this.selectedFilters.developers.push(developer)
+    }
+  }
 }
