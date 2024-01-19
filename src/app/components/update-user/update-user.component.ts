@@ -60,7 +60,7 @@ export class UpdateUserComponent {
         phoneNumber: ['', [this.numberOnlyValidator, Validators.minLength(3),Validators.maxLength(15)]],
         country: ['Colombia',[Validators.minLength(3),Validators.maxLength(25)]],
         // userImg: [this.defaultUserImgUrl],
-        descriptionUser: ['Sin Descripcion...',[Validators.maxLength(400)]],
+        descriptionUser: ['Sin Descripcion...',[Validators.maxLength(500)]],
 
       })
     }
