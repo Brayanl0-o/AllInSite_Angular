@@ -18,7 +18,7 @@ figure {
 
 }
 
- .sad-mac:before {
+.sad-mac:before {
 	content: "";
 	display: block;
 	width: 1em;
@@ -35,7 +35,6 @@ figure {
   font-weight: 700;
   font-family: 'Pixelify Sans', sans-serif;
 }
-/* II. Sprites */
 /* 1. Sad Mac */
 .sad-mac {
 	background: #5DB09E;
@@ -113,8 +112,4 @@ figure {
   }
 
 }
-@media screen and (min-width: 1440px) {
-	figure {
-	    font-size: 8px;
-	}
-}
+
