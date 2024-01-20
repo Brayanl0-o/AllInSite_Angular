@@ -1,10 +1,8 @@
-import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Renderer2, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
-import { environment } from 'src/environments/environment';
-const apiBaseUrl = environment.apiUrl
+
 @Component({
   selector: 'app-edit-videogame',
   templateUrl: './edit-videogame.component.html',
@@ -12,28 +10,25 @@ const apiBaseUrl = environment.apiUrl
 })
 export class EditVideogameComponent {
 
-
   constructor(private videoGamesService: VideogamesService,
     private renderer: Renderer2,
-    private http: HttpClient,
     private fb: FormBuilder) { }
+
+
     @Input() game: Game = {} as Game;
     contactForm!: FormGroup;
-    selectedFile: File | null = null;
-    imageUrl = '';
+    errorResponseMessageForm = '';
+    errorResponseMessage = '';
+
 
     ngOnInit(): void{
       this.contactForm =  this.initFrom();
-      this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
       this.contactForm.patchValue(this.game);
     }
 
-
-  errorResponseMessageForm = '';
   onFormSubmit(){
-
     if (this.contactForm.valid) {
-      this.updateDataGame(this.selectedFile!);
+      this.updateDataGame();
     } else {
       this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
         setTimeout(() => {
@@ -42,8 +37,7 @@ export class EditVideogameComponent {
     }
   }
 
-  errorResponseMessage = '';
-  updateDataGame(gameImg: File): void {
+  updateDataGame(): void {
    if(!this.game){
     console.error('Error: No se proporcionaron datos para la actualización.');
     return;
@@ -62,69 +56,38 @@ export class EditVideogameComponent {
     )
   }
 
-    initFrom(): FormGroup{
-      return this.fb.group({
-        gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
-        gameImg: [this.game.gameImg],
-        platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
-        releaseDate: ['',[Validators.required]],
-        developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
-        genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-        averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
-        descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
+  initFrom(): FormGroup{
+    return this.fb.group({
+      gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
+      gameImg: [this.game.gameImg],
+      platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
+      releaseDate: ['',[Validators.required]],
+      developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
+      genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
+      averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+      descriptionGame:['',[Validators.required, Validators.maxLength(450)]],
+    })
+  }
 
-      })
-    }
-    rangoNumericoValidator(control:AbstractControl) {
-      const valor = control.value;
+  rangoNumericoValidator(control:AbstractControl) {
+    const valor = control.value;
 
-      if (isNaN(valor) || valor < 0 || valor > 10) {
-        return { 'rangoNumerico': true };
-      }
-
-      return null;
+    if (isNaN(valor) || valor < 0 || valor > 10) {
+      return { 'rangoNumerico': true };
     }
 
-    closeModalAndReloadPage() {
-      this.closeModal();
-      window.location.reload();
-    }
+    return null;
+  }
 
-    closeModal() {
-      this.renderer.removeStyle(document.body, 'overflow');
-      this.videoGamesService.$modal.emit(false)
-    }
-  // percentDone: number = 0;
-  // uploadSuccess!: boolean;
+  closeModalAndReloadPage() {
+    this.closeModal();
+    window.location.reload();
+  }
 
-  // uploadImageAndProgress(files:File[]) {
-  //   console.log(files);
-  //   var formData = new FormData();
-  //   Array.from(files).forEach((f)=> formData.append('gameImg',f))
-  //   const apiUrl = `${environment.apiUrl}uploadImg/videogames`;
-
-  //   this.http.post(apiUrl,formData, {
-  //     reportProgress:true,
-  //     observe:'events',
-  //   })
-  //   .subscribe((event) => {
-  //     if(event.type === HttpEventType.UploadProgress){
-  //       if(event.total)
-  //       this.percentDone = Math.round((100* event.loaded) / event.total);
-  //     }else if(event instanceof HttpResponse){
-  //       this.uploadSuccess = true;
-  //     }
-  //   });
-  // }
-
-  // uploadImage():void{
-  //   if(this.selectedFile){
-  //     this.uploadImageAndProgress([this.selectedFile])
-  //   }else {
-  //     console.error('Error upload image')
-  //   }
-  // }
-
+  closeModal() {
+    this.renderer.removeStyle(document.body, 'overflow');
+    this.videoGamesService.$modal.emit(false)
+  }
 
 }
 
