@@ -1,6 +1,4 @@
 <nav class="bg-white dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
-
-
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5">
     <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center ">
       <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  class="mr-1" alt="Logo Allin" />
@@ -9,8 +7,8 @@
     <div class="flex items-center  max-md:m-auto  md:order-2 ">
       <app-modal-login></app-modal-login>
     </div>
-    <!-- dropdown -->
 
+    <!-- dropdown -->
     <div *ngIf="isUserLoggedIn()" class="relative md:order-2 max-md:m-auto">
       <ng-container  *ngIf="loadingData; else userImageContent">
         <app-skeleton-header (click)="showOptions()" ></app-skeleton-header>
@@ -25,7 +23,7 @@
       <!-- Dropdown menu -->
       <div *ngIf="optionsVisible" class="z-50 dropdown absolute right-28 mt-1 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 transform translate-x-1/2" >
         <div class="px-4 py-3 bg-gray-300">
-          <span class="block text-sm text-gray-900 dark:text-white">{{user?.userName}}</span>
+          <span class="block text-sm text-gray-900 dark:text-white">{{user?.firstName}} {{user?.lastName}}</span>
           <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{user?.email}}</span>
         </div>
         <div class="w-auto text-gray-900 bg-white border border-gray-200 rounded-lg ">
@@ -57,7 +55,7 @@
       </svg>
     </button>
 
-    <!-- Menú en el header en pantallas medianas y grandes -->
+    <!-- Nav in the header in medium and big screams -->
     <div class="hidden md:block ">
       <ul class="z-50 flex flex-row justify-center items-center ml-10 font-medium md:p-0 border border-gray-100 rounded-lg bg-gray-50 md:space-x-6 mt-0 md:border-0 md:bg-white  ">
         <li>
@@ -83,7 +81,7 @@
       </ul>
     </div>
 
-    <!-- Menú en el header en pantallas peques -->
+    <!-- Nav in the header in small screams -->
     <div *ngIf="menuVisible" class="md:hidden  " >
       <ul class=" absolute top-full right-0 left-0 flex flex-col font-medium p-4 border border-gray-100 rounded-lg bg-white " >
         <li>
@@ -106,8 +104,5 @@
         </li>
       </ul>
     </div>
-
-
-
   </div>
 </nav>

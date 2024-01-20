@@ -12,68 +12,59 @@ const apiBaseUrl= environment.apiUrl;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  constructor(private userShared: SharedUsersService,
+    private authService: AuthService,
+    private route: ActivatedRoute){}
+
     @Input() user: User | null = null;
     users: User []= [];
     userId: string | null = null;
     loadingData: boolean = true;
     imageUrl!: string;
 
-    constructor(private userShared: SharedUsersService,
-      private authService: AuthService,
-      private route: ActivatedRoute){}
-
-
-      ngOnInit(){
-        this.dataUser();
-
-      }
-
-    isUserLoggedIn() {
-      return this.authService.loggedIn();
-    }
-    //Cerrar sesión
-    logout() {
-      this.authService.logout()
+    ngOnInit(){
+      this.dataUser();
     }
 
-    dataUser() {
-      // Obtiene el ID del usuario logueado desde el servicio de autenticación
-      const loggedInUserId = this.authService.getLoggedInUserId();
-      // console.log('loggedInUserId:', loggedInUserId);
+  isUserLoggedIn() {
+    return this.authService.loggedIn();
+  }
 
-      if (loggedInUserId) {
-        // Asignar el userId obtenido al userId del componente
-        this.userId = loggedInUserId;
-        this.route.paramMap.subscribe(paramMap => {
-        this.imageUrl = `${apiBaseUrl}uploads/users/`;
+  //Loggout
+  logout() {
+    this.authService.logout()
+  }
 
-          // Obtiene el ID de usuario de la URL
-          const id = paramMap.get('id');
-           // console.log('Id Login: ', id)
+  dataUser() {
+    const loggedInUserId = this.authService.getLoggedInUserId();
 
-          // Comprueba si el ID de usuario de la URL coincide con el usuario logueado
-          if (id === loggedInUserId) {
-            this.userShared.getUser(id).subscribe(data => {
-              this.user = data;
-              this.loadingData = false;
-              // console.log('Data User prfile', data)
-            });
-          } else {
-            // console.error('No login')
-            // this.router.navigate(['/error']);
-          }
-        });
-      }
+    if (loggedInUserId) {
+      this.userId = loggedInUserId;
+      this.route.paramMap.subscribe(paramMap => {
+      this.imageUrl = `${apiBaseUrl}uploads/users/`;
+
+        const id = paramMap.get('id');
+
+        if (id === loggedInUserId) {
+          this.userShared.getUser(id).subscribe(data => {
+            this.user = data;
+            this.loadingData = false;
+          });
+        } else {
+          // console.error('No login')
+          // this.router.navigate(['/error']);
+        }
+      });
     }
+  }
 
-    optionsVisible = false;
-    showOptions(){
-      this.optionsVisible = !this.optionsVisible;
-    }
+  optionsVisible = false;
+  showOptions(){
+    this.optionsVisible = !this.optionsVisible;
+  }
 
-    menuVisible = false;
-    showMenu(){
-      this.menuVisible = !this.menuVisible;
-    }
-
+  menuVisible = false;
+  showMenu(){
+    this.menuVisible = !this.menuVisible;
+  }
 }
