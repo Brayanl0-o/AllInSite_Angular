@@ -10,7 +10,6 @@ import { Game } from 'src/app/models/game';
 export class HeaderSearchComponent {
   @Input() games: Game[] = [];
   @Output() searchValueChanged = new EventEmitter<string>();
-
   searchTerm: string = '';
 
   onSearchInputChange() {
