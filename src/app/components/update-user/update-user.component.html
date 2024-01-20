@@ -1,18 +1,15 @@
 <body>
   <section class="relative max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md ">
 
-    <div class="flex items-center justify-between  mt-2">
-      <h2 class="text-lg font-semibold text-black capitalize" tabindex="0"
-      aria-label="Formulario para actualizar mis datos">Actualizar perfil</h2>
+    <div class="flex items-center justify-between mt-2">
+      <h2 class="text-lg font-semibold text-black capitalize" tabindex="0" aria-label="Formulario para actualizar mis datos">Actualizar perfil</h2>
       <button (click)="closeModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
         <mat-icon class="w-6 h-6 text-black">close</mat-icon>
       </button>
-
     </div>
 
     <form class="mt-6" [formGroup]="contactForm">
       <div class="grid gap-6 mt-4 grid-cols-2">
-
         <div class="relative">
           <label class="text-black" for="name">Nombres*</label>
           <input id="firstName" type="text" name="firstName" formControlName="firstName" placeholder="Inserte sus nombres"
@@ -38,8 +35,7 @@
 
         <div class="relative">
           <label class="text-black" for="lastName">Apellidos*</label>
-          <input id="lastName" name="lastName" formControlName="lastName" type="text"
-            placeholder="Inserte sus Apellidos"
+          <input id="lastName" name="lastName" formControlName="lastName" type="text" placeholder="Inserte sus Apellidos"
             class="block w-full rounded-md px-4 py-2 mt-2 text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
           <div *ngIf="contactForm.controls['lastName'].invalid && (contactForm.controls['lastName'].dirty || contactForm.controls['lastName'].touched)"
             class="alert alert-danger">
@@ -60,23 +56,21 @@
 
         <div class="relative">
           <label class="text-black" for="email">Email*</label>
-          <input id="email" name="email" formControlName="email" type="text"
-            placeholder="Inserte sus Apellidos"
+          <input id="email" name="email" formControlName="email" type="text" placeholder="Inserte sus Apellidos"
             class="block w-full px-4 py-2 mt-2 text-black bg-white border rounded-md border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-
-            <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['lastName'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger ">
-              <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
-                class="alert alert-danger ">Este campo es obligatorio.
-              </div>
-              <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"
-                class="alert alert-danger ">Este campo tiene que ser un correo electrónico válido.</div>
-              <div *ngIf="contactForm.controls['email'].errors?.['minlength']">
-                Minimo 5 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
-              <div *ngIf="contactForm.controls['email'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos(100). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
+          <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['lastName'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger ">
+            <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+              class="alert alert-danger ">Este campo es obligatorio.
             </div>
+            <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"
+              class="alert alert-danger ">Este campo tiene que ser un correo electrónico válido.</div>
+            <div *ngIf="contactForm.controls['email'].errors?.['minlength']">
+              Minimo 5 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+            <div *ngIf="contactForm.controls['email'].errors?.['maxlength']">
+                Superó el limite de caracteres permitidos(100). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
 
         <div class="relative">
@@ -98,43 +92,41 @@
         </div>
 
         <div class="relative">
-            <label class="text-black " for="phoneNumber">Celular</label>
-            <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
-              placeholder="Inserte su número de celular"
-              class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-            <!--Validators phoneNumber-->
-            <div *ngIf="contactForm.controls['phoneNumber'].invalid && (contactForm.controls['phoneNumber'].dirty || contactForm.controls['lastName'].touched)"
-            class="alert alert-danger ">
-              <div *ngIf="contactForm.get('phoneNumber')?.hasError('numbersOnly')" class="alert alert-danger ">
-                Este campo solo debe contener números.
-              </div>
-              <div *ngIf="contactForm.controls['phoneNumber'].errors?.['minlength']">
-                Minimo 3 números. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
-              <div *ngIf="contactForm.controls['phoneNumber'].errors?.['maxlength']">
-                  Superó el limite de números permitidos(15). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
+          <label class="text-black " for="phoneNumber">Celular</label>
+          <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" placeholder="Inserte su número de celular"
+            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+          <!--Validators phoneNumber-->
+          <div *ngIf="contactForm.controls['phoneNumber'].invalid && (contactForm.controls['phoneNumber'].dirty || contactForm.controls['lastName'].touched)"
+          class="alert alert-danger ">
+            <div *ngIf="contactForm.get('phoneNumber')?.hasError('numbersOnly')" class="alert alert-danger ">
+              Este campo solo debe contener números.
             </div>
+            <div *ngIf="contactForm.controls['phoneNumber'].errors?.['minlength']">
+              Minimo 3 números. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+            <div *ngIf="contactForm.controls['phoneNumber'].errors?.['maxlength']">
+                Superó el limite de números permitidos(15). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
 
         <div class="relative">
           <label class="text-black " for="country">Pais</label>
           <input id="country" name="country" formControlName="country" placeholder="Colombia"
               class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-              <div *ngIf="contactForm.controls['country'].invalid && (contactForm.controls['country'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger">
-                <div *ngIf="contactForm.controls['country'].errors?.['minlength']">
-                  Minimo 3 caracteres. <mat-icon class="material-symbols-outlined "> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['country'].errors?.['maxlength']">
-                    Superó el limite de números permitidos(25). <mat-icon class="material-symbols-outlined "> warning </mat-icon>
-                </div>
-              </div>
+          <div *ngIf="contactForm.controls['country'].invalid && (contactForm.controls['country'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger">
+            <div *ngIf="contactForm.controls['country'].errors?.['minlength']">
+              Minimo 3 caracteres. <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+            </div>
+            <div *ngIf="contactForm.controls['country'].errors?.['maxlength']">
+                Superó el limite de números permitidos(25). <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+            </div>
+          </div>
         </div>
 
         <div class="relative col-span-2 mb-6">
           <label class="text-black " for="descriptionUser">Descripción del perfil:</label>
-          <textarea type="text" id="descriptionUser" name="descriptionUser" formControlName="descriptionUser"
-            placeholder="Ingrese la descripción de su perfil"
+          <textarea type="text" id="descriptionUser" name="descriptionUser" formControlName="descriptionUser" placeholder="Ingrese la descripción de su perfil"
             class="block w-full h-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
           </textarea>
           <div *ngIf="contactForm.controls['descriptionUser'].invalid && (contactForm.controls['descriptionUser'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger">
@@ -143,16 +135,15 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="flex justify-end mt-6">
         <span *ngIf="errorResponseMessageForm" class="text-md z-100 font-semibold m-auto flex justify-center items-center  text-red-800/80" >
           <mat-icon class="material-symbols-outlined  ">error</mat-icon>  {{ errorResponseMessageForm }}
         </span>
-        <button (click)="onSubmit()"
-          class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
+        <button (click)="onSubmit()" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
       </div>
     </form>
+
   </section>
 </body>

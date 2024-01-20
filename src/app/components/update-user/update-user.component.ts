@@ -9,19 +9,19 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent {
-  @Input() user:User = {} as User;
-  contactForm!: FormGroup;
-
   constructor(private userShared: SharedUsersService,
     private fb: FormBuilder,
     private renderer: Renderer2) { }
 
+    @Input() user:User = {} as User;
+    contactForm!: FormGroup;
+    errorResponseMessageForm = '';
 
     ngOnInit(): void{
       this.contactForm = this.initFrom();
       this.contactForm.patchValue(this.user);
     }
-    errorResponseMessageForm = '';
+
     onSubmit(){
       if(this.contactForm.valid){
         this.updateUserData();
@@ -32,6 +32,7 @@ export class UpdateUserComponent {
           }, 5000);
       }
     }
+
     updateUserData(): void {
       if (!this.user) {
         console.error('Error: No se proporcionaron datos para la actualización.');
@@ -64,6 +65,7 @@ export class UpdateUserComponent {
 
       })
     }
+
     numberOnlyValidator(control:FormControl){
       const value = control.value;
       if (value && !/^\d+$/.test(value)){
