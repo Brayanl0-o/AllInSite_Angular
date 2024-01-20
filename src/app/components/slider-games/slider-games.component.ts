@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { SliderGamesInterface } from 'src/app/models/slider-games';
 
 @Component({
@@ -22,19 +22,6 @@ export class SliderGamesComponent {
       {url: '../../../assets/img/slider-home/videogames.webp',title:'videogames'},
 
     ];
-    // imagesLoaded = 0;
-    // imagesReady = false;
-    // handleImageLoad() {
-    //   this.imagesLoaded++;
-
-    //   // Verificar si todas las imágenes están cargadas antes de iniciar la animación
-    //   if (this.imagesLoaded === this.slides.length) {
-    //     // Todas las imágenes están cargadas, ahora puedes iniciar la animación
-    //     // Por ejemplo, puedes configurar una bandera para indicar que las imágenes están listas.
-    //     this.imagesReady = true;
-    //   }
-    // }
-
     currentIndex:number = 0;
     interval:any;
 
