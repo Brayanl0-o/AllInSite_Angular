@@ -9,15 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./modal-login.component.css']
 })
 export class ModalLoginComponent {
-  contactForm!: FormGroup;
-  public isLoading: boolean = false;
-  public errorMessage: string | null = null;
-
   constructor(private authService:AuthService,
     private router: Router,
     private readonly fb: FormBuilder,
     private renderer: Renderer2
   ){}
+
+
+  contactForm!: FormGroup;
+  public isLoading: boolean = false;
+  public errorMessage: string | null = null;
 
   ngOnInit(){
     // this.subscribeLoggedIn()
@@ -31,7 +32,6 @@ export class ModalLoginComponent {
       } else {
         this.capsLockOn = false;
       }
-
     }
 
     public isPasswordVisible: boolean = false;
@@ -49,7 +49,6 @@ export class ModalLoginComponent {
         this.authService.login(this.contactForm.value).subscribe(
           (res)=>{
             // console.log(res);
-
             localStorage.setItem('token', res.token);
 
             const userId = this.authService.getLoggedInUserId();
