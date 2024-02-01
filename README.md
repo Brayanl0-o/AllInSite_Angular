@@ -1,4 +1,7 @@
-# GameSite
+# AllIn
+This web application serves as a centralized hub for managing and storing information about video games. Equipped with CRUD operations, filters, search functionality, and more, it simplifies the handling of video game data.
+Explore, create, and organize video game information effortlessly.
+![AllinHome](https://github.com/Brayanl0-o/AllInSite_Angular/assets/107898232/7524ae27-652f-4c3a-8028-6d326cdf1421)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
