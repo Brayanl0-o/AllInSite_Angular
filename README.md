@@ -5,29 +5,38 @@ Explore, create, and organize video game information effortlessly.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
+
+## Technologies
+• Angular   • TypeScript   • Tailwind.css
+  
 ## Installation
 1. Clone the repository to your local machine.
-  $ git clone git@github.com:programateacademy/c9-pacto-front.git
+  $ git clone https://github.com/Brayanl0-o/AllInSite_Angular.git
 
 2. Navigate to the project directory.
-  $ cd c9-pacto-front
+```bash
+  $ cd AllInSite_Angular
+```
 
 3. You can change the project's origin with the following commands.
+```bash
   $ git remote -v
   $ git remote remove origin
   $ git remote add origin <new_repository_url>
-
-4. Install the necessary dependencies. Make sure you have both package.json and package-lock.json in the root of the folder, and then execute:
+```
+5. Install the necessary dependencies. Make sure you have both package.json and package-lock.json in the root of the folder, and then execute:
+```bash
   $ npm i
-
+```
 ## Tailwind Installation
-1. In a terminal, copy and paste:
-    npm install -D tailwindcss
+1. In a terminal, copy and paste: ` npm install -D tailwindcss`
+   
 2. Check if the tailwind.config.js file is installed.
-3. Initialize with:
-    npx tailwindcss init
+3. Initialize with: `npx tailwindcss init`
 4. In the main style.css, ensure it contains the following:
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+  `@tailwind base; `
+  `@tailwind components;`
+  `@tailwind utilities;`
+  
+  
 
