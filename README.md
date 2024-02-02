@@ -8,7 +8,28 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Technologies
 • Angular   • TypeScript   • Tailwind.css
-  
+
+## Functionalities
+
+Video Games Section:
+  - Explore a curated list of video games, complete with individual pages offering in-depth details, requirements, and video trailers.
+  - Use filters to navigate effortlessly based on criteria such as qualification, developer, platforms, genre, rating, and release date.
+  - Conduct instant searches for specific games using a dedicated input field.
+  - Perform CRUD operations, allowing administrators to create, modify, and delete games.
+
+Authentication and Authorization:
+  - Practice secure login and user management using JSON Web Tokens (JWT).
+  - Enable user registration with email and password, including password recovery functionality.
+  - Implement role-based access control to protect sensitive operations, ensuring only administrators can edit, delete, or create games.
+
+User Profiles:
+  - Every registered user has a personalized profile, showcasing basic information and a customizable description.
+  - Users can change their profile images for a personalized touch.
+
+Image Management:
+  - Optimize image loading through a backend controller, involving compression and resizing.
+Serve and store images efficiently within specific API folders, ensuring optimal site performance.
+
 ## Installation
 1. Clone the repository to your local machine.
   $ git clone https://github.com/Brayanl0-o/AllInSite_Angular.git
