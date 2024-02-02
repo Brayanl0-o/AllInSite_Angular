@@ -7,7 +7,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 ## Technologies
-• Angular   • TypeScript   • Tailwind.css
+- Angular   • TypeScript   
+- Tailwind.css • Flowbite
 
 ## Functionalities
 
