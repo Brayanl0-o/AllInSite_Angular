@@ -5,7 +5,7 @@ Explore, create, and organize video game information effortlessly.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
-Installation
+## Installation
 1. Clone the repository to your local machine.
   $ git clone git@github.com:programateacademy/c9-pacto-front.git
 
@@ -19,4 +19,15 @@ Installation
 
 4. Install the necessary dependencies. Make sure you have both package.json and package-lock.json in the root of the folder, and then execute:
   $ npm i
+
+## Tailwind Installation
+1. In a terminal, copy and paste:
+    npm install -D tailwindcss
+2. Check if the tailwind.config.js file is installed.
+3. Initialize with:
+    npx tailwindcss init
+4. In the main style.css, ensure it contains the following:
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
