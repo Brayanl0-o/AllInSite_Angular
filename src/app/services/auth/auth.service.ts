@@ -36,10 +36,11 @@ export class AuthService {
     }
 
     // const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-
-    return this.http.post(this.apiUrl + 'auth/signup', formData, { observe: 'response' }).pipe(
+    // const headers = new HttpHeaders();
+    console.log('userData service', userData)
+    return this.http.post(this.apiUrl + 'auth/signup', formData, {  observe: 'response' }).pipe(
       catchError((error: any) => {
-        // console.error('Error en la solicitud(servicio) de registro signUp: ', error);
+        console.error('Error en la solicitud(servicio) de registro signUp: ', error);
         return throwError(error);
       })
     );;
