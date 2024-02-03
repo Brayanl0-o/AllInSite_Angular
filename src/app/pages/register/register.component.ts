@@ -59,9 +59,11 @@ export class RegisterComponent {
       formData.append('password', userData.password);
       formData.append('years', userData.years);
       formData.append('country', userData.country);
-      formData.append('userImg', this.selectedFile!);
-
-
+      // formData.append('userImg', this.selectedFile!);
+      if (this.selectedFile) {
+        formData.append('userImg', this.selectedFile);
+      }
+      console.log('userData ts', userData)
       this.authService.signUp(userData, this.selectedFile).subscribe(
         (response) => {
           // console.log('Usuario registrado correctamente', response);
