@@ -9,7 +9,7 @@
 
       <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
 
-      <ng-container *ngIf="loadingData">
+      <ng-container *ngIf="loadingData" >
         <app-skeleton-videogames></app-skeleton-videogames>
       </ng-container>
       <!-- "notResultsOne || notResultsTwo"  -->
