@@ -35,6 +35,7 @@ import { EditVideogameComponent } from './components/edit-videogame/edit-videoga
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NoResultsComponent } from './components/errors/no-results/no-results.component';
+import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { NoResultsComponent } from './components/errors/no-results/no-results.co
     LoadingScreenComponent,
     FooterComponent,
     NoResultsComponent,
+    AddRequirementsComponent,
   ],
   imports: [
     CommonModule,
