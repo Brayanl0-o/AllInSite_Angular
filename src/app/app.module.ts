@@ -36,6 +36,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { FooterComponent } from './components/footer/footer.component';
 import { NoResultsComponent } from './components/errors/no-results/no-results.component';
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
+import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { AddRequirementsComponent } from './components/add-requirements/add-requ
     FooterComponent,
     NoResultsComponent,
     AddRequirementsComponent,
+    SkeletonDetailsGamesComponent,
   ],
   imports: [
     CommonModule,
