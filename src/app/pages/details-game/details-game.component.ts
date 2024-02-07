@@ -101,6 +101,11 @@ export class DetailsGameComponent {
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
+  isModalVisibleRequiriments: boolean = true;
+  openModalRequirements() {
+    this.isModalVisibleRequiriments = !this.isModalVisibleRequiriments;
+  }
+
   navigateToVideogames(userId?: string | null) {
     const route = userId ? `/videogames;id=${userId}` : '/videogames';
     this.router.navigateByUrl(route);
