@@ -134,10 +134,12 @@ export class DetailsGameComponent {
           this.gameDetails$.subscribe((game) => {
           // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
-          this.isLoading = false;
+          this.isLoading = !this.isLoading;
+
           // if (game && game.gameImg) {
           //   this.gameImgUrl = game.gameImg;
-          //   this.isLoading = false;
+          //   this.isLoading = !this.isLoading;
+
 
           // } else {
           //   console.error('Game o gameImg son nulos o indefinidos.');
