@@ -55,6 +55,8 @@ export class AddVideogameComponent {
       formData.append('genre', gameData.genre);
       formData.append('averageRating', gameData.averageRating);
       formData.append('descriptionGame', gameData.descriptionGame);
+      formData.append('gameTrailer', gameData.gameTrailer);
+
       formData.append('gameImg', this.selectedFile);
 
       this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
@@ -77,7 +79,8 @@ export class AddVideogameComponent {
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
       averageRating:['',[Validators.required,this.rangoNumericoValidator,this.numbersOnlyValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
-      descriptionGame:['',[Validators.required, Validators.maxLength(450)]]
+      descriptionGame:['',[Validators.required, Validators.maxLength(450)]],
+      gameTrailer:['',[ Validators.maxLength(450)]]
     })
   }
 
