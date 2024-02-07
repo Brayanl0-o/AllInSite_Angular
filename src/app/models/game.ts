@@ -8,5 +8,6 @@ export interface Game {
   genre: string;
   averageRating: number;
   descriptionGame: string;
+  gameTrailer: string;
   showPopover: false;
 }
