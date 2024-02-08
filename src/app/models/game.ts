@@ -11,3 +11,13 @@ export interface Game {
   gameTrailer: string;
   showPopover: false;
 }
+
+export interface GameRequirements{
+  _id: string,
+  gameId: string,
+  platform: string;
+  sizeGame?: number;
+  ramGame?: number;
+  processorGame?: string;
+  graphGame?: string;
+}
