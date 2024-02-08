@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Game } from '../../models/game';
+import { Game, GameRequirements } from '../../models/game';
 import { environment } from 'src/environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 import { EventEmitter } from '@angular/core';
@@ -11,7 +11,6 @@ import { EventEmitter } from '@angular/core';
 export class VideogamesService {
 
   private apiUrl = environment.apiUrl
-
   $modal = new EventEmitter<any>();
 
 
@@ -52,6 +51,21 @@ export class VideogamesService {
       })
     }
     return this.http.post(url, formData, httpOptions);
+  }
+
+  getRequirementesById(gameId:string){
+    const  url = `${this.apiUrl}games/gameRequirementsById/${gameId}`
+    return this.http.get<GameRequirements>(url);
+  }
+
+  updateRequirements(gameRequeriments: GameRequirements): Observable<any>{
+    const url = `${this.apiUrl}games/createRequirements`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token') || '',
+      })
+    }
+    return this.http.post(url, gameRequeriments)
   }
 
   updateGame(id: string,gameData: any): Observable<any> {
