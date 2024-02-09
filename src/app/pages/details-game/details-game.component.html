@@ -104,27 +104,33 @@
           </header>
 
 
+          <div  *ngIf="gameRequirements$ | async as gameRequirements">
+            <ul class="text-start bg-gray-500 p-8"  *ngIf="!isModalVisibleRequiriments" >
+              <li class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameRequirements.platform }}</span></li>
+              <li class="text-gray-800 text-2xl py-2">Tamaño: <span class="font-semibold">{{ gameRequirements.sizeGame}}</span></li>
+              <li class="text-gray-800 text-2xl py-2">RAM: <span class="font-semibold">{{ gameRequirements.ramGame}} </span></li>
+              <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">ese{{ gameRequirements.processorGame}}</span></li>
+              <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame}} </span></li>
+            </ul>
+          </div>
 
-          <ul class="text-start bg-gray-500 p-8" *ngIf="!isModalVisibleRequiriments" >
-            <li class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></li>
-            <li class="text-gray-800 text-2xl py-2">Tamaño: <span class="font-semibold">68.89 GBs</span></li>
-            <li class="text-gray-800 text-2xl py-2">RAM: <span class="font-semibold">8 - 10 Gbs </span></li>
-            <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">Intel core i3 3.1 ghz</span></li>
-            <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">Intel UHD Graphics 630 </span></li>
-          </ul>
+
           <div *ngIf="isModalVisibleRequiriments" class=" text-gray-800 text-lg p-2  w-auto">
-            <app-add-requirements></app-add-requirements>
+            <app-add-requirements  ></app-add-requirements>
           </div>
         </div>
 
 
-        <div class="m-auto z-20 w-auto mt-0 mr-2 " >
+        <!-- <div class="m-auto z-20 w-auto mt-0 mr-2 " >
           <h2 class="text-4xl font-bold py-6"> Trailer {{ gameDetails.gameName}}</h2>
           <iframe width="560" height="315" src="{{gameDetails.gameTrailer}}" frameborder="0" allowfullscreen></iframe>
 
           <iframe width="560" height="315" src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
+
+
+
 </body>
