@@ -6,31 +6,31 @@
       Ingresa los requerimientos del juego: <mat-icon class="-mb-1 text-xl">videogame_asset</mat-icon>
     </h2> -->
     <form  class="mt-2"  [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" novalidate>
-        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between  gap-4 items-center">
+        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="platform"> Plataformas: </label>
           <input id="platform" type="text" name="platform" formControlName="platform" placeholder="Ingrese la plataforma del videojuego"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
         </div>
-        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-4  items-center">
+        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="sizeGame"> Tamaño: </label>
           <input id="sizeGame" type="text" name="sizeGame" formControlName="sizeGame" placeholder="Ingrese el tamaño (en gigabytes)"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
         </div>
-        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-4  items-center">
+        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="ramGame"> RAM: </label>
           <input id="ramGame" type="text" name="ramGame" formControlName="ramGame" placeholder="Ingrese la RAM"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
         </div>
-        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-4  items-center">
+        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="processorGame"> Procesador: </label>
           <input id="processorGame" type="text" name="processorGame" formControlName="processorGame" placeholder="Ingrese el procesador"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
         </div>
-        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-4  items-center">
+        <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="graphGame"> Grafica: </label>
           <input id="graphGame" type="text" name="graphGame" formControlName="graphGame" placeholder="Ingrese la grafica minima"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -41,7 +41,7 @@
           <mat-icon class="material-symbols-outlined -mb-1.5 ">error</mat-icon>  {{ errorResponseMessageForm }}
         </span> -->
         <div class="flex justify-end mr-24 mt-4 ">
-          <button type="submit"  class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600">Actualizar requerimientos</button>
+          <button type="submit"  class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600">Guardar</button>
         </div>
     </form>
 
