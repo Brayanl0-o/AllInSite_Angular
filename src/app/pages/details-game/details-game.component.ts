@@ -50,7 +50,7 @@ export class DetailsGameComponent {
       this.videogamesService.getRequirementesById(gameId).subscribe(
         (gameRequirements) => {
           if (gameRequirements !== null) {
-            console.log('Requerimientos del juego:', gameRequirements);
+            // console.log('Requerimientos del juego:', gameRequirements);
             this.gameRequirements$ = of(gameRequirements);
           } else {
             console.error('El juego no tiene requerimientos.');
