@@ -1,8 +1,8 @@
 import { Component, Input, Renderer2} from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
-import { Game } from 'src/app/models/game';
-import { Observable } from 'rxjs';
+import { Game, GameRequirements } from 'src/app/models/game';
+import { Observable, forkJoin, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from 'src/app/models/user';
@@ -21,25 +21,49 @@ export class DetailsGameComponent {
     private route: ActivatedRoute,
     private router: Router) {
     this.gameDetails$ = new Observable<Game>();
+    this.gameRequirements$ = new Observable<GameRequirements>();
   }
 
-  // @Input() game: Game = {} as Game;
   gameDetails$: Observable<Game>;
-  // gameId: string | null = null;
-  gameId!: ''
+  gameRequirements$: Observable<GameRequirements>
+  gameId: string = '';
   gameImgUrl: string | null = null;
   gameImg = '';
   userId = '';
   isEditingImg = false;
   selectedFile : File | null = null;
 
-
   ngOnInit() {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
-    this.gameDetails$ = this.videogamesService.getGameById(this.userId, this.gameId);
+
+    this.route.paramMap.subscribe(paramMap => {
+      this.gameId = paramMap.get('gameId') ?? '';
+    });
     this.imageUrl = `${apiUrl}uploads/videogames/`
     this.loadDataGame();
+    this.loadGameRequirements(this.gameId);
     this.isAdminOrNot();
+  }
+
+  loadGameRequirements(gameId: string): void {
+    if (gameId) {
+      this.videogamesService.getRequirementesById(gameId).subscribe(
+        (gameRequirements) => {
+          if (gameRequirements !== null) {
+            console.log('Requerimientos del juego:', gameRequirements);
+            this.gameRequirements$ = of(gameRequirements);
+          } else {
+            console.error('El juego no tiene requerimientos.');
+            this.gameRequirements$ = of({} as GameRequirements);
+          }
+        },
+        (error) => {
+          console.error('Error al obtener los requerimientos del juego:', error);
+        }
+      );
+    } else {
+      console.error('No se proporcionó un ID de juego.');
+    }
   }
 
   onFileSelectedGame(event: Event):void {
@@ -49,21 +73,17 @@ export class DetailsGameComponent {
         this.selectedFile = file;
       }
   }
-  updatedGameImg(gameImg: File): void {
-    // console.log('Select file', this.selectedFile);
 
+  updatedGameImg(gameImg: File): void {
     // Suscríbete a gameDetails$
     this.gameDetails$.subscribe((game: Game) => {
       if (!game) {
         console.error('Error: No hay datos de actualización');
         return;
       }
-      // console.log('game id', game._id);
       this.videogamesService.updatedGameImg(game._id, gameImg).subscribe(
         (response) => {
-          // Actualiza el gameDetails$ si es necesario
           this.gameDetails$ = this.videogamesService.getGameById(this.userId, this.gameId);
-          // console.log('Datos act con exito:', response);
           this.loadDataGame()
         },
         (error) => {
@@ -71,7 +91,6 @@ export class DetailsGameComponent {
         }
       );
     });
-
     this.isEditingImg = false;
   }
 
@@ -80,7 +99,6 @@ export class DetailsGameComponent {
     this.newGameImg = this.gameImg;
     this.isEditingImg = false;
     this.renderer.removeStyle(document.body, 'overflow');
-
   }
 
   openModalImg(){
@@ -101,7 +119,7 @@ export class DetailsGameComponent {
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
-  isModalVisibleRequiriments: boolean = true;
+  isModalVisibleRequiriments: boolean = false;
   openModalRequirements() {
     this.isModalVisibleRequiriments = !this.isModalVisibleRequiriments;
   }
@@ -135,7 +153,6 @@ export class DetailsGameComponent {
           // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
           this.isLoading = !this.isLoading;
-
           // if (game && game.gameImg) {
           //   this.gameImgUrl = game.gameImg;
           //   this.isLoading = !this.isLoading;
@@ -153,7 +170,6 @@ export class DetailsGameComponent {
             if (game && game.gameImg) {
               this.gameImgUrl = game.gameImg;
               this.isLoading = false;
-
             } else {
               console.error('Game o gameImg son nulos o indefinidos.');
               this.gameImgUrl = '';
