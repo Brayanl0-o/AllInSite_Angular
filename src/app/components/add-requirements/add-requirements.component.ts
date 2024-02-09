@@ -1,5 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { GameRequirements } from 'src/app/models/game';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 
@@ -10,6 +11,7 @@ import { VideogamesService } from 'src/app/services/videogames/videogames.servic
 })
 export class AddRequirementsComponent {
   constructor(private videoGamesService: VideogamesService,
+    private route: ActivatedRoute,
     private renderer: Renderer2,
     private fb: FormBuilder){
       this.errorResponseMessage = '';
@@ -23,6 +25,9 @@ export class AddRequirementsComponent {
     gameId = '';
     ngOnInit():void{
       this.contactForm = this.initFrom();
+      this.route.paramMap.subscribe(paramMap => {
+        this.gameId = paramMap.get('gameId') ?? '';
+      });
     }
     onFormSubmit(){
       this.updateGameRequeriments();
@@ -30,10 +35,13 @@ export class AddRequirementsComponent {
     updateGameRequeriments(){
       if(this.contactForm.valid){
 
-        const gameRequeriments: GameRequirements = this.contactForm.value;
+        const gameRequeriments: GameRequirements = { ...this.contactForm.value, gameId: this.gameId };
         this.videoGamesService.updateRequirements( gameRequeriments).subscribe(
           (response) => {
-            this.reloadPage()
+            console.log('Requisitos agregados correctamente.', response)
+            window.location.reload();
+
+            // this.reloadPage()
           },
           (error) => {
             console.error('Error al actualizar los datos:', error);
