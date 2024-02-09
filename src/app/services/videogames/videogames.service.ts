@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game, GameRequirements } from '../../models/game';
 import { environment } from 'src/environments/environment';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { EventEmitter } from '@angular/core';
 @Injectable({
   providedIn: 'root'
@@ -55,16 +55,13 @@ export class VideogamesService {
 
   getRequirementesById(gameId:string){
     const  url = `${this.apiUrl}games/gameRequirementsById/${gameId}`
-    return this.http.get<GameRequirements>(url);
+    return this.http.get<GameRequirements[]>(url).pipe(
+      map(requirements => requirements.length > 0 ? requirements[0] : null)
+    );
   }
 
   updateRequirements(gameRequeriments: GameRequirements): Observable<any>{
     const url = `${this.apiUrl}games/createRequirements`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'x-access-token': localStorage.getItem('token') || '',
-      })
-    }
     return this.http.post(url, gameRequeriments)
   }
 
@@ -72,7 +69,7 @@ export class VideogamesService {
     const url = `${this.apiUrl}games/update/${id}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'x-access-token': localStorage.getItem('token') || '', // Agrega el token al encabezado
+        'x-access-token': localStorage.getItem('token') || '',
       }),
     };
     return this.http.patch(url, gameData, httpOptions);
