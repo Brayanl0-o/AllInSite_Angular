@@ -93,40 +93,40 @@
 
     <div class="flex row-auto justify-evenly bg-slate-400/10 m-auto w-auto mt-2 mb-24" >
       <div class=" flex row-auto justify-start gap-40 w-auto pl-6 p-6 text-center  bg-slate-400/80 rounded-sm relative">
-        <div class=" text-gray-800 text-lg p-2 mb-14">
+        <div class=" text-gray-800 text-lg p-6 mb-14">
           <header class="relative">
-            <h2 class="text-4xl font-bold py-6"> Requisitos mínimos:</h2>
+            <h2 class="text-4xl font-bold py-6 mr-10"> Requisitos mínimos:</h2>
             <button *ngIf="isAdmin" type="submit" arial-label="Boton para subir un videojuego"
             class="absolute top-6 -right-4 flex flex-row items-center justify-evenly text-white bg-[#2929297e] transition-colors h-fit w-fit p-2 rounded-lg shadow text-md sm:text-sm hover:bg-[#292929a4]"
             (click)="openModalRequirements()">
-                <mat-icon class="w-6 h-6 text-black">add_box</mat-icon>
+                <mat-icon class="w-6 h-6 text-black">edit_square</mat-icon>
             </button>
           </header>
 
 
           <div  *ngIf="gameRequirements$ | async as gameRequirements">
-            <ul class="text-start bg-gray-500 p-8"  *ngIf="!isModalVisibleRequiriments" >
+            <ul class="text-start bg-gray-500 p-8 mb-10"  *ngIf="!isModalVisibleRequiriments" >
               <li class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameRequirements.platform }}</span></li>
               <li class="text-gray-800 text-2xl py-2">Tamaño: <span class="font-semibold">{{ gameRequirements.sizeGame}}</span></li>
               <li class="text-gray-800 text-2xl py-2">RAM: <span class="font-semibold">{{ gameRequirements.ramGame}} </span></li>
-              <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">ese{{ gameRequirements.processorGame}}</span></li>
+              <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame}}</span></li>
               <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame}} </span></li>
             </ul>
           </div>
 
 
           <div *ngIf="isModalVisibleRequiriments" class=" text-gray-800 text-lg p-2  w-auto">
-            <app-add-requirements  ></app-add-requirements>
+            <app-add-requirements></app-add-requirements>
           </div>
         </div>
 
 
-        <!-- <div class="m-auto z-20 w-auto mt-0 mr-2 " >
+        <div class="m-auto z-20 w-auto mt-0 mr-2 " >
           <h2 class="text-4xl font-bold py-6"> Trailer {{ gameDetails.gameName}}</h2>
-          <iframe width="560" height="315" src="{{gameDetails.gameTrailer}}" frameborder="0" allowfullscreen></iframe>
+          <!-- <iframe width="560" height="315" src="{{gameDetails.gameTrailer}}" frameborder="0" allowfullscreen></iframe> -->
 
           <iframe width="560" height="315" src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
