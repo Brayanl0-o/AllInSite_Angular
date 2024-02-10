@@ -57,11 +57,11 @@ export class AddRequirementsComponent {
 
     initFrom(): FormGroup{
       return this.fb.group({
-        platform: ['',[Validators.minLength(0), Validators.maxLength(60)]],
-        sizeGame: ['', [ this.numbersOnlyValidator]],
+        platform: ['',[ Validators.maxLength(60)]],
+        sizeGame: ['', [ Validators.maxLength(5), this.numbersOnlyValidator]],
         ramGame: ['',[ Validators.maxLength(3), this.numbersOnlyValidator]],
-        processorGame: ['',[Validators.minLength(0), Validators.maxLength(200)]],
-        graphGame: ['',[Validators.minLength(0), Validators.maxLength(200)]],
+        processorGame: ['',[ Validators.maxLength(200)]],
+        graphGame: ['',[ Validators.maxLength(200)]],
 
       })
     }
