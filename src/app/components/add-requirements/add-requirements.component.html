@@ -11,30 +11,66 @@
           <input id="platform" type="text" name="platform" formControlName="platform" placeholder="Ingrese la plataforma del videojuego"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
+          <div *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
+          class="alert alert-danger font-bold text-red-900/90 ">
+            <div *ngIf="contactForm.controls['platform'].errors?.['maxlength']">
+              Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="sizeGame"> Tamaño: </label>
           <input id="sizeGame" type="text" name="sizeGame" formControlName="sizeGame" placeholder="Ingrese el tamaño (en gigabytes)"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
+          <div *ngIf="contactForm.controls['sizeGame'].invalid && (contactForm.controls['sizeGame'].dirty || contactForm.controls['sizeGame'].touched)"
+          class="alert alert-danger font-bold text-red-900/90 ">
+            <div *ngIf="contactForm.get('sizeGame')?.hasError('numbersOnly')" class="alert alert-danger font-bold">
+              Este campo solo debe contener números.
+            </div>
+            <div *ngIf="contactForm.controls['sizeGame'].errors?.['maxlength']">
+              Superó el limite de caracteres permitidos(5). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="ramGame"> RAM: </label>
           <input id="ramGame" type="text" name="ramGame" formControlName="ramGame" placeholder="Ingrese la RAM"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
+          <div *ngIf="contactForm.controls['ramGame'].invalid && (contactForm.controls['ramGame'].dirty || contactForm.controls['ramGame'].touched)"
+          class="alert alert-danger font-bold text-red-900/90 ">
+            <div *ngIf="contactForm.get('ramGame')?.hasError('numbersOnly')" class="alert alert-danger font-bold">
+              Este campo solo debe contener números.
+            </div>
+            <div *ngIf="contactForm.controls['ramGame'].errors?.['maxlength']">
+              Superó el limite de caracteres permitidos(3). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="processorGame"> Procesador: </label>
           <input id="processorGame" type="text" name="processorGame" formControlName="processorGame" placeholder="Ingrese el procesador"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
+          <div *ngIf="contactForm.controls['processorGame'].invalid && (contactForm.controls['processorGame'].dirty || contactForm.controls['processorGame'].touched)"
+          class="alert alert-danger font-bold text-red-900/90 ">
+            <div *ngIf="contactForm.controls['processorGame'].errors?.['maxlength']">
+              Superó el limite de caracteres permitidos(200). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="graphGame"> Grafica: </label>
           <input id="graphGame" type="text" name="graphGame" formControlName="graphGame" placeholder="Ingrese la grafica minima"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
           required>
+          <div *ngIf="contactForm.controls['graphGame'].invalid && (contactForm.controls['graphGame'].dirty || contactForm.controls['graphGame'].touched)"
+          class="alert alert-danger font-bold text-red-900/90 ">
+            <div *ngIf="contactForm.controls['graphGame'].errors?.['maxlength']">
+              Superó el limite de caracteres permitidos(200). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+            </div>
+          </div>
         </div>
 
         <!-- <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
@@ -49,140 +85,16 @@
   </div>
   <!-- <section class="relative max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md ">
 
-    <div class="flex items-center justify-between mt-4">
-      <h2 class="text-xl text-center mb-4 mx-auto font-semibold text-black capitalize" tabindex="0" aria-label="Formulario para actualizar mis datos">
-        Ingresa los requerimientos del juego: <mat-icon class="-mb-1 text-xl">videogame_asset</mat-icon></h2>
-      <button (click)="closeModal()" class="p-2 w-10 h-10 text-white transition-colors duration-300 transform rounded-full hover:bg-gray-900/50 focus:outline-none focus:bg-gray-600">
-        <mat-icon class="w-6 h-6 text-black">close</mat-icon>
-      </button>
-    </div>
 
-    <form  class="mt-2"  [formGroup]="contactForm"  novalidate>
 
-      <span class="bg-black/10 p-2 pl-1 text-sm">Los campos con * son necesarios: </span>
 
-      <div class="grid grid-cols-1 gap-4 mt-4 sm:grid-cols-2">
 
-        <div class="relative">
 
-          <label class="text-black/80 font-semibold " for="gameName"> * Nombre: </label>
-          <input id="gameName" type="text" name="gameName" formControlName="gameName" placeholder="Ingrese el nombre del videojuego"
-            class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-            required>
-          <div *ngIf="contactForm.controls['gameName'].invalid && (contactForm.controls['gameName'].dirty || contactForm.controls['gameName'].touched)"
-            class="alert alert-danger font-bold text-red-900/90 ">
-            <div *ngIf="contactForm.controls['gameName'].errors?.['required']">
-              Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-            </div>
-            <div *ngIf="contactForm.controls['gameName'].errors?.['minlength']">
-             Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-            </div>
-            <div *ngIf="contactForm.controls['gameName'].errors?.['maxlength']">
-              Superó el limite de caracteres permitidos(80). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-            </div>
-          </div>
 
-          <div class="relative top-4">
-            <label class="text-black/80 font-semibold " for="gameImg">* Imagen del juego:<br></label>
-            <p class="text-sm font-semibold ml-2 text-slate-900/80">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
-            <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
-              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-            </span>
-            <input type="file" name="gameImg" accept=".jpg,.png" id="fileInput"
-              class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
-          </div>
 
-          <div class="relative ">
-            <label class="text-black/80 font-semibold " for="descriptionGame">* Descripción: </label>
-            <textarea type="text" id="descriptionGame" name="descriptionGame" formControlName="descriptionGame"
-              placeholder="Ingrese la descripción del videojuego" required
-              class="block p-2 h-48 w-full resize-none px-4 py-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-            </textarea>
-            <div *ngIf="contactForm.controls['descriptionGame'].invalid && (contactForm.controls['descriptionGame'].dirty || contactForm.controls['descriptionGame'].touched)"
-              class="alert alert-danger font-bold text-red-900/90 ">
-              <div *ngIf="contactForm.controls['descriptionGame'].errors?.['required']">
-                Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
-              <div *ngIf="contactForm.controls['descriptionGame'].errors?.['minlength']">
-                Una descripción minima de 20 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
-              <div *ngIf="contactForm.controls['descriptionGame'].errors?.['maxlength']">
-                Superó el limite de caracteres permitidos(450). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-              </div>
-            </div>
-          </div>
 
-        </div>
 
-        <div class="relative">
 
-          <div class="flex flex-col justify-center items-center">
-            <div class="relative top-4">
-              <label class="text-black/80 font-semibold " for="developer">Desarrollador:</label>
-              <input id="developer" name="developer" formControlName="developer"
-                placeholder="Ingrese el Desarrollador"
-                class="block w-full mb-6 pr-12 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-              <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
-                class="alert alert-danger font-bold text-red-900/90">
-                <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['developer'].errors?.['minlength']">
-                  Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['developer'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative">
-              <label class="text-black/80 font-semibold" for="platform">* Plataforma/s:</label>
-              <input id="platform" name="platform" formControlName="platform" type="text" placeholder="Ingrese las plataformas"
-                class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" required>
-              <div *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
-                class="alert alert-danger text-red-900/90 font-bold -mt-2">
-                <div *ngIf="contactForm.controls['platform'].errors?.['required']">
-                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['platform'].errors?.['minlength']">
-                  Minimo 5 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['platform'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative">
-              <label class="text-black/80 font-semibold" for="genre">* Genero/s:</label>
-              <input id="genre" name="genre" formControlName="genre" placeholder="Ingrese el genero"
-                class="block w-full pr-8 pl-2 py-2 mb-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
-                required>
-              <div *ngIf="contactForm.controls['genre'].invalid && (contactForm.controls['genre'].dirty || contactForm.controls['genre'].touched)"
-                class="alert alert-danger font-bold -mt-4 text-red-900/90">
-                <div *ngIf="contactForm.controls['genre'].errors?.['required']">
-                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['genre'].errors?.['minlength']">
-                  Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-                <div *ngIf="contactForm.controls['genre'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos(30). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative">
-              <label class="text-black/90 font-semibold " for="releaseDate">* Fecha de lanzamiento:</label>
-              <input id="releaseDate" type="date" name="releaseDate" formControlName="releaseDate"
-              class="block w-full px-4 py-2 mb-4 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"/>
-              <div *ngIf="contactForm.controls['releaseDate'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)" class="alert alert-danger font-bold  text-red-900/90">
-                <div *ngIf="contactForm.controls['releaseDate'].errors?.['required']">
-                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-            </div>
 
             <div class="relative text-center">
               <label class="text-black/80 font-semibold " for="averageRating">* Puntaje promedio (1 - 10):</label>
