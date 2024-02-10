@@ -1,5 +1,5 @@
 import { Component, Renderer2, Input } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Game } from 'src/app/models/game';
 import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 
@@ -22,7 +22,7 @@ export class EditVideogameComponent {
 
 
     ngOnInit(): void{
-      this.contactForm =  this.initFrom();
+      this.contactForm = this.initFrom();
       this.contactForm.patchValue(this.game);
     }
 
@@ -66,6 +66,8 @@ export class EditVideogameComponent {
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
       averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
       descriptionGame:['',[Validators.required, Validators.maxLength(450)]],
+      gameTrailer:['',[ Validators.maxLength(450)]]
+
     })
   }
 
