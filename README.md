@@ -6,6 +6,8 @@ Explore, create, and organize video game information effortlessly.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
 
+(Reference images: https://drive.google.com/drive/folders/1_hF-MOuBDu8IruCoyOVoeoA92BjOJorg?usp=drive_link)
+
 ## Technologies
 - Angular   • TypeScript   
 - Tailwind.css • Flowbite
