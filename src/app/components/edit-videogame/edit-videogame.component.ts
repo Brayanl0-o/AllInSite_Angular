@@ -60,7 +60,7 @@ export class EditVideogameComponent {
     return this.fb.group({
       gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       gameImg: [this.game.gameImg],
-      platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
+      // platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
       releaseDate: ['',[Validators.required]],
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
