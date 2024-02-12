@@ -35,7 +35,6 @@ export class DetailsGameComponent {
 
   ngOnInit() {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
-
     this.route.paramMap.subscribe(paramMap => {
       this.gameId = paramMap.get('gameId') ?? '';
     });
@@ -53,7 +52,7 @@ export class DetailsGameComponent {
             // console.log('Requerimientos del juego:', gameRequirements);
             this.gameRequirements$ = of(gameRequirements);
           } else {
-            console.error('El juego no tiene requerimientos.');
+            // console.error('El juego no tiene requerimientos.');
             this.gameRequirements$ = of({} as GameRequirements);
           }
         },
