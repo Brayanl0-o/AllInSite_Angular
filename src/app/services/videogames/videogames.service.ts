@@ -12,7 +12,15 @@ export class VideogamesService {
 
   private apiUrl = environment.apiUrl
   $modal = new EventEmitter<any>();
+  // activeRoute:string ='';
 
+  // routeChanged = new EventEmitter<string>();
+
+
+  // setActivateRoute(route:string){
+  //   this.activeRoute = route;
+  //   this.routeChanged.emit(route)
+  // }
 
   constructor(private http: HttpClient) { }
 
@@ -38,13 +46,15 @@ export class VideogamesService {
 
     const formData = new FormData();
     formData.append('gameName', gameData.gameName);
-    formData.append('platform', gameData.platform);
+    // formData.append('platform', gameData.platform);
     formData.append('releaseDate', gameData.releaseDate);
     formData.append('developer', gameData.developer);
     formData.append('genre', gameData.genre);
     formData.append('averageRating', gameData.averageRating);
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
+    formData.append('gameTrailer', gameData.gameTrailer);
+
     const httpOptions = {
       headers: new HttpHeaders({
         'x-access-token':localStorage.getItem('token')|| '',
