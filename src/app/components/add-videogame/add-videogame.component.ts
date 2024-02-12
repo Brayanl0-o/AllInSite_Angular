@@ -48,7 +48,7 @@ export class AddVideogameComponent {
 
       const formData = new FormData();
       formData.append('gameName', gameData.gameName);
-      formData.append('platform', gameData.platform);
+      // formData.append('platform', gameData.platform);
       formData.append('releaseDate', gameData.releaseDate);
       formData.append('developer', gameData.developer);
       formData.append('genre', gameData.genre);
@@ -73,7 +73,7 @@ export class AddVideogameComponent {
   initFrom(): FormGroup{
     return this.fb.group({
       gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
-      platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
+      // platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
       releaseDate: ['',[Validators.required]],
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
