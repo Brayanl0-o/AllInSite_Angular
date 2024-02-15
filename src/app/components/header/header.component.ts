@@ -1,9 +1,12 @@
+import { Router, NavigationEnd } from '@angular/router';
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { ActivatedRoute } from '@angular/router';
+import { VideogamesService } from 'src/app/services/videogames/videogames.service';
 import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/models/user';
+
 const apiBaseUrl= environment.apiUrl;
 
 @Component({
@@ -13,6 +16,8 @@ const apiBaseUrl= environment.apiUrl;
 })
 export class HeaderComponent {
   constructor(private userShared: SharedUsersService,
+    public videogamesService: VideogamesService,
+    private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute){}
 
@@ -21,7 +26,6 @@ export class HeaderComponent {
     userId: string | null = null;
     loadingData: boolean = true;
     imageUrl!: string;
-
     ngOnInit(){
       this.dataUser();
     }
