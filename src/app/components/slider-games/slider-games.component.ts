@@ -26,14 +26,13 @@ export class SliderGamesComponent {
     interval:any;
 
     ngOnInit(): void {
-      this.startAutoPlay();
     }
 
-    startAutoPlay() {
-      this.interval = setInterval(() => {
-        this.goToNext();
-      }, 6000); // Cambia la diapositiva cada 5 segundos (ajusta el tiempo según tus necesidades)
-    }
+    // startAutoPlay() {
+    //   this.interval = setInterval(() => {
+    //     this.goToNext();
+    //   }, 6000); // Cambia la diapositiva cada 5 segundos (ajusta el tiempo según tus necesidades)
+    // }
 
     stopAutoPlay() {
       clearInterval(this.interval);
