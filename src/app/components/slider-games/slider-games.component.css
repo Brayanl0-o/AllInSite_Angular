@@ -9,23 +9,9 @@
   border-radius: 10px;
   background-size: cover;
   background-position: center;
-  /* -webkit-animation: fadeinout 2s linear forwards;
-  animation: fadeinout 2s linear forwards; */
-  /* transition-timing-function: ease-in; */
-  /* duration-1000 ease-out object-cover */
 }
 
-@-webkit-keyframes fadeinout {
-  10% { opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0.8; }
-}
 
-@keyframes fadeinout {
-  10% { opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0.8; }
-}
 .active {
   background-color: white;
 
