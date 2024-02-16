@@ -16,13 +16,14 @@
       <div *ngIf="notResultsOne || notResultsTwo" class="z-0" >
        <app-no-results></app-no-results>
       </div>
-      <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-8 mt-2">
-        <li *ngFor="let game of filteredGames | paginate: { itemsPerPage: 8, currentPage: page }" class="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60  hover:transform hover:scale-105  hover:bg-slate-500 hover:border-none max-sm:hover:scale-95">
-          <a class="relative" [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
-            <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover h-[400px] w-full rounded-lg ">
-            <button *ngIf="isAdmin" (click)="deleteGame(game._id)"  aria-label="Eliminar el juego" class="absolute w-12 h-10 bottom-6 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
-              <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
-            </button>
+      <ul class="flex flex-wrap justify-center items-center gap-4 flex-grow mb-8 mt-2 ">
+        <li *ngFor="let game of filteredGames | paginate: { itemsPerPage: 8, currentPage: page }" class="relative z-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/5 border border-gray-200 rounded-lg shadow-sm hover:shadow-2xl hover:shadow-blue-800/60  hover:transform hover:scale-105  hover:bg-slate-500 hover:border-none max-sm:hover:scale-95">
+          <button *ngIf="isAdmin" (click)="deleteGame(game._id)"  aria-label="Eliminar el juego" class="absolute w-12 h-10 z-10 bottom-56 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
+            <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
+          </button>
+          <a class="relative " [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
+            <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover -z-30 h-[400px] w-full rounded-lg ">
+
             <div class="absolute top-0 left-0 m-2 bg-black bg-opacity-50 text-white p-2 rounded">
               {{ game.genre }}</div>
             <button (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" type="button"  aria-label="Información del juego" class="absolute top-1 right-1 bg-black bg-opacity-30 text-white p-1 rounded-xl">
