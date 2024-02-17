@@ -9,6 +9,10 @@
 
       <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
 
+      <div class="z-50 ">
+        <app-warning ></app-warning>
+      </div>
+
       <ng-container *ngIf="loadingData" >
         <app-skeleton-videogames></app-skeleton-videogames>
       </ng-container>
