@@ -6,8 +6,7 @@
     <form  class="mt-2"  [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" novalidate>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="platform"> Plataformas: </label>
-          <input id="platform" type="text" name="platform" formControlName="platform" placeholder="Ingrese la plataforma del videojuego"
-          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" required>
+          <input id="platform" type="text" name="platform" formControlName="platform" placeholder="Ingrese la plataforma del videojuego" class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" >
           <div  *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
           class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
@@ -29,8 +28,7 @@
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="sizeGame"> Tamaño: </label>
           <input id="sizeGame" type="text" name="sizeGame" formControlName="sizeGame" placeholder="Ingrese el tamaño (en gigabytes)"
-          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-          required>
+          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
           <div *ngIf="contactForm.controls['sizeGame'].invalid && (contactForm.controls['sizeGame'].dirty || contactForm.controls['sizeGame'].touched)"
           class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
@@ -46,8 +44,7 @@
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="ramGame"> RAM: </label>
           <input id="ramGame" type="text" name="ramGame" formControlName="ramGame" placeholder="Ingrese la RAM"
-          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-          required>
+          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
           <div *ngIf="contactForm.controls['ramGame'].invalid && (contactForm.controls['ramGame'].dirty || contactForm.controls['ramGame'].touched)" class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
               <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600 alert alert-danger font-bold" *ngIf="contactForm.get('ramGame')?.hasError('numbersOnly')" >
@@ -61,7 +58,7 @@
         </div>
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="processorGame"> Procesador: </label>
-          <input id="processorGame" type="text" name="processorGame" formControlName="processorGame" placeholder="Ingrese el procesador" class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" required>
+          <input id="processorGame" type="text" name="processorGame" formControlName="processorGame" placeholder="Ingrese el procesador" class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
           <div *ngIf="contactForm.controls['processorGame'].invalid && (contactForm.controls['processorGame'].dirty || contactForm.controls['processorGame'].touched)"
           class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
@@ -74,8 +71,7 @@
         <div class="text-gray-800 text-2xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="graphGame"> Grafica: </label>
           <input id="graphGame" type="text" name="graphGame" formControlName="graphGame" placeholder="Ingrese la grafica minima"
-          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-          required>
+          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
           <div *ngIf="contactForm.controls['graphGame'].invalid && (contactForm.controls['graphGame'].dirty || contactForm.controls['graphGame'].touched)" class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
               <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600" *ngIf="contactForm.controls['graphGame'].errors?.['maxlength']">
