@@ -37,6 +37,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NoResultsComponent } from './components/errors/no-results/no-results.component';
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
 import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
+import { WarningComponent } from './components/warning/warning.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-d
     NoResultsComponent,
     AddRequirementsComponent,
     SkeletonDetailsGamesComponent,
+    WarningComponent,
   ],
   imports: [
     CommonModule,
