@@ -1,3 +1,9 @@
+/* body{
+  background-image: radial-gradient(#203462 2px, transparent 2px);
+  background-size: calc(10 * 2px) calc(10 * 2px);
+
+} */
+
 .name-game {
   max-height: 100px; /* Altura máxima de la descripción */
   overflow: hidden;
