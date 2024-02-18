@@ -46,7 +46,7 @@ export class VideogamesService {
 
     const formData = new FormData();
     formData.append('gameName', gameData.gameName);
-    // formData.append('platform', gameData.platform);
+    formData.append('platform', gameData.platform);
     formData.append('releaseDate', gameData.releaseDate);
     formData.append('developer', gameData.developer);
     formData.append('genre', gameData.genre);
