@@ -50,6 +50,18 @@
               </div>
             </div>
           </div>
+
+          <div class="relative mt-4 mb-10">
+            <label class="text-black/80 font-semibold" for="gameTrailer">Trailer:</label>
+            <input id="gameTrailer" name="gameTrailer" formControlName="gameTrailer" type="text" placeholder="Ingrese el enlace al trailer"
+              class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" >
+            <div *ngIf="contactForm.controls['gameTrailer'].invalid && (contactForm.controls['gameTrailer'].dirty || contactForm.controls['gameTrailer'].touched)"
+              class="alert alert-danger text-red-900/90 font-bold -mt-2">
+              <div *ngIf="contactForm.controls['gameTrailer'].errors?.['maxlength']">
+                Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="relative">
@@ -72,17 +84,6 @@
               </div>
             </div>
 
-            <div class="relative">
-              <label class="text-black/80 font-semibold" for="gameTrailer">Trailer:</label>
-              <input id="gameTrailer" name="gameTrailer" formControlName="gameTrailer" type="text" placeholder="Ingrese el enlace al trailer"
-                class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" >
-              <div *ngIf="contactForm.controls['gameTrailer'].invalid && (contactForm.controls['gameTrailer'].dirty || contactForm.controls['gameTrailer'].touched)"
-                class="alert alert-danger text-red-900/90 font-bold -mt-2">
-                <div *ngIf="contactForm.controls['gameTrailer'].errors?.['maxlength']">
-                  Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
-              </div>
-            </div>
 
             <div class="relative">
               <label class="text-black/80 font-semibold " for="developer">Desarrollador:</label>
