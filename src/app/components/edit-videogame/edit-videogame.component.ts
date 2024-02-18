@@ -12,19 +12,19 @@ export class EditVideogameComponent {
 
   constructor(private videoGamesService: VideogamesService,
     private renderer: Renderer2,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder) {}
 
 
-    @Input() game: Game = {} as Game;
-    contactForm!: FormGroup;
-    errorResponseMessageForm = '';
-    errorResponseMessage = '';
+  @Input() game: Game = {} as Game;
+  contactForm!: FormGroup;
+  errorResponseMessageForm = '';
+  errorResponseMessage = '';
 
 
-    ngOnInit(): void{
-      this.contactForm = this.initFrom();
-      this.contactForm.patchValue(this.game);
-    }
+  ngOnInit(): void{
+    this.contactForm = this.initFrom();
+    this.contactForm.patchValue(this.game);
+  }
 
   onFormSubmit(){
     if (this.contactForm.valid) {
@@ -48,7 +48,6 @@ export class EditVideogameComponent {
    this.videoGamesService.updateGame(this.game._id, this.game).subscribe(
     (response) =>{
       this.closeModalAndReloadPage();
-      // console.log('Datos act con exito:', response);
     },
     (error) => {
       console.error('Error al actualizar los datos:', error);
@@ -60,14 +59,13 @@ export class EditVideogameComponent {
     return this.fb.group({
       gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       gameImg: [this.game.gameImg],
-      // platform:['',[Validators.required,Validators.minLength(5),Validators.maxLength(40)]],
+      platform:['',[Validators.required,Validators.minLength(2),Validators.maxLength(40)]],
       releaseDate: ['',[Validators.required]],
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
       averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
       descriptionGame:['',[Validators.required, Validators.maxLength(450)]],
       gameTrailer:['',[ Validators.maxLength(450)]]
-
     })
   }
 
@@ -77,7 +75,6 @@ export class EditVideogameComponent {
     if (isNaN(valor) || valor < 0 || valor > 10) {
       return { 'rangoNumerico': true };
     }
-
     return null;
   }
 
@@ -90,6 +87,5 @@ export class EditVideogameComponent {
     this.renderer.removeStyle(document.body, 'overflow');
     this.videoGamesService.$modal.emit(false)
   }
-
 }
 
