@@ -7,7 +7,6 @@
   <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'"  class=" absolute top-0 w-full h-auto bg-center bg-cover object-cover ">
 
     <span  class="w-full h-full absolute opacity-60 bg-black"></span>
-    <!-- style="clip-path:polygon(0 100%, 100% 100%, 100% 80%, 0 80%);" -->
 
     <div class="flex justify-center relative mt-36 bg-slate-400/30 m-auto h-auto w-auto" >
 
@@ -18,7 +17,6 @@
         <mat-icon class="h-20 w-20 fixed bottom-5 rounded-lg bg-black/60 hover:bg-black max-sm:bottom-2 left-1/2 transform -translate-x-1/2  blur-none hover:scale-150 hover:transition-transform text-blue-400">brush</mat-icon>
         </button>
         <img class="object-cover h-full w-full rounded-lg" [src]="imageUrl + gameDetails.gameImg" alt="{{ gameDetails.gameName }} ">
-
       </div>
 
       <div *ngIf="isEditingImg"  class="rounded-md fixed inset-0  flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
@@ -29,10 +27,6 @@
               <br>
             </label>
             <p class="text-sm font-semibold ml-2 text-slate-900/80  w-10/12  ">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
-
-            <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
-              {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-            </span> -->
             <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
             (change)="onFileSelectedGame($event)"
               class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
@@ -40,7 +34,7 @@
 
           <div class="flex space-x-4">
             <button (click)="updatedGameImg(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
-              class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+              class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-[#006186] focus:outline-none focus:bg-[#006186]">
               Guardar
             </button>
             <button (click)="cancelEditImg()" tabindex="0"
@@ -103,17 +97,15 @@
             </button>
           </header>
 
-
           <div  *ngIf="gameRequirements$ | async as gameRequirements">
             <ul class="text-start bg-gray-500 p-8 mb-10"  *ngIf="!isModalVisibleRequiriments" >
-              <li class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameRequirements.platform }}</span></li>
+              <p class="text-gray-800 text-2xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></p>
               <li class="text-gray-800 text-2xl py-2">Tamaño: <span class="font-semibold">{{ gameRequirements.sizeGame}}</span></li>
               <li class="text-gray-800 text-2xl py-2">RAM: <span class="font-semibold">{{ gameRequirements.ramGame}} </span></li>
               <li class="text-gray-800 text-2xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame}}</span></li>
               <li class="text-gray-800 text-2xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame}} </span></li>
             </ul>
           </div>
-
 
           <div *ngIf="isModalVisibleRequiriments" class=" text-gray-800 text-lg p-2  w-auto">
             <app-add-requirements></app-add-requirements>
@@ -130,7 +122,5 @@
       </div>
     </div>
   </div>
-
-
 
 </body>

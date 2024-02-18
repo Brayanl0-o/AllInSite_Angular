@@ -10,8 +10,7 @@
 .game-description,
 .game-description > p {
   word-wrap: break-word;
-  /* background-color: aqua; */
-  max-width: 100%;
+  max-width: 90%;
   min-height: 100px;
-  max-height: 700px; /* Altura máxima de la descripción */
+  max-height: 700px;
 }
