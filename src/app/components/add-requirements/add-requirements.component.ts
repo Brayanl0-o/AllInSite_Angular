@@ -13,25 +13,25 @@ export class AddRequirementsComponent {
   constructor(private videoGamesService: VideogamesService,
     private route: ActivatedRoute,
     private renderer: Renderer2,
-    private fb: FormBuilder){
-      this.errorResponseMessage = '';
+    private fb: FormBuilder)
+    {this.errorResponseMessage = '';}
 
-    }
+  contactForm!: FormGroup;
+  errorResponseMessageForm = '';
+  errorResponseMessage = '';
+  gameId = '';
 
-    contactForm!: FormGroup;
-    errorResponseMessageForm = '';
-    errorResponseMessage = '';
+  ngOnInit():void{
+    this.contactForm = this.initFrom();
+    this.route.paramMap.subscribe(paramMap => {
+      this.gameId = paramMap.get('gameId') ?? '';
+    });
+  }
 
-    gameId = '';
-    ngOnInit():void{
-      this.contactForm = this.initFrom();
-      this.route.paramMap.subscribe(paramMap => {
-        this.gameId = paramMap.get('gameId') ?? '';
-      });
-    }
     onFormSubmit(){
       this.updateGameRequeriments();
     }
+
     updateGameRequeriments(){
       if(this.contactForm.valid){
 
@@ -65,6 +65,7 @@ export class AddRequirementsComponent {
 
       })
     }
+
     numbersOnlyValidator(control: FormControl) {
       const value = control.value;
       if (value && !/^\d+$/.test(value)) {
@@ -72,6 +73,7 @@ export class AddRequirementsComponent {
       }
       return null;
     }
+
     reloadPage() {
       window.location.reload();
     }
