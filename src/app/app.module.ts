@@ -27,7 +27,6 @@ import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-vid
 import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
 import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
 import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
-import { PaginationVideogamesComponent } from './components/pagination-videogames/pagination-videogames.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
@@ -60,7 +59,6 @@ import { WarningComponent } from './components/warning/warning.component';
     SkeletonProfileComponent,
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
-    PaginationVideogamesComponent,
     AddVideogameComponent,
     EditVideogameComponent,
     LoadingScreenComponent,
