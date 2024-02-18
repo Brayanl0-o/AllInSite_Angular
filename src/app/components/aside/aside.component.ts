@@ -7,13 +7,10 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent {
-  constructor(private filterService: FilterService)
-  {
-    // console.log('filtrSelected from asideC',this.selectedFilters)
-  }
+  constructor(private filterService: FilterService){}
 
   selectedFilters = {
-    platforms: [] as string[], // Define platforms as an array of strings
+    platforms: [] as string[],
     genres: [] as string[],
     developers: [] as string [],
     order: '',
@@ -25,7 +22,6 @@ export class AsideComponent {
   availablePlatforms: string[] = [ 'Android','PC','PlayStation Vita','PSP','PlayStation 1','PlayStation 2', 'PlayStation 3','PlayStation 4','Xbox 360','Xbox One','Xbox One X','Xbox Series X/S','Wii','Wii U','Nintendo 3DS','Nintendo Switch'];
   availableGenres: string[] = [ 'Acción', 'Aventura','RPG','Estrategia','Deportes','Carreras','Lucha','Shooter','Plataformas','Sandbox','Simulación'];
   availableDevelopers: string []= ['343 Industries','Activision Blizzard','Capcom','CD Projekt Red','Electronic Arts (EA)','Hangar 13','Microsoft Game Studios','Mojang','Nintendo','Rockstar Games','Santa Monica Studio','Sony Interactive Entertainment','Square Enix','Ubisoft']
-
 
   ngOnInit(){
     this.resetForm();
@@ -64,13 +60,12 @@ export class AsideComponent {
 
   showOrderDropdown: boolean = false;
   toggleOrderDropdown(order: string) {
-    this.selectedFilters.order = order; // Actualiza el valor de order según lo seleccionado por el usuario
-    this.showOrderDropdown = false; // Cierra el menú desplegable
+    this.selectedFilters.order = order;
+    this.showOrderDropdown = false;
     this.applyFilters();
   }
 
   applyFilters() {
-    // Llama al método updateFilters del servicio FilterService para actualizar los filtros
     this.filterService.updateFilters(this.selectedFilters);
   }
 
