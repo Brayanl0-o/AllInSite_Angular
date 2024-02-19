@@ -40,7 +40,6 @@
 
                 </div>
               </div>
-              <!-- *ngIf="isEditingImg"  -->
               <div *ngIf="isEditingImg"  class="rounded-md fixed top-0 flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
                 <div class="rounded-md fixed flex flex-col items-center justify-center w-max h-max m-auto max-sm:w-[80%] bg-slate-200 mb-4 z-50 p-4">
                   <div class="relative top-4">
@@ -49,10 +48,6 @@
                       <br>
                     </label>
                     <p class="text-sm font-semibold ml-2 text-slate-900/80  w-10/12  ">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
-
-                    <!-- <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
-                      {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                    </span> -->
                     <input type="file" name="userImg" accept=".jpg,.png" id="fileInput"
                     (change)="onFileSelectedUser($event)"
                       class="block w-full px-6 py-2 mt-2 mb-8 rounded-md shadow-md hover:shadow-lg text-black bg-white border focus:border-blue-40" required/>
@@ -71,11 +66,10 @@
                 </div>
               </div>
             </div>
+
             <div class="text-center mt-4">
               <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 ">
                 {{user?.firstName}} {{user?.lastName}}
-
-                <!-- {{user?.userName}} -->
               </h3>
               <span class="my-3">{{user?.email}}</span>
               <div class="flex flex-col items-center mt-4 sm:mx-auto">
@@ -84,50 +78,37 @@
                     <mat-icon class="text-2xl bounce-animation" >pin_drop</mat-icon>
                     <span tabindex="0"> {{ user?.country}}</span>
                   </button>
-
                 </div>
-                </div>
+              </div>
 
-                <hr class="mt-8">
+              <hr class="mt-8">
+              <div class=" border-t border-blueGray-200 text-center ">
+                <div class=" w-full group max-w-md min-w-full mx-auto mt-6 mb-6 break-words bg-white border shadow-2xl dark:bg-gray-800 dark:border-gray-700 md:max-w-sm rounded-xl">
+                  <div class="flex flex-wrap justify-center">
+                      <div class="w-full ">
+                          <p class="text-lg leading-relaxed text-blueGray-700 p-5">
+                            {{user?.descriptionUser}}</p>
+                          <!-- <a class="font-normal text-pink-500">
+                            Show more</a> -->
 
-                <!-- <div class="flex p-4">
-                  <div class="w-1/2 text-center">
-                    <span class="font-bold">1.8 k</span> Followers
-                  </div>
-                  <div class="w-0 border border-gray-300">
-                  </div>
-                  <div class="w-1/2 text-center">
-                    <span class="font-bold">2.0 k</span> Following
-                  </div>
-                </div> -->
-
-                <div class=" border-t border-blueGray-200 text-center ">
-                  <div class=" w-full group max-w-md min-w-full mx-auto mt-6 mb-6 break-words bg-white border shadow-2xl dark:bg-gray-800 dark:border-gray-700 md:max-w-sm rounded-xl">
-                    <div class="flex flex-wrap justify-center">
-                        <div class="w-full ">
-                            <p class="text-lg leading-relaxed text-blueGray-700 p-5">
-                              {{user?.descriptionUser}}</p>
-                            <!-- <a class="font-normal text-pink-500">
-                              Show more</a> -->
-
-                            <div class="pb-6 ">
-                              <div class=" h-6 min-w-full overflow-hidden translate-y-6 rounded-br-xl">
-                                <div class=" flex rounded-b-2xl">
-                                    <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
-                                    <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg]  bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
-                                    <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
-                                    <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
-                                    <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
-                                </div>
+                          <div class="pb-6 ">
+                            <div class=" h-6 min-w-full overflow-hidden translate-y-6 rounded-br-xl">
+                              <div class=" flex rounded-b-2xl">
+                                  <div class="w-36 h-8 transition-colors duration-200 delay-75 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                  <div class="w-28 h-8 transition-colors duration-200 delay-100 transform skew-x-[35deg]  bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                  <div class="w-28 h-8 transition-colors duration-200 delay-150 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
+                                  <div class="w-28 h-8 transition-colors duration-200 delay-200 transform skew-x-[35deg] bg-logo-blue/90 group-hover:bg-logo-black/100 "></div>
+                                  <div class="w-28 h-8 transition-colors duration-200 delay-300 transform skew-x-[35deg] bg-logo-black/100 group-hover:bg-logo-blue/90 "></div>
                               </div>
                             </div>
-                        </div>
-                    </div>
+                          </div>
+                      </div>
                   </div>
                 </div>
               </div>
+              </div>
             </div>
-      </div>
+        </div>
     </div>
   </ng-template>
 </body>
