@@ -10,6 +10,10 @@
     height: 40vh;
     margin: 0 auto;
   }
+  .containerImages {
+    margin: auto;
+    width: 80%;
+  }
 }
 @media screen and (max-width:768px) {
   .slider-home{
@@ -18,13 +22,11 @@
     margin: 0 auto;
   }
 
-   .containerImages {
+  .containerImages {
     margin: auto;
     flex-wrap: wrap;
     width: 80%;
-    gap:20%;
   }
-
 }
 @media screen and (max-width: 768px) {
   .slider-home{
@@ -40,18 +42,17 @@
     margin: 0 auto;
   }
 
-   .containerImages {
-    margin-top:20%;
+  .containerImages {
+    margin-top:15%;
     flex-wrap: wrap;
     width: 90%;
-    gap:10%;
+    gap:5%;
   }
 
   .containerImage {
     padding-bottom: 0px;
-    margin-top: 1rem;
+    margin-top: 5%;
   }
-
 }
 @media screen and (max-width: 350px) {
   .slider-home{
