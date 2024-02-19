@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class WarningComponent {
   showModalWarning:boolean = false;
+
   ngOnInit() {
     const lastVisited = localStorage.getItem('lastVisited');
     if (!lastVisited || (Date.now() - parseInt(lastVisited, 10) > 300000)) {
@@ -14,6 +15,7 @@ export class WarningComponent {
         localStorage.setItem('lastVisited', Date.now().toString());
     }
   }
+
   toggleModalWarning(){
     this.showModalWarning = !this.showModalWarning;
   }
