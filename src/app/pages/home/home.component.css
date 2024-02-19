@@ -4,16 +4,13 @@
  height: 55vh;
  margin: auto;
 }
-
 @media screen and (max-width: 1050px) {
   .slider-home{
     width: 80vh;
     height: 40vh;
     margin: 0 auto;
   }
-
 }
-
 @media screen and (max-width:768px) {
   .slider-home{
     width: 50vh;
