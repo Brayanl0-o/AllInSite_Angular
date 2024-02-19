@@ -21,27 +21,26 @@ export class HeaderComponent {
     private authService: AuthService,
     private route: ActivatedRoute){}
 
-    @Input() user: User | null = null;
-    users: User []= [];
-    userId: string | null = null;
-    loadingData: boolean = true;
-    imageUrl!: string;
-    ngOnInit(){
-      this.dataUser();
-    }
+  @Input() user: User | null = null;
+  users: User []= [];
+  userId: string | null = null;
+  loadingData: boolean = true;
+  imageUrl!: string;
+
+  ngOnInit(){
+    this.dataUser();
+  }
 
   isUserLoggedIn() {
     return this.authService.loggedIn();
   }
 
-  //Loggout
   logout() {
     this.authService.logout()
   }
 
   dataUser() {
     const loggedInUserId = this.authService.getLoggedInUserId();
-
     if (loggedInUserId) {
       this.userId = loggedInUserId;
       this.route.paramMap.subscribe(paramMap => {
@@ -55,7 +54,6 @@ export class HeaderComponent {
             this.loadingData = false;
           });
         } else {
-          // console.error('No login')
           // this.router.navigate(['/error']);
         }
       });
