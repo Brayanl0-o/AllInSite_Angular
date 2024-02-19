@@ -16,6 +16,7 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private router: Router,
   ) { }
+
   contactForm!: FormGroup;
   isRegisterOk: boolean = false;
   selectedFile: File | null = null;
@@ -24,6 +25,7 @@ export class RegisterComponent {
   ngOnInit(): void {
     this.contactForm = this.initFrom();
   }
+
   errorResponseMessageForm = '';
   onSubmit() {
     if (this.contactForm.valid) {
@@ -47,10 +49,8 @@ export class RegisterComponent {
 
   signUp() {
     if (this.contactForm.valid) {
-
       const userData = this.contactForm.value;
       const formData = new FormData();
-
 
       formData.append('firstName', userData.firstName);
       formData.append('lastName', userData.lastName);
@@ -59,21 +59,17 @@ export class RegisterComponent {
       formData.append('password', userData.password);
       formData.append('years', userData.years);
       formData.append('country', userData.country);
-      // formData.append('userImg', this.selectedFile!);
       if (this.selectedFile) {
         formData.append('userImg', this.selectedFile);
       }
       console.log('userData ts', userData)
       this.authService.signUp(userData, this.selectedFile).subscribe(
         (response) => {
-          // console.log('Usuario registrado correctamente', response);
           this.contactForm = this.initFrom();
-
           const fileInput = document.getElementById('fileInput') as HTMLInputElement;
           if(fileInput){
             fileInput.value= '';
           }
-
           this.selectedFile = null;
           this.isRegisterOk= true;
         },
@@ -82,7 +78,6 @@ export class RegisterComponent {
           if (error instanceof HttpErrorResponse) {
             this.errorResponseMessage = error.error.message;
             this.isRegisterOk= false;
-
           }
         }
       )
@@ -104,8 +99,8 @@ export class RegisterComponent {
       phoneNumber: ['', [this.numbersOnlyValidator, Validators.minLength(3),Validators.maxLength(15)]],
       country: ['Colombia',[Validators.minLength(3),Validators.maxLength(25)]],
     })
-
   }
+
   numbersOnlyValidator(control: FormControl) {
     const value = control.value;
     if (value && !/^\d+$/.test(value)) {
@@ -115,15 +110,13 @@ export class RegisterComponent {
   }
   rangoNumericoValidator(control:AbstractControl) {
     const valor = control.value;
-
     if (isNaN(valor) || valor < 0 || valor > 150) {
       return { 'rangoNumerico': true };
     }
-
     return null;
   }
+
   formRegisterAlert(): void {
     window.alert('Todos los campos con * son obligatorios')
   }
-
 }
