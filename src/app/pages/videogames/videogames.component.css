@@ -5,21 +5,21 @@
 } */
 
 .name-game {
-  max-height: 100px; /* Altura máxima de la descripción */
+  max-height: 100px;
   overflow: hidden;
-  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si se corta el texto */
-  white-space: nowrap; /* Evita saltos de línea */
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
 .game-card-description,
 .game-card-description > p {
   font-size: small;
-  max-height: 100px; /* Altura máxima de la descripción */
+  max-height: 100px;
   overflow: hidden;
-  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) si se corta el texto */
+  text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Número de líneas a mostrar antes del recorte */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   white-space: normal;
 }

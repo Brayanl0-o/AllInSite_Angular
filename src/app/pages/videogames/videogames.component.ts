@@ -55,7 +55,6 @@ export class VideogamesComponent {
       this.isAdmin = true;
     } else{
       this.isAdmin = false;
-
       // console.warn('El usuario no tiene el rol de administrador algunas funciones no se mostraran');
     }
   }
@@ -81,10 +80,8 @@ export class VideogamesComponent {
           if (id === loggedInUserId) {
             this.userShared.getUser(id).subscribe(data => {
               this.user = data;
-              // console.log('Data User prfile', data)
             });
           } else {
-            // console.error('No login')
             // this.router.navigate(['/error']);
           }
         });
@@ -100,7 +97,6 @@ export class VideogamesComponent {
     this.videogamesService.deleteGame(gameId).subscribe(
       (response) => {
         this.filteredGames = this.filteredGames.filter(game => game._id !== gameId);
-          // console.log('Game eliminada exitosamente', response);
           this.navigateToVideogames(this.userId);
       },
       (error) => {
@@ -117,10 +113,10 @@ export class VideogamesComponent {
       this.filteredGames = [...this.games];
     });
   }
+
   notResultsOne: boolean = false;
   searchTerm: string = '';
   searchGames() {
-
     // Filter the games fot search word
     const results = this.filteredGames = this.games.filter((game) =>
       game.gameName.toLowerCase().includes(this.searchTerm.toLowerCase())
@@ -156,8 +152,6 @@ export class VideogamesComponent {
       this.applyFilters(filters);
     });
   }
-
-
 
   notResultsTwo: boolean = false
   applyFilters(filters: any) {
@@ -231,8 +225,6 @@ export class VideogamesComponent {
 
     // }
 
+    }
   }
-
-  }
-
 }
