@@ -12,8 +12,7 @@ export class ModalLoginComponent {
   constructor(private authService:AuthService,
     private router: Router,
     private readonly fb: FormBuilder,
-    private renderer: Renderer2
-  ){}
+    private renderer: Renderer2){}
 
 
   contactForm!: FormGroup;
@@ -88,6 +87,7 @@ export class ModalLoginComponent {
       this.modalIsVisible = !this.modalIsVisible;
       this.renderer.setStyle(document.body, 'overflow', 'hidden');
     }
+
     closeModal(){
       this.modalIsVisible = false;
       this.renderer.removeStyle(document.body, 'overflow');
