@@ -15,14 +15,14 @@ export class Error404Component implements OnInit {
     private route: ActivatedRoute){
     }
 
-    // Decorator for using interfaz user
-    @Input() user: User | null = null;
-    userId: string | null = null;
+  // Decorator for using interfaz user
+  @Input() user: User | null = null;
+  userId: string | null = null;
 
-    ngOnInit(){
-      // Initialize the data user
-      this.dataUser();
-    }
+  ngOnInit(){
+    // Initialize the data user
+    this.dataUser();
+  }
 
   isUserLoggedIn(){
     // Get the user logged-in from the authentication service
