@@ -9,12 +9,6 @@ import { ResetPasswordService } from 'src/app/services/reset-password/reset-pass
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent {
-  submitted = false;
-  successMessage: string | null = null;
-  errorMessage: string | null = null;
-  passwordForm: FormGroup;
-  passwordMismatch: boolean = false;
-  token: string = '';
 
   constructor(
     private routeActivated: ActivatedRoute,
@@ -22,13 +16,18 @@ export class ResetPasswordComponent {
     private formBuilder: FormBuilder,
     private resetPasswordService: ResetPasswordService,
   ) {
-
     this.passwordForm = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
     });
   }
 
+  submitted = false;
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+  passwordForm: FormGroup;
+  passwordMismatch: boolean = false;
+  token: string = '';
 
   get f() {
     return this.passwordForm.controls;
@@ -45,7 +44,6 @@ export class ResetPasswordComponent {
     return password === confirmPassword;
   }
 
-
   onSubmit(): void {
     this.submitted = true;
 
@@ -59,7 +57,6 @@ export class ResetPasswordComponent {
         this.resetPasswordService.changePassword(password, this.token).subscribe(
           (response) => {
             this.successMessage = 'Contraseña cambiada exitosamente.';
-
             this.router.navigate(['/home']);
           },
           (error) => {
