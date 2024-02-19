@@ -22,7 +22,6 @@ export class SendEmailComponent {
   }
 
   sendEmailResetPassword(){
-
     if(this.validateEmail(this.email)){
       this.isLoading = true;
       this.isEmailValid = true;
@@ -30,10 +29,7 @@ export class SendEmailComponent {
       .subscribe(
         ()=>{
           this.isEmailSent = true;
-          // console.log(this.isEmailSent)
           this.isLoading = false;
-
-
         }, (error)=> {
           console.error('Error sent email to reset password')
           this.errorMessage = 'Correo no registrado';
@@ -43,17 +39,16 @@ export class SendEmailComponent {
           }, 3500);
         }
         )
-
     }else{
       this.isEmailValid = false;
     }
   }
+
   clearErrorMessage() {
     this.errorMessage = '';
   }
 
   cancel() {
-    // Redirige al usuario a la página de inicio
     this.router.navigate(['/home']);
     this.isLoading = true;
   }
