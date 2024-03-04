@@ -83,7 +83,8 @@ export class DetailsGameComponent {
       this.videogamesService.updatedGameImg(game._id, gameImg).subscribe(
         (response) => {
           this.gameDetails$ = this.videogamesService.getGameById(this.userId, this.gameId);
-          this.loadDataGame()
+          this.closeModalAndReloadPage();
+          this.loadDataGame();
         },
         (error) => {
           console.error('Error al updated', error);
@@ -91,6 +92,14 @@ export class DetailsGameComponent {
       );
     });
     this.isEditingImg = false;
+  }
+  closeModalAndReloadPage() {
+    this.closeModal();
+    window.location.reload();
+  }
+  closeModal() {
+    this.renderer.removeStyle(document.body, 'overflow');
+    this.videogamesService.$modal.emit(false)
   }
 
   newGameImg = '';
