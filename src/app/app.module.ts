@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +30,6 @@ import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-vid
 import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
 import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
 import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
-
 import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
@@ -37,6 +39,9 @@ import { NoResultsComponent } from './components/errors/no-results/no-results.co
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
 import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
 import { WarningComponent } from './components/warning/warning.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +75,8 @@ import { WarningComponent } from './components/warning/warning.component';
   ],
   imports: [
     CommonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     NgxPaginationModule,
     FormsModule,
     HttpClientModule,
