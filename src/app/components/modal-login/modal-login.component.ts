@@ -2,8 +2,8 @@ import { Component, Renderer2 } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-modal-login',
@@ -15,7 +15,8 @@ export class ModalLoginComponent {
     private router: Router,
     private readonly fb: FormBuilder,
     private renderer: Renderer2,
-    public auth: AngularFireAuth){}
+    // public auth: AngularFireAuth
+    ){}
 
 
   contactForm!: FormGroup;

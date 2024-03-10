@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from '../environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +37,9 @@ import { AddRequirementsComponent } from './components/add-requirements/add-requ
 import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
 import { WarningComponent } from './components/warning/warning.component';
 
-
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { environment } from '../environments/environment';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -76,7 +75,7 @@ import { WarningComponent } from './components/warning/warning.component';
   imports: [
     CommonModule,
     // AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
+    // AngularFireAuthModule,
     NgxPaginationModule,
     FormsModule,
     HttpClientModule,

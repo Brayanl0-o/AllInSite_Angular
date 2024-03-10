@@ -5,9 +5,9 @@ import { catchError } from 'rxjs/operators';
 import { Observable, tap, throwError, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private afAuth: AngularFireAuth) { }
+    // private afAuth: AngularFireAuth
+    ) { }
 
 
   gettoken() {
