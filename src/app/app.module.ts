@@ -23,10 +23,10 @@ import { Error404Component } from './shared/components/errors/error404/error404.
 import { Error500Component } from './shared/components/errors/error500/error500.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-videogames/skeleton-videogames.component';
-import { SkeletonProfileComponent } from './components/skeletons/skeleton-profile/skeleton-profile.component';
-import { SkeletonHeaderComponent } from './components/skeletons/skeleton-header/skeleton-header.component';
-import { SkeletonHomeComponent } from './components/skeletons/skeleton-home/skeleton-home.component';
+import { SkeletonVideogamesComponent } from './shared/components/skeletons/skeleton-videogames/skeleton-videogames.component';
+import { SkeletonProfileComponent } from './shared/components/skeletons/skeleton-profile/skeleton-profile.component';
+import { SkeletonHeaderComponent } from './shared/components/skeletons/skeleton-header/skeleton-header.component';
+import { SkeletonHomeComponent } from './shared/components/skeletons/skeleton-home/skeleton-home.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
@@ -34,7 +34,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { NoResultsComponent } from './shared/components/errors/no-results/no-results.component';
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
-import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
+import { SkeletonDetailsGamesComponent } from './shared/components/skeletons/skeleton-details-games/skeleton-details-games.component';
 import { WarningComponent } from './shared/components/warning/warning.component';
 
 // import { AngularFireModule } from '@angular/fire/compat';
