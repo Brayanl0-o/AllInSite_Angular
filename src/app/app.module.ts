@@ -75,7 +75,7 @@ import { WarningComponent } from './components/warning/warning.component';
   ],
   imports: [
     CommonModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     NgxPaginationModule,
     FormsModule,
