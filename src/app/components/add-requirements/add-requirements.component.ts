@@ -1,7 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GameRequirements } from 'src/app/models/game';
+import { GameRequirements } from 'src/app/core/models/game';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
 
 @Component({

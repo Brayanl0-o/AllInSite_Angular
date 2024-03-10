@@ -1,6 +1,6 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { Validators } from '@angular/forms';
 @Component({

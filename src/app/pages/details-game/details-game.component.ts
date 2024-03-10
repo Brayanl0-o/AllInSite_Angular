@@ -1,11 +1,11 @@
 import { Component, Input, Renderer2} from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
-import { Game, GameRequirements } from 'src/app/models/game';
+import { Game, GameRequirements } from 'src/app/core/models/game';
 import { Observable, forkJoin, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 
 const apiUrl = environment.apiUrl
 @Component({

@@ -4,7 +4,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable, tap, throwError, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 // import { AngularFireAuth } from '@angular/fire/compat/auth';
 // import firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';

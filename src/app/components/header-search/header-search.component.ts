@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
-import { Game } from 'src/app/models/game';
+import { Game } from 'src/app/core/models/game';
 
 @Component({
   selector: 'app-header-search',

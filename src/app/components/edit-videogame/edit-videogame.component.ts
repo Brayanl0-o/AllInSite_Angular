@@ -1,6 +1,6 @@
 import { Component, Renderer2, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Game } from 'src/app/models/game';
+import { Game } from 'src/app/core/models/game';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
 
 @Component({

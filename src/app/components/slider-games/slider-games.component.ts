@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SliderGamesInterface } from 'src/app/models/slider-games';
+import { SliderGamesInterface } from 'src/app/core/models/slider-games';
 
 @Component({
   selector: 'app-slider-games',

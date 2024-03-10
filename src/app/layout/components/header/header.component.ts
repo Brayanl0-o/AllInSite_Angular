@@ -5,7 +5,7 @@ import { VideogamesService } from 'src/app/core/services/videogames/videogames.s
 import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/core/models/user';
 
 const apiBaseUrl= environment.apiUrl;
 
