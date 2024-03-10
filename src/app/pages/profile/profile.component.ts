@@ -1,8 +1,8 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { environment } from 'src/environments/environment';
 const apiBaseUrl= environment.apiUrl;
 @Component({

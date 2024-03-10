@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FilterService } from 'src/app/services/filter/filter.service';
+import { FilterService } from 'src/app/core/services/filter/filter.service';
 
 @Component({
   selector: 'app-aside',

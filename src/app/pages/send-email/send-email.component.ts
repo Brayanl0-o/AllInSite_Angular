@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ResetPasswordService } from 'src/app/services/reset-password/reset-password.service';
+import { ResetPasswordService } from 'src/app/core/services/reset-password/reset-password.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-send-email',

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-error404',

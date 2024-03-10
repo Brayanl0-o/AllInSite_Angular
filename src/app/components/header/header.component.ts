@@ -1,9 +1,9 @@
 import { Router, NavigationEnd } from '@angular/router';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VideogamesService } from 'src/app/services/videogames/videogames.service';
-import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
+import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/user';
 

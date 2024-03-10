@@ -1,7 +1,7 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { User } from 'src/app/models/user';
-import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
+import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-update-user',

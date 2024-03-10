@@ -1,8 +1,8 @@
 import { Component, Input, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { VideogamesService } from 'src/app/services/videogames/videogames.service';
-import { FilterService } from 'src/app/services/filter/filter.service';
-import { SharedUsersService } from 'src/app/services/sharedUsers/shared-users.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
+import { FilterService } from 'src/app/core/services/filter/filter.service';
+import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Game } from 'src/app/models/game';
 import { User } from 'src/app/models/user';

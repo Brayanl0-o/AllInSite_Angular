@@ -2,7 +2,7 @@ import { Component, Renderer2 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GameRequirements } from 'src/app/models/game';
-import { VideogamesService } from 'src/app/services/videogames/videogames.service';
+import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
 
 @Component({
   selector: 'app-add-requirements',
