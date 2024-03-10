@@ -19,8 +19,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
 import { ResetPasswordService } from './core/services/reset-password/reset-password.service';
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
-import { Error404Component } from './components/errors/error404/error404.component';
-import { Error500Component } from './components/errors/error500/error500.component';
+import { Error404Component } from './shared/components/errors/error404/error404.component';
+import { Error500Component } from './shared/components/errors/error500/error500.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkeletonVideogamesComponent } from './components/skeletons/skeleton-videogames/skeleton-videogames.component';
@@ -32,10 +32,10 @@ import { AddVideogameComponent } from './components/add-videogame/add-videogame.
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
-import { NoResultsComponent } from './components/errors/no-results/no-results.component';
+import { NoResultsComponent } from './shared/components/errors/no-results/no-results.component';
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
 import { SkeletonDetailsGamesComponent } from './components/skeletons/skeleton-details-games/skeleton-details-games.component';
-import { WarningComponent } from './layout/components/warning/warning.component';
+import { WarningComponent } from './shared/components/warning/warning.component';
 
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { environment } from '../environments/environment';

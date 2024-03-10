@@ -7,7 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
-import { Error404Component } from './components/errors/error404/error404.component';
+import { Error404Component } from './shared/components/errors/error404/error404.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
