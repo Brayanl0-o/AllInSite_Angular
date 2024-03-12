@@ -90,7 +90,7 @@ export class ModalLoginComponent {
     modalIsVisible = false;
     showModal(){
       this.modalIsVisible = !this.modalIsVisible;
-      this.renderer.setStyle(document.body, 'overflow', 'hidden');
+      // this.renderer.setStyle(document.body, 'overflow', 'hidden');
     }
 
     closeModal(){
