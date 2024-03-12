@@ -1,12 +1,12 @@
+<app-header></app-header>
 
-<body class="bg-gray-300 min-h-screen h-auto ">
-  <app-header></app-header>
-  <h1 class="text-center mt-8 pt-12 pb-8 font-extrabold sm:text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text  bg-gradient-to-br to-cyan-d via-purple-d  from-redpink-d" >¡BIENVENID@!</h1>
+<body class="bg-gray-300 min-h-screen h-auto mt-10">
+  <h1 class="text-center pt-16  pb-4 font-extrabold sm:text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text  bg-gradient-to-br to-cyan-d via-purple-d  from-redpink-d" >¡BIENVENID@!</h1>
   <div class="slider-home ">
     <app-slider-games ></app-slider-games>
   </div>
 
-  <div class="containerImages flex flex-row items-center justify-center gap-x-10 ">
+  <div class=" containerImages flex flex-row items-center justify-center gap-x-10 ">
     <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']" class="hover:transform hover:scale-110" >
       <div class="containerImage flex flex-col items-center justify-center mt-10 pb-10">
         <img class="w-24 h-24 mb-3 rounded-full shadow-2xl" src="../../../assets/img/logoVideoGames2.png" alt="Videogames image"/>
