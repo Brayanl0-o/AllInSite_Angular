@@ -23,7 +23,7 @@
           <button *ngIf="isAdmin" (click)="deleteGame(game._id)"  aria-label="Eliminar el juego" class="absolute w-12 h-10 z-10 bottom-56 right-0 bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg rounded-bl-lg">
             <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
           </button>
-          <a class="relative " [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
+          <a class="relative " [routerLink]="isUserLoggedIn() ? ['details-game',game._id,  { id: userId }] : ['details-game',game._id]" >
             <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="object-cover -z-30 h-[400px] w-full rounded-lg ">
 
             <div class="absolute top-0 left-0 m-2 bg-black bg-opacity-50 text-white p-2 rounded">
@@ -45,7 +45,7 @@
           </a>
 
           <div class="px-4 pb-4 bg-gray-100/60">
-            <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" >
+            <a [routerLink]="isUserLoggedIn() ? ['details-game',game._id,  { id: userId }] : ['details-game',game._id]" >
               <h2 class="name-game text-xl font-semibold tracking-tight text-gray-900 pt-4">{{ game.gameName }}</h2>
             </a>
             <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85">
@@ -66,7 +66,7 @@
                   <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
               </svg>
               </p>
-              <a [routerLink]="isUserLoggedIn() ? ['/details-game',game._id,  { id: userId }] : ['/details-game',game._id]" class="inline-flex items-center font-semibold px-2 py-1 text-sm text-center text-blue-900 rounded-lg hover:text-white hover:bg-blue-800/80 hover:transform hover:scale-110 hover:duration-300">
+              <a [routerLink]="isUserLoggedIn() ? ['details-game',game._id,  { id: userId }] : ['details-game',game._id]" class="inline-flex items-center font-semibold px-2 py-1 text-sm text-center text-blue-900 rounded-lg hover:text-white hover:bg-blue-800/80 hover:transform hover:scale-110 hover:duration-300">
                 Más
                 <mat-icon class="w-3.5 h-3.5 ml-2 text-blue-900">read_more</mat-icon>
               </a>
