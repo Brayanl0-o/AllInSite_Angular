@@ -65,9 +65,9 @@ export class VideogamesComponent {
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
-  isUserLoggedIn(){
-    return this.authService.loggedIn()
-  }
+  // isUserLoggedIn() {
+  //   return this.authService.isLoggedIn();
+  // }
 
   dataUser(){
     const loggedInUserId = this.authService.getLoggedInUserId();
