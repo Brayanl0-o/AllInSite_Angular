@@ -35,9 +35,7 @@ export class AuthService {
   public login(user: any) {
     return this.http.post<any>(this.apiUrl + 'auth/login', user).pipe(
       tap((response) => {
-        // console.log('Respuesta del servidor:', response);
         const token = response.token;
-        // console.log('Contenido del payload del token decodificado:', atob(token.split('.')[1]));
 
         localStorage.setItem('token', token)
 
@@ -59,7 +57,6 @@ export class AuthService {
       return now < expiration;
 
     }
-    console.log(token)
 
     return false;
   }
@@ -69,7 +66,6 @@ export class AuthService {
       const payload = JSON.parse(atob(token.split('.')[1]));
 
       if (payload.id) {
-        console.log('payload id from getLoggedInUserId:', payload.id)
         return payload.id;
       }
     }
@@ -101,7 +97,6 @@ export class AuthService {
         formData.append('userImg', userImg);
     }
 
-    // console.log('userData service', userData)
     return this.http.post(this.apiUrl + 'auth/signup', formData, {  observe: 'response' }).pipe(
       catchError((error: any) => {
         console.error('Error en la solicitud(servicio) de registro signUp: ', error);
@@ -130,7 +125,6 @@ export class AuthService {
     this.isLoggedIn$.next(false);
 
     this.router.navigate(['/home'])
-    console.log('execute logout')
   }
 
 }

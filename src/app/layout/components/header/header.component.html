@@ -1,15 +1,9 @@
 <nav class="bg-white dark:bg-gray-900 fixed top-0 left-0 w-full z-50">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2.5 text-base">
     <a [routerLink]="isUserLoggedIn() ? ['/home', userId] : ['/home']" class="flex items-center ">
-      <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  class="mr-1" alt="Logo Allin" />
+      <img src="../../../assets/img/Firefly_Logo.webp" width="45" height="10"  alt="Logo Allin" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap">AllIn</span>
     </a>
-
-    <!-- Modal toggle  -->
-    <!-- (click)="showModal()"  -->
-    <!-- <button  class="block max-sm:text-xs max-sm:w-min max-sm:mr-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs rounded-lg px-5 py-2.5 text-center" type="button">
-      Iniciar sesión
-    </button> -->
 
     <div class="flex items-center  max-md:m-auto  md:order-2 ">
       <app-modal-login></app-modal-login>
