@@ -9,7 +9,7 @@ import { Error404Component } from './shared/components/errors/error404/error404.
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren:() => import('./modules/home/home.module').then(m=> m.HomeModule)},
-  { path: 'home/:id', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)},
+  // { path: 'home?:id', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)},
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
   { path: 'videogames', loadChildren: () => import('./modules/videogames/videogames.module').then(m => m.VideogamesModule)},
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
