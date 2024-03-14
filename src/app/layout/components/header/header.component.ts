@@ -21,12 +21,11 @@ export class HeaderComponent {
     private authService: AuthService,
     private route: ActivatedRoute){}
 
+  // users: User []= [];
   user: User | null = null;
-  users: User []= [];
   userId: string | null = null;
   loadingData: boolean = true;
   imageUrl!: string;
-
   isLoggedIn: boolean = false;
 
   ngOnInit(){
@@ -46,12 +45,10 @@ export class HeaderComponent {
     const loggedInUserId = this.authService.getLoggedInUserId();
     if (loggedInUserId) {
       this.userId = loggedInUserId;
-      // console.log('userId frm dataUser() provider from loggedInUserId:', this.userId)
       this.imageUrl = `${apiBaseUrl}uploads/users/`;
       const id = loggedInUserId;
         if (id) {
           this.userShared.getUser(id).subscribe(data => {
-            // console.log('execute subscribcion to getUser inside dataUser():', id)
             this.user = data;
             this.loadingData = false;
           });
