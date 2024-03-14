@@ -25,12 +25,30 @@ export class AuthService {
         this.isLoggedIn$.next(true);
       }
      }
-     private parseToken(token: string): User {
-      const payload = JSON.parse(atob(token.split('.')[1]))
-      return  payload.id
-     }
-  isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
   user: User | null = null;
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
+  public signUp(userData: any, userImg:any): Observable<any> {
+    const formData = new FormData();
+    formData.append('firstName', userData.firstName);
+    formData.append('lastName', userData.lastName);
+    formData.append('email', userData.email);
+    formData.append('phoneNumber', userData.phoneNumber);
+    formData.append('password', userData.password);
+    formData.append('years', userData.years);
+    formData.append('country', userData.country);
+    if (userImg) {
+        formData.append('userImg', userImg);
+    }
+
+    return this.http.post(this.apiUrl + 'auth/signup', formData, {  observe: 'response' }).pipe(
+      catchError((error: any) => {
+        console.error('Error en la solicitud(servicio) de registro signUp: ', error);
+        return throwError(error);
+      })
+    );
+  }
 
   public login(user: any) {
     return this.http.post<any>(this.apiUrl + 'auth/login', user).pipe(
@@ -43,24 +61,29 @@ export class AuthService {
       })
     )
   }
-  gettoken() {
+
+  private parseToken(token: string): User {
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    return  payload.id
+  }
+
+  private gettoken() {
     return localStorage.getItem('token')
   }
-  isLoggedIn(): boolean {
+
+  public isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
 
     if (token) {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const expiration = new Date(payload.exp * 1000); // Convierte el tiempo de expiración a una fecha
       const now = new Date();
-
       return now < expiration;
-
     }
-
     return false;
   }
-  getLoggedInUserId(): string | null {
+
+  public getLoggedInUserId(): string | null {
     const token = this.gettoken();
     if (token) {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -69,9 +92,10 @@ export class AuthService {
         return payload.id;
       }
     }
-    return 'null';
+    return null;
   }
-  getLoggedUserRole(): string {
+
+  public getLoggedUserRole(): string{
     const token = this.gettoken();
     if (token) {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -80,63 +104,25 @@ export class AuthService {
         return payload.roles;
       }
     }
-    return 'null';
+    return  'null';
   }
 
-  public signUp(userData: any, userImg:any): Observable<any> {
-    const formData = new FormData();
-    formData.append('firstName', userData.firstName);
-    formData.append('lastName', userData.lastName);
-    formData.append('email', userData.email);
-    formData.append('phoneNumber', userData.phoneNumber);
-    formData.append('password', userData.password);
-    formData.append('years', userData.years);
-    formData.append('country', userData.country);
-
-    if (userImg) {
-        formData.append('userImg', userImg);
-    }
-
-    return this.http.post(this.apiUrl + 'auth/signup', formData, {  observe: 'response' }).pipe(
-      catchError((error: any) => {
-        console.error('Error en la solicitud(servicio) de registro signUp: ', error);
-        return throwError(error);
-      })
-    );;
-  }
-
-
-  getUserById(userId: string): Observable<User> {
-
+  public getUserById(userId: string): Observable<User> {
     const url = `${this.apiUrl}users/${userId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'x-access-token': localStorage.getItem('token') || '',
-
-        // 'Authorization': `Bearer ${localStorage.getItem('token') || ''}`,
-
       }),
     };
     return this.http.get<User>(url, httpOptions);
   }
-  logout() {
+
+  public logout() {
     localStorage.removeItem('token');
     this.isLoggedIn$.next(false);
-
     this.router.navigate(['/home'])
   }
-
 }
 
-
-  // getTokenGoogle(): Promise<any>{
-  //   return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-  // }
-  // sendTokenToBackend(token:string):Observable<any>{
-  //   return this.http.post<any>(`${this.apiUrl}auth/signInWithGoogle`,{ access_token: token })
-  // }
-  // signOut(){
-  //   return this.afAuth.signOut();
-  // }
 

@@ -19,7 +19,6 @@ export class FilterService {
 
   updateFilters(newFilters: any) {
     this.selectedFilters = { ...newFilters };
-    // console.log('filter from filerS:', this.selectedFilters)
     this.filtersSubject.next(this.selectedFilters);
   }
 }

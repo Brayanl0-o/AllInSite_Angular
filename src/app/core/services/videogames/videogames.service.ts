@@ -1,49 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { Game, GameRequirements } from '../../models/game';
 import { environment } from 'src/environments/environment';
-import { catchError, map, tap } from 'rxjs/operators';
-import { EventEmitter } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
 export class VideogamesService {
 
   private apiUrl = environment.apiUrl
-  $modal = new EventEmitter<any>();
-  // activeRoute:string ='';
-
-  // routeChanged = new EventEmitter<string>();
-
-
-  // setActivateRoute(route:string){
-  //   this.activeRoute = route;
-  //   this.routeChanged.emit(route)
-  // }
 
   constructor(private http: HttpClient) { }
 
-  // getGame(page: number, pageSize: number): Observable<Game[]>{
-  //   const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
-  //   return this.http.get<Game[]>(url).pipe(
-  //     tap((games) => {
-  //       // console.log('Juegos obtenidos:', games);
-  //     })
-  //   );
-  // }
-  getGame(): Observable<Game[]>{
+
+  $modal = new EventEmitter<any>();
+
+
+  public getGame(): Observable<Game[]>{
     const url= `${this.apiUrl}games/`;
     return this.http.get<Game[]>(url)
   }
-  getGameById(userId: string | null, gameId: string): Observable<Game>{
+
+  public getGameById(userId: string | null, gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${userId}/${gameId}`;
     return this.http.get<Game>(url);
   }
 
-  createGame(gameData: any, gameImg: File): Observable<any> {
+  public createGame(gameData: any, gameImg: File): Observable<any> {
     const url = `${this.apiUrl}games/create`;
-
     const formData = new FormData();
     formData.append('gameName', gameData.gameName);
     formData.append('platform', gameData.platform);
@@ -63,19 +49,19 @@ export class VideogamesService {
     return this.http.post(url, formData, httpOptions);
   }
 
-  getRequirementesById(gameId:string){
+  public getRequirementesById(gameId:string){
     const  url = `${this.apiUrl}games/gameRequirementsById/${gameId}`
     return this.http.get<GameRequirements[]>(url).pipe(
       map(requirements => requirements.length > 0 ? requirements[0] : null)
     );
   }
 
-  updateRequirements(gameRequeriments: GameRequirements): Observable<any>{
+  public updateRequirements(gameRequeriments: GameRequirements): Observable<any>{
     const url = `${this.apiUrl}games/createRequirements`;
     return this.http.post(url, gameRequeriments)
   }
 
-  updateGame(id: string,gameData: any): Observable<any> {
+  public updateGame(id: string,gameData: any): Observable<any> {
     const url = `${this.apiUrl}games/update/${id}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -85,7 +71,7 @@ export class VideogamesService {
     return this.http.patch(url, gameData, httpOptions);
   }
 
-  updatedGameImg(id:string, gameImg: File){
+  public updatedGameImg(id:string, gameImg: File){
     const url = `${this.apiUrl}games/updatedGameImg/${id}`;
     const formData = new FormData()
     if(gameImg){
@@ -104,14 +90,7 @@ export class VideogamesService {
     );
   }
 
-  // gameData = new EventEmitter<any>();
-  // sendGameData(game: any): void {
-  //   // Emitir datos del user al componente modal
-  //   this.gameData.emit(game);
-  //   // console.log('datagame switchService: ', game)
-  // }
-
-  deleteGame(gameId: string): Observable<any> {
+  public deleteGame(gameId: string): Observable<any> {
     const url = `${this.apiUrl}games/delete/${gameId}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -122,3 +101,28 @@ export class VideogamesService {
     return this.http.delete(url, httpOptions);
   }
 }
+
+  // activeRoute:string ='';
+
+  // routeChanged = new EventEmitter<string>();
+
+
+  // setActivateRoute(route:string){
+  //   this.activeRoute = route;
+  //   this.routeChanged.emit(route)
+  // }
+  // getGame(page: number, pageSize: number): Observable<Game[]>{
+  //   const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
+  //   return this.http.get<Game[]>(url).pipe(
+  //     tap((games) => {
+  //       // console.log('Juegos obtenidos:', games);
+  //     })
+  //   );
+  // }
+
+  // gameData = new EventEmitter<any>();
+  // sendGameData(game: any): void {
+  //   // Emitir datos del user al componente modal
+  //   this.gameData.emit(game);
+  //   // console.log('datagame switchService: ', game)
+  // }
