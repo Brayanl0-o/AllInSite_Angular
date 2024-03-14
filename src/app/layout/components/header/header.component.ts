@@ -21,42 +21,44 @@ export class HeaderComponent {
     private authService: AuthService,
     private route: ActivatedRoute){}
 
-  @Input() user: User | null = null;
+  user: User | null = null;
   users: User []= [];
   userId: string | null = null;
   loadingData: boolean = true;
   imageUrl!: string;
 
+  isLoggedIn: boolean = false;
+
   ngOnInit(){
+    this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      this.user = this.authService.user;
+    })
     this.dataUser();
   }
-
   isUserLoggedIn() {
-    return this.authService.loggedIn();
+    return this.authService.isLoggedIn();
   }
-
   logout() {
     this.authService.logout()
   }
-
   dataUser() {
     const loggedInUserId = this.authService.getLoggedInUserId();
     if (loggedInUserId) {
       this.userId = loggedInUserId;
-      this.route.paramMap.subscribe(paramMap => {
+      // console.log('userId frm dataUser() provider from loggedInUserId:', this.userId)
       this.imageUrl = `${apiBaseUrl}uploads/users/`;
-
-        const id = paramMap.get('id');
-
-        if (id === loggedInUserId) {
+      const id = loggedInUserId;
+        if (id) {
           this.userShared.getUser(id).subscribe(data => {
+            // console.log('execute subscribcion to getUser inside dataUser():', id)
             this.user = data;
             this.loadingData = false;
           });
         } else {
+          console.log('error upload data user')
           // this.router.navigate(['/error']);
         }
-      });
     }
   }
 
@@ -70,3 +72,30 @@ export class HeaderComponent {
     this.menuVisible = !this.menuVisible;
   }
 }
+
+
+  // dataUser() {
+  //   const loggedInUserId = this.authService.getLoggedInUserId();
+  //   if (loggedInUserId) {
+  //     this.userId = loggedInUserId;
+  //     console.log('userId frm dataUser() provider from loggedInUserId:', this.userId)
+  //       this.imageUrl = `${apiBaseUrl}uploads/users/`;
+
+  //     this.route.paramMap.subscribe(paramMap => {
+  //       const id = paramMap.get('id');
+  //       console.log('id from paramMap(url):', id)
+
+  //       if (id === loggedInUserId) {
+  //         this.userShared.getUser(id).subscribe(data => {
+  //           console.log('execute subscribcion to getUser inside dataUser():', id)
+
+  //           this.user = data;
+  //           this.loadingData = false;
+  //         });
+  //       } else {
+  //         console.log('error upload data user')
+  //         // this.router.navigate(['/error']);
+  //       }
+  //     });
+  //   }
+  // }
