@@ -5,11 +5,13 @@ import { AuthModule } from '../modules/auth/auth.module';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class LayoutModule { }
