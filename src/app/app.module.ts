@@ -17,7 +17,7 @@ import { ResetPasswordService } from './core/services/reset-password/reset-passw
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { environment } from '../environments/environment';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AuthModule } from './modules/auth/auth.module';
+// import { AuthModule } from './modules/auth/auth.module';
 import { HomeModule } from './modules/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
@@ -32,8 +32,8 @@ import { SharedModule } from './shared/shared.module';
     SendEmailComponent,
   ],
   imports: [
-    AuthModule,
-    HomeModule,
+    // AuthModule,
+    // HomeModule,
     LayoutModule,
     SharedModule,
     CommonModule,
