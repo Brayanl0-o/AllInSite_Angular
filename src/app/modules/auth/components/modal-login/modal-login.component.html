@@ -1,5 +1,5 @@
 <!-- Modal toggle  -->
-<button (click)="showModal()" *ngIf="!isUserLoggedIn()" class="block max-sm:text-xs max-sm:w-min max-sm:mr-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs rounded-lg px-5 py-2.5 text-center" type="button">
+<button *ngIf="!isLoggedIn"  (click)="showModal()"  class="block max-sm:text-xs max-sm:w-min max-sm:mr-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs rounded-lg px-5 py-2.5 text-center" type="button">
    Iniciar sesión
 </button>
 

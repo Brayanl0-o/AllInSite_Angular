@@ -22,9 +22,13 @@ export class ModalLoginComponent {
   contactForm!: FormGroup;
   public isLoading: boolean = false;
   public errorMessage: string | null = null;
+  isLoggedIn: boolean = false;
 
 
   ngOnInit(){
+    this.authService.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    })
     // this.subscribeLoggedIn()
     this.contactForm = this.initFrom();
   }
@@ -54,11 +58,12 @@ export class ModalLoginComponent {
           (res)=>{
             // console.log(res);
             localStorage.setItem('token', res.token);
-
+            this.closeModal()
+            window.location.reload();
             const userId = this.authService.getLoggedInUserId();
 
             if(userId){
-              this.router.navigate(['/home',userId])
+              // this.router.navigate(['/home',userId])
               this.renderer.removeStyle(document.body, 'overflow');
             }else{
               console.error('No id found')
@@ -76,9 +81,9 @@ export class ModalLoginComponent {
           })
     }
 
-    isUserLoggedIn() {
-      return this.authService.loggedIn();
-    }
+    // isUserLoggedIn() {
+    //   return this.authService.loggedIn();
+    // }
 
     initFrom(): FormGroup {
       return this.fb.group({
