@@ -23,7 +23,6 @@ import { RouterModule } from '@angular/router';
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
     WarningComponent,
-    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -39,8 +38,6 @@ import { RouterModule } from '@angular/router';
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
     WarningComponent,
-    FooterComponent
-
   ]
 })
 export class SharedModule { }
