@@ -10,15 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { SendEmailComponent } from './pages/send-email/send-email.component';
+import { ResetPasswordComponent } from './modules/auth/pages/reset-password/reset-password.component';
+import { SendEmailComponent } from './modules/auth/pages/send-email/send-email.component';
 import { ResetPasswordService } from './core/services/reset-password/reset-password.service';
 
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { environment } from '../environments/environment';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 // import { AuthModule } from './modules/auth/auth.module';
-import { HomeModule } from './modules/home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -26,10 +25,6 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-
-    // auth
-    ResetPasswordComponent,
-    SendEmailComponent,
   ],
   imports: [
     // AuthModule,

@@ -1,26 +1,23 @@
 import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { authRoutingModule } from './auth-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './pages/register/register.component';
 import { RouterModule } from '@angular/router';
-// import { ModalLoginComponent } from '../../shared/components/modal-login/modal-login.component';
-import { LayoutModule } from 'src/app/layout/layout.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from 'src/app/core/core.module';
+import { authRoutingModule } from './auth-routing.module';
+import { RegisterComponent } from './pages/register/register.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { SendEmailComponent } from './pages/send-email/send-email.component';
+
 @NgModule({
   declarations: [
     RegisterComponent,
     ModalLoginComponent,
+    ResetPasswordComponent,
+    SendEmailComponent,
   ],
   imports: [
-    // CoreModule,
-    // LayoutModule,
     MatIconModule,
     CommonModule,
     RouterModule,
@@ -30,7 +27,9 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
   ],
   exports:[
     RegisterComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    ResetPasswordComponent,
+    SendEmailComponent,
   ]
 })
 export class AuthModule { }
