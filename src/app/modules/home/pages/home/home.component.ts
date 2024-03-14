@@ -14,11 +14,13 @@ export class HomeComponent {
 
   ngOnInit(): void {
     // Llama a esta función para obtener el userId cuando el componente se carga.
-    this.userId = this.authService.getLoggedInUserId();
+    // this.userId = this.authService.getLoggedInUserId();
   }
-
   isUserLoggedIn() {
-    // Comprueba si el usuario ha iniciado sesion
-    return this.authService.loggedIn() || !!this.userId;
+    return !!this.userId;
   }
+  // isUserLoggedIn() {
+  //   // Comprueba si el usuario ha iniciado sesion
+  //   return this.authService.loggedIn() || !!this.userId;
+  // }
 }
