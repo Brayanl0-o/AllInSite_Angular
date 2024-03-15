@@ -65,13 +65,8 @@ export class VideogamesComponent {
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
 
-  // isUserLoggedIn() {
-  //   return this.authService.isLoggedIn();
-  // }
-
   dataUser(){
     const loggedInUserId = this.authService.getLoggedInUserId();
-
     if (loggedInUserId) {
       this.userId = loggedInUserId;
       this.route.paramMap.subscribe(paramMap => {
@@ -191,9 +186,9 @@ export class VideogamesComponent {
         const endDate = new Date(filters.endDate);
         // Comprueba si la fecha de lanzamiento del juego está dentro del rango seleccionado
         if (gameDate >= startDate && gameDate <= endDate) {
-          return true; // Incluye el juego si cumple con el rango de fechas
+          return true;
         } else {
-          return false; // Excluye el juego si no cumple con el rango de fechas
+          return false;
         }
       }
       return true;
