@@ -36,7 +36,6 @@ export class VideogamesComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
-
   ngOnInit(): void {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.dataUser()
@@ -133,7 +132,7 @@ export class VideogamesComponent {
   }
 
   showPopover = false;
-  showPopoverMouseEnter(game:any) {
+  showPopoverMouseEnter(game: any) {
    game.showPopover = true;
   }
 

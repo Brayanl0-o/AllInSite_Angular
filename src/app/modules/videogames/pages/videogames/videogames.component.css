@@ -4,7 +4,6 @@
 
 } */
 
-
 .pagination ::ng-deep
 .ngx-pagination
 .current{
@@ -19,44 +18,21 @@
   box-shadow: 1px 5px 5px black;
 }
 
-.container{
-  /* width: 400vh; */
-  background-color: #1e9ce6;
-  margin: 0rem 0rem 0rem 1rem ;
-}
 .container-list{
   width: 90%;
   display: flex;
   flex-flow: row wrap;
   justify-content: start;
   align-items: start;
-  gap: 2rem;
+  gap: 0rem 2rem;
   align-items: center;
-  margin: 4rem 0rem 0rem 4rem ;
-  /* background-color: red; */
-  /*
-  margin-top: 5%;
-  margin-left: 3%; */
-  /* background-color: red; */
-  /* background-color: red; */
-  /* margin-bottom: 0%; */
-  /* position: absolute; */
-  /* margin: 10% 0 10% 0; */
-  /* padding: 20px; */
-  /* margin: 10%; */
-  /* flex flex-wrap justify-center items-center gap-4 flex-grow mb-8 mt-2 */
+  margin: 2rem 0rem 0rem 2rem ;
 }
 .container-target{
   position: relative;
   width: auto;
   height: auto;
   margin: 10% 0 0% 0;
-
-  /* border: 1px solid gray;
-  border-radius: 10px; */
-  /* box-shadow: 10px; */
-  /* background-color: red; */
-
 }
 .card {
   display: flex;
@@ -67,13 +43,6 @@
   border-radius: 20px;
   margin: 20% 0 0% 0;
   padding:44% 0% 24% 0%;
-  /* background-color: red; */
-  /* position: relative;
-  bottom: 0; */
-  /* margin: 0; */
-  /* margin-top: 20rem ;
-  margin-bottom: 20rem ; */
-  /* background-color: red; */
 }
 .cover-image {
   width: 30vh;
@@ -179,7 +148,9 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-
+.container-popover{
+  position: relative;
+}
 /* Media querys */
 @media( max-width: 1688px ) {
   .container-list{
@@ -214,3 +185,8 @@
     gap: 7rem;
   }
 }
+
+/* .container{
+  background-color: #1e9ce6;
+  margin: 0rem 0rem 0rem 1rem ;
+} */
