@@ -19,13 +19,26 @@
   box-shadow: 1px 5px 5px black;
 }
 
+.container{
+  /* width: 400vh; */
+  background-color: #1e9ce6;
+  margin: 0rem 0rem 0rem 1rem ;
+}
 .container-list{
+  width: 90%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  gap: 4%;
+  justify-content: start;
+  align-items: start;
+  gap: 2rem;
   align-items: center;
+  margin: 4rem 0rem 0rem 4rem ;
+  /* background-color: red; */
+  /*
   margin-top: 5%;
+  margin-left: 3%; */
+  /* background-color: red; */
+  /* background-color: red; */
   /* margin-bottom: 0%; */
   /* position: absolute; */
   /* margin: 10% 0 10% 0; */
@@ -45,7 +58,6 @@
   /* background-color: red; */
 
 }
-
 .card {
   display: flex;
   justify-content: center;
@@ -63,16 +75,13 @@
   margin-bottom: 20rem ; */
   /* background-color: red; */
 }
-
 .cover-image {
   width: 30vh;
   height: 40vh;
   min-height: 40vh;
   max-height: 40vh;
   border-radius: 20px;
-  /* margin: 10% 0 20% 0; */
 }
-
 .wrapper {
   transition: all 0.5s;
   position: absolute;
@@ -81,14 +90,12 @@
   border-radius: 20px;
 
 }
-
 .card:hover .wrapper {
   transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
   box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
 }
-
 .wrapper::before,
 .wrapper::after {
   content: "";
@@ -120,12 +127,10 @@
     rgba(12, 13, 19) 97%
   );
 }
-
 .card:hover .wrapper::before,
 .wrapper::after {
   opacity: 1;
 }
-
 .card:hover .wrapper::after {
   height: 120px;
 }
@@ -143,7 +148,6 @@
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(to right, #1e9ce6, #4800f0);
-
 }
 .card:hover .title {
   transform: translate3d(0%, -50px, 100px);
@@ -152,10 +156,7 @@
   text-overflow: ellipsis;
   white-space: wrap;
   width: 95%;
-
 }
-
-
 .character {
   width: 100%;
   opacity: 0;
@@ -163,12 +164,10 @@
   position: absolute;
   z-index: -1;
 }
-
 .card:hover .character {
   opacity: 1;
   transform: translate3d(0%, -30%, 100px);
 }
-
 .game-card-description,
 .game-card-description > p {
   font-size: small;
@@ -180,6 +179,38 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-@media( min-width: 1200px ) {
 
+/* Media querys */
+@media( max-width: 1688px ) {
+  .container-list{
+    width: 95%;
+    margin: 4rem 0rem 0rem 4rem ;
+    gap: 2rem;
+  }
+}
+@media( max-width: 1288px ) {
+  .container-list{
+    margin: 5rem 0rem 0rem 1.5rem;
+    gap: 2rem;
+  }
+}
+@media( max-width: 1022px ) {
+  .container-list{
+    margin:  7rem 0rem 0rem 2rem ;
+    gap: 4rem 2rem;
+  }
+}
+@media( max-width: 768px ) {
+  .container-list{
+    width: 94%;
+    margin: 8rem 0rem 0rem 2rem;
+    gap: 5rem 2rem;
+  }
+}
+@media( max-width: 596px ) {
+  .container-list{
+    justify-content: center;
+    margin: 10rem auto 0rem auto ;
+    gap: 7rem;
+  }
 }
