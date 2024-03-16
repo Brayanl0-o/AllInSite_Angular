@@ -1,5 +1,5 @@
-import { Router, NavigationEnd } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { Router} from '@angular/router';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
 import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
@@ -17,9 +17,8 @@ const apiBaseUrl= environment.apiUrl;
 export class HeaderComponent {
   constructor(private userShared: SharedUsersService,
     public videogamesService: VideogamesService,
-    private router: Router,
     private authService: AuthService,
-    private route: ActivatedRoute){}
+    ){}
 
   // users: User []= [];
   user: User | null = null;

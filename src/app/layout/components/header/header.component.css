@@ -6,3 +6,10 @@
   border-color: rgba(64, 64, 212, 0.589);
   border-bottom: 2px solid;
 }
+.active-small-screen {
+  background: rgba(20, 72, 216, 0.651);
+  border-radius: 5px;
+  padding: 6px;
+  border-color: rgba(64, 64, 212, 0.589);
+  border-bottom: 2px solid;
+}
