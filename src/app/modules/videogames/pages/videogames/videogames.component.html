@@ -6,9 +6,7 @@
     <div class="flex flex-col">
 
       <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
-      <div class="z-50 ">
-        <app-warning ></app-warning>
-      </div>
+
       <ng-container *ngIf="loadingData" >
         <app-skeleton-videogames></app-skeleton-videogames>
       </ng-container>
@@ -59,7 +57,7 @@
 
       <pagination-controls class="pagination m-auto mt-0 mb-16" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
 
-      <div class="z-50 flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
+      <div class="z-40 flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
         <div class="fixed top-56 max-sm:top-48 xl:right-20 lg:right-16 md:right-4 sm:right-2 ">
           <div class="mb-4 z-50">
             <app-aside></app-aside>
