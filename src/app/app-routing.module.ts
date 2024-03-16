@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Error404Component } from './shared/components/errors/error404/error404.component';
+import { NotFound404Component } from './shared/components/errors/not-found-404/not-found-404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
 
 
-  { path: '**', component: Error404Component }
+  { path: '**', component: NotFound404Component }
 
 ];
 

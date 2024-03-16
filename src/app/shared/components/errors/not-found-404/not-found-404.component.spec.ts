@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Error500Component } from './error500.component';
+import { Error404Component } from './not-found-404.component';
 
-describe('Error500Component', () => {
-  let component: Error500Component;
-  let fixture: ComponentFixture<Error500Component>;
+describe('Error404Component', () => {
+  let component: Error404Component;
+  let fixture: ComponentFixture<Error404Component>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Error500Component]
+      declarations: [Error404Component]
     });
-    fixture = TestBed.createComponent(Error500Component);
+    fixture = TestBed.createComponent(Error404Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
