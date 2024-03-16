@@ -13,6 +13,7 @@ import { InternalServerError500Component } from './components/errors/internal-se
 import { Forbidden403Component } from './components/errors/forbidden-403/forbidden-403.component';
 import { Unauthorized401Component } from './components/errors/unauthorized-401/unauthorized-401.component';
 import { NotFound404Component } from './components/errors/not-found-404/not-found-404.component';
+import { sharedRoutingModule } from './shared-routing.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NotFound404Component } from './components/errors/not-found-404/not-foun
   ],
   imports: [
     CommonModule,
+    sharedRoutingModule,
     RouterModule,
   ],
   exports: [
