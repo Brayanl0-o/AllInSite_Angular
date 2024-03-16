@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFound404Component } from './shared/components/errors/not-found-404/not-found-404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -8,9 +7,10 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
   { path: 'videogames', loadChildren: () => import('./modules/videogames/videogames.module').then(m => m.VideogamesModule)},
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
+  { path: '**', loadChildren:() => import('./shared/shared.module').then(m=> m.SharedModule) }
 
+  // { path: '/', loadChildren:() => import('./shared/shared.module').then(m=> m.SharedModule)},
 
-  { path: '**', component: NotFound404Component }
 
 ];
 
