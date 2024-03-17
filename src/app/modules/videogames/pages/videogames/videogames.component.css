@@ -26,13 +26,23 @@
   align-items: flex-start;
   gap: 0rem 2rem;
   align-items: center;
-  margin: 2rem 0rem 0rem 2rem ;
+  margin: 3.5rem 0rem 0rem 2rem ;
 }
 .container-target{
   position: relative;
   width: auto;
   height: auto;
-  margin: 10% 0 0% 0;
+  margin: 12rem 0 0 0;
+}
+header{
+  background-image: linear-gradient(to right, #000000c5, #0400f0d7);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  position: relative;
+  top: -23.8vh;
 }
 .card {
   display: flex;
@@ -40,16 +50,16 @@
   align-items: flex-end;
   width: 30vh;
   perspective: 2500px;
-  border-radius: 10px;
   margin: 10% 0 0% 0;
   padding:44% 0% 24% 0%;
+  z-index: -10;
 }
 .cover-image {
   width: 30vh;
   height: 40vh;
   min-height: 40vh;
   max-height: 40vh;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
 }
 .wrapper {
   transition: all 0.5s;
@@ -57,7 +67,6 @@
   width: 100%;
   z-index: -1;
   border-radius: 20px;
-
 }
 .card:hover .wrapper {
   transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
@@ -131,7 +140,6 @@
   opacity: 0;
   transition: all 0.5s;
   position: absolute;
-  z-index: -1;
 }
 .card:hover .character {
   opacity: 1;
@@ -148,9 +156,7 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-.container-popover{
-  position: relative;
-}
+
 /* Media querys */
 @media( max-width: 1688px ) {
   .container-list{
@@ -158,21 +164,23 @@
     margin: 4rem 0rem 0rem 4rem ;
     gap: 2rem;
   }
-  .container-popover>.popover{
-    /* background-color: red; */
-    position: absolute;
-    top: -220px;
+  .container-target{
+    margin: 10rem 0 0 0;
   }
+
 }
 @media( max-width: 1288px ) {
   .container-list{
     margin: 5rem 0rem 0rem 1.5rem;
     gap: 2rem;
   }
+  .container-target{
+    margin: 8rem 0 0 0;
+  }
 }
 @media( max-width: 1022px ) {
   .container-list{
-    margin:  7rem 0rem 0rem 2rem ;
+    margin:  10rem 0rem 0rem 2rem ;
     gap: 4rem 2rem;
   }
 }
@@ -182,6 +190,7 @@
     margin: 8rem 0rem 0rem 2rem;
     gap: 5rem 2rem;
   }
+
 }
 @media( max-width: 596px ) {
   .container-list{
@@ -189,8 +198,36 @@
     margin: 10rem auto 0rem auto ;
     gap: 7rem;
   }
+  .container-target{
+    margin: 3rem 0 0 0;
+  }
+  .card {
+    width: 35vh;
+    margin: 10% 0 0% 0;
+    padding:44% 0% 24% 0%;
+  }
+  .cover-image {
+    width: 35vh;
+    height: 45vh;
+    min-height: 43vh;
+    max-height: 43vh;
+  }
 }
-
+@media( max-width: 346px ) {
+  header{
+    top: -22.3vh;
+  }
+  .card {
+    width: 30vh;
+    margin: 15% 0 0% 0;
+  }
+  .cover-image {
+    width: 30vh;
+    height: 40vh;
+    min-height: 40vh;
+    max-height: 40vh;
+  }
+}
 /* .container{
   background-color: #1e9ce6;
   margin: 0rem 0rem 0rem 1rem ;

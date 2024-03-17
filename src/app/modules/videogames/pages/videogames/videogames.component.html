@@ -17,16 +17,12 @@
       <ul class="container-list">
         <li *ngFor="let game of filteredGames | paginate: { itemsPerPage: 15, currentPage: page }" class="container-target">
 
-
-          <a  [routerLink]="['details-game',game._id]" target="_blank">
-            <button *ngIf="isAdmin" (click)="deleteGame(game._id)" class=" z-10 relative top-24 right-0 w-12 h-10  bg-black bg-opacity-50 px-2 py-2 rounded-tr-lg  rounded-br-lg"  aria-label="Eliminar el juego">
-              <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
-            </button>
+          <header>
             <div class="container-popover">
-              <button  (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" class="popover  z-10 absolute -top-64 right-1 bg-black bg-opacity-30 text-white p-1 rounded-xl" type="button"  aria-label="Información del juego" >
+              <button  (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" class="popover z-10 bg-black bg-opacity-30 text-white p-1 rounded-xl" type="button"  aria-label="Información del juego" >
                 <mat-icon class="w-5 h-5 transition-transform group-hover:rotate-45">info</mat-icon>
               </button>
-              <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-end absolute -top-56 right-4 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
+              <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-start absolute top-10 left-0 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
                 <div class="px-3 py-2 bg-gray-400 w-max rounded-md ">
                     <span class="font-semibold text-gray-90">Información extra</span>
                 </div>
@@ -38,7 +34,12 @@
                 <div data-popper-arrow></div>
               </div>
             </div>
+            <button *ngIf="isAdmin" (click)="deleteGame(game._id)" class=" z-10  w-12 h-10  bg-black bg-opacity-50 px-2 py-2 rounded-tl-lg  rounded-bl-lg"  aria-label="Eliminar el juego">
+              <mat-icon class=" text-red-600 hover:scale-150">delete</mat-icon>
+            </button>
+          </header>
 
+          <a  [routerLink]="['details-game',game._id]" target="_blank">
             <div class="card ">
               <div class="wrapper">
                 <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="cover-image object-fill  ">
@@ -49,7 +50,7 @@
               </div>
               <!-- <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" /> -->
               <h2  class="title">{{ game.gameName }}</h2>
-              <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character" />
+              <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character " />
             </div>
           </a>
         </li>
