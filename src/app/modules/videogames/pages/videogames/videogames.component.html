@@ -48,9 +48,21 @@
                   {{ game.genre }}
                 </div>
               </div>
-              <!-- <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" class="title" /> -->
+              <div class="character shadow-lg p-2 hover:shadow-sm  hover:bg-white/85">
+                <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character-img" />
+
+                <div class="game-card-description mb-2">
+                  <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
+                  <ng-template #defaultText>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Sed omnis, fugit delectus commodi corporis reprehenderit modi
+                    velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
+                  </ng-template>
+                </div>
+
+              </div>
+
               <h2  class="title">{{ game.gameName }}</h2>
-              <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character " />
             </div>
           </a>
         </li>
