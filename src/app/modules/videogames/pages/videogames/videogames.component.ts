@@ -133,7 +133,7 @@ export class VideogamesComponent {
 
   showPopover = false;
   showPopoverMouseEnter(game: any) {
-   game.showPopover = true;
+   game.showPopover = !game.showPopover;
   }
 
   hidePopoverMouseLeave(game:any) {
