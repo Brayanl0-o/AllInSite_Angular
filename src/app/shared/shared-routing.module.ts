@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'error-404', component: NotFound404Component },
   { path: 'error-500', component: InternalServerError500Component},
   { path: 'error-503', component: ServiceUnavailable503Component},
+  // { path: 'no-results', component: NoResultsComponent},
+
 
 ];
 

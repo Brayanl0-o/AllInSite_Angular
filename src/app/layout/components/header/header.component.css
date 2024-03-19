@@ -1,6 +1,7 @@
 nav{
-  border-bottom: 1px rgba(33, 19, 228, 0.842) solid;
-  /* border-image:linear-gradient(to right, #000000c5, #0400f0d7); */
+  border-bottom: 4px solid;
+  border-image-slice: 1;
+  border-image: linear-gradient(45deg, rgb(10, 1, 1), rgba(0, 4, 255, 0.836), rgb(2, 2, 61)) 1;
 }
 .active {
   background: rgba(20, 72, 216, 0.651);
