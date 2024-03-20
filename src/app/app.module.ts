@@ -6,18 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { ResetPasswordComponent } from './modules/auth/pages/reset-password/reset-password.component';
-import { SendEmailComponent } from './modules/auth/pages/send-email/send-email.component';
-import { ResetPasswordService } from './core/services/reset-password/reset-password.service';
 
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { environment } from '../environments/environment';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 // import { AuthModule } from './modules/auth/auth.module';
+import { ResetPasswordService } from './core/services/reset-password/reset-password.service';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -27,13 +23,9 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
   ],
   imports: [
-    // AuthModule,
-    // HomeModule,
     LayoutModule,
     SharedModule,
     CommonModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireAuthModule,
     NgxPaginationModule,
     FormsModule,
     HttpClientModule,
@@ -42,13 +34,16 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAuthModule,
   ],
   providers: [ResetPasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
+// import { ResetPasswordComponent } from './modules/auth/pages/reset-password/reset-password.component';
+// import { SendEmailComponent } from './modules/auth/pages/send-email/send-email.component';
 // import { UpdateUserComponent } from './modules/user/components/update-user/update-user.component';
 // import { ProfileComponent } from './modules/user/pages/profile/profile.component';
 // import { DetailsGameComponent } from './modules/videogames/pages/details-game/details-game.component';
