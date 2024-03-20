@@ -6,8 +6,10 @@ import { DetailsGameComponent } from './pages/details-game/details-game.componen
 
 const routes: Routes = [
   { path: '', component: VideogamesComponent},
-  { path: 'details-game/:gameId', component: DetailsGameComponent },
-  { path: 'details-game/:userId/:gameId', component: DetailsGameComponent},
+  { path: 'details-game/', component: DetailsGameComponent },
+  { path: 'details-game/:gameId', component: DetailsGameComponent},
+  // { path: 'details-game/:gameId', component: DetailsGameComponent },
+  // { path: 'details-game/:userId/:gameId', component: DetailsGameComponent},
 
 ];
 
