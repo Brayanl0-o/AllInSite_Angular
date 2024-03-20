@@ -1,9 +1,9 @@
 import { Component, Input, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 const apiBaseUrl= environment.apiUrl;
 @Component({
   selector: 'app-profile',
@@ -14,7 +14,7 @@ export class ProfileComponent {
 
   constructor(private authService: AuthService,
    private userShared: SharedUsersService,
-   private route: ActivatedRoute,
+   private router: Router,
    private renderer: Renderer2){     }
 
    @Input() user: User | null = null;
@@ -33,25 +33,20 @@ export class ProfileComponent {
 
   dataUser(){
     const loggedInUserId = this.authService.getLoggedInUserId();
+    this.userId = loggedInUserId;
 
     if(loggedInUserId){
-      this.userId = loggedInUserId;
-      this.route.paramMap.subscribe(paramMap => {
-
-          const id = paramMap.get('id');
           this.imageUrl = `${apiBaseUrl}uploads/users/`;
-
-          if (id === loggedInUserId) {
-            this.userShared.getUser(id).subscribe(data => {
+          if (this.userId  === loggedInUserId) {
+            this.userShared.getUser(this.userId ).subscribe(data => {
               this.user = data;
               this.loadDataProfile = false;
-              // console.log('Data User prfile', data)
             });
           } else {
-            console.error('No login')
-            // this.router.navigate(['/error']);
+            // console.error('No login')
           }
-      })
+    }else{
+      this.router.navigate(['/error-401']);
     }
   }
 
@@ -76,9 +71,8 @@ export class ProfileComponent {
       (response)=> {
         if(this.user){
           this.user.userImg = this.newUserImg
-
+          this.dataUser();
         }
-        // console.log('Datos act con exito:', response);
         this.dataUser();
       },
       (error) => {
