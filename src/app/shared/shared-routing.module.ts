@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'error-400', component: BadRequest400Component},
   { path: 'error-401', component: Unauthorized401Component},
   { path: 'error-403', component: Forbidden403Component},
-  { path: 'error-404', component: NotFound404Component },
+  { path: '*', component: NotFound404Component },
   { path: 'error-500', component: InternalServerError500Component},
   { path: 'error-503', component: ServiceUnavailable503Component},
   // { path: 'no-results', component: NoResultsComponent},
