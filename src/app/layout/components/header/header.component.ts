@@ -20,7 +20,6 @@ export class HeaderComponent {
     private authService: AuthService,
     ){}
 
-  // users: User []= [];
   user: User | null = null;
   userId: string | null = null;
   loadingData: boolean = true;
@@ -68,30 +67,3 @@ export class HeaderComponent {
     this.menuVisible = !this.menuVisible;
   }
 }
-
-
-  // dataUser() {
-  //   const loggedInUserId = this.authService.getLoggedInUserId();
-  //   if (loggedInUserId) {
-  //     this.userId = loggedInUserId;
-  //     console.log('userId frm dataUser() provider from loggedInUserId:', this.userId)
-  //       this.imageUrl = `${apiBaseUrl}uploads/users/`;
-
-  //     this.route.paramMap.subscribe(paramMap => {
-  //       const id = paramMap.get('id');
-  //       console.log('id from paramMap(url):', id)
-
-  //       if (id === loggedInUserId) {
-  //         this.userShared.getUser(id).subscribe(data => {
-  //           console.log('execute subscribcion to getUser inside dataUser():', id)
-
-  //           this.user = data;
-  //           this.loadingData = false;
-  //         });
-  //       } else {
-  //         console.log('error upload data user')
-  //         // this.router.navigate(['/error']);
-  //       }
-  //     });
-  //   }
-  // }
