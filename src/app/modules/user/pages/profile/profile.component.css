@@ -2,6 +2,19 @@
   animation: bounce 2s ease infinite;
   transform-origin: center bottom;
 }
+.roles{
+  width: 100%;
+  margin:  0.75rem 0 0.75rem 0;
+  font-size: calc(1vh + 1.2vw);
+  font-weight: 600;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(0deg, rgb(65, 62, 62), rgba(0, 4, 255, 0.836), rgb(1, 1, 27));
+
+}
+.roles::first-letter{
+  text-transform: uppercase;
+}
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
