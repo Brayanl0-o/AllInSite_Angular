@@ -2,7 +2,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
 import { Game, GameRequirements } from '../../models/game';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -102,27 +101,3 @@ export class VideogamesService {
   }
 }
 
-  // activeRoute:string ='';
-
-  // routeChanged = new EventEmitter<string>();
-
-
-  // setActivateRoute(route:string){
-  //   this.activeRoute = route;
-  //   this.routeChanged.emit(route)
-  // }
-  // getGame(page: number, pageSize: number): Observable<Game[]>{
-  //   const url= `${this.apiUrl}games/?page=${page}&pageSize=${pageSize}`;
-  //   return this.http.get<Game[]>(url).pipe(
-  //     tap((games) => {
-  //       // console.log('Juegos obtenidos:', games);
-  //     })
-  //   );
-  // }
-
-  // gameData = new EventEmitter<any>();
-  // sendGameData(game: any): void {
-  //   // Emitir datos del user al componente modal
-  //   this.gameData.emit(game);
-  //   // console.log('datagame switchService: ', game)
-  // }
