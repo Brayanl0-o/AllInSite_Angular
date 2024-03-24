@@ -15,7 +15,6 @@ export class ModalLoginComponent {
     private router: Router,
     private readonly fb: FormBuilder,
     private renderer: Renderer2,
-    // public auth: AngularFireAuth
     ){}
 
 
@@ -80,10 +79,6 @@ export class ModalLoginComponent {
             }, 2000);
           })
     }
-
-    // isUserLoggedIn() {
-    //   return this.authService.loggedIn();
-    // }
 
     initFrom(): FormGroup {
       return this.fb.group({
