@@ -10,17 +10,10 @@ export class HomeComponent {
   public env: string = environment.apiUrl
   userId: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    // Llama a esta función para obtener el userId cuando el componente se carga.
-    // this.userId = this.authService.getLoggedInUserId();
-  }
   isUserLoggedIn() {
     return !!this.userId;
   }
-  // isUserLoggedIn() {
-  //   // Comprueba si el usuario ha iniciado sesion
-  //   return this.authService.loggedIn() || !!this.userId;
-  // }
+
 }
