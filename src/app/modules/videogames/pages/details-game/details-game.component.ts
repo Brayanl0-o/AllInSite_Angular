@@ -161,15 +161,6 @@ export class DetailsGameComponent {
           // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
           this.isLoading = !this.isLoading;
-          // if (game && game.gameImg) {
-          //   this.gameImgUrl = game.gameImg;
-          //   this.isLoading = !this.isLoading;
-
-
-          // } else {
-          //   console.error('Game o gameImg son nulos o indefinidos.');
-          //   this.gameImgUrl = '';
-          // }
         });
         } else {
           this.gameDetails$ = this.videogamesService.getGameById('', gameId as string);
