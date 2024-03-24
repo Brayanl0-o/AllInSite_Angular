@@ -34,7 +34,6 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     MatIconModule,
     CommonModule,
     videogamesRoutingModule,
-    // AppModule,
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
