@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { authRoutingModule } from './auth-routing.module';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from '../user/pages/register/register.component';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';

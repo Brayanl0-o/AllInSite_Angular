@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { userRoutingModule } from './user-routing.module';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from '../auth/pages/profile/profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { SharedModule } from 'src/app/shared/shared.module';
