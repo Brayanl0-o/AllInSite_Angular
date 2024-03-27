@@ -64,7 +64,7 @@
             </div>
           </div>
 
-          <div class="relative mt-4 mb-10">
+          <div class="trailer-field ">
             <label class="text-black/80 font-semibold " for="gameTrailer">Trailer:</label>
             <input id="gameTrailer" name="gameTrailer" formControlName="gameTrailer" type="text" placeholder="Ingrese el enlace al trailer"
               class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
@@ -172,8 +172,8 @@
       <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
         <mat-icon class="material-symbols-outlined -mb-1.5 ">error</mat-icon>  {{ errorResponseMessageForm }}
       </span>
-      <div class="flex justify-end absolute right-32 bottom-16">
-        <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-[#006186]">Subir videojuego</button>
+      <div class="container-button">
+        <button type="submit" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186]">Subir videojuego</button>
       </div>
 
     </form>
