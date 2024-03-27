@@ -29,7 +29,7 @@ body{
 }
 .game-image{
   position: relative;
-  top: -2.5vh;
+  top: 0vh;
   object-fit: cover;
   height: 35vh;
   width: 28vh;
