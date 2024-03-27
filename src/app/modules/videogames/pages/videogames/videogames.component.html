@@ -42,14 +42,14 @@
           <a [routerLink]="['details-game',game._id]">
             <div class="card ">
               <div class="wrapper">
-                <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="cover-image object-fill  ">
+                <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="cover-image ">
 
                 <div class="absolute top-0 left-0 m-2 bg-black bg-opacity-50 text-white p-2 rounded">
                   {{ game.genre }}
                 </div>
               </div>
               <div class="character shadow-lg p-2 hover:shadow-sm  hover:bg-white/85">
-                <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" class="character-img" />
+                <img src="../../../../../assets/img/videogames/mago.webp" class="character-img" />
 
                 <div class="game-card-description mb-2">
                   <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
@@ -71,12 +71,12 @@
       <pagination-controls class="pagination m-auto mt-0 mb-16" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
 
       <div class="z-40 flex-3 ml-4 flex-wrap justify-center gap-4 flex-grow items-center">
-        <div class="fixed top-56 max-sm:top-48 xl:right-20 lg:right-16 md:right-4 sm:right-2 ">
+        <div class="fixed top-56 max-sm:top-48 xl:right-16 lg:right-16 md:right-4 sm:right-2 ">
           <div class="mb-4 z-50">
             <app-aside></app-aside>
           </div>
           <button *ngIf="isAdmin" type="submit" arial-label="Boton para subir un videojuego"
-              class="text-white bg-[#004f99] transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#006186] "
+              class="text-white bg-blue-700 border-blue-950 border-b-4 hover:border-b-2  transition-colors h-14 w-14 sm:w-14 md:w-14 lg:w-32 xl:w-32  rounded-lg shadow text-md sm:text-sm hover:bg-[#006186] "
               (click)="openModal()">
               <div class="flex flex-row items-center justify-evenly">
                 <mat-icon >library_add</mat-icon>
@@ -93,38 +93,4 @@
       </div>
     </div>
   </div>
-
 </body>
-<!-- <p class="mb-2 font-semibold text-gray-700">
-                  <span class= "inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-1">
-                    {{ game.averageRating }}
-                  </span>
-                  <svg class="w-4 h-4 inline-block text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                  </svg>
-                </p> -->
-                <!-- <img src="https://ggayane.github.io/css-experiments/cards/force_mage-cover.jpg" class="" /> -->
-
-<!-- <div class="rounded-md shadow-lg p-2 hover:shadow-sm bg-white/60 hover:bg-white/85" class="character">
-                <div class="game-card-description mb-2">
-                  <p *ngIf="game.descriptionGame; else defaultText">{{game.descriptionGame}}   </p>
-                  <ng-template #defaultText>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sed omnis, fugit delectus commodi corporis reprehenderit modi
-                    velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
-                  </ng-template>
-
-                </div>
-                <p class="mb-2 font-semibold text-gray-700">Calificación:
-                  <span class= "inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-1">
-                    {{ game.averageRating }}
-                  </span>
-                  <svg class="w-4 h-4 inline-block text-yellow-300 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                    <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-                  </svg>
-                </p>
-                <a [routerLink]="['details-game',game._id]" class="inline-flex items-center font-semibold px-2 py-1 text-sm text-center text-blue-900 rounded-lg hover:text-white hover:bg-blue-800/80 hover:transform hover:scale-110 hover:duration-300">
-                  Más
-                  <mat-icon class="w-3.5 h-3.5 ml-2 text-blue-900">read_more</mat-icon>
-                </a>
-              </div> -->
