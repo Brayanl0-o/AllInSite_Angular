@@ -1,5 +1,5 @@
 <!-- Modal toggle  -->
-<button *ngIf="!isLoggedIn"  (click)="showModal()"  class="border-blue-950 border-b-2 block max-sm:text-xs max-sm:w-min max-sm:mr-6 text-white bg-blue-700 hover:bg-blue-700/90 focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs rounded-lg px-5 py-2.5 text-center" type="button">
+<button *ngIf="!isLoggedIn"  (click)="showModal()"  class="border-blue-950 border-b-4 block max-sm:text-xs max-sm:w-min max-sm:mr-6 text-white bg-blue-700 hover:border-b-2  hover:bg-blue-700/90 focus:ring-4 focus:outline-none focus:ring-blue-300 text-xs rounded-lg px-5 py-2.5 text-center" type="button">
    Iniciar sesión
 </button>
 
@@ -47,7 +47,7 @@
               <a [routerLink]="'/send-email'" (click)="closeModal()" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Recuperar contraseña</a>
           </div>
 
-          <button  type="submit" (click)="login()" [disabled]="isLoading" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <button  type="submit" (click)="login()" [disabled]="isLoading" class="w-full border-blue-950 border-b-4 text-white bg-blue-700 hover:border-b-2 hover:bg-[#004f99] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <div class="flex items-center justify-center">
               <span class="ml-2" *ngIf="!isLoading" aria-label="Botón de Iniciar sesión">Ingresa a tu cuenta</span>
             </div>
