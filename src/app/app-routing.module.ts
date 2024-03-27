@@ -19,22 +19,3 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 
-// import { ProfileComponent } from './modules/user/pages/profile/profile.component';
-// import { ResetPasswordComponent } from './modules/auth/pages/reset-password/reset-password.component';
-// import { SendEmailComponent } from './modules/auth/pages/send-email/send-email.component';
-// import { DetailsGameComponent } from './modules/videogames/pages/details-game/details-game.component';
-
-  // { path: 'videogames', component: VideogamesComponent },
-
-  // { path: 'details-game/:gameId', component: DetailsGameComponent },
-  // { path: 'details-game/:userId/:gameId', component: DetailsGameComponent},
-
-  // { path: 'profile/:id', component: ProfileComponent },
-
-  // Ruta wildcard para manejar errores 404
-
-  // { path: 'home', component: HomeComponent },
-  // { path: 'home/:id', component: HomeComponent },
-
-  // { path: 'send-email', component: SendEmailComponent },
-  // { path: 'change-password/:token', component: ResetPasswordComponent },
