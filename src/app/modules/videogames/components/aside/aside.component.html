@@ -1,5 +1,5 @@
 <div class="group">
-  <button type="button" (click)="toggleFilters()"  aria-controls="speed-dial-menu-top-right" aria-expanded="false" class=" flex items-center justify-center text-white  bg-[#004f99] rounded-full w-14 h-14  dark:bg-blue-600  hover:bg-[#006186] focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+  <button type="button" (click)="toggleFilters()"  aria-controls="speed-dial-menu-top-right" aria-expanded="false" class="flex items-center justify-center bg-blue-700 hover:border-b-2  text-white  border-blue-950 border-b-4 rounded-full w-14 h-14  dark:bg-blue-600  hover:bg-[#006186] focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
     </svg>
@@ -9,8 +9,8 @@
     <span class="sr-only">Open actions menu</span>
   </button>
 
-  <div *ngIf="showFilters"   class=" flex-col items-center  mt-4 space-y-2 " >
-    <div class="h-2/3 w-80 bg-white p-4 rounded shadow fixed right-0  overflow-y-auto  overflow-x-hidden ">
+  <div *ngIf="showFilters" class=" flex-col items-center  mt-4 space-y-2 " >
+    <div class="container-filters h-2/3 w-80 bg-white p-4 rounded shadow fixed right-0  overflow-y-auto  overflow-x-hidden ">
       <h3 class="text-md font-semibold mb-0">Filtrar por:</h3>
       <div class="mb-2">
         <ul class="px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
@@ -129,8 +129,8 @@
 
         </ul>
 
-        <div class="flex justify-center gap-6 " >
-          <button (click)="applyFilters()" class=" w-auto z-50 bg-[#004f99] text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        <div class="flex justify-center gap-6" >
+          <button (click)="applyFilters()" class="w-auto z-50 bg-blue-700 border-b-4 border-black hover:border-b-2  text-white py-2 px-4 rounded hover:bg-[#004f99] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
             Aplicar Filtros
           </button>
           <button (click)="resetForm()" data-popover-target="popover-bottom" data-popover-placement="bottom" type="button"
