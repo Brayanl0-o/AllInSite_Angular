@@ -19,7 +19,7 @@
 
           <header>
             <div class="container-popover">
-              <button  (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" class="popover z-10 bg-black bg-opacity-30 text-white p-1 rounded-xl" type="button"  aria-label="Información del juego" >
+              <button  (click)="showPopoverMouseEnter(game)" (mouseenter)="showPopoverMouseEnter(game)" (mouseleave)="hidePopoverMouseLeave(game)" class="popover z-10 bg-black bg-opacity-30 text-white p-1 rounded-xl" type="button"  aria-label="Información del juego" >
                 <mat-icon class="w-5 h-5 transition-transform group-hover:rotate-45">info</mat-icon>
               </button>
               <div *ngIf="game.showPopover" role="tooltip" class=" flex flex-col items-start absolute top-10 left-0 z-10 w-64 text-sm text-gray-700 transition-opacity duration-300">
