@@ -1,0 +1,21 @@
+body>section{
+  width: 45vw;
+}
+.container-button{
+  display: flex-end;
+
+  align-items: center;
+  position: absolute;
+  right: 18%;
+  bottom: 7%;
+}
+@media(max-width: 1240px ){
+  body>section{
+    width: fit-content;
+  }
+}
+@media(max-width: 640px ){
+  .container-button{
+    margin: 1rem auto;
+  }
+}
