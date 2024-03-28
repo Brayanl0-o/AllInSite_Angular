@@ -3,8 +3,7 @@
   margin: 1rem 0 0.5rem 0;
 }
 .container-button{
-  display: flex;
-  justify-content: end;
+  display: flex-end;
   align-items: center;
   position: absolute;
   right: 15%;
