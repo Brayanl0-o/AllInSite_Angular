@@ -22,8 +22,8 @@ export class VideogamesService {
     return this.http.get<Game[]>(url)
   }
 
-  public getGameById(userId: string | null, gameId: string): Observable<Game>{
-    const url = `${this.apiUrl}games/${userId}/${gameId}`;
+  public getGameById( gameId: string): Observable<Game>{
+    const url = `${this.apiUrl}games/${gameId}`;
     return this.http.get<Game>(url);
   }
 
@@ -39,6 +39,7 @@ export class VideogamesService {
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
     formData.append('gameTrailer', gameData.gameTrailer);
+    console.log(gameData.gameTrailer)
 
     const httpOptions = {
       headers: new HttpHeaders({
