@@ -2,12 +2,14 @@ import { Component, Input, Renderer2} from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
 import { Game, GameRequirements } from 'src/app/core/models/game';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable, forkJoin, map, of, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/models/user';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 const apiUrl = environment.apiUrl
+
 @Component({
   selector: 'app-details-game',
   templateUrl: './details-game.component.html',
@@ -19,10 +21,21 @@ export class DetailsGameComponent {
     private authService: AuthService,
     private renderer: Renderer2,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private sanitizer: DomSanitizer) {
     this.gameDetails$ = new Observable<Game>();
     this.gameRequirements$ = new Observable<GameRequirements>();
+    this.gameDetails$ = this.route.params.pipe(
+      map(params => params['gameId']),
+      switchMap(gameId => this.videogamesService.getGameById(gameId))
+    );
+
+    this.gameDetails$.subscribe(game => {
+      this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(game.gameTrailer);
+    });
   }
+
+  safeGameTrailerUrl!: SafeResourceUrl;
 
   gameDetails$: Observable<Game>;
   gameRequirements$: Observable<GameRequirements>
@@ -34,6 +47,7 @@ export class DetailsGameComponent {
   selectedFile : File | null = null;
 
   ngOnInit() {
+    // this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gameDetails$.gameTrailer)
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.route.paramMap.subscribe(paramMap => {
       this.gameId = paramMap.get('gameId') ?? '';
@@ -82,7 +96,7 @@ export class DetailsGameComponent {
       }
       this.videogamesService.updatedGameImg(game._id, gameImg).subscribe(
         (response) => {
-          this.gameDetails$ = this.videogamesService.getGameById(this.userId, this.gameId);
+          this.gameDetails$ = this.videogamesService.getGameById( this.gameId);
           this.closeModalAndReloadPage();
           this.loadDataGame();
         },
@@ -156,14 +170,14 @@ export class DetailsGameComponent {
       if (gameId) {
 
         if (userId) {
-          this.gameDetails$ = this.videogamesService.getGameById(userId, gameId as string);
+          this.gameDetails$ = this.videogamesService.getGameById( gameId as string);
           this.gameDetails$.subscribe((game) => {
           // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
           this.isLoading = !this.isLoading;
         });
         } else {
-          this.gameDetails$ = this.videogamesService.getGameById('', gameId as string);
+          this.gameDetails$ = this.videogamesService.getGameById(gameId as string);
           // Asigna la URL de la imagen del juego directamente desde los detalles del juego
           this.gameDetails$.subscribe((game) => {
             if (game && game.gameImg) {

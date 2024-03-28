@@ -29,14 +29,13 @@ body{
 }
 .game-image{
   position: relative;
-  top: 0vh;
+  top: -24px;
   object-fit: cover;
-  height: 35vh;
-  width: 28vh;
+  height: 350px;
+  width: 280px;
   border-radius: 10px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-
 }
 
 .active {
@@ -59,7 +58,7 @@ body{
   display: flex;
   justify-content: center;
   flex-flow:row wrap-reverse;
-  margin-top: 6rem;
+  margin-top: 7rem;
 }
 .container-down{
   width: 100%;

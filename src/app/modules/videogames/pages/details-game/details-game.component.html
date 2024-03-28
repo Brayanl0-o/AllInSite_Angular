@@ -49,6 +49,8 @@
         <p class="text-gray-800 text-xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer }}</span> </p>
         <p class="text-gray-800 text-xl py-2">Genero: <span class="font-semibold">{{ gameDetails.genre }}</span> </p>
         <p class="text-gray-800 text-xl py-2 mb-10">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></p>
+        <!-- <li class="text-gray-800 text-xl py-2">URL TRAILER: <span class="font-semibold">{{ gameDetails.gameTrailer}} </span></li> -->
+
         <div class="flex justify-end row-auto align-middle mb-4">
           <p class="font-semibold text-gray-700 dark:text-gray-400 ">
             <span class= "inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-0 rounded dark:bg-blue-200 dark:text-blue-800 ">
@@ -66,7 +68,7 @@
     <div class="container-down" >
       <div class="container-more-details">
 
-        <div class="container-specifications">
+        <div class="container-specifications ">
           <header class="relative">
             <h2 class="text-3xl font-bold pt-6 pb-4 mr-10"> Requisitos mínimos:</h2>
             <button *ngIf="isAdmin" type="submit" arial-label="Boton para subir un videojuego"
@@ -83,6 +85,7 @@
               <li class="text-gray-800 text-xl py-2">RAM: <span class="font-semibold">{{ gameRequirements.ramGame}} </span></li>
               <li class="text-gray-800 text-xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame}}</span></li>
               <li class="text-gray-800 text-xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame}} </span></li>
+
             </ul>
           </div>
 
@@ -92,17 +95,17 @@
         </div>
 
 
-        <div class="container-trailer" >
-          <!-- <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}}</h2> -->
+        <div class="container-trailer z-50" >
+          <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}}</h2>
+           <iframe [src]="safeGameTrailerUrl" frameborder="0" allowfullscreen></iframe>
 
-          <iframe  src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe>
+          <!-- <iframe  src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe> -->
         </div>
       </div>
     </div>
 
   </div>
 </body>
-  <!-- <iframe width="560" height="315" src="{{gameDetails.gameTrailer}}" frameborder="0" allowfullscreen></iframe> -->
 
 <!-- Modal upload image -->
 <div *ngIf="isEditingImg"  class="rounded-md fixed inset-0  flex flex-col items-center justify-center min-w-full min-h-full  bg-black/50 mb-4 z-50 p-4">
@@ -120,7 +123,7 @@
 
     <div class="flex space-x-4">
       <button (click)="updatedGameImg(this.selectedFile!)" tabindex="0" aria-label="Botón para guardar nueva URL"
-        class="flex-grow px-4 py-2 text-white bg-[#006186] transition-colors rounded-md hover:bg-[#006186] focus:outline-none focus:bg-[#006186]">
+        class="flex-grow px-4 py-2 border-blue-950 border-b-4 bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186] text-white  transition-colors focus:outline-none focus:bg-[#006186]">
         Guardar
       </button>
       <button (click)="cancelEditImg()" tabindex="0"
