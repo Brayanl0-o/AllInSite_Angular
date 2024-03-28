@@ -5,7 +5,7 @@
 .roles{
   width: 100%;
   margin:  0.75rem 0 0.75rem 0;
-  font-size: calc(1vh + 1.2vw);
+  font-size: calc(1vh + 0.8vw);
   font-weight: 600;
   color: transparent;
   background-clip: text;

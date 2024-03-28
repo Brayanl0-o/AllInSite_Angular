@@ -124,14 +124,14 @@
           </div>
         </div>
 
-        <div class="relative col-span-2 mb-6">
+        <div class="relative col-span-2 mb-20">
           <label class="text-black " for="descriptionUser">Descripción del perfil:</label>
           <textarea type="text" id="descriptionUser" name="descriptionUser" formControlName="descriptionUser" placeholder="Ingrese la descripción de su perfil"
-            class="block w-full h-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+            class="block w-full h-[150%] px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
           </textarea>
           <div *ngIf="contactForm.controls['descriptionUser'].invalid && (contactForm.controls['descriptionUser'].dirty || contactForm.controls['lastName'].touched)" class="alert alert-danger">
             <div *ngIf="contactForm.controls['descriptionUser'].errors?.['maxlength']">
-                Superó el limite de números permitidos(400). <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+                Superó el limite de números permitidos(400). <mat-icon class="material-symbols-outlined"> warning </mat-icon>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
         <span *ngIf="errorResponseMessageForm" class="text-md z-100 font-semibold m-auto flex justify-center items-center  text-red-800/80" >
           <mat-icon class="material-symbols-outlined  ">error</mat-icon>  {{ errorResponseMessageForm }}
         </span>
-        <button (click)="onSubmit()" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#006186] rounded-md hover:bg-blue-600 focus:outline-none focus:bg-gray-600">Guardar</button>
+        <button (click)="onSubmit()" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform border-blue-950 border-b-4 bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186] focus:outline-none focus:bg-gray-600">Guardar</button>
       </div>
     </form>
 
