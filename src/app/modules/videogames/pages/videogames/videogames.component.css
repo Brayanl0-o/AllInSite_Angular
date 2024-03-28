@@ -202,7 +202,7 @@ header{
     max-height: 255px;
   }
 }
-@media( max-width: 346px ) {
+@media( max-width: 546px ) {
   .container-list{
     width: 95%;
     margin: auto;
@@ -220,4 +220,5 @@ header{
     max-height: 350px;
   }
 }
+
 
