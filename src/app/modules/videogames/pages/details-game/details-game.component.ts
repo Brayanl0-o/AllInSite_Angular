@@ -45,6 +45,7 @@ export class DetailsGameComponent {
   userId = '';
   isEditingImg = false;
   selectedFile : File | null = null;
+  stars: {type:'full'| 'medium' | 'empty'} [] = [];
 
   ngOnInit() {
     // this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gameDetails$.gameTrailer)
@@ -56,8 +57,24 @@ export class DetailsGameComponent {
     this.loadDataGame();
     this.loadGameRequirements(this.gameId);
     this.isAdminOrNot();
+    this.calcStars();
   }
 
+  calcStars(){
+    this.gameDetails$.subscribe(game => {
+      const rating = game.averageRating;
+      const maxRating = 10;
+      const numberOfStars = 5;
+
+      const fullStars = Math.floor(rating / 2); // Calcular cuántas estrellas llenas
+      const hasHalfStar = rating % 2 !== 0; // Verificar si hay una estrella media
+
+      this.stars = Array.from({ length: numberOfStars }, (_, index) => ({
+        type: index < fullStars ? 'full' : (hasHalfStar && index === fullStars ? 'medium' : 'empty'),
+      }));
+
+    })
+  }
   loadGameRequirements(gameId: string): void {
     if (gameId) {
       this.videogamesService.getRequirementesById(gameId).subscribe(

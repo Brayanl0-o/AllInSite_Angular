@@ -52,13 +52,25 @@
         <!-- <li class="text-gray-800 text-xl py-2">URL TRAILER: <span class="font-semibold">{{ gameDetails.gameTrailer}} </span></li> -->
 
         <div class="flex justify-end row-auto align-middle mb-4">
-          <p class="font-semibold text-gray-700 dark:text-gray-400 ">
+          <p class="container-averageRating font-semibold text-gray-700 dark:text-gray-400 ">
             <span class= "inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-0 rounded dark:bg-blue-200 dark:text-blue-800 ">
               {{ gameDetails.averageRating }}
             </span>
-            <svg class="w-10 h-10 inline-block text-yellow-300 mr-1 -mt-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-            </svg>
+
+            <ng-container *ngFor="let star of stars">
+              <svg *ngIf="star.type === 'full'" class="star-full w-10 h-10 inline-block text-yellow-300 mr-1 -mt-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+              </svg>
+
+              <svg *ngIf="star.type === 'medium'" class="star-medium w-9 h-9 inline-block  mr-1 -mt-4"  xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512" version="1.1">
+                <path d="M 250.297 1.107 C 248.535 1.616, 245.904 3.263, 244.450 4.767 C 242.922 6.347, 226.880 39.308, 206.425 82.896 C 186.964 124.364, 170.808 158.525, 170.524 158.810 C 170.239 159.094, 135.017 164.646, 92.253 171.146 C 49.489 177.646, 13.252 183.236, 11.726 183.567 C 8.252 184.321, 3.386 188.354, 1.464 192.069 C -0.616 196.091, -0.396 203.860, 1.899 207.500 C 2.940 209.150, 29.488 236.818, 60.896 268.984 C 92.303 301.151, 118 328.118, 118 328.911 C 118 329.705, 111.881 368.083, 104.403 414.196 L 90.806 498.038 93.153 502.767 C 96.281 509.070, 100.805 512.001, 107.398 511.996 C 113.321 511.991, 106.479 515.548, 195.750 466.075 L 256 432.685 256 216.342 C 256 43.887, 255.746 0.018, 254.750 0.090 C 254.063 0.140, 252.058 0.597, 250.297 1.107" stroke="none" fill="#fcc404" fill-rule="evenodd"/><path d="M 256 216.248 L 256 432.654 307.250 461.061 C 404.637 515.039, 398.830 512, 404.585 512 C 411.197 512, 415.718 509.074, 418.847 502.767 L 421.194 498.038 407.597 414.196 C 400.119 368.083, 394 329.710, 394 328.923 C 394 328.136, 419.703 301.168, 451.117 268.996 C 482.532 236.823, 509.080 209.150, 510.114 207.500 C 512.396 203.856, 512.609 196.078, 510.536 192.069 C 508.205 187.563, 503.464 184.234, 497.760 183.101 C 494.867 182.526, 459.425 177.080, 419 170.999 C 378.575 164.918, 344.561 159.740, 343.413 159.493 C 341.749 159.135, 334.985 145.532, 309.989 92.272 C 265.832 -1.816, 269.429 5.423, 265.720 3.171 C 263.949 2.096, 261.038 0.906, 259.250 0.528 L 256 -0.159 256 216.248" stroke="none" fill="#ececf4" fill-rule="evenodd"/>
+              </svg>
+
+              <svg *ngIf="star.type === 'empty'" class="star-empty w-10 h-10 inline-block text-white/75 mr-1 -mt-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                <path  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+              </svg>
+            </ng-container>
+
           </p>
         </div>
 
@@ -98,7 +110,6 @@
         <div class="container-trailer z-50" >
           <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}}</h2>
            <iframe [src]="safeGameTrailerUrl" frameborder="0" allowfullscreen></iframe>
-
           <!-- <iframe  src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe> -->
         </div>
       </div>
