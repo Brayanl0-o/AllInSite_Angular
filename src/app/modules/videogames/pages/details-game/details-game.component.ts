@@ -27,7 +27,6 @@ export class DetailsGameComponent {
     this.gameRequirements$ = new Observable<GameRequirements>();
     this.gameDetails$ = this.route.params.pipe(
       map(params => params['gameId']),
-      switchMap(gameId => this.videogamesService.getGameById(gameId))
     );
 
     this.gameDetails$.subscribe(game => {
@@ -53,11 +52,43 @@ export class DetailsGameComponent {
     this.route.paramMap.subscribe(paramMap => {
       this.gameId = paramMap.get('gameId') ?? '';
     });
-    this.imageUrl = `${apiUrl}uploads/videogames/`
+    this.imageUrl = `${apiUrl}uploads/videogames/medium/`
     this.loadDataGame();
     this.loadGameRequirements(this.gameId);
     this.isAdminOrNot();
     this.calcStars();
+  }
+
+  isLoading: boolean = true;
+  loadDataGame() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const userId = params.get('userId');
+      const gameId = params.get('gameId');
+
+      if (gameId) {
+
+        if (userId) {
+          this.gameDetails$ = this.videogamesService.getGameByIdMedium( gameId as string);
+          this.gameDetails$.subscribe((game) => {
+          // console.log('Valor de game:', game);
+          this.gameImgUrl = game.gameImg;
+          this.isLoading = !this.isLoading;
+        });
+        } else {
+          this.gameDetails$ = this.videogamesService.getGameByIdMedium(gameId as string);
+          // Asigna la URL de la imagen del juego directamente desde los detalles del juego
+          this.gameDetails$.subscribe((game) => {
+            if (game && game.gameImg) {
+              this.gameImgUrl = game.gameImg;
+              this.isLoading = false;
+            } else {
+              console.error('Game o gameImg son nulos o indefinidos.');
+              this.gameImgUrl = '';
+            }
+          });
+        }
+      }
+    });
   }
 
   calcStars(){
@@ -113,7 +144,7 @@ export class DetailsGameComponent {
       }
       this.videogamesService.updatedGameImg(game._id, gameImg).subscribe(
         (response) => {
-          this.gameDetails$ = this.videogamesService.getGameById( this.gameId);
+          this.gameDetails$ = this.videogamesService.getGameByIdMedium( this.gameId);
           this.closeModalAndReloadPage();
           this.loadDataGame();
         },
@@ -124,6 +155,7 @@ export class DetailsGameComponent {
     });
     this.isEditingImg = false;
   }
+
   closeModalAndReloadPage() {
     this.closeModal();
     window.location.reload();
@@ -176,37 +208,5 @@ export class DetailsGameComponent {
     } else {
       this.navigateToVideogames();
     }
-  }
-
-  isLoading: boolean = true;
-  loadDataGame() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      const userId = params.get('userId');
-      const gameId = params.get('gameId');
-
-      if (gameId) {
-
-        if (userId) {
-          this.gameDetails$ = this.videogamesService.getGameById( gameId as string);
-          this.gameDetails$.subscribe((game) => {
-          // console.log('Valor de game:', game);
-          this.gameImgUrl = game.gameImg;
-          this.isLoading = !this.isLoading;
-        });
-        } else {
-          this.gameDetails$ = this.videogamesService.getGameById(gameId as string);
-          // Asigna la URL de la imagen del juego directamente desde los detalles del juego
-          this.gameDetails$.subscribe((game) => {
-            if (game && game.gameImg) {
-              this.gameImgUrl = game.gameImg;
-              this.isLoading = false;
-            } else {
-              console.error('Game o gameImg son nulos o indefinidos.');
-              this.gameImgUrl = '';
-            }
-          });
-        }
-      }
-    });
   }
 }
