@@ -72,7 +72,7 @@ export class VideogamesComponent {
           const id = paramMap.get('id');
 
           if (id === loggedInUserId) {
-            this.userShared.getUser(id).subscribe(data => {
+            this.userShared.getUserById(id).subscribe(data => {
               this.user = data;
             });
           } else {
@@ -101,7 +101,7 @@ export class VideogamesComponent {
 
   private loadGameData() {
     this.videogamesService.getGame().subscribe((data: Game[]) => {
-      this.imageUrl = `${apiBaseUrl}uploads/videogames/`;
+      this.imageUrl = `${apiBaseUrl}uploads/videogames/small/`;
       this.games = data;
       this.loadingData = false;
       this.filteredGames = [...this.games];
