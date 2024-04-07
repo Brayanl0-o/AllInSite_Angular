@@ -22,7 +22,7 @@ export class VideogamesService {
     return this.http.get<Game[]>(url)
   }
 
-  public getGameById( gameId: string): Observable<Game>{
+  public getGameByIdMedium( gameId: string): Observable<Game>{
     const url = `${this.apiUrl}games/${gameId}`;
     return this.http.get<Game>(url);
   }
