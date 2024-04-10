@@ -27,7 +27,7 @@ export class SharedUsersService {
   }
 
   // Metodo par aobtener los datos del usuario logeado por su ID
-  public getUser(id: string): Observable<User> {
+  public getUserById(id: string): Observable<User> {
     const url = `${this.URL}users/${id}`;
     const httpOptions = {
       headers: new HttpHeaders ({
