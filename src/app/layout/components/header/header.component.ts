@@ -43,10 +43,10 @@ export class HeaderComponent {
     const loggedInUserId = this.authService.getLoggedInUserId();
     if (loggedInUserId) {
       this.userId = loggedInUserId;
-      this.imageUrl = `${apiBaseUrl}uploads/users/`;
+      this.imageUrl = `${apiBaseUrl}uploads/users/small/`;
       const id = loggedInUserId;
         if (id) {
-          this.userShared.getUser(id).subscribe(data => {
+          this.userShared.getUserById(id).subscribe(data => {
             this.user = data;
             this.loadingData = false;
           });
