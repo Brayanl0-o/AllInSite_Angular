@@ -36,9 +36,9 @@ export class ProfileComponent {
     this.userId = loggedInUserId;
 
     if(loggedInUserId){
-          this.imageUrl = `${apiBaseUrl}uploads/users/`;
+          this.imageUrl = `${apiBaseUrl}uploads/users/medium/`;
           if (this.userId  === loggedInUserId) {
-            this.userShared.getUser(this.userId ).subscribe(data => {
+            this.userShared.getUserById(this.userId ).subscribe(data => {
               this.user = data;
               this.loadDataProfile = false;
             });
