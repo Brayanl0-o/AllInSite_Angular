@@ -1,10 +1,11 @@
-<body class="bg-gray-300 min-h-screen h-auto mt-10">
+<router-outlet *ngIf="showDetails"></router-outlet>
+
+<body   *ngIf="hideList" class=" bg-[#9193a380] min-h-screen h-auto mt-10"  >
   <h1 class="pt-14 text-center mb-4 font-extrabold text-gray-900 sm:text-3xl md:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r to-emerald-800 from-sky-500" >Últimas publicaciones</h1>
   <hr class="w-48 h-1 mx-auto bg-gray-400 border-0 rounded my-4">
 
   <div>
     <div class="flex flex-col">
-
       <app-header-search [games]="games" (searchValueChanged)="onSearchValueChanged($event)"></app-header-search>
 
       <ng-container *ngIf="loadingData">
@@ -39,7 +40,7 @@
             </button>
           </header>
 
-          <a [routerLink]="['details-game',game._id]">
+          <a [routerLink]="['details-game',game._id]" (click)="detectStateRoute()">
             <div class="card ">
               <div class="wrapper">
                 <img loading="lazy" [src]="imageUrl + game.gameImg" alt="{{ game.gameName }}" class="cover-image ">

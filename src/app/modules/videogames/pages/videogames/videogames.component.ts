@@ -3,13 +3,12 @@ import { VideogamesService } from 'src/app/core/services/videogames/videogames.s
 import { FilterService } from 'src/app/core/services/filter/filter.service';
 import { SharedUsersService } from 'src/app/core/services/sharedUsers/shared-users.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Game } from 'src/app/core/models/game';
 import { User } from 'src/app/core/models/user';
-import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType}  from '@angular/common/http';
+import { HttpClient}  from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 const apiBaseUrl= environment.apiUrl;
-
 @Component({
   selector: 'app-videogames',
   templateUrl: './videogames.component.html',
@@ -38,11 +37,33 @@ export class VideogamesComponent {
 
   ngOnInit(): void {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
+    this.detectStateRoute() ;
     this.dataUser()
     this.loadGameData();
+    this.router.events.subscribe(event =>{
+      if(event instanceof NavigationEnd){
+        this.detectStateRoute();
+      }
+    })
     this.subscribeFilter();
     this.IsAdminOrUser();
     this.applyFilters({});
+
+  }
+  detectRoute: boolean = false;
+  showDetails: boolean = false;
+  hideList: boolean = true;
+  detectStateRoute() {
+    const currentUrl = this.router.url;
+
+    if (currentUrl.includes('details-game')) {
+      this.hideList = false;
+      this.showDetails = true;
+
+    } else {
+      this.hideList = true;
+      this.showDetails = false;
+    }
   }
 
   isAdmin: boolean = false;
