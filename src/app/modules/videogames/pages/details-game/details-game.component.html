@@ -1,7 +1,7 @@
-<app-loading-screen  *ngIf="isLoading" ></app-loading-screen>
+<app-loading-screen  *ngIf="isLoading"></app-loading-screen>
       <!-- relative  bg-slate-400/30 m-auto h-auto w-auto -->
 
-<body>
+<body >
   <div class="background-color"></div>
   <div *ngIf="gameDetails$ | async as gameDetails" [style.background-image]="'url(' + imageUrl + gameDetails.gameImg + ')'" class="background-image" ></div>
 

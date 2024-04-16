@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/models/user';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { timer } from 'rxjs';
 const apiUrl = environment.apiUrl
 
 @Component({
@@ -58,7 +58,7 @@ export class DetailsGameComponent {
     this.isAdminOrNot();
     this.calcStars();
   }
-
+  detailsLoaded: boolean = false;
   isLoading: boolean = true;
   loadDataGame() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -72,7 +72,13 @@ export class DetailsGameComponent {
           this.gameDetails$.subscribe((game) => {
           // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
-          this.isLoading = !this.isLoading;
+            if(game){
+              this.detailsLoaded = !this.detailsLoaded;
+              timer(3000).subscribe(() => {
+                this.isLoading = false;
+              });
+            }
+
         });
         } else {
           this.gameDetails$ = this.videogamesService.getGameByIdMedium(gameId as string);
@@ -80,7 +86,12 @@ export class DetailsGameComponent {
           this.gameDetails$.subscribe((game) => {
             if (game && game.gameImg) {
               this.gameImgUrl = game.gameImg;
-              this.isLoading = false;
+              this.detailsLoaded = !this.detailsLoaded;
+
+              timer(3000).subscribe(() => {
+                this.isLoading = false;
+              });
+
             } else {
               console.error('Game o gameImg son nulos o indefinidos.');
               this.gameImgUrl = '';
