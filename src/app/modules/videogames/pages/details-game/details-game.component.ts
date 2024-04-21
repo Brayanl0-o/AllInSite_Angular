@@ -47,6 +47,8 @@ export class DetailsGameComponent {
   stars: {type:'full'| 'medium' | 'empty'} [] = [];
 
   ngOnInit() {
+    console.log(this.safeGameTrailerUrl)
+
     // this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gameDetails$.gameTrailer)
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
     this.route.paramMap.subscribe(paramMap => {
@@ -64,6 +66,7 @@ export class DetailsGameComponent {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const userId = params.get('userId');
       const gameId = params.get('gameId');
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
 
       if (gameId) {
 
@@ -74,8 +77,11 @@ export class DetailsGameComponent {
           this.gameImgUrl = game.gameImg;
             if(game){
               this.detailsLoaded = !this.detailsLoaded;
-              timer(3000).subscribe(() => {
+              timer(2000).subscribe(() => {
+
                 this.isLoading = false;
+                this.renderer.removeStyle(document.body, 'overflow');
+
               });
             }
 
@@ -90,6 +96,8 @@ export class DetailsGameComponent {
 
               timer(3000).subscribe(() => {
                 this.isLoading = false;
+                this.renderer.removeStyle(document.body, 'overflow');
+
               });
 
             } else {
