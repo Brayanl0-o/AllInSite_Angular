@@ -94,7 +94,7 @@ export class DetailsGameComponent {
               this.gameImgUrl = game.gameImg;
               this.detailsLoaded = !this.detailsLoaded;
 
-              timer(3000).subscribe(() => {
+              timer(2000).subscribe(() => {
                 this.isLoading = false;
                 this.renderer.removeStyle(document.body, 'overflow');
 
