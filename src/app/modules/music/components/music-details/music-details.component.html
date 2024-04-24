@@ -1,0 +1,12 @@
+<app-music-update *ngIf="showUpdateModal"></app-music-update>
+<!-- <router-outlet *ngIf="showUpdateModal" ></router-outlet> -->
+<body *ngIf="musicDetails$ | async as musicDetails" >
+    <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
+    <span class="updateDetails" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
+
+    <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image">
+    <h1>{{musicDetails.songName}}</h1>
+    <h2>{{musicDetails.singer}}</h2>
+    <p>{{musicDetails.lyrics}}</p>
+
+</body>
