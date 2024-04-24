@@ -1,0 +1,34 @@
+<body>
+  <span class="closeDetails" (click)="closeUpdateDetails()"><mat-icon>close</mat-icon></span>
+  <h4>Actualizar Canción</h4>
+  <form>
+    <div class="container-form">
+      <div>
+        <label for="songName">Nombre:</label>
+        <input type="text">
+      </div>
+      <div>
+        <label for="singer">Cantante/s:</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <label for="genre">Genero Musical:</label>
+        <input type="text">
+
+      </div>
+      <div>
+        <label for="averageRating">Puntaje Promedio:</label>
+        <input type="text">
+      </div>
+      <div>
+        <label for="lyrics">Letras:</label>
+        <textarea type="text"></textarea>
+      </div>
+    </div>
+
+    <div class="button">
+      <button (click)="updateSong()" >Guardar</button>
+    </div>
+  </form>
+</body>
