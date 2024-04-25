@@ -22,7 +22,7 @@ export class EditVideogameComponent {
 
 
   ngOnInit(): void{
-    this.contactForm = this.initFrom();
+    this.contactForm = this.initForm();
     this.contactForm.patchValue(this.game);
   }
 
@@ -55,7 +55,7 @@ export class EditVideogameComponent {
     )
   }
 
-  initFrom(): FormGroup{
+  initForm(): FormGroup{
     return this.fb.group({
       gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       gameImg: [this.game.gameImg],
