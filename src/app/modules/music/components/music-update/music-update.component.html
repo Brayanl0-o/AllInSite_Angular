@@ -1,34 +1,46 @@
 <body>
   <span class="closeDetails" (click)="closeUpdateDetails()"><mat-icon>close</mat-icon></span>
   <h4>Actualizar Canción</h4>
-  <form>
+  <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" novalidate>
     <div class="container-form">
       <div>
         <label for="songName">Nombre:</label>
-        <input type="text">
+        <input type="text" name="songName" formControlName="songName">
       </div>
       <div>
         <label for="singer">Cantante/s:</label>
-        <input type="text">
+        <input type="text" name="singer" formControlName="singer">
       </div>
 
       <div>
         <label for="genre">Genero Musical:</label>
-        <input type="text">
+        <input type="text" name="genre" formControlName="genre">
 
       </div>
       <div>
         <label for="averageRating">Puntaje Promedio:</label>
-        <input type="text">
+        <input type="text" name="averageRating" formControlName="averageRating">
+      </div>
+      <div>
+        <label for="songImg">Enlace a Imagen:</label>
+        <input type="text" name="songImg" formControlName="songImg">
+      </div>
+      <div>
+        <label for="duration">Duración:</label>
+        <input type="text" name="duration" formControlName="duration">
+      </div>
+      <div>
+        <label for="releaseDate">Fecha de lanzamiento:</label>
+        <input type="text" name="releaseDate" formControlName="releaseDate">
       </div>
       <div>
         <label for="lyrics">Letras:</label>
-        <textarea type="text"></textarea>
+        <textarea type="text" name="lyrics" formControlName="lyrics"></textarea>
       </div>
     </div>
 
     <div class="button">
-      <button (click)="updateSong()" >Guardar</button>
+      <button type="submit" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186]">Guardar</button>
     </div>
   </form>
 </body>

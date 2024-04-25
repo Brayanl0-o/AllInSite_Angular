@@ -1,7 +1,7 @@
 body{
   background-color: rgba(5, 2, 51, 0.959);
-  width: 35%;
-  height:60%;
+  width: 45%;
+  height:fit-content;
   position: fixed;
   top: 0;
   left: 0;
@@ -76,6 +76,7 @@ input{
   font-size: 1rem;
   background: rgba(22, 22, 22, 0.548);
   border-bottom: 5px solid black;
+  color: white;
   /* min-width: 10rem;
   max-width: 10rem; */
   /* height: 5rem; */
