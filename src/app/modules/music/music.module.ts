@@ -5,20 +5,22 @@ import { MusicDetailsComponent } from './components/music-details/music-details.
 import { MusicRoutingModule } from './music-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MusicUpdateComponent } from './components/music-update/music-update.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MusicAddComponent } from './components/music-add/music-add.component';
 
 @NgModule({
   declarations: [
     MusicHomeComponent,
     MusicDetailsComponent,
-    MusicUpdateComponent
+    MusicUpdateComponent,
+    MusicAddComponent
   ],
   imports: [
     CommonModule,
     MatIconModule,
     MusicRoutingModule,
-    ReactiveFormsModule
-
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class MusicModule { }

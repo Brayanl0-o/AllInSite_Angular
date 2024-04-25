@@ -6,8 +6,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren:() => import('./modules/home/home.module').then(m=> m.HomeModule)},
   { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)},
-  { path: 'videogames', loadChildren: () => import('./modules/videogames/videogames.module').then(m => m.VideogamesModule)},
   { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
+  { path: 'music', loadChildren:()=>import('./modules/music/music.module').then(m => m.MusicModule)},
+  { path: 'videogames', loadChildren: () => import('./modules/videogames/videogames.module').then(m => m.VideogamesModule)},
   { path: 'errors', loadChildren:() => import('./shared/shared.module').then(m=> m.SharedModule) },
   { path: '**', component: NotFound404Component}
 ];
