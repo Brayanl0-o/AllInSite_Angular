@@ -1,14 +1,18 @@
 <router-outlet *ngIf="$songDetails" ></router-outlet>
-
 <body >
-  <h3>Buscador</h3>
+  <h3>Musicdoor</h3>
   <div class="search">
-    <input type="text" placeholder="Busca tu tema..." class="rounded-l-md" >
+    <input type="text" placeholder="Busca tu tema..." class="rounded-l-md" [(ngModel)]="searchTerm" (input)="onSearchInputChange()" >
     <span ><mat-icon class="icon-search rounded-l-sm">search</mat-icon></span>
   </div>
+  <div class="buttonAddSong">
+    <app-music-add></app-music-add>
 
+  </div>
   <section id="musicList" >
-    <a click="openDetailsSong()" [routerLink]="['song-details',song._id]" class="card" *ngFor="let song of songs">
+    <!-- <app-music-add></app-music-add> -->
+    <!-- <button class="openAddSong">Añadir Canción<mat-icon>add</mat-icon></button> -->
+    <a *ngFor="let song of searchSongs()" click="openDetailsSong()" [routerLink]="['song-details',song._id]" class="card" >
         <img [src]="song.songImg" width="250" height="250" alt="Song image" class="rounded-b-none rounded-t-md">
         <head class="rounded-t-none rounded-b-md">
           <div class="song&singer">
