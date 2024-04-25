@@ -1,12 +1,22 @@
-<app-music-update *ngIf="showUpdateModal"></app-music-update>
+<app-music-update *ngIf="showUpdateModal && currentSong"  [song]="currentSong"></app-music-update>
+<!--  *ngIf="song" [song]="song" -->
 <!-- <router-outlet *ngIf="showUpdateModal" ></router-outlet> -->
 <body *ngIf="musicDetails$ | async as musicDetails" >
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
     <span class="updateDetails" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
+    <div class="containerImages">
+      <div>
+        <img src="../../../../../assets/img/music/sondaSonido.png" alt="" class="sondaSonido">
 
-    <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image">
+        <img src="../../../../../assets/img/music/controls.png" alt="" class="playerControls">
+      </div>
+      <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage">
+    </div>
+
     <h1>{{musicDetails.songName}}</h1>
     <h2>{{musicDetails.singer}}</h2>
     <p>{{musicDetails.lyrics}}</p>
+
+    <span class="deleteSong" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
 
 </body>

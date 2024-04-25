@@ -1,7 +1,7 @@
 body{
   background-color: rgba(0, 0, 0, 0.685);
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: fit-content;
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,8 @@ body{
 }
 
 .updateDetails>mat-icon,
-.closeDetails>mat-icon{
+.closeDetails>mat-icon,
+.deleteSong>mat-icon{
   cursor: pointer;
   position: absolute;
   color: white;
@@ -26,17 +27,40 @@ body{
   top: 5px;
 }
 .updateDetails>mat-icon{
-  left: 260px;
+  left: 10px;
   top: 5px;
   font-size: 1.8rem;
-
+}
+.deleteSong>mat-icon{
+  right: 5px;
+  bottom: 5px;
 }
 .closeDetails>mat-icon:hover,
 .updateDetails>mat-icon:hover{
   transform: scale(1.1);
 }
-img{
+.songImage{
+  min-width: 250px;
+  min-height: 230px;
+  max-width: 250px;
+  max-height: 230px;
   border-radius: 10px;
+}
+.containerImages{
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.playerControls{
+  width: 90%;
+  height: 60%;
+  cursor: pointer;
+}
+.sondaSonido{
+  width: 70%;
+  height: 100px;
+  margin: auto;
 }
 h1,h2{
   color: white;
@@ -49,9 +73,19 @@ h2{
 
 }
 p{
+  border-radius: 10px;
   color: white;
   font-size: 1rem;
   font-weight: 400;
-  padding-left: 10px;
+  margin: 1rem;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.795);
+  overflow-y: scroll;
+  max-width: 60%;
+  height: 250px;
+  max-height: 20%;
+  text-overflow: ellipsis;
+  white-space: wrap;
+
 
 }

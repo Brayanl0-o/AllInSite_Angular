@@ -13,12 +13,13 @@ export class MusicDetailsComponent {
   private apiUrl =  environment.apiUrl;
   musicDetails$!: Observable<Song>;
   $songUpdateDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
+  showUpdateModal: boolean = false;
+  currentSong: Song | null = null;
   constructor(private songService: SongsService,
     private route: ActivatedRoute,
     private router:Router,
     private renderer: Renderer2){
     }
-  showUpdateModal: boolean = false;
   ngOnInit(){
     this.songService.$songUpdateDetails.subscribe((valu) => { this.showUpdateModal = valu })
     this.loadDetailsSong();
@@ -28,8 +29,21 @@ export class MusicDetailsComponent {
       const songId = params.get('songId');
       if(songId){
         this.musicDetails$ = this.songService.getSong(songId);
+        this.musicDetails$?.subscribe(song => {
+          this.currentSong = song;
+        });
       }
     })
+  }
+  deleteSong(songId: string) {
+    this.songService.deleteSong(songId).subscribe(
+      (response) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error('Error al eliminar la canción', error);
+      }
+    );
   }
   closeDetails(){
     this.renderer.removeStyle(document.body, 'overflow');
