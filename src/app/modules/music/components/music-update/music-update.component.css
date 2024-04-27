@@ -1,6 +1,6 @@
 body{
   background-color: rgba(5, 2, 51, 0.959);
-  width: 45%;
+  width: 55%;
   height:fit-content;
   position: fixed;
   top: 0;
@@ -66,10 +66,8 @@ form{
   margin-right: 2rem;
 }
 .container-form>div>label{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-right: 2rem;
-
 }
 textarea,
 input{
@@ -77,9 +75,22 @@ input{
   background: rgba(22, 22, 22, 0.548);
   border-bottom: 5px solid black;
   color: white;
-  /* min-width: 10rem;
-  max-width: 10rem; */
-  /* height: 5rem; */
+  width: 100%;
+}
+textarea{
+  min-height:150px;
+  height:150px;
+  max-height:150px;
+  width: 70%;
+  margin: auto;
+}
+.textareaLyrics{
+  width: 100%;
+}
+.textareaLyrics>label{
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
 .button>button{
   border-radius: 10px;

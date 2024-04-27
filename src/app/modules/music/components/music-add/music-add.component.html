@@ -5,38 +5,36 @@
   <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()">
     <div class="container-form">
       <div>
-        <label for="songName">Nombre:</label>
+        <label for="songName">*Nombre:</label>
         <input type="text" name="songName" formControlName="songName">
       </div>
       <div>
-        <label for="singer">Cantante/s:</label>
+        <label for="singer">*Cantante/s:</label>
         <input type="text" name="singer" formControlName="singer">
       </div>
-
       <div>
-        <label for="genre">Genero Musical:</label>
+        <label for="genre">*Genero Musical:</label>
         <input type="text" name="genre" formControlName="genre">
-
+      </div>
+      <div>
+        <label for="songImg">*Enlace a Imagen:</label>
+        <input type="text" name="songImg" formControlName="songImg">
+      </div>
+      <div>
+        <label for="duration">*Duración:</label>
+        <input type="text" name="duration" formControlName="duration">
       </div>
       <div>
         <label for="averageRating">Puntaje Promedio:</label>
         <input type="text" name="averageRating" formControlName="averageRating">
       </div>
-      <div>
-        <label for="songImg">Enlace a Imagen:</label>
-        <input type="text" name="songImg" formControlName="songImg">
-      </div>
-      <div>
-        <label for="duration">Duración:</label>
-        <input type="text" name="duration" formControlName="duration">
+      <div class="textareaLyrics">
+        <label for="lyrics">Letras:</label>
+        <textarea type="text" name="lyrics" formControlName="lyrics"></textarea>
       </div>
       <div>
         <label for="releaseDate">Fecha de lanzamiento:</label>
         <input type="text" name="releaseDate" formControlName="releaseDate">
-      </div>
-      <div>
-        <label for="lyrics">Letras:</label>
-        <textarea type="text" name="lyrics" formControlName="lyrics"></textarea>
       </div>
     </div>
 

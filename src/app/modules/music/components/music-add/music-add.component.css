@@ -5,22 +5,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 80px;
+  width: 70px;
+  height: 65px;
   font-weight: 700;
   color: white;
-  background-image: linear-gradient(150deg, #1d0799d3, #1b0ca7ee) ;
+  background-image: linear-gradient(150deg, #072299d3, #0c35a7ee) ;
 }
 .openAddSong>mat-icon{
   margin: auto;
   text-align: center;
-  font-size: 4rem;
-  width: 70px;
-  height: 70px;
+  font-size: 3.5rem;
+  width: 60px;
+  height: 55px;
 }
 body{
   background-color: rgba(5, 2, 51, 0.959);
-  width: 45%;
+  width: 55%;
   height:fit-content;
   position: fixed;
   top: 0;
@@ -72,7 +72,6 @@ form{
   flex-flow: row wrap;
   gap: 10px;
   width: 95%;
-  /* background-color: red; */
   padding-bottom: 2rem;
 
 }
@@ -84,12 +83,11 @@ form{
   font-size: 1.5rem;
   font-weight: 600;
   margin-right: 2rem;
+  /* background-color: rgb(208, 208, 212); */
 }
 .container-form>div>label{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-right: 2rem;
-
 }
 textarea,
 input{
@@ -97,9 +95,25 @@ input{
   background: rgba(22, 22, 22, 0.548);
   border-bottom: 5px solid black;
   color: white;
+  width: 100%;
   /* min-width: 10rem;
   max-width: 10rem; */
   /* height: 5rem; */
+}
+textarea{
+  min-height:150px;
+  height:150px;
+  max-height:150px;
+  width: 70%;
+  margin: auto;
+}
+.textareaLyrics{
+  width: 100%;
+}
+.textareaLyrics>label{
+  margin: auto;
+  width: 100%;
+  text-align: center;
 }
 .button>button{
   border-radius: 10px;
@@ -107,5 +121,5 @@ input{
   background-color: black;
   color: wheat;
   padding: 10px;
-  margin: 2.5rem auto;
+  margin: 1rem auto 3rem auto;
 }

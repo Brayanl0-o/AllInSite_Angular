@@ -13,7 +13,7 @@ export class MusicHomeComponent {
   @Output() searchValueChanged = new EventEmitter<string>();
   searchTerm: string = '';
   songs: Song[]=[];
-
+  showButtonAdd: boolean = true;
   constructor(private songService:  SongsService,
     private router:Router,
     private renderer: Renderer2){}
@@ -21,11 +21,22 @@ export class MusicHomeComponent {
   ngOnInit(){
     this.getSongData();
     this.detectRoute();
+    this.songService.$songDetails.subscribe((value: boolean) => {
+      this.showButtonAdd = !value; // Mostrar el botón si $songDetails es falso
+    });
   }
   onSearchInputChange() {
     this.searchValueChanged.emit(this.searchTerm);
   }
+  detectDetails(){
+    if(this.$songDetails.observers.length > 0){
+      this.showButtonAdd = false;
 
+    } else{
+      this.showButtonAdd = true;
+
+    }
+  }
   searchSongs() {
     if (!this.searchTerm.trim()) {
       return this.songs;
@@ -44,15 +55,18 @@ export class MusicHomeComponent {
   }
   openDetailsSong(){
     this.detectRoute();
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+
   }
   detectRoute() {
     const currentUrl = this.router.url;
 
     if (currentUrl.includes('song-details')) {
-       this.renderer.setStyle(document.body, 'overflow', 'hidden');
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
 
       this.songService.$songDetails.emit(true);
     } else {
+
       this.songService.$songDetails.emit(false);
     }
   }

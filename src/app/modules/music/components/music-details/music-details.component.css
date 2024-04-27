@@ -27,14 +27,17 @@ body{
   top: 5px;
 }
 .updateDetails>mat-icon{
-  left: 10px;
+  left: 5px;
   top: 5px;
   font-size: 1.8rem;
+  color: rgba(45, 78, 226, 0.918);
 }
 .deleteSong>mat-icon{
   right: 5px;
   bottom: 5px;
+  color: red;
 }
+.deleteSong>mat-icon,
 .closeDetails>mat-icon:hover,
 .updateDetails>mat-icon:hover{
   transform: scale(1.1);
@@ -85,7 +88,7 @@ p{
   height: 250px;
   max-height: 20%;
   text-overflow: ellipsis;
-  white-space: wrap;
+  white-space: pre-line;
 
 
 }
