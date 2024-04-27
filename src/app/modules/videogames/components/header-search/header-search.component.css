@@ -1,5 +1,17 @@
-
-@media (max-width: 540px) {
+.containerHeaderSearch {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 0.5rem
+}
+@media (max-width: 560px) {
+  .containerHeaderSearch {
+    gap: 30%;
+  }
+  .containerHeaderSearch>nav{
+    margin-bottom: 3rem;
+  }
   nav>ol{
     padding-left: 1.5rem;
   }

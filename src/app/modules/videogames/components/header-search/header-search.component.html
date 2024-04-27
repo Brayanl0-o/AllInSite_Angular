@@ -1,4 +1,4 @@
-<div class="flex flex-row items-center justify-evenly w-1/1 mb-2">
+<div class="containerHeaderSearch">
   <nav class="flex items-center " aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
       <li class="inline-flex items-center ">
@@ -37,14 +37,14 @@
             <path d="M512 607.958c-130.034 0-235.346-101.736-239.734-231.628a8.018 8.018 0 0 1 7.732-8.262c4.014-0.172 8.09 3.31 8.262 7.73 4.092 121.21 102.376 216.166 223.742 216.166 121.368 0 219.664-94.956 223.774-216.166 0.156-4.42 3.858-7.606 8.262-7.73a8.016 8.016 0 0 1 7.73 8.262C747.362 506.222 642.036 607.958 512 607.958z" fill="" /><path d="M512 559.978c-96.096 0-177.902-71.75-190.288-166.892a8.02 8.02 0 0 1 6.902-8.964c4.216-0.578 8.386 2.514 8.964 6.904 11.338 87.194 86.336 152.96 174.42 152.96 4.42 0 7.996 3.578 7.996 7.998s-3.574 7.994-7.994 7.994z" fill="" />
             </svg>
         </div>
-        <input  *ngIf="inputVisible" type="text" id="simple-search" required
+        <input   type="text" id="simple-search" required
         class="focus:border-blue-700 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full pl-10 p-2.5 "
         [(ngModel)]="searchTerm" (input)="onSearchInputChange()" placeholder="Buscar por nombre..."
         >
     </div>
 
     <div>
-      <button (click)="showInputSearch()" type="submit" class="p-0 ml-0 text-sm text-white hover:scale-125 transform transition-transform duration-1000 ease-in-outrounded-lg ">
+      <button type="submit" class="p-0 ml-0 text-sm text-white hover:scale-125 transform transition-transform duration-1000 ease-in-outrounded-lg ">
           <svg width="40px" height="35px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <title>Buscar</title>
             <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

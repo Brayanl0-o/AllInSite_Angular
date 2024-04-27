@@ -16,8 +16,5 @@ export class HeaderSearchComponent {
     this.searchValueChanged.emit(this.searchTerm);
   }
 
-  inputVisible: boolean = false;
-  showInputSearch() {
-    this.inputVisible = !this.inputVisible;
-  }
+
 }
