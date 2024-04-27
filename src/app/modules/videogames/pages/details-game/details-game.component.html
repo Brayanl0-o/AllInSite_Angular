@@ -108,9 +108,13 @@
 
 
         <div class="container-trailer z-50" >
-          <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}}</h2>
-           <iframe src="https://www.youtube.com/embed/-o7rES_3ymA"  frameborder="0" allowfullscreen></iframe>
-          <!-- <iframe  src="https://www.youtube.com/embed/KbEvj12Z3js" frameborder="0" allowfullscreen></iframe> -->
+          <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}} {{ gameDetails.gameTrailer}}</h2>
+           <!-- <iframe [src]="safeGameTrailerUrl"  frameborder="0" allowfullscreen></iframe> -->
+          <!-- <iframe  [src]="gameDetails.gameTrailer" frameborder="0" allowfullscreen></iframe> -->
+          <video controls>
+            <source [src]="safeGameTrailerUrl" type="video/mp4">
+            Tu navegador no soporta el video embebido.
+          </video>
         </div>
       </div>
     </div>

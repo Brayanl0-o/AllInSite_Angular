@@ -25,17 +25,12 @@ export class DetailsGameComponent {
     private sanitizer: DomSanitizer) {
     this.gameDetails$ = new Observable<Game>();
     this.gameRequirements$ = new Observable<GameRequirements>();
-    this.gameDetails$ = this.route.params.pipe(
-      map(params => params['gameId']),
-    );
-
-    this.gameDetails$.subscribe(game => {
-      this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(game.gameTrailer);
-    });
+    // this.gameDetails$ = this.route.params.pipe(
+    //   map(params => params['gameId']),
+    // );
   }
 
   safeGameTrailerUrl!: SafeResourceUrl;
-
   gameDetails$: Observable<Game>;
   gameRequirements$: Observable<GameRequirements>
   gameId: string = '';
@@ -47,6 +42,9 @@ export class DetailsGameComponent {
   stars: {type:'full'| 'medium' | 'empty'} [] = [];
 
   ngOnInit() {
+    this.gameDetails$.subscribe(game => {
+      this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(game.gameTrailer);
+    });
     console.log(this.safeGameTrailerUrl)
 
     // this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.gameDetails$.gameTrailer)
@@ -73,18 +71,14 @@ export class DetailsGameComponent {
         if (userId) {
           this.gameDetails$ = this.videogamesService.getGameByIdMedium( gameId as string);
           this.gameDetails$.subscribe((game) => {
-          // console.log('Valor de game:', game);
           this.gameImgUrl = game.gameImg;
             if(game){
               this.detailsLoaded = !this.detailsLoaded;
               timer(2000).subscribe(() => {
-
                 this.isLoading = false;
                 this.renderer.removeStyle(document.body, 'overflow');
-
               });
             }
-
         });
         } else {
           this.gameDetails$ = this.videogamesService.getGameByIdMedium(gameId as string);
@@ -97,9 +91,7 @@ export class DetailsGameComponent {
               timer(2000).subscribe(() => {
                 this.isLoading = false;
                 this.renderer.removeStyle(document.body, 'overflow');
-
               });
-
             } else {
               console.error('Game o gameImg son nulos o indefinidos.');
               this.gameImgUrl = '';
