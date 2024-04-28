@@ -17,14 +17,15 @@ export class ProfileComponent {
    private router: Router,
    private renderer: Renderer2){     }
 
-   @Input() user: User | null = null;
-   userId: string | null = null;
-   loadDataProfile: boolean = true;
-   imageUrl!: string;
-   selectedFile: File | null = null;
-   userImg = '';
-   newUserImg = '';
-   isEditingImg = false;
+    @Input() user: User | null = null;
+    userId: string | null = null;
+    loadDataProfile: boolean = true;
+    imageUrl!: string;
+    selectedFile: File | null = null;
+    userImg = '';
+    newUserImg = '';
+    isEditingImg = false;
+    isLoading = false;
 
   ngOnInit(){
     this.dataUser();
@@ -59,7 +60,10 @@ export class ProfileComponent {
   }
 
   updateDataUser(userImg:File):void{
+    this.isLoading = true;
+
     if(!this.user){
+      this.isLoading = false;
       console.error('Error: No hay datos de actualizacíón')
       return;
     }
@@ -70,16 +74,18 @@ export class ProfileComponent {
     this.userShared.updateUserImg(this.user._id, userImg).subscribe(
       (response)=> {
         if(this.user){
-          this.user.userImg = this.newUserImg
+          this.user.userImg = this.newUserImg;
+          this.isLoading = false;
           this.dataUser();
         }
         this.dataUser();
       },
       (error) => {
+        this.isLoading = false;
         console.error('Error al updated', error);
       }
     );
-    this.isEditingImg = false;
+    // this.isEditingImg = false;
   }
 
   cancelEditImg(){
