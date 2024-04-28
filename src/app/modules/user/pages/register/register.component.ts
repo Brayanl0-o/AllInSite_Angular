@@ -21,6 +21,7 @@ export class RegisterComponent {
   isRegisterOk: boolean = false;
   selectedFile: File | null = null;
   errorResponseMessage: string | null = null;
+  isLoading = false;
 
   ngOnInit(): void {
     this.contactForm = this.initFrom();
@@ -28,11 +29,14 @@ export class RegisterComponent {
 
   errorResponseMessageForm = '';
   onSubmit() {
+    this.isLoading = true;
     if (this.contactForm.valid) {
+      this.isLoading = false;
       this.signUp();
     }else {
       this.errorResponseMessageForm = 'Verifique el formulario! ';
         setTimeout(() => {
+          this.isLoading = false;
           this.errorResponseMessageForm = '';
         }, 5000);
     }
