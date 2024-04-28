@@ -19,7 +19,7 @@ export class EditVideogameComponent {
   contactForm!: FormGroup;
   errorResponseMessageForm = '';
   errorResponseMessage = '';
-
+  isLoading = false;
 
   ngOnInit(): void{
     this.contactForm = this.initForm();
@@ -27,19 +27,26 @@ export class EditVideogameComponent {
   }
 
   onFormSubmit(){
+    this.isLoading = true;
+
     if (this.contactForm.valid) {
+      this.isLoading = false;
       this.updateDataGame();
     } else {
       this.errorResponseMessageForm = 'Verifica los campos requeridos con * ';
         setTimeout(() => {
+          this.isLoading = false;
           this.errorResponseMessageForm = '';
         }, 5000);
     }
   }
 
   updateDataGame(): void {
+    this.isLoading = true;
+
    if(!this.game){
     console.error('Error: No se proporcionaron datos para la actualización.');
+    this.isLoading = false;
     return;
    }
 
@@ -47,6 +54,8 @@ export class EditVideogameComponent {
 
    this.videoGamesService.updateGame(this.game._id, this.game).subscribe(
     (response) =>{
+      this.game = response;
+      // this.closeModal();
       this.closeModalAndReloadPage();
     },
     (error) => {
@@ -64,7 +73,7 @@ export class EditVideogameComponent {
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
       averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
-      descriptionGame:['',[Validators.required, Validators.maxLength(450)]],
+      descriptionGame:['',[Validators.required, Validators.maxLength(1050)]],
       gameTrailer:['',[ Validators.maxLength(450)]]
     })
   }

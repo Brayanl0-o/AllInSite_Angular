@@ -1,14 +1,15 @@
 body>section{
   width: 45vw;
 }
-.container-button{
+.containerButton{
   display: flex-end;
-
   align-items: center;
   position: absolute;
   right: 18%;
   bottom: 7%;
 }
+
+
 @media(max-width: 1240px ){
   body>section{
     width: fit-content;
