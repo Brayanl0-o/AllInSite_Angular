@@ -16,6 +16,7 @@ export class UpdateUserComponent {
   @Input() user:User = {} as User;
   contactForm!: FormGroup;
   errorResponseMessageForm = '';
+  isLoading = false;
 
   ngOnInit(): void{
     this.contactForm = this.initFrom();
@@ -23,18 +24,23 @@ export class UpdateUserComponent {
   }
 
   onSubmit(){
+    this.isLoading = true;
     if(this.contactForm.valid){
+      this.isLoading = false;
       this.updateUserData();
     }else {
       this.errorResponseMessageForm = 'Verifique el formulario! ';
         setTimeout(() => {
+          this.isLoading = false;
           this.errorResponseMessageForm = '';
         }, 5000);
     }
   }
 
   updateUserData(): void {
+    this.isLoading = true;
     if (!this.user) {
+      this.isLoading = false;
       console.error('Error: No se proporcionaron datos para la actualización.');
       return;
     }
@@ -43,10 +49,11 @@ export class UpdateUserComponent {
 
     this.userShared.updateUser(this.user._id, this.user).subscribe(
       (response) => {
+        this.isLoading = false;
         this.closeModalAndReloadPage();
-
       },
       (error) => {
+        this.isLoading = false;
         console.error('Error al actualizar los datos:', error);
       }
     );
