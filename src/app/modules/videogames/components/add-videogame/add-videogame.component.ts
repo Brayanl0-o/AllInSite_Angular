@@ -17,6 +17,7 @@ export class AddVideogameComponent {
   selectedFile: File | null = null;
   errorResponseMessageForm = '';
   errorResponseMessage = '';
+  isLoading = false;
 
   ngOnInit(): void{
     this.contactForm =  this.initFrom();
@@ -32,17 +33,22 @@ export class AddVideogameComponent {
   }
 
   onFormSubmit(){
+    this.isLoading = true;
+
     if (this.contactForm.valid) {
+      this.isLoading = false;
       this.createGameData();
     } else {
       this.errorResponseMessageForm = 'Verifique el formulario!';
         setTimeout(() => {
+          this.isLoading = false;
           this.errorResponseMessageForm = '';
         }, 5000);
     }
   }
 
   createGameData() {
+    this.isLoading = true;
     if (this.selectedFile && this.contactForm.valid) {
       const gameData = this.contactForm.value;
 
@@ -60,9 +66,11 @@ export class AddVideogameComponent {
 
       this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
         (response) => {
+          this.isLoading = false;
           this.closeModalAndReloadPage()
         },
         (error) => {
+          this.isLoading = false;
           console.error('Error al agregar el juego', error);
           this.errorResponseMessage = 'Imagen duplicada';
         }

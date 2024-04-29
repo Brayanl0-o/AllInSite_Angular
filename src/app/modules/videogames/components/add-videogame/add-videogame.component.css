@@ -2,12 +2,12 @@
   position: relative;
   margin: 1rem 0 0.5rem 0;
 }
-.container-button{
+.containerButton{
   display: flex-end;
   align-items: center;
   position: absolute;
-  right: 15%;
-  bottom: 6%;
+  right: 150px;
+  bottom: 60px;
 }
 @media(max-width: 640px ){
   .trailer-field{
