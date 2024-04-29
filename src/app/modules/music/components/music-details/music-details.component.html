@@ -3,7 +3,7 @@
 <!-- <router-outlet *ngIf="showUpdateModal" ></router-outlet> -->
 <body *ngIf="musicDetails$ | async as musicDetails" >
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
-    <span class="updateDetails" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
+    <span class="updateDetails" *ngIf="isAdmin" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
     <div class="containerImages">
       <div>
         <img src="../../../../../assets/img/music/sondaSonido.png" alt="" class="sondaSonido">
@@ -17,6 +17,6 @@
     <h2>{{musicDetails.singer}}</h2>
     <p>{{musicDetails.lyrics}}</p>
 
-    <span class="deleteSong" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
+    <span class="deleteSong" *ngIf="isAdmin" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
 
 </body>

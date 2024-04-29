@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 import { environment } from 'src/environments/environment';
 import { Song } from 'src/app/core/models/song';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 @Component({
   selector: 'app-music-details',
   templateUrl: './music-details.component.html',
@@ -15,14 +16,17 @@ export class MusicDetailsComponent {
   $songUpdateDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
   showUpdateModal: boolean = false;
   currentSong: Song | null = null;
+  isAdmin = false;
   constructor(private songService: SongsService,
     private route: ActivatedRoute,
     private router:Router,
-    private renderer: Renderer2){
+    private renderer: Renderer2,
+    private authService: AuthService){
     }
   ngOnInit(){
     this.songService.$songUpdateDetails.subscribe((valu) => { this.showUpdateModal = valu })
     this.loadDetailsSong();
+    this.isAdminOrNot();
   }
   loadDetailsSong(){
     this.route.paramMap.subscribe((params: ParamMap) =>{
@@ -34,6 +38,16 @@ export class MusicDetailsComponent {
         });
       }
     })
+  }
+  isAdminOrNot(){
+    const getRoleUser =  this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador'
+
+    if(getRoleUser == allowedRole){
+      this.isAdmin = true;
+    } else{
+      this.isAdmin = false;
+    }
   }
   deleteSong(songId: string) {
     this.songService.deleteSong(songId).subscribe(
