@@ -19,6 +19,7 @@ export class AddRequirementsComponent {
   contactForm!: FormGroup;
   errorResponseMessageForm = '';
   errorResponseMessage = '';
+  isLoading = false;
   gameId = '';
 
   ngOnInit():void{
@@ -33,25 +34,26 @@ export class AddRequirementsComponent {
     }
 
     updateGameRequeriments(){
+      this.isLoading = true;
+
       if(this.contactForm.valid){
 
         const gameRequeriments: GameRequirements = { ...this.contactForm.value, gameId: this.gameId };
         this.videoGamesService.updateRequirements( gameRequeriments).subscribe(
           (response) => {
-            console.log('Requisitos agregados correctamente.', response)
+            this.isLoading = false;
             window.location.reload();
-
-            // this.reloadPage()
           },
           (error) => {
             console.error('Error al actualizar los datos:', error);
           }
         )
       } else {
-      setTimeout(() => {
-        this.errorResponseMessage = '';
-        console.error('Error al enviar el formulario de requisitos ', this.errorResponseMessage);
-      }, 1000);
+        setTimeout(() => {
+          this.isLoading = false;
+          this.errorResponseMessage = '';
+          console.error('Error al enviar el formulario de requisitos ', this.errorResponseMessage);
+        }, 1000);
       }
     }
 
