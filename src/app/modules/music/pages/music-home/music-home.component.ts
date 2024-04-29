@@ -3,6 +3,7 @@ import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 import { environment } from 'src/environments/environment';
 import { Song } from 'src/app/core/models/song';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 @Component({
   selector: 'app-music-home',
   templateUrl: './music-home.component.html',
@@ -11,19 +12,23 @@ import { Router } from '@angular/router';
 export class MusicHomeComponent {
   $songDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() searchValueChanged = new EventEmitter<string>();
+  showButtonAdd: boolean = true;
+  showDetails: boolean = false;
   searchTerm: string = '';
   songs: Song[]=[];
-  showButtonAdd: boolean = true;
+  isAdmin = false;
+
   constructor(private songService:  SongsService,
+    private authService: AuthService,
     private router:Router,
     private renderer: Renderer2){}
-    showDetails: boolean = false;
   ngOnInit(){
+    this.songService.$songDetails.subscribe((value: boolean) => {
+      this.showButtonAdd = !value;
+    });
     this.getSongData();
     this.detectRoute();
-    this.songService.$songDetails.subscribe((value: boolean) => {
-      this.showButtonAdd = !value; // Mostrar el botón si $songDetails es falso
-    });
+    this.isAdminOrNot();
   }
   onSearchInputChange() {
     this.searchValueChanged.emit(this.searchTerm);
@@ -70,6 +75,15 @@ export class MusicHomeComponent {
       this.songService.$songDetails.emit(false);
     }
   }
+  isAdminOrNot(){
+    const getRoleUser =  this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador'
 
+    if(getRoleUser == allowedRole){
+      this.isAdmin = true;
+    } else{
+      this.isAdmin = false;
+    }
+  }
 
 }

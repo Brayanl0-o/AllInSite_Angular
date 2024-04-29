@@ -5,7 +5,7 @@
     <input type="text" placeholder="Busca tu tema..." class="rounded-l-md" [(ngModel)]="searchTerm" (input)="onSearchInputChange()" >
     <span ><mat-icon class="icon-search rounded-l-sm">search</mat-icon></span>
   </div>
-  <div class="buttonAddSong">
+  <div class="buttonAddSong" *ngIf="isAdmin">
     <app-music-add *ngIf="showButtonAdd"></app-music-add>
   </div>
   <section id="musicList" >
