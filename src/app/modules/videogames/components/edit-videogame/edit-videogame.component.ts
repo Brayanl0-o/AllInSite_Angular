@@ -68,12 +68,12 @@ export class EditVideogameComponent {
     return this.fb.group({
       gameName: ['',[Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       gameImg: [this.game.gameImg],
-      platform:['',[Validators.required,Validators.minLength(2),Validators.maxLength(40)]],
+      platform:['',[Validators.required,Validators.minLength(2),Validators.maxLength(40), Validators.pattern('^[^-]+$')]],
       releaseDate: ['',[Validators.required]],
-      developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
+      developer:['',[Validators.minLength(4), Validators.maxLength(40), Validators.pattern('^[^-]+$')]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-      averageRating:['',[Validators.required,this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
-      descriptionGame:['',[Validators.required, Validators.maxLength(1050)]],
+      averageRating:['',[Validators.required, this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+      descriptionGame:['',[Validators.required, Validators.maxLength(1050), Validators.pattern('^[^-]+$')]],
       gameTrailer:['',[ Validators.maxLength(450)]]
     })
   }
