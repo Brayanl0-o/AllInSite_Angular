@@ -92,11 +92,23 @@
 
           <div  *ngIf="gameRequirements$ | async as gameRequirements">
             <ul class="text-start bg-gray-500 p-8 m-10 rounded-lg" *ngIf="!isModalVisibleRequiriments" >
-              <li class="text-gray-800 text-xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></li>
-              <li class="text-gray-800 text-xl py-2">Tamaño: <span class="font-semibold">{{ gameRequirements.sizeGame}}</span></li>
-              <li class="text-gray-800 text-xl py-2">RAM: <span class="font-semibold">{{ gameRequirements.ramGame}} </span></li>
-              <li class="text-gray-800 text-xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame}}</span></li>
-              <li class="text-gray-800 text-xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame}} </span></li>
+              <li class="text-gray-800 text-xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform ? gameDetails.platform: 'No tiene'}}</span></li>
+              <li *ngIf="gameRequirements.sizeGame" class="text-gray-800 text-xl py-2">
+                Tamaño:
+                <span class="font-semibold">
+                  {{ gameRequirements.sizeGame.value ? gameRequirements.sizeGame.value : 'No tiene' }}
+                  {{ gameRequirements.sizeGame.value ? gameRequirements.sizeGame.unit : '' }}
+                </span>
+              </li>
+              <li class="text-gray-800 text-xl py-2">
+                RAM:
+                <span class="font-semibold">
+                  {{ gameRequirements.ramGame?.value ? gameRequirements.ramGame?.value : 'No tiene' }}
+                  {{ gameRequirements.ramGame?.value ? gameRequirements.ramGame?.unit : '' }}
+                 </span>
+              </li>
+              <li class="text-gray-800 text-xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame ? gameRequirements.processorGame: 'No tiene'}}</span></li>
+              <li class="text-gray-800 text-xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame ? gameRequirements.graphGame: 'No tiene'}} </span></li>
 
             </ul>
           </div>
@@ -111,10 +123,6 @@
           <h2 class="text-3xl font-bold pb-6 text-slate-200/40"> Trailer {{ gameDetails.gameName}}</h2>
            <iframe [src]="safeGameTrailerUrl"  frameborder="0" allowfullscreen></iframe>
           <!-- <iframe  src="https://www.youtube.com/watch?v=-o7rES_3ymA" frameborder="0" allowfullscreen></iframe> -->
-          <!-- <video controls>
-            <source [src]="safeGameTrailerUrl" type="video/mp4">
-            Tu navegador no soporta el video embebido.
-          </video> -->
         </div>
       </div>
     </div>

@@ -30,7 +30,6 @@ export class DetailsGameComponent {
     )
     this.gameDetails$.subscribe(game => {
       this.safeGameTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(game.gameTrailer);
-      console.log('URL sanitizada:', this.safeGameTrailerUrl);
     });
     this.gameDetails$ = this.route.params.pipe(
       map(params => params['gameId']),
