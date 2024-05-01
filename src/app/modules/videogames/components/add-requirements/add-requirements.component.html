@@ -3,15 +3,19 @@
     <form  class="m-2"  [formGroup]="contactForm" (ngSubmit)="onFormSubmit()" novalidate>
         <div class="text-gray-800 text-xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="sizeGame"> Tamaño: </label>
-          <input id="sizeGame" type="text" name="sizeGame" formControlName="sizeGame" placeholder="Ingrese el tamaño (en gigabytes)"
-          class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-          <div *ngIf="contactForm.controls['sizeGame'].invalid && (contactForm.controls['sizeGame'].dirty || contactForm.controls['sizeGame'].touched)"
+          <input id="sizeValue" type="text" name="sizeValue" formControlName="sizeValue" placeholder="Ingrese el tamaño (en gigabytes)"
+          class="block w-fit px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+          <select name="sizeUnit" id="sizeUnit" formControlName="sizeUnit"
+          class="block mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">>
+            <option *ngFor="let unit of ['KB', 'MB', 'GB', 'TB']" [value]="unit">{{ unit }}</option>
+          </select>
+          <div *ngIf="contactForm.controls['sizeValue'].invalid && (contactForm.controls['sizeValue'].dirty || contactForm.controls['sizeValue'].touched)"
           class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
-              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600" *ngIf="contactForm.controls['sizeGame'].errors?.['maxlength']">
+              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600" *ngIf="contactForm.controls['sizeValue'].errors?.['maxlength']">
                 Superó el limite de caracteres permitidos(5).
               </div>
-              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600 alert alert-danger font-bold"  *ngIf="contactForm.get('sizeGame')?.hasError('numbersOnly')">
+              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600 alert alert-danger font-bold"  *ngIf="contactForm.get('sizeValue')?.hasError('numbersOnly')">
                 Este campo solo debe contener números.
               </div>
             </div>
@@ -19,14 +23,18 @@
         </div>
         <div class="text-gray-800 text-xl py-2 flex row-auto justify-between gap-2 items-center">
           <label class="text-black/80 font-semibold " for="ramGame"> RAM: </label>
-          <input id="ramGame" type="text" name="ramGame" formControlName="ramGame" placeholder="Ingrese la RAM"
+          <input id="ramValue" type="text" name="ramValue" formControlName="ramValue" placeholder="Ingrese la RAM"
           class="block w-full px-4 py-2 mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-          <div *ngIf="contactForm.controls['ramGame'].invalid && (contactForm.controls['ramGame'].dirty || contactForm.controls['ramGame'].touched)" class="alert alert-danger font-bold text-red-900/90 ">
+          <select name="ramUnit" id="ramUnit" formControlName="ramUnit"
+          class="block mt-2 text-black bg-white border border-black rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">>
+            <option *ngFor="let unit of ['MB', 'GB']" [value]="unit">{{ unit }}</option>
+          </select>
+          <div *ngIf="contactForm.controls['ramValue'].invalid && (contactForm.controls['ramValue'].dirty || contactForm.controls['ramValue'].touched)" class="alert alert-danger font-bold text-red-900/90 ">
             <div class="absolute">
-              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600 alert alert-danger font-bold" *ngIf="contactForm.get('ramGame')?.hasError('numbersOnly')" >
+              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600 alert alert-danger font-bold" *ngIf="contactForm.get('ramValue')?.hasError('numbersOnly')" >
                 Este campo solo debe contener números.
               </div>
-              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600" *ngIf="contactForm.controls['ramGame'].errors?.['maxlength']">
+              <div class="w-max p-2 rounded-md bg-slate-300 border-2 border-solid border-red-600" *ngIf="contactForm.controls['ramValue'].errors?.['maxlength']">
                 Superó el limite de caracteres permitidos(3). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
               </div>
             </div>
@@ -67,7 +75,7 @@
             <div *ngIf="isLoading">
               <div role="status" class="flex items-center justify-center">
                 <svg aria-hidden="true"
-                  class="inline w-6 h-6 mr-2 ml-5 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  class="inline w-14 h-6 m-auto text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                   viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50.000 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
