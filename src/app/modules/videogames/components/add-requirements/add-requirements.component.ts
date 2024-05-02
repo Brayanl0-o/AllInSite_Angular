@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GameRequirements } from 'src/app/core/models/game';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
+import { Game } from 'src/app/core/models/game';
 
 @Component({
   selector: 'app-add-requirements',
@@ -10,7 +10,7 @@ import { VideogamesService } from 'src/app/core/services/videogames/videogames.s
   styleUrls: ['./add-requirements.component.css']
 })
 export class AddRequirementsComponent {
-  gameRequirements: GameRequirements | null = null;
+  @Input() gameRequeriments: Game = {} as Game;
   contactForm!: FormGroup;
   errorResponseMessageForm = '';
   errorResponseMessage = '';
@@ -23,9 +23,10 @@ export class AddRequirementsComponent {
     {}
 
   ngOnInit():void{
-    this.contactForm = this.initFrom();
     this.route.paramMap.subscribe(paramMap => {
       this.gameId = paramMap.get('gameId') ?? '';
+      this.contactForm = this.initForm();
+      this.contactForm.patchValue(this.gameRequeriments);
     });
   }
 
@@ -42,10 +43,8 @@ export class AddRequirementsComponent {
         const ramGame = { value: ramValue, unit: ramUnit};
 
         const gameRequirements = { ...rest, sizeGame, ramGame, gameId: this.gameId };
-        // const gameRequirements: GameRequirements = { ...this.contactForm.value, gameId: this.gameId };
         this.videoGamesService.updateRequirements(gameRequirements).subscribe(
           (response) => {
-            console.log(response)
             this.isLoading = false;
             window.location.reload();
           },
@@ -63,19 +62,17 @@ export class AddRequirementsComponent {
       }
     }
 
-    initFrom(): FormGroup{
-      return this.fb.group({
-        platform: ['',[ Validators.maxLength(60)]],
-        sizeValue: ['', [Validators.maxLength(4), this.numbersOnlyValidator]],
-        sizeUnit: ['KB'],
-        ramValue: ['', [Validators.maxLength(3), this.numbersOnlyValidator]],
-        ramUnit: ['MB'],
-        processorGame: ['',[ Validators.maxLength(200)]],
-        graphGame: ['',[ Validators.maxLength(200)]],
-
-      })
+    initForm(): FormGroup{
+      return this.contactForm = this.fb.group({
+        platform: [this.gameRequeriments.platform ?? '', [Validators.maxLength(60)]],
+        sizeValue: [this.gameRequeriments.requirements.sizeGame?.value ?? '', [Validators.maxLength(5), this.numbersOnlyValidator]],
+        sizeUnit: [this.gameRequeriments.requirements.sizeGame?.unit ?? 'KB', []], // Aquí debes agregar validadores según tus necesidades
+        ramValue: [this.gameRequeriments.requirements.ramGame?.value ?? '', [Validators.maxLength(3), this.numbersOnlyValidator]],
+        ramUnit: [this.gameRequeriments.requirements.ramGame?.unit ?? 'MB', []], // Aquí debes agregar validadores según tus necesidades
+        processorGame: [this.gameRequeriments.requirements.processorGame ?? '', [Validators.maxLength(200)]],
+        graphGame: [this.gameRequeriments.requirements.graphGame ?? '', [Validators.maxLength(200)]],
+      });
     }
-
     numbersOnlyValidator(control: FormControl) {
       const value = control.value;
       if (value && !/^\d+$/.test(value)) {
