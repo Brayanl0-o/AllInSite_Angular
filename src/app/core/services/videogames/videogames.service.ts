@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Game, GameRequirements } from '../../models/game';
+import { catchError } from 'rxjs/operators';
+import { Game } from '../../models/game';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,9 @@ import { environment } from 'src/environments/environment';
 export class VideogamesService {
 
   private apiUrl = environment.apiUrl
+  $modal = new EventEmitter<any>();
 
   constructor(private http: HttpClient) { }
-
-
-  $modal = new EventEmitter<any>();
 
 
   public getGame(): Observable<Game[]>{
@@ -48,15 +46,8 @@ export class VideogamesService {
     return this.http.post(url, formData, httpOptions);
   }
 
-  public getRequirementesById(gameId:string){
-    const  url = `${this.apiUrl}games/gameRequirementsById/${gameId}`
-    return this.http.get<GameRequirements[]>(url).pipe(
-      map(requirements => requirements.length > 0 ? requirements[0] : null)
-    );
-  }
-
-  public updateRequirements(gameRequeriments: GameRequirements): Observable<any>{
-    const url = `${this.apiUrl}games/createRequirements`;
+  public updateRequirements(gameRequeriments: Game): Observable<any>{
+    const url = `${this.apiUrl}games/updateRequirements`;
     return this.http.post(url, gameRequeriments)
   }
 
@@ -94,7 +85,7 @@ export class VideogamesService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'x-access-token': localStorage.getItem('token') || '', // Agrega el token al encabezado
+        'x-access-token': localStorage.getItem('token') || '',
       }),
     };
     return this.http.delete(url, httpOptions);
