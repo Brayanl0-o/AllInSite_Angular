@@ -10,14 +10,21 @@ export interface Game {
   descriptionGame: string;
   gameTrailer: string;
   showPopover: false;
+  requirements: {
+    sizeGame?: { value: number, unit: string };
+    ramGame?: { value: number, unit: string };
+    processorGame?: string;
+    graphGame?: string;
+  }
+
 }
 
-export interface GameRequirements{
-  _id: string,
-  gameId: string,
-  platform: string;
-  sizeGame?: { value: number, unit: string };
-  ramGame?: { value: number, unit: string };
-  processorGame?: string;
-  graphGame?: string;
-}
+// export interface GameRequirements{
+//   _id: string,
+//   gameId: string,
+//   platform: string;
+//   sizeGame?: { value: number, unit: string };
+//   ramGame?: { value: number, unit: string };
+//   processorGame?: string;
+//   graphGame?: string;
+// }
