@@ -90,32 +90,35 @@
             </button>
           </header>
 
-          <div  *ngIf="gameRequirements$ | async as gameRequirements">
+          <div>
             <ul class="text-start bg-gray-500 p-8 m-10 rounded-lg" *ngIf="!isModalVisibleRequiriments" >
-              <li class="text-gray-800 text-xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform ? gameDetails.platform: 'No tiene'}}</span></li>
-              <li *ngIf="gameRequirements.sizeGame" class="text-gray-800 text-xl py-2">
-                Tamaño:
-                <span class="font-semibold">
-                  {{ gameRequirements.sizeGame.value ? gameRequirements.sizeGame.value : 'No tiene' }}
-                  {{ gameRequirements.sizeGame.value ? gameRequirements.sizeGame.unit : '' }}
-                </span>
-              </li>
-              <li class="text-gray-800 text-xl py-2">
-                RAM:
-                <span class="font-semibold">
-                  {{ gameRequirements.ramGame?.value ? gameRequirements.ramGame?.value : 'No tiene' }}
-                  {{ gameRequirements.ramGame?.value ? gameRequirements.ramGame?.unit : '' }}
-                 </span>
-              </li>
-              <li class="text-gray-800 text-xl py-2">Procesador: <span class="font-semibold">{{ gameRequirements.processorGame ? gameRequirements.processorGame: 'No tiene'}}</span></li>
-              <li class="text-gray-800 text-xl py-2">Grafica: <span class="font-semibold">{{ gameRequirements.graphGame ? gameRequirements.graphGame: 'No tiene'}} </span></li>
+              <div class="flex row-auto justify-between gap-6 items-center">
+                <li *ngIf="gameDetails.requirements.sizeGame"  class="text-gray-800 text-xl py-2">
+                  Tamaño:
+                  <span class="font-semibold">
+                    {{ gameDetails.requirements.sizeGame.value ? gameDetails.requirements.sizeGame.value : 'No añadido.' }}
+                    {{ gameDetails.requirements.sizeGame.value ? gameDetails.requirements.sizeGame.unit : '' }}
+                  </span>
+                </li>
+                <li *ngIf="gameDetails.requirements.sizeGame" class="text-gray-800 text-xl py-2">
+                  RAM:
+                  <span class="font-semibold">
+                    {{ gameDetails.requirements.ramGame?.value ? gameDetails.requirements.ramGame?.value : 'No añadido.' }}
+                    {{ gameDetails.requirements.ramGame?.value ? gameDetails.requirements.ramGame?.unit : '' }}
+                   </span>
+                </li>
+              </div>
+              <li class="text-gray-800 text-xl py-2">Plataformas: <span class="font-semibold">{{ gameDetails.platform ? gameDetails.platform: 'No añadido.'}}</span></li>
+              <li class="text-gray-800 text-xl py-2">Procesador: <span class="font-semibold">{{ gameDetails.requirements.processorGame ? gameDetails.requirements.processorGame: 'No añadido.'}}</span></li>
+              <li class="text-gray-800 text-xl py-2">Grafica: <span class="font-semibold">{{ gameDetails.requirements.graphGame ? gameDetails.requirements.graphGame: 'No añadido.'}} </span></li>
 
             </ul>
           </div>
 
           <div *ngIf="isModalVisibleRequiriments" class=" text-gray-800 text-lg p-2  w-auto">
-            <app-add-requirements></app-add-requirements>
+            <app-add-requirements [gameRequeriments]="gameDetails"></app-add-requirements>
           </div>
+
         </div>
 
 

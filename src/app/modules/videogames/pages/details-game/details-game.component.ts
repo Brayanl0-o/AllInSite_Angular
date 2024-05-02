@@ -1,11 +1,10 @@
-import { Component, Input, Renderer2} from '@angular/core';
+import { Component, Renderer2} from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
-import { Game, GameRequirements } from 'src/app/core/models/game';
-import { Observable, forkJoin, map, of, switchMap } from 'rxjs';
+import { Game } from 'src/app/core/models/game';
+import { Observable, map, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { User } from 'src/app/core/models/user';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { timer } from 'rxjs';
 const apiUrl = environment.apiUrl
@@ -23,8 +22,7 @@ export class DetailsGameComponent {
     private route: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer) {
-    // this.gameDetails$ = new Observable<Game>();
-    this.gameRequirements$ = new Observable<GameRequirements>();
+
     this.gameDetails$ = this.route.params.pipe(
       switchMap(params => this.videogamesService.getGameByIdMedium(params['gameId']))
     )
@@ -49,7 +47,6 @@ export class DetailsGameComponent {
   gameId = '';
   gameDetails$: Observable<Game>;
   safeGameTrailerUrl!: SafeResourceUrl;
-  gameRequirements$: Observable<GameRequirements>
 
   ngOnInit() {
     this.videogamesService.$modal.subscribe((valu) => { this.isModalVisible =valu })
@@ -58,7 +55,6 @@ export class DetailsGameComponent {
     });
     this.imageUrl = `${apiUrl}uploads/videogames/medium/`
     this.loadDataGame();
-    this.loadGameRequirements(this.gameId);
     this.isAdminOrNot();
     this.calcStars();
   }
@@ -120,23 +116,7 @@ export class DetailsGameComponent {
       }));
     })
   }
-  loadGameRequirements(gameId: string): void {
-    if (gameId) {
-      this.videogamesService.getRequirementesById(gameId).subscribe(
-        (gameRequirements) => {
-          if (gameRequirements !== null) {
-            this.gameRequirements$ = of(gameRequirements);
-          } else {
-            this.gameRequirements$ = of({} as GameRequirements);
-          }
-        },(error) => {
-          console.error('Error al obtener los requerimientos del juego:', error);
-        }
-      );
-    } else {
-      console.error('No se proporcionó un ID de juego.');
-    }
-  }
+
   onFileSelectedGame(event: Event):void {
     const inputElement = event.target as HTMLInputElement;
       const file = inputElement?.files?.[0];
@@ -166,7 +146,6 @@ export class DetailsGameComponent {
         }
       );
     });
-    // this.isEditingImg = false;
   }
 
   closeModalAndReloadPage() {
