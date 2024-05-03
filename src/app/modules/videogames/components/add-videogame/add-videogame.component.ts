@@ -51,7 +51,6 @@ export class AddVideogameComponent {
     this.isLoading = true;
     if (this.selectedFile && this.contactForm.valid) {
       const gameData = this.contactForm.value;
-
       const formData = new FormData();
       formData.append('gameName', gameData.gameName);
       formData.append('platform', gameData.platform);
@@ -61,13 +60,14 @@ export class AddVideogameComponent {
       formData.append('averageRating', gameData.averageRating);
       formData.append('descriptionGame', gameData.descriptionGame);
       formData.append('gameTrailer', gameData.gameTrailer);
-
+      formData.append('linkToFree', gameData.linkToFree);
+      formData.append('linkToBuy', gameData.linkToBuy);
       formData.append('gameImg', this.selectedFile);
 
       this.videoGamesService.createGame(gameData, this.selectedFile).subscribe(
         (response) => {
           this.isLoading = false;
-          this.closeModalAndReloadPage()
+          this.closeModalAndReloadPage();
         },
         (error) => {
           this.isLoading = false;
@@ -86,7 +86,10 @@ export class AddVideogameComponent {
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
       averageRating:['',[Validators.required,this.rangoNumericoValidator,this.numbersOnlyValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
       descriptionGame:['',[Validators.required, Validators.maxLength(1050)]],
-      gameTrailer:['',[ Validators.maxLength(450)]]
+      gameTrailer:['',[ Validators.maxLength(450)]],
+      linkToFree:['',[ Validators.maxLength(450)]],
+      linkToBuy:['',[ Validators.maxLength(450)]]
+
     })
   }
 
