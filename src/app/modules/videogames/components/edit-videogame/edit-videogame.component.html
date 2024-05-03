@@ -54,35 +54,62 @@
             </div>
           </div>
 
-          <div class="relative mt-4 mb-10">
-            <label class="text-black/80 font-semibold" for="gameTrailer">Trailer:</label>
-            <input id="gameTrailer" name="gameTrailer" formControlName="gameTrailer" type="text" placeholder="Ingrese el enlace al trailer"
-              class="block mb-4 mt-2 pr-4 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" >
-            <div *ngIf="contactForm.controls['gameTrailer'].invalid && (contactForm.controls['gameTrailer'].dirty || contactForm.controls['gameTrailer'].touched)"
-              class="alert alert-danger text-red-900/90 font-bold -mt-2">
-              <div *ngIf="contactForm.controls['gameTrailer'].errors?.['maxlength']">
-                Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+
+          <div class="flex row-nowrap justify-between gap-x-12">
+            <div class="relative top-4">
+              <label class="text-black/80 font-semibold " for="linkToFree">Url para obtener Gratis:</label>
+              <input id="linkToFree" name="linkToFree" formControlName="linkToFree" placeholder="Ingrese el Desarrollador"
+                class="block w-full mb-6 pr-2 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              <div *ngIf="contactForm.controls['linkToFree'].invalid && (contactForm.controls['linkToFree'].dirty || contactForm.controls['linkToFree'].touched)"
+                class="alert alert-danger font-bold text-red-900/90">
+                <div *ngIf="contactForm.controls['linkToFree'].errors?.['pattern']" class="alert alert-danger font-bold ">
+                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['linkToFree'].errors?.['minlength']">
+                  Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['linkToFree'].errors?.['maxlength']">
+                  Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative top-4">
+              <label class="text-black/80 font-semibold " for="linkToBuy">Url para comprar:</label>
+              <input id="linkToBuy" name="linkToBuy" formControlName="linkToBuy" placeholder="Ingrese el Desarrollador"
+                class="block w-full mb-6 pr-2 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              <div *ngIf="contactForm.controls['linkToBuy'].invalid && (contactForm.controls['linkToBuy'].dirty || contactForm.controls['linkToBuy'].touched)"
+                class="alert alert-danger font-bold text-red-900/90">
+                <div *ngIf="contactForm.controls['linkToBuy'].errors?.['pattern']" class="alert alert-danger font-bold ">
+                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['linkToBuy'].errors?.['minlength']">
+                  Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['linkToBuy'].errors?.['maxlength']">
+                  Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
               </div>
             </div>
           </div>
+
+
         </div>
 
-        <div class="relative">
+        <div class="relative mt-1.5">
           <div class="flex flex-col justify-center items-center">
+
             <div class="relative">
-              <label class="text-black/80 font-semibold" for="platform"> * Plataforma/s:</label>
+              <label class="text-black/80 font-semibold" for="platform">* Plataforma/s:</label>
               <input id="platform" name="platform" formControlName="platform" type="text" placeholder="Ingrese las plataformas"
-                class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" required>
+                class="block mb-4  pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring" required>
               <div *ngIf="contactForm.controls['platform'].invalid && (contactForm.controls['platform'].dirty || contactForm.controls['platform'].touched)"
                 class="alert alert-danger text-red-900/90 font-bold -mt-2">
-                <div *ngIf="contactForm.controls['platform'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales.<mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
                 <div *ngIf="contactForm.controls['platform'].errors?.['required']">
-                  Este campo es requerido.<mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
                 <div *ngIf="contactForm.controls['platform'].errors?.['minlength']">
-                  Minimo de 5 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  Minimo 5 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
                 <div *ngIf="contactForm.controls['platform'].errors?.['maxlength']">
                   Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
@@ -90,37 +117,15 @@
               </div>
             </div>
 
-
-            <div class="relative">
-              <label class="text-black/80 font-semibold " for="developer">Desarrollador:</label>
-              <input id="developer" name="developer" formControlName="developer" placeholder="Ingrese el Desarrollador"
-                class="block w-full pr-12 pl-2 py-2 my-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-                <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
-                  class="alert alert-danger font-bold text-red-900/90">
-                  <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                    Este campo no admite caracteres especiales.<mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                  </div>
-                  <div *ngIf="contactForm.controls['developer'].errors?.['minlength']">
-                    Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                  </div>
-                  <div *ngIf="contactForm.controls['developer'].errors?.['maxlength']">
-                    Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                  </div>
-                </div>
-            </div>
-
-            <div class="relative">
+            <div class="relative mb-2">
               <label class="text-black/80 font-semibold" for="genre">* Genero/s:</label>
               <input id="genre" name="genre" formControlName="genre" placeholder="Ingrese el genero"
-                class="block w-full pr-8 pl-2 py-2 mb-6 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                class="block w-full pr-8 pl-2 py-2 mb-4 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 required>
               <div *ngIf="contactForm.controls['genre'].invalid && (contactForm.controls['genre'].dirty || contactForm.controls['genre'].touched)"
                 class="alert alert-danger font-bold -mt-4 text-red-900/90">
-                <div *ngIf="contactForm.controls['genre'].errors?.['pattern']" class="alert alert-danger font-bold ">
-                  Este campo no admite caracteres especiales.<mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
-                </div>
                 <div *ngIf="contactForm.controls['genre'].errors?.['required']">
-                  Este campo es requerido.<mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                  Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
                 <div *ngIf="contactForm.controls['genre'].errors?.['minlength']">
                   Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
@@ -131,10 +136,10 @@
               </div>
             </div>
 
-            <div class="relative">
-              <label class="text-black/90 font-semibold " for="releaseDate"> * Fecha de lanzamiento:</label>
+            <div class="relative mb-4">
+              <label class="text-black/90 font-semibold " for="releaseDate">* Fecha de lanzamiento:</label>
               <input id="releaseDate" type="date" name="releaseDate" formControlName="releaseDate"
-              class="block w-full px-4 py-2 mb-4 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"/>
+              class="block w-full mt-4 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"/>
               <div *ngIf="contactForm.controls['releaseDate'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)" class="alert alert-danger font-bold  text-red-900/90">
                 <div *ngIf="contactForm.controls['releaseDate'].errors?.['required']">
                   Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
@@ -145,17 +150,48 @@
             <div class="relative text-center">
               <label class="text-black/80 font-semibold " for="averageRating">* Puntaje promedio (1 - 10):</label>
               <input id="averageRating" type="number" min="1" max="10" name="averageRating" formControlName="averageRating" placeholder="10"
-                class="block w-1/3 mx-auto px-4 py-2 mt-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
-              <div *ngIf="contactForm.controls['averageRating'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)"
-                class="alert alert-danger font-bold -mt-1 text-red-900/90">
+                class="block w-1/3 m-auto mt-2 mb-2 text-black bg-white border border-black rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              <div *ngIf="contactForm.controls['averageRating'].invalid && (contactForm.controls['averageRating'].dirty || contactForm.controls['averageRating'].touched)" class="alert alert-danger font-bold  text-red-900/90">
                 <div *ngIf="contactForm.controls['averageRating'].errors?.['required']">
                   Este campo es requerido. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
-                <div *ngIf="contactForm.controls['averageRating'].errors?.['rangoNumerico']">
-                  Mínimo 1(1), Máximo 2 dígitos(10) <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+                <div *ngIf="contactForm.get('averageRating')?.hasError('numbersOnly')" class="alert alert-danger font-bold">
+                  Este campo solo debe contener números.
                 </div>
-                <div *ngIf="contactForm.controls['averageRating'].errors?.['pattern'] && !contactForm.controls['averageRating'].errors?.['rangoNumerico']">
+                <div *ngIf="contactForm.controls['averageRating'].errors?.['rangoNumerico']">
+                  Mínimo 1(Desde 1), Máximo 2 dígitos(Hasta 10) <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['averageRating'].errors?.['pattern']">
                   No se permiten números negativos. <mat-icon class="material-symbols-outlined "> warning </mat-icon>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative top-4">
+              <label class="text-black/80 font-semibold " for="developer">Desarrollador:</label>
+              <input id="developer" name="developer" formControlName="developer" placeholder="Ingrese el Desarrollador"
+                class="block w-full mb-6 pr-2 pl-2 py-2 mt-2 text-black bg-white border border-black rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              <div *ngIf="contactForm.controls['developer'].invalid && (contactForm.controls['developer'].dirty || contactForm.controls['developer'].touched)"
+                class="alert alert-danger font-bold text-red-900/90">
+                <div *ngIf="contactForm.controls['developer'].errors?.['pattern']" class="alert alert-danger font-bold ">
+                  Este campo no admite caracteres especiales. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['developer'].errors?.['minlength']">
+                  Minimo 4 caracteres. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+                <div *ngIf="contactForm.controls['developer'].errors?.['maxlength']">
+                  Superó el limite de caracteres permitidos(60). <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
+                </div>
+              </div>
+            </div>
+
+            <div class="trailer-field ">
+              <label class="text-black/80 font-semibold " for="gameTrailer">Trailer:</label>
+              <input id="gameTrailer" name="gameTrailer" formControlName="gameTrailer" type="text" placeholder="Ingrese el enlace al trailer"
+                class="block mb-4 mt-2 pr-16 pl-2 rounded-md text-black bg-white border border-black focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring">
+              <div *ngIf="contactForm.controls['gameTrailer'].invalid && (contactForm.controls['gameTrailer'].dirty || contactForm.controls['gameTrailer'].touched)" class="alert alert-danger text-red-900/90 font-bold -mt-2">
+                <div *ngIf="contactForm.controls['gameTrailer'].errors?.['maxlength']">
+                  Superó el limite de caracteres permitidos. <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
                 </div>
               </div>
             </div>
@@ -163,35 +199,30 @@
         </div>
       </div>
 
-      <div class="flex justify-end  mt-4 ">
-        <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  mr-6 text-red-800/80" >
+      <div class="containerButton">
+        <button type="submit" [disabled]="isLoading" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md  hover:bg-[#006186]">
+          <div class="flex items-center justify-center">
+            <span class="ml-2" *ngIf="!isLoading" aria-label="Botón de Subir videojuego">Subir videojuego</span>
+          </div>
+          <div class="containerButtonLoading" *ngIf="isLoading">
+            <div role="status" class="flex items-center justify-center">
+              <svg aria-hidden="true"
+                class="inline w-16 h-6  m-auto text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50.000 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor" />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.8130 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.8410C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.0830 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+        </button>
+        <span *ngIf="errorResponseMessageForm" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
           <mat-icon class="material-symbols-outlined -mb-1.5 ">error</mat-icon>  {{ errorResponseMessageForm }}
         </span>
-        <div class="containerButton">
-          <button type="submit"  [disabled]="isLoading" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186]">
-            <div class="flex items-center justify-center">
-              <span class="m-auto" *ngIf="!isLoading" aria-label="Botón de Guardar">Guardar</span>
-            </div>
-            <div *ngIf="isLoading">
-              <div role="status" class="flex items-center justify-center">
-                <svg aria-hidden="true"
-                  class="inline w-14 h-6 m-auto text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-                  viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50.000 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                    fill="currentColor" />
-                  <path
-                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.8130 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.8410C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.0830 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                    fill="currentColor" />
-                </svg>
-              </div>
-            </div>
-          </button>
-
-        </div>
-
       </div>
-
     </form>
   </section>
 </body>
