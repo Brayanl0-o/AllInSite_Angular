@@ -9,6 +9,8 @@ export interface Game {
   averageRating: number;
   descriptionGame: string;
   gameTrailer: string;
+  linkToBuy: string;
+  linkToFree: string;
   showPopover: false;
   requirements: {
     sizeGame?: { value: number, unit: string };
