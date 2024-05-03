@@ -37,6 +37,8 @@ export class VideogamesService {
     formData.append('descriptionGame', gameData.descriptionGame);
     formData.append('gameImg', gameImg);
     formData.append('gameTrailer', gameData.gameTrailer);
+    formData.append('linkToFree', gameData.linkToFree);
+    formData.append('linkToBuy', gameData.linkToBuy);
 
     const httpOptions = {
       headers: new HttpHeaders({
