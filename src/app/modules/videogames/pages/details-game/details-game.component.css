@@ -93,6 +93,52 @@ body{
   max-height: 100px;
   max-width: 400px;
 }
+.containerButtons{
+  /* background-color: red; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.buy,
+.free {
+  margin: auto;
+  border-radius: 50px;
+  background-image: linear-gradient(45deg, #000000c5, #0400f0d7);
+  padding: 10px 20px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.5rem;
+  transition: background-position 0.5s ease-out, transform 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.buy::before,
+.free::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(27, 26, 99, 0.843));
+  transition: transform 0.5s ease-out;
+  transform: rotate(45deg);
+}
+
+.buy:hover::before,
+.free:hover::before {
+  transform: translateY(100%) translateX(100%);
+}
+
+.buy:hover,
+.free:hover {
+  background-image: linear-gradient(-135deg, #000000c5, #0400f0d7);
+  transform: scale(1.1);
+}
+
 .container-trailer {
   z-index: 10;
   width: fit-content;

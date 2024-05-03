@@ -148,6 +148,22 @@ export class DetailsGameComponent {
     });
   }
 
+  openLinkToBuy(){
+    this.gameDetails$.subscribe((game:Game) => {
+      const linkToBuy = game.linkToBuy;
+      if(linkToBuy){
+        window.open(linkToBuy, '_blank')
+      }
+    })
+  }
+  openLinkToFree(){
+    this.gameDetails$.subscribe((game:Game) => {
+      const linkToFree = game.linkToFree;
+      if(linkToFree){
+        window.open(linkToFree, '_blank')
+      }
+    })
+  }
   closeModalAndReloadPage() {
     this.closeModal();
     window.location.reload();
