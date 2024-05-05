@@ -1,11 +1,14 @@
 export interface Song{
   _id: string,
-  songName: String;
-  singer: String;
-  songImg: String;
-  duration: String;
-  genre: String;
-  averageRating: String;
+  songName: string;
+  singer: string;
+  songImg: string;
+  duration: string;
+  genre: string;
+  averageRating: string;
   releaseDate: Date;
-  lyrics: String;
+  lyrics: string;
+  linkToYoutube: string;
+  linkToDeezer: string;
+  linkToSpotify: string;
 }
