@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -21,7 +21,12 @@ export class SongsService {
   public createSong(songData:any){
     console.log('songData:', songData);
     const url =`${this.apiUrl}songs/create`;
-    return this.http.post(url, songData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.post(url, songData, httpOptions);
   }
   public getSongs(): Observable<Song[]>{
     const url = `${this.apiUrl}songs/`;
@@ -33,11 +38,21 @@ export class SongsService {
   }
   public updateSong(songId: string, songData:any): Observable<any>{
     const url = `${this.apiUrl}songs/update/${songId}`;
-    return this.http.patch(url, songData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.patch(url, songData, httpOptions);
   }
   public deleteSong(songId: string): Observable<Song>{
     const url = `${this.apiUrl}songs/delete/${songId}`;
-    return this.http.delete<Song>(url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.delete<Song>(url, httpOptions);
   }
 }
 
