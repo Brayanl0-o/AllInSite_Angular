@@ -12,10 +12,24 @@
       </div>
       <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage">
     </div>
+    <section>
+      <div>
+        <h1>{{musicDetails.songName}}</h1>
+        <h2>{{musicDetails.singer}}</h2>
+        <p>{{musicDetails.lyrics}}</p>
+      </div>
 
-    <h1>{{musicDetails.songName}}</h1>
-    <h2>{{musicDetails.singer}}</h2>
-    <p>{{musicDetails.lyrics}}</p>
+
+      <div class="containerButtons">
+        <button type="button" class="youtube" (click)="openLinkToYoutube()">YouTube</button>
+        <button type="button" class="spotify" (click)="openLinkToSpotify()">spotify</button>
+        <button type="button" class="dezeer" (click)="openLinkToDeezer()">deezer</button>
+      </div>
+    </section>
+
+
+
+
 
     <span class="deleteSong" *ngIf="isAdmin" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
 

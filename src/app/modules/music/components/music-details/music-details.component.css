@@ -1,17 +1,29 @@
 body{
   background-color: rgba(0, 0, 0, 0.685);
-  width: 40%;
+  width: fit-content;
+  max-width: 90%;
   height: fit-content;
-  position: fixed;
+  max-height: 80%;
+  overflow-y: scroll;
+
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  overflow: hidden;
   border-radius: 7px;
 }
-
+body>section{
+  display: flex;
+  /* justify-content: center; */
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.deleteSong{
+  background-color: yellow;
+  width: 80%;
+}
 .updateDetails>mat-icon,
 .closeDetails>mat-icon,
 .deleteSong>mat-icon{
@@ -33,9 +45,12 @@ body{
   color: rgba(45, 78, 226, 0.918);
 }
 .deleteSong>mat-icon{
-  right: 5px;
-  bottom: 5px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
   color: red;
+  /* background-color: yellow; */
+  width: 95%;
 }
 .deleteSong>mat-icon,
 .closeDetails>mat-icon:hover,
@@ -84,11 +99,65 @@ p{
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.795);
   overflow-y: scroll;
-  max-width: 60%;
+  max-width: 100%;
   height: 250px;
   max-height: 20%;
   text-overflow: ellipsis;
   white-space: pre-line;
 
 
+}
+.containerButtons{
+  /* background-color: red; */
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.youtube,
+.dezeer,
+.spotify {
+  margin: 1rem auto;
+  border-radius: 50px;
+  background-image: linear-gradient(45deg, #000000c5, #0400f0d7);
+  padding: 10px 20px;
+  color: white;
+  font-weight: 800;
+  font-size: 1.5rem;
+  transition: background-position 0.5s ease-out, transform 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.youtube ::before,
+.dezeer ::before,
+.spotify ::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(27, 26, 99, 0.843));
+  transition: transform 0.5s ease-out;
+  transform: rotate(45deg);
+}
+.youtube:hover::before,
+.dezeer:hover::before,
+.spotify:hover::before {
+  transform: translateY(100%) translateX(100%);
+}
+.youtube:hover,
+.dezeer:hover,
+.spotify:hover {
+  background-image: linear-gradient(-135deg, #000000c5, #0400f0d7);
+  transform: scale(1.1);
+}
+@media screen and (max-width:950px ) {
+  body>section{
+    justify-content: center;
+    flex-flow: row wrap;
+
+  }
 }

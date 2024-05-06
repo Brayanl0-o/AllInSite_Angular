@@ -49,6 +49,32 @@ export class MusicDetailsComponent {
       this.isAdmin = false;
     }
   }
+  openLinkToYoutube(){
+    this.musicDetails$.subscribe((song: Song) => {
+      const linkToYoutube = song.linkToYoutube;
+      console.log(linkToYoutube)
+      if(linkToYoutube){
+        window.open(linkToYoutube, '_blank')
+      }
+    })
+  }
+  openLinkToDeezer(){
+    this.musicDetails$.subscribe((song: Song) => {
+      const linkToDeezer = song.linkToDeezer;
+      if(linkToDeezer){
+        window.open(linkToDeezer, '_blank')
+      }
+    })
+  }
+
+  openLinkToSpotify(){
+    this.musicDetails$.subscribe((song: Song) => {
+      const linkToSpotify = song.linkToSpotify;
+      if(linkToSpotify){
+        window.open(linkToSpotify, '_blank')
+      }
+    })
+  }
   deleteSong(songId: string) {
     this.songService.deleteSong(songId).subscribe(
       (response) => {
