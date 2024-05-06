@@ -17,6 +17,8 @@ export class MusicHomeComponent {
   searchTerm: string = '';
   songs: Song[]=[];
   isAdmin = false;
+  page: number = 1;
+  notResultsOne = false;
 
   constructor(private songService:  SongsService,
     private authService: AuthService,
@@ -44,14 +46,18 @@ export class MusicHomeComponent {
   }
   searchSongs() {
     if (!this.searchTerm.trim()) {
+      this.notResultsOne = false;
       return this.songs;
     }
 
     const searchTermLower = this.searchTerm.toLowerCase();
-    return this.songs.filter(song =>
+    const results = this.songs.filter(song =>
       song.songName.toLowerCase().includes(searchTermLower) ||
       song.singer.toLowerCase().includes(searchTermLower)
     );
+
+    this.notResultsOne = results.length === 0;
+    return results;
   }
   getSongData(){
     this.songService.getSongs().subscribe((data: Song[]) =>{

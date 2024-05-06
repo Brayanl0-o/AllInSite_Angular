@@ -1,5 +1,6 @@
 body{
   height: fit-content;
+  min-height: 100%;
   background-color: rgba(145, 147, 163, 0.502);
   margin: 0;
   padding: 0;
@@ -43,8 +44,8 @@ input{
 }
 .buttonAddSong{
   position: absolute;
-  top: 50%;
-  left: 120px;
+  top: 420px;
+  left: 100px;
 }
 section#musicList{
   flex-flow: row wrap;
@@ -52,12 +53,28 @@ section#musicList{
   padding-bottom: 10rem;
   background-image: linear-gradient(150deg, #1b238f00, #2c44c900);
 }
+.container-list{
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0rem 2rem;
+  align-items: center;
+  margin: auto;
 
+}
+.container-target{
+  width: auto;
+  height: auto;
+  margin: auto;
+}
 .card{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px;
   width: fit-content;
   margin: 2rem 1rem 2rem 1rem;
+  text-decoration: none;
 }
 .card>img{
   min-width: 300px;
@@ -93,7 +110,32 @@ section#musicList{
 .play{
   gap: 10px;
 }
+.pagination ::ng-deep
+.ngx-pagination
+.current{
+  background: rgba(1, 59, 250, 0.842);
+  border-radius: 10px;
+  box-shadow: 1px 5px 5px black;
+}
+.ngx-pagination li.current,
+.pagination ::ng-deep .ngx-pagination li a:hover {
+  background: rgba(1, 59, 250, 0.411);
+  border-radius: 10px;
+  box-shadow: 1px 5px 5px black;
+}
+@media( max-width: 1060px ) {
 
+  .container-list{
+    justify-content: center;
+  }
+}
+@media( max-width: 546px ) {
+  .container-list{
+    width: 95%;
+    margin: auto;
+    gap: 5rem;
+  }
+}
 @media(max-width:500px) {
   body>h3{
     font-size: 4rem;
