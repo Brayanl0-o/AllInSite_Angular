@@ -7,13 +7,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MusicUpdateComponent } from './components/music-update/music-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MusicAddComponent } from './components/music-add/music-add.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
     MusicHomeComponent,
     MusicDetailsComponent,
     MusicUpdateComponent,
-    MusicAddComponent
+    MusicAddComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,9 @@ import { MusicAddComponent } from './components/music-add/music-add.component';
     MusicRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    SharedModule
+
   ]
 })
 export class MusicModule { }
