@@ -61,7 +61,9 @@ export class MusicUpdateComponent {
       averageRating: ['', [ Validators.minLength(1),Validators.maxLength(2)]],
       releaseDate: ['', []],
       lyrics: ['', [,Validators.maxLength(3050)]],
-
+      linkToDeezer: ['',[Validators.maxLength(450)]],
+      linkToSpotify: ['',[Validators.maxLength(450)]],
+      linkToYoutube: ['',[Validators.maxLength(450)]],
     });
   }
   closeUpdateDetails(){
