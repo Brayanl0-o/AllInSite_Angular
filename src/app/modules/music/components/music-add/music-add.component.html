@@ -1,57 +1,61 @@
 <button class="openAddSong" *ngIf="!showFormAdd" (click)="openFormAdd()"><mat-icon>add_box</mat-icon></button>
 <body *ngIf="showFormAdd">
-  <span class="closeDetails" (click)="closeAddSong()"><mat-icon>close</mat-icon></span>
-  <h4>Subir Canción</h4>
-  <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()">
-    <div class="container-form">
-      <div>
-        <label for="songName">* Nombre:</label>
-        <input type="text" name="songName" formControlName="songName">
-      </div>
-      <div>
-        <label for="singer">* Cantante/s:</label>
-        <input type="text" name="singer" formControlName="singer">
-      </div>
-      <div>
-        <label for="genre">* Genero Musical:</label>
-        <input type="text" name="genre" formControlName="genre">
-      </div>
-      <div>
-        <label for="songImg">* Enlace a Imagen:</label>
-        <input type="text" name="songImg" formControlName="songImg">
-      </div>
-      <div>
-        <label for="duration">* Duración:</label>
-        <input type="text" name="duration" formControlName="duration">
-      </div>
-      <div>
-        <label for="averageRating">Puntaje Promedio:</label>
-        <input type="text" name="averageRating" formControlName="averageRating">
-      </div>
-      <div>
-        <label for="linkToDeezer">Enlace a Deezer:</label>
-        <input type="text" name="linkToDeezer" formControlName="linkToDeezer">
-      </div>
-      <div>
-        <label for="linkToSpotify">Enlace a Spotify:</label>
-        <input type="text" name="linkToSpotify" formControlName="linkToSpotify">
-      </div>
-      <div>
-        <label for="linkToYouTube">Enlace a YouTube:</label>
-        <input type="text" name="linkToYouTube" formControlName="linkToYouTube">
-      </div>
-      <div class="textareaLyrics">
-        <label for="lyrics">Letras:</label>
-        <textarea type="text" name="lyrics" formControlName="lyrics"></textarea>
-      </div>
-      <div>
-        <label for="releaseDate">Fecha de lanzamiento:</label>
-        <input type="text" name="releaseDate" formControlName="releaseDate">
-      </div>
-    </div>
+  <div class="containerForm">
+    <h4>Subir Canción</h4>
+    <span class="closeDetails" (click)="closeAddSong()"><mat-icon>close</mat-icon></span>
 
-    <div class="button">
-      <button type="submit" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186]">Guardar</button>
-    </div>
-  </form>
+    <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit()">
+      <div class="container-form">
+        <div>
+          <label for="songName">* Nombre:</label>
+          <input type="text" name="songName" formControlName="songName">
+        </div>
+        <div>
+          <label for="singer">* Cantante/s:</label>
+          <input type="text" name="singer" formControlName="singer">
+        </div>
+        <div>
+          <label for="genre">* Genero Musical:</label>
+          <input type="text" name="genre" formControlName="genre">
+        </div>
+        <div>
+          <label for="songImg">* Enlace a Imagen:</label>
+          <input type="text" name="songImg" formControlName="songImg">
+        </div>
+        <div>
+          <label for="duration">* Duración:</label>
+          <input type="text" name="duration" formControlName="duration">
+        </div>
+        <div>
+          <label for="averageRating">Puntaje Promedio:</label>
+          <input type="text" name="averageRating" formControlName="averageRating">
+        </div>
+        <div>
+          <label for="linkToDeezer">Enlace a Deezer:</label>
+          <input type="text" name="linkToDeezer" formControlName="linkToDeezer">
+        </div>
+        <div>
+          <label for="linkToSpotify">Enlace a Spotify:</label>
+          <input type="text" name="linkToSpotify" formControlName="linkToSpotify">
+        </div>
+        <div>
+          <label for="linkToYouTube">Enlace a YouTube:</label>
+          <input type="text" name="linkToYouTube" formControlName="linkToYouTube">
+        </div>
+        <div class="textareaLyrics">
+          <label for="lyrics">Letras:</label>
+          <textarea type="text" name="lyrics" formControlName="lyrics"></textarea>
+        </div>
+        <div>
+          <label for="releaseDate">Fecha de lanzamiento:</label>
+          <input type="text" name="releaseDate" formControlName="releaseDate">
+        </div>
+      </div>
+
+      <div class="button">
+        <button type="submit" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md hover:border-b-2 hover:bg-[#006186]">Guardar</button>
+      </div>
+    </form>
+  </div>
+
 </body>

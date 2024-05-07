@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 @Component({
@@ -10,9 +10,10 @@ export class MusicAddComponent {
   contactForm!: FormGroup;
   errorResponseMessageForm = '';
   errorResponseMessage = '';
-  showFormAdd: boolean = false;
+  showFormAdd = false;
   constructor(private fb:FormBuilder,
-    private songsService: SongsService){}
+    private songsService: SongsService,
+    private renderer: Renderer2){}
 
   ngOnInit(){
     this.contactForm = this.initForm();
@@ -64,9 +65,12 @@ export class MusicAddComponent {
   }
   openFormAdd(){
     this.showFormAdd = !this.showFormAdd;
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+
   }
   closeAddSong(){
     this.showFormAdd = !this.showFormAdd;
+    this.renderer.removeStyle(document.body, 'overflow');
   }
 
 }

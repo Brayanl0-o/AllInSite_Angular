@@ -19,34 +19,48 @@
   height: 55px;
 }
 body{
-  background-color: rgba(5, 2, 51, 0.959);
-  width: 80%;
-  height:fit-content;
-  max-height: 80%;
-  overflow-y: scroll;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerForm{
+  background-color: rgba(5, 2, 51, 0.959);
+  width: 75%;
+  height:fit-content;
+  max-height: 80%;
+  overflow-y: scroll;
   margin: auto;
-  /* overflow: auto; */
-  z-index: 50;
   border-radius: 10px;
+    /* overflow: auto; */
+  /* z-index: 50; */
+    /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
 }
 .closeDetails{
-  width: 35px;
-  height: 35px;
+  position: absolute;
+  right: 13%;
+  top: 11%;
+  width: 55px;
+  height: 55px;
+  /* background-color: red; */
 }
 .closeDetails>mat-icon{
   cursor: pointer;
-  position: absolute;
+
   color: white;
-  font-size: 2rem;
-  right: 20px;
-  top: 10px;
-  width: 35px;
-  height: 35px;
+  font-size: 3.5rem;
+  width: 55px;
+  height: 55px;
+  z-index: 50;
 }
 .closeDetails>mat-icon:hover,
 .updateDetails>mat-icon:hover{
