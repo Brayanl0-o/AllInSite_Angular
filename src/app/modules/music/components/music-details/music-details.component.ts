@@ -14,7 +14,7 @@ export class MusicDetailsComponent {
   private apiUrl =  environment.apiUrl;
   musicDetails$!: Observable<Song>;
   $songUpdateDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
-  showUpdateModal: boolean = false;
+  showUpdateModal = false;
   currentSong: Song | null = null;
   isAdmin = false;
   constructor(private songService: SongsService,
@@ -34,6 +34,8 @@ export class MusicDetailsComponent {
       if(songId){
         this.musicDetails$ = this.songService.getSong(songId);
         this.musicDetails$?.subscribe(song => {
+          this.renderer.setStyle(document.body, 'overflow', 'hidden');
+
           this.currentSong = song;
         });
       }
@@ -66,7 +68,6 @@ export class MusicDetailsComponent {
       }
     })
   }
-
   openLinkToSpotify(){
     this.musicDetails$.subscribe((song: Song) => {
       const linkToSpotify = song.linkToSpotify;
@@ -97,10 +98,7 @@ export class MusicDetailsComponent {
   openUpdateDetails(){
     this.showUpdateModal = true;
     this.songService.$songUpdateDetails.emit(true);
-
   }
-
-
 }
  // @HostListener('document:click', ['$event'])
   // onClick(event: Event) {

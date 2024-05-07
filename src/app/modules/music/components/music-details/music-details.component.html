@@ -2,6 +2,7 @@
 <!--  *ngIf="song" [song]="song" -->
 <!-- <router-outlet *ngIf="showUpdateModal" ></router-outlet> -->
 <body *ngIf="musicDetails$ | async as musicDetails" >
+  <div class="containerDetails">
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
     <span class="updateDetails" *ngIf="isAdmin" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
     <div class="containerImages">
@@ -9,14 +10,19 @@
         <img src="../../../../../assets/img/music/sondaSonido.png" alt="" class="sondaSonido">
 
         <img src="../../../../../assets/img/music/controls.png" alt="" class="playerControls">
+
+        <audio class="audio" src="../../../../../assets/audio/Crack Family - Las tetas d (Video Oficial).mp3" controls></audio>
       </div>
       <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage">
     </div>
     <section>
-      <div>
+      <div class="containerInformation">
         <h1>{{musicDetails.songName}}</h1>
         <h2>{{musicDetails.singer}}</h2>
-        <p>{{musicDetails.lyrics}}</p>
+        <!-- <p>{{musicDetails.averageRating ? musicDetails.averageRating: 'No añadido.'}}</p> -->
+        <!-- <p>{{musicDetails.releaseDate ? musicDetails.releaseDate: 'No añadido.'}}</p> -->
+
+        <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 
 
@@ -28,9 +34,8 @@
     </section>
 
 
-
-
-
     <span class="deleteSong" *ngIf="isAdmin" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
+
+  </div>
 
 </body>
