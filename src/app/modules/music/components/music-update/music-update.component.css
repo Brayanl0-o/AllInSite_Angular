@@ -1,8 +1,8 @@
 body{
   background-color: rgba(5, 2, 51, 0.959);
-  width: 80%;
+  width: 60%;
   height:fit-content;
-  max-height: 80%;
+  max-height: 65%;
   overflow-y: scroll;
   position: fixed;
   top: 0;
