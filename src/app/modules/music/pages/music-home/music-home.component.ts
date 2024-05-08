@@ -40,7 +40,7 @@ export class MusicHomeComponent {
       this.showButtonAdd = false;
 
     } else{
-      this.showButtonAdd = true;
+      this.showButtonAdd = false;
 
     }
   }
@@ -66,18 +66,12 @@ export class MusicHomeComponent {
   }
   openDetailsSong(){
     this.detectRoute();
-    this.renderer.setStyle(document.body, 'overflow', 'hidden');
-
   }
   detectRoute() {
     const currentUrl = this.router.url;
-
     if (currentUrl.includes('song-details')) {
-      this.renderer.setStyle(document.body, 'overflow', 'hidden');
-
       this.songService.$songDetails.emit(true);
     } else {
-
       this.songService.$songDetails.emit(false);
     }
   }
