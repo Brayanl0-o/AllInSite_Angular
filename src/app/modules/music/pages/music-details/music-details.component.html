@@ -5,15 +5,19 @@
   <div class="containerDetails">
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
     <span class="updateDetails" *ngIf="isAdmin" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
-    <div class="containerImages">
-      <div>
-        <img src="../../../../../assets/img/music/sondaSonido.png" alt="" class="sondaSonido">
 
-        <img src="../../../../../assets/img/music/controls.png" alt="" class="playerControls">
-
-        <audio class="audio" src="../../../../../assets/audio/Crack Family - Las tetas d (Video Oficial).mp3" controls></audio>
+    <div class="containerUp">
+      <div class="center">
+        <img [src]="musicDetails.songImg" alt="Song image" class="album">
       </div>
-      <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage">
+      <!-- <div class="center">
+        <img class="album" src="https://upload.wikimedia.org/wikipedia/en/f/f3/EVOL_by_Future_cover.jpg">
+      </div> -->
+      <div class="containerAudioPlayer">
+        <app-music-audio-player></app-music-audio-player>
+        <!-- <audio class="audio" src="../../../../../assets/audio/Crack Family - Las tetas d (Video Oficial).mp3" controls></audio> -->
+      </div>
+      <!-- <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage"> -->
     </div>
     <section>
       <div class="containerInformation">

@@ -12,18 +12,19 @@ body{
 }
 .containerDetails{
   background-color: rgba(0, 0, 0, 0.685);
-  width: 60%;
+  width: 80%;
   max-width: 60%;
   height: fit-content;
   max-height: 70%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow-y:initial;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  border-radius: 7px;
+  border-radius: 10px;
 }
 .containerDetails>section{
   display: flex;
@@ -72,29 +73,44 @@ body{
 .updateDetails>mat-icon:hover{
   transform: scale(1.1);
 }
-.songImage{
-  min-width: 250px;
-  min-height: 230px;
-  max-width: 250px;
-  max-height: 230px;
-  border-radius: 10px;
+
+.center {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: radial-gradient(
+    at top left,
+    rgba(46, 50, 58, 1) 0%,
+    rgba(28, 30, 35, 1) 80%
+  );
+  margin-top: 20px;
+  margin-left: 20px;
+
 }
-.containerImages{
+
+.containerUp{
   display: flex;
-  flex-flow: row-reverse nowrap;
-  justify-content: center;
+  flex-flow: row wrap;
+  justify-content:last baseline;
+  gap: 30%;
   align-items: center;
+  background: linear-gradient(to bottom, #33383e 0%, #17191d 100%);
+  border-radius: 10px 10px 0px 0px;
 }
-.playerControls{
-  width: 90%;
-  height: 60%;
-  cursor: pointer;
+.album {
+  border-radius: 50%;
+  height: 205px;
+  width: 205px;
+  object-fit: cover;
 }
-.sondaSonido{
-  width: 70%;
-  height: 100px;
-  margin: auto;
+.center {
+  height: 220px;
+  width: 220px;
+  box-shadow: -15px -10px 16px 5px rgba(255, 255, 255, 0.04),
+    10px 10px 16px 8px rgb(24, 26, 29);
+  background: radial-gradient(at top left, rgba(28, 30, 35, 1) 0%, #131416 85%);
 }
+
 h1,h2{
   color: white;
   font-size: 2rem;
