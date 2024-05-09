@@ -28,7 +28,6 @@ body{
 }
 .containerDetails>section{
   display: flex;
-  /* justify-content: center; */
   flex-flow: row wrap;
   align-items: center;
 }
@@ -62,7 +61,6 @@ body{
   justify-content: right;
   align-items: right;
   color: red;
-  /* background-color: yellow; */
   width: 95%;
   position: relative;
   right: 10px;
@@ -141,7 +139,6 @@ p{
 
 }
 .containerButtons{
-  /* background-color: red; */
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -193,6 +190,5 @@ p{
   body>section{
     justify-content: center;
     flex-flow: row wrap;
-
   }
 }
