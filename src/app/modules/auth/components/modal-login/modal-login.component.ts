@@ -32,7 +32,7 @@ export class ModalLoginComponent {
     this.contactForm = this.initFrom();
   }
 
-    capsLockOn = false;
+    public capsLockOn = false;
     checkCapsLock(event: KeyboardEvent) {
       if(event.getModifierState){
         this.capsLockOn = event.getModifierState('CapsLock');
@@ -90,7 +90,7 @@ export class ModalLoginComponent {
     modalIsVisible = false;
     showModal(){
       this.modalIsVisible = !this.modalIsVisible;
-      // this.renderer.setStyle(document.body, 'overflow', 'hidden');
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
     }
 
     closeModal(){
