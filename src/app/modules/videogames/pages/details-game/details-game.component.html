@@ -45,8 +45,7 @@
             velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
           </ng-template>
         </div>
-
-        <p class="text-gray-800 text-xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer }}</span> </p>
+        <p class="text-gray-800 text-xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer ? gameDetails.developer: 'No añadido.' }}</span> </p>
         <p class="text-gray-800 text-xl py-2">Genero: <span class="font-semibold">{{ gameDetails.genre }}</span> </p>
         <p class="text-gray-800 text-xl py-2 mb-10">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></p>
         <!-- <li class="text-gray-800 text-xl py-2">URL TRAILER: <span class="font-semibold">{{ gameDetails.gameTrailer}} </span></li> -->
