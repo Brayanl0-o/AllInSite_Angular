@@ -1,12 +1,14 @@
 <body>
   <div>
       <div class="slider">
-        <input type="range" min="0" [max]="audioPlayer.duration" [(ngModel)]="audioPlayer.currentTime" class="slider_bar" />
+        <input type="range" min="0" [max]="audioPlayer.duration"  [(ngModel)]="audioPlayer.currentTime" class="slider_input" />
         <div class="time">
           <div>{{formatTime(audioPlayer.currentTime)}}</div>
           <div>{{ formatTime(audioPlayer.duration) }}</div>
         </div>
+        <div class="progress_bar" [style.width]="progressWidth"></div>
       </div>
+
 
       <div class="controls">
 

@@ -8,7 +8,7 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 export class MusicAudioPlayerComponent {
   isPlaying: boolean = false;
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
-  @ViewChild('slider_bar::before') progressElement: ElementRef<HTMLDivElement> | undefined;
+  progressWidth: string = '0%';
   constructor(private renderer: Renderer2) {}
   toggleAudio() {
     const audioPlayer = this.audioPlayerRef?.nativeElement;
@@ -60,6 +60,11 @@ export class MusicAudioPlayerComponent {
       audioPlayer.addEventListener('ended', () => {
         this.isPlaying = false;
       });
+      audioPlayer.addEventListener('timeupdate', () => {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        this.progressWidth = `${progress}%`;
+      });
+
     }
     if (audioPlayer) {
       setInterval(() => {
