@@ -28,12 +28,16 @@
       </div>
 
     </div>
+
     <audio id="myAudio" #audioPlayer (ended)="onAudioEnded()">
-      <source src="../../../../../assets/audio/Aesop Rock - None Shall Pass (Official Video).mp3" type="audio/mpeg">
+      <source *ngIf="trackFile$ | async as trackFile " [src]=" trackFile | safeUrl" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
     </audio>
+    <mat-icon></mat-icon>
 
 </body>
+
+
 <!-- <button class="big">
   <div class="inner_button_big">
     <img style="height: 15px; transform: scale(-1);" src="data:image/svg+xml;base64,

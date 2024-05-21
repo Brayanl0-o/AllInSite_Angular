@@ -1,15 +1,41 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-
+import { Component, ElementRef, ViewChild, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Track } from 'src/app/core/models/song';
+import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 @Component({
   selector: 'app-music-audio-player',
   templateUrl: './music-audio-player.component.html',
   styleUrls: ['./music-audio-player.component.css']
 })
-export class MusicAudioPlayerComponent {
-  isPlaying: boolean = false;
+export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
-  progressWidth: string = '0%';
-  constructor(private renderer: Renderer2) {}
+  @Input() trackID = '';
+  track$!:Observable<Track>;
+  trackFile$!:Observable<Blob>;
+  currentTime = '0:00:00';
+  duration = '0:00:00';
+  progressWidth = '0%';
+  isPlaying = false;
+
+  constructor(private songService: SongsService,
+    private route: ActivatedRoute) {}
+
+  ngOnInit(){
+    if (this.trackID) {
+      this.loadTrack(this.trackID);
+    }
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['trackID'] && !changes['trackID'].firstChange) {
+      this.loadTrack(changes['trackID'].currentValue);
+    }
+  }
+  private loadTrack(trackID: string) {
+    this.track$ = this.songService.getTrack(trackID);
+    this.trackFile$ = this.songService.getTrackFile(trackID);
+  }
+
   toggleAudio() {
     const audioPlayer = this.audioPlayerRef?.nativeElement;
     if (audioPlayer) {
@@ -19,7 +45,6 @@ export class MusicAudioPlayerComponent {
         audioPlayer.play();
       }
       this.isPlaying = !this.isPlaying;
-
     }
   }
 
@@ -35,18 +60,12 @@ export class MusicAudioPlayerComponent {
   }
   seekTo(time: number) {
     const audioPlayer = this.audioPlayerRef.nativeElement;
-
     audioPlayer.currentTime = time;
   }
-
-
 
   onAudioEnded() {
     this.isPlaying = false;
   }
-  currentTime: string = '0:00:00';
-  duration: string = '0:00:00';
-
 
   ngAfterViewInit() {
     const audioPlayer = this.audioPlayerRef.nativeElement;
@@ -64,7 +83,6 @@ export class MusicAudioPlayerComponent {
         const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
         this.progressWidth = `${progress}%`;
       });
-
     }
     if (audioPlayer) {
       setInterval(() => {
@@ -74,5 +92,4 @@ export class MusicAudioPlayerComponent {
       }, 1000); // Actualizar cada segundo
     }
   }
-
 }
