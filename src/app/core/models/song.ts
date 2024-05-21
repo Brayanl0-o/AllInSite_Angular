@@ -3,6 +3,7 @@ export interface Song{
   songName: string;
   singer: string;
   songImg: string;
+  trackID: string;
   duration: string;
   genre: string;
   averageRating: string;
@@ -11,4 +12,9 @@ export interface Song{
   linkToYoutube: string;
   linkToDeezer: string;
   linkToSpotify: string;
+}
+export interface Track{
+  trackID: string,
+  songID: string,
+  url: string,
 }
