@@ -10,14 +10,10 @@
       <div class="center">
         <img [src]="musicDetails.songImg" alt="Song image" class="album">
       </div>
-      <!-- <div class="center">
-        <img class="album" src="https://upload.wikimedia.org/wikipedia/en/f/f3/EVOL_by_Future_cover.jpg">
-      </div> -->
+
       <div class="containerAudioPlayer">
-        <app-music-audio-player></app-music-audio-player>
-        <!-- <audio class="audio" src="../../../../../assets/audio/Crack Family - Las tetas d (Video Oficial).mp3" controls></audio> -->
+        <app-music-audio-player [trackID]="musicDetails.trackID"></app-music-audio-player>
       </div>
-      <!-- <img [src]="musicDetails.songImg" width="250" height="250" alt="Song image" class="songImage"> -->
     </div>
     <section>
       <div class="containerInformation">

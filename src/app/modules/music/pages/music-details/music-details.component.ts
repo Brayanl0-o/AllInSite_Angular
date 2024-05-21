@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   templateUrl: './music-details.component.html',
   styleUrls: ['./music-details.component.css']
 })
-export class MusicDetailsComponent {
+export class MusicDetailsComponent  {
   private apiUrl =  environment.apiUrl;
   musicDetails$!: Observable<Song>;
   $songUpdateDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
