@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Song } from 'src/app/core/models/song';
+import { Song, Track } from 'src/app/core/models/song';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +54,22 @@ export class SongsService {
     }
     return this.http.delete<Song>(url, httpOptions);
   }
+  public getTrack( trackID: string): Observable<Track>{
+    const url = `${this.apiUrl}songs/tracks/${trackID}`;
+    console.log( url)
+    return this.http.get<Track>(url);
+  }
+  public getTrackFile(trackID: string): Observable<Blob> {
+    const url = `${this.apiUrl}songs/tracks/${trackID}`;
+    console.log( url)
+    return this.http.get(url, { responseType: 'blob' });
+  }
+  public uploadTrack( trackData: any){
+    const url = `${this.apiUrl}songs/createTracker`;
+    return this.http.patch(url, trackData);
+  }
+
+
 }
 
   // public createSong(songData:any){
