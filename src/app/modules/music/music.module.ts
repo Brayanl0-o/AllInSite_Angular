@@ -10,6 +10,7 @@ import { MusicAddComponent } from './components/music-add/music-add.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MusicAudioPlayerComponent } from './components/music-audio-player/music-audio-player.component';
+import { CoreModule } from "../../core/core.module";
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import { MusicAudioPlayerComponent } from './components/music-audio-player/music
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule
-
+    SharedModule,
+    CoreModule
   ]
 })
 export class MusicModule { }
