@@ -1,6 +1,5 @@
 <app-music-update *ngIf="showUpdateModal && currentSong"  [song]="currentSong"></app-music-update>
-<!--  *ngIf="song" [song]="song" -->
-<!-- <router-outlet *ngIf="showUpdateModal" ></router-outlet> -->
+
 <body *ngIf="musicDetails$ | async as musicDetails" >
   <div class="containerDetails">
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
@@ -25,17 +24,13 @@
         <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 
-
       <div class="containerButtons">
         <button type="button" class="youtube" (click)="openLinkToYoutube()">YouTube</button>
-        <button type="button" class="spotify" (click)="openLinkToSpotify()">spotify</button>
-        <button type="button" class="dezeer" (click)="openLinkToDeezer()">deezer</button>
+        <button type="button" class="spotify" (click)="openLinkToSpotify()">Spotify</button>
+        <button type="button" class="dezeer" (click)="openLinkToDeezer()">Deezer</button>
       </div>
     </section>
 
-
     <span class="deleteSong" *ngIf="isAdmin" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
-
   </div>
-
 </body>
