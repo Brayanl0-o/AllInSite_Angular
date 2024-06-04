@@ -31,16 +31,25 @@ export class MusicAddComponent {
   addSong(){
     console.log('execute addSong',this.contactForm.value)
     if (this.contactForm.valid) {
-      const songData = this.contactForm.value;
+      const trackData = this.contactForm.value.trackData;
+      this.songsService.uploadTrack( trackData ).subscribe(
+          (response) => {
+            this.closeAddSong()
 
+          },
+          (error) => {
+          console.error('Error al agregar el track de la canción', error);
+        }
+      )
+      const songData = this.contactForm.value;
       this.songsService.createSong(songData).subscribe(
         (response) => {
           this.closeAddSong()
           window.location.reload()
         },
         (error) => {
-          console.error('Error al agregar el juego', error);
-          this.errorResponseMessage = 'Imagen duplicada';
+          console.error('Error al agregar la canción', error);
+          // this.errorResponseMessage = 'Imagen duplicada';
         }
       );
     }
