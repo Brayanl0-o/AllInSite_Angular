@@ -34,18 +34,13 @@ export class ProfileComponent {
 
   dataUser(){
     const loggedInUserId = this.authService.getLoggedInUserId();
-    this.userId = loggedInUserId;
-
     if(loggedInUserId){
+          const userId = loggedInUserId;
           this.imageUrl = `${apiBaseUrl}uploads/users/medium/`;
-          if (this.userId  === loggedInUserId) {
-            this.userShared.getUserById(this.userId ).subscribe(data => {
+            this.userShared.getUserById(userId ).subscribe(data => {
               this.user = data;
               this.loadDataProfile = false;
             });
-          } else {
-            // console.error('No login')
-          }
     }else{
       this.router.navigate(['/error-401']);
     }
@@ -76,6 +71,9 @@ export class ProfileComponent {
         if(this.user){
           this.user.userImg = this.newUserImg;
           this.isLoading = false;
+          this.isEditingImg = false;
+          this.renderer.removeStyle(document.body, 'overflow');
+          window.location.reload();
           this.dataUser();
         }
         this.dataUser();
@@ -89,7 +87,6 @@ export class ProfileComponent {
   }
 
   cancelEditImg(){
-    this.newUserImg = this.userImg;
     this.isEditingImg = false;
     this.renderer.removeStyle(document.body, 'overflow');
   }
@@ -98,7 +95,6 @@ export class ProfileComponent {
     this.isEditingImg = true;
     this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
-
   isModalVisible!: boolean;
   openModal(user: User | null): void {
     if (user) {
