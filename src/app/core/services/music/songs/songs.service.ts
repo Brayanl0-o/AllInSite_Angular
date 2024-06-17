@@ -56,20 +56,21 @@ export class SongsService {
   }
   public getTrack( trackID: string): Observable<Track>{
     const url = `${this.apiUrl}songs/tracks/${trackID}`;
-    console.log( url)
     return this.http.get<Track>(url);
   }
   public getTrackFile(trackID: string): Observable<Blob> {
     const url = `${this.apiUrl}songs/tracks/${trackID}`;
-    console.log( url)
     return this.http.get(url, { responseType: 'blob' });
   }
-  public uploadTrack( trackData: any){
-    const url = `${this.apiUrl}songs/createTracker`;
-    return this.http.patch(url, trackData);
+  public uploadTrack( songID: string, track: File){
+    const url = `${this.apiUrl}songs/createTrack`;
+    const formData = new FormData();
+    if(track){
+      formData.append('songID',songID)
+      formData.append('track',track)
+    }
+    return this.http.post(url, formData);
   }
-
-
 }
 
   // public createSong(songData:any){
