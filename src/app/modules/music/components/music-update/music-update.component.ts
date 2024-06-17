@@ -60,7 +60,7 @@ export class MusicUpdateComponent {
       genre: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(35)]],
       averageRating: ['', [ Validators.minLength(1),Validators.maxLength(2)]],
       releaseDate: ['', []],
-      lyrics: ['', [,Validators.maxLength(3050)]],
+      lyrics: ['', [,Validators.maxLength(5050)]],
       linkToDeezer: ['',[Validators.maxLength(450)]],
       linkToSpotify: ['',[Validators.maxLength(450)]],
       linkToYoutube: ['',[Validators.maxLength(450)]],
