@@ -57,25 +57,23 @@ export class ProfileComponent {
   updateDataUser(userImg:File):void{
     this.isLoading = true;
 
-    if(!this.user){
-      this.isLoading = false;
-      console.error('Error: No hay datos de actualizacíón')
-      return;
-    }
+    // if(!this.user){
+    //   this.isLoading = false;
+    //   console.error('Error: No hay datos de actualizacíón')
+    //   return;
+    // }
     const updatedData = {
       userImg: this.newUserImg
     };
 
-    this.userShared.updateUserImg(this.user._id, userImg).subscribe(
+    this.userShared.updateUserImg(this.user!._id, userImg).subscribe(
       (response)=> {
-        if(this.user){
-          this.user.userImg = this.newUserImg;
+          this.user!.userImg = this.newUserImg;
           this.isLoading = false;
           this.isEditingImg = false;
           this.renderer.removeStyle(document.body, 'overflow');
           window.location.reload();
           this.dataUser();
-        }
         this.dataUser();
       },
       (error) => {
