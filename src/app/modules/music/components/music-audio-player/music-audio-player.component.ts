@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Track } from 'src/app/core/models/song';
+import { Song, Track } from 'src/app/core/models/song';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 @Component({
   selector: 'app-music-audio-player',
@@ -9,6 +9,7 @@ import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 })
 export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
+  @Input() song: Song | null = null;
   @Input() trackID = '';
   track$!:Observable<Track>;
   trackFile$!:Observable<Blob>;
@@ -23,11 +24,54 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   constructor(private songService: SongsService,
   ) {}
 
+
   ngOnInit(){
     if (this.trackID) {
       this.isLoading = false;
       this.loadTrack(this.trackID);
     }
+  }
+  selectedFile: File | null = null;
+  isUpdateTrack = false;
+
+  trackFile = '';
+  newTrackFile = '';
+  isEditingTrack = false;
+  openModal(){
+    this.isEditingTrack =! this.isEditingTrack;
+  }
+
+  onFileSelectedTrack(event: Event){
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement?.files?.[0];
+    if(file){
+      console.log('Archivo seleccionado:', file);
+
+      this.selectedFile = file;
+    }
+  }
+
+  updateTrack(track:File){
+    console.log('inside updateTrack')
+    this.isUpdateTrack = true;
+    console.log( track)
+      const songID = this.song!._id;
+      this.songService.uploadTrack(songID, track).subscribe(
+        (res) => {
+
+          console.log('inside sub')
+
+          this.song!.trackID = this.trackID;
+          this.isUpdateTrack = false;
+          // this.renderer.removeStyle(document.body, 'overflow');
+          window.location.reload();
+        },
+        (error) => {
+          this.isUpdateTrack = false;
+
+          console.error('Error updated track:', error);
+        }
+      )
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['trackID'] && !changes['trackID'].firstChange) {
