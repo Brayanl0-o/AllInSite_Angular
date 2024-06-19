@@ -35,9 +35,9 @@
           </div>
         </div>
 
-        <p class="text-gray-800 text-xl py-2 mb-10 mt-12"> Lanzamiento:<span class="font-semibold"> {{ gameDetails.releaseDate | date: 'yyyy-MM-dd'}}</span> </p>
+        <p class="text-gray-800 text-xl py-2 mb-10 mt-12">Desarrollador: <span class="font-semibold">{{ gameDetails.developer ? gameDetails.developer: 'No añadido.' }}</span> </p>
 
-        <div class="game-description  text-gray-800 text-lg">
+        <div class="game-description  text-gray-800 text-lg mb-5">
           <p *ngIf="gameDetails.descriptionGame; else defaultText">{{gameDetails.descriptionGame}}</p>
           <ng-template #defaultText>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -45,14 +45,15 @@
             velit hic atque porro sint corrupti officia suscipit fugiat quis illum saepe et in.
           </ng-template>
         </div>
-        <p class="text-gray-800 text-xl py-2">Desarrollador: <span class="font-semibold">{{ gameDetails.developer ? gameDetails.developer: 'No añadido.' }}</span> </p>
         <p class="text-gray-800 text-xl py-2">Genero: <span class="font-semibold">{{ gameDetails.genre }}</span> </p>
-        <p class="text-gray-800 text-xl py-2 mb-10">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></p>
+        <p class="text-gray-800 text-xl py-2 ">Plataformas: <span class="font-semibold">{{ gameDetails.platform }}</span></p>
+        <p class="text-gray-800 text-xl py-2 mb-10"> Lanzamiento:<span class="font-semibold"> {{ gameDetails.releaseDate | date: 'yyyy-MM-dd'}}</span> </p>
+
         <!-- <li class="text-gray-800 text-xl py-2">URL TRAILER: <span class="font-semibold">{{ gameDetails.gameTrailer}} </span></li> -->
 
         <div class="flex justify-end row-auto align-middle mb-4">
           <p class="container-averageRating font-semibold text-gray-700 dark:text-gray-400 ">
-            <span class= "inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-0 rounded dark:bg-blue-200 dark:text-blue-800 ">
+            <span class= "inline-block bg-blue-100/50 text-blue-800 text-3xl font-semibold mr-2 px-2 py-0 rounded  dark:bg-blue-200 dark:text-blue-800 ">
               {{ gameDetails.averageRating }}
             </span>
 
