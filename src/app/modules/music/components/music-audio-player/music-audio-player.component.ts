@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Song, Track } from 'src/app/core/models/song';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 @Component({
   selector: 'app-music-audio-player',
@@ -22,15 +23,29 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
 
 
   constructor(private songService: SongsService,
+    private authService: AuthService,
   ) {}
 
 
   ngOnInit(){
+    this.isAdminOrUser();
     if (this.trackID) {
       this.isLoading = false;
       this.loadTrack(this.trackID);
     }
   }
+  isAdmin = false;
+  isAdminOrUser(){
+    const roleUser = this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador'
+
+    if(roleUser == allowedRole){
+      this.isAdmin = true;
+    }else{
+      this.isAdmin = false;
+    }
+  }
+
   selectedFile: File | null = null;
   isUpdateTrack = false;
 
