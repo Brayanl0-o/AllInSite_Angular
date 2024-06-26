@@ -27,21 +27,23 @@
       </div>
 
 
-      <div class="controls">
-        <button class="volume_up" *ngIf="isAdmin" >
-          <span>
-            <mat-icon>
-              download_2
-            </mat-icon>
-          </span>
-        </button>
-        <button class="volume_up" >
-          <span>
-            <mat-icon>
-              volume_up
-            </mat-icon>
-          </span>
-        </button>
+      <div class="controls"  >
+
+          <button class="volume_up" *ngIf="isAdmin" (click)="downloadTrack()" >
+            <span>
+              <mat-icon>
+                download_2
+              </mat-icon>
+            </span>
+          </button>
+
+          <button class="volume_up" >
+            <span>
+              <mat-icon>
+                volume_up
+              </mat-icon>
+            </span>
+          </button>
         <button class="skip_previous" >
           <span >
             <mat-icon>

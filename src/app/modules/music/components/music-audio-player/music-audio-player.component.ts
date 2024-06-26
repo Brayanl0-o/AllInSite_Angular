@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Song, Track } from 'src/app/core/models/song';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-music-audio-player',
   templateUrl: './music-audio-player.component.html',
@@ -21,19 +22,60 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   isLoading = true;
   isNaN: any;
 
-
   constructor(private songService: SongsService,
     private authService: AuthService,
   ) {}
+  trackFileUrl: string | null = null;
+  urlDownload = environment.apiUrl;
+
+
 
 
   ngOnInit(){
+    this.loadTrack(this.trackID);
     this.isAdminOrUser();
-    if (this.trackID) {
+    if (this.trackID && this.song) {
+      this.trackFileUrl = this.songService.getTrackUrl(this.trackID);
+      // this.loadTrackBlob(this.trackID);
       this.isLoading = false;
-      this.loadTrack(this.trackID);
+      // this.loadTrack(this.trackID);
     }
   }
+
+  loadTrackBlob(trackID: string): void {
+    this.songService.getTrackBlob(trackID).subscribe(blob => {
+      this.trackFileUrl = window.URL.createObjectURL(blob);
+    });
+  }
+  downloadTrack():void {
+    console.log(this.song)
+
+    if(this.trackFileUrl && this.song){
+      const link = document.createElement('a');
+      link.href = this.trackFileUrl;
+      // link.download = `${this.song.songName}  `;
+       // Añadir el enlace al cuerpo
+       document.body.appendChild(link);
+
+       // Hacer clic en el enlace
+       link.click();
+
+       // Remover el enlace del cuerpo
+       document.body.removeChild(link);
+      console.log(link.download)
+
+    }
+  }
+  // downloadTrack(): void {
+  //   if (this.trackFileUrl) {
+  //     const link = document.createElement('a');
+  //     link.href = this.trackFileUrl;
+  //     link.setAttribute('download', '');
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //   }
+  // }
   isAdmin = false;
   isAdminOrUser(){
     const roleUser = this.authService.getLoggedUserRole();
@@ -95,16 +137,22 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     }
   }
 
+
   private async loadTrack(trackID: string) {
     this.isLoading = true;
     try {
+      console.log(this.song!._id)
       this.track$ = this.songService.getTrack(trackID);
       this.trackFile$ = this.songService.getTrackFile(trackID);
 
       this.track$.subscribe({
         next: () => this.isLoading = false,
+
         error: () => this.isLoading = false
+
       });
+      console.log('execute')
+
       this.trackFile$.subscribe({
         next: () => this.isLoading = false,
         error: () => this.isLoading = false
@@ -120,6 +168,7 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     if (audioPlayer) {
       if (this.isPlaying) {
         audioPlayer.pause();
+        console.log('execute')
       } else {
         audioPlayer.play();
       }

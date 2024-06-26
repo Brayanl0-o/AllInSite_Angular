@@ -84,10 +84,15 @@ body{
   display: flex;
   justify-content: space-between;
   height: fit-content;
+  gap: 20px;
 }
 .controls>span{
   height: 600px;
   width: 600px;
+  max-height: 600px;
+  max-width: 600px;
+  min-height: 600px;
+  min-width: 600px;
   background-color: red;
   width: 10rem;
   color: whitesmoke;
@@ -102,6 +107,10 @@ body{
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  max-height: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  min-width: 40px;
   background: radial-gradient(at bottom right, #292e35 0%, #292e34 80%);
   border: none;
   box-shadow: -7px -6px 10px 5px rgba(255, 255, 255, 0.04),

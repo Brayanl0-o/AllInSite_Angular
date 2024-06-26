@@ -58,10 +58,26 @@ export class SongsService {
     const url = `${this.apiUrl}songs/tracks/${trackID}`;
     return this.http.get<Track>(url);
   }
+  // public getTrackForName( trackID: string,songID: string){
+  //   const url = `${this.apiUrl}songs/tracks/${trackID}`;
+  //   return this.http.get(url, trackID);
+  // }
   public getTrackFile(trackID: string): Observable<Blob> {
     const url = `${this.apiUrl}songs/tracks/${trackID}`;
     return this.http.get(url, { responseType: 'blob' });
   }
+  public getTrackUrl(trackID: string): string {
+    const url = `${this.apiUrl}songs/tracks/${trackID}`
+    console.log(url);
+
+    return url;
+  }
+  getTrackBlob(trackID: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}songs/tracks/${trackID}`, { responseType: 'blob' });
+  }
+  // public getTrackUrl(trackID: string): Observable<string> {
+  //   return this.http.get<string>(`${this.apiUrl}/songs/tracks/${trackID}`);
+  // }
   public uploadTrack( songID: string, track: File){
     const url = `${this.apiUrl}songs/createTrack`;
     const formData = new FormData();
