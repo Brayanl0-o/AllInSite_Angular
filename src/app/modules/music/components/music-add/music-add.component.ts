@@ -31,29 +31,45 @@ export class MusicAddComponent {
   addSong(){
     console.log('execute addSong',this.contactForm.value)
     if (this.contactForm.valid) {
-      const trackData = this.contactForm.value.trackData;
-      this.songsService.uploadTrack( trackData ).subscribe(
-          (response) => {
-            this.closeAddSong()
-
-          },
-          (error) => {
-          console.error('Error al agregar el track de la canción', error);
-        }
-      )
       const songData = this.contactForm.value;
+
       this.songsService.createSong(songData).subscribe(
         (response) => {
           this.closeAddSong()
           window.location.reload()
         },
         (error) => {
-          console.error('Error al agregar la canción', error);
-          // this.errorResponseMessage = 'Imagen duplicada';
+          console.error('Error al agregar el juego', error);
+          this.errorResponseMessage = 'Imagen duplicada';
         }
       );
     }
   }
+  // addSong(){
+  //   console.log('execute addSong',this.contactForm.value)
+  //   if (this.contactForm.valid) {
+  //     const trackData = this.contactForm.value.trackData;
+  //     this.songsService.uploadTrack( trackData ).subscribe(
+  //         (response) => {
+  //           this.closeAddSong()
+
+  //         },
+  //         (error) => {
+  //         console.error('Error al agregar el track de la canción', error);
+  //       }
+  //     )
+  //     const songData = this.contactForm.value;
+  //     this.songsService.createSong(songData).subscribe(
+  //       (response) => {
+  //         this.closeAddSong()
+  //         window.location.reload()
+  //       },
+  //       (error) => {
+  //         console.error('Error al agregar la canción', error);
+  //       }
+  //     );
+  //   }
+  // }
 
   initForm():FormGroup {
     return this.fb.group({
@@ -64,7 +80,7 @@ export class MusicAddComponent {
       genre: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(35)]],
       averageRating: ['', [ Validators.minLength(1),Validators.maxLength(2)]],
       releaseDate: ['', []],
-      lyrics: ['', [Validators.maxLength(3050)]],
+      lyrics: ['', [Validators.maxLength(5050)]],
       linkToDeezer: ['',[Validators.maxLength(450)]],
       linkToSpotify: ['',[Validators.maxLength(450)]],
       linkToYouTube: ['',[Validators.maxLength(450)]],
