@@ -88,7 +88,7 @@ body{
 .containerUp{
   display: flex;
   flex-flow: row wrap;
-  justify-content:last baseline;
+  justify-content:center;
   gap: 8%;
   align-items: center;
   background: linear-gradient(to bottom, #33383e 0%, #17191d 100%);
@@ -145,30 +145,37 @@ p{
 
 }
 .containerButtons{
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row nowrap;
+  /* align-items: center; */
+  gap: 50px;
   margin: auto;
-  margin-top: 6rem;
-  width: min-content;
+  /* margin-top: 15rem; */
+  width: fit-content;
 }
 .youtube,
 .dezeer,
 .spotify {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   margin: 1rem auto;
-  border-radius: 50px;
+  border-radius: 100%;
   background-image: linear-gradient(45deg, #000000c5, #0400f0d7);
-  padding: 10px 20px;
-  color: white;
-  font-weight: 800;
-  font-size: 1.5rem;
+  padding: 10px;
+  z-index: 50;
   transition: background-position 0.5s ease-out, transform 0.5s ease-out;
   position: relative;
   overflow: hidden;
 }
 
-.youtube ::before,
+/* .youtube ::before,
 .dezeer ::before,
 .spotify ::before {
   content: '';
@@ -185,7 +192,7 @@ p{
 .dezeer:hover::before,
 .spotify:hover::before {
   transform: translateY(100%) translateX(100%);
-}
+} */
 .youtube:hover,
 .dezeer:hover,
 .spotify:hover {
