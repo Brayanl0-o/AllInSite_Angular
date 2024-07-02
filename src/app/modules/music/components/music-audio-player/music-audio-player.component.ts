@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./music-audio-player.component.css']
 })
 export class MusicAudioPlayerComponent implements OnInit, OnChanges{
+  @ViewChild('volumeControl', { static: true }) volumeControlRef!: ElementRef<HTMLInputElement>;
   @ViewChild('audioPlayer') audioPlayerRef!: ElementRef<HTMLAudioElement>;
   @Input() song: Song | null = null;
   @Input() trackID = '';
@@ -21,32 +22,124 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   isPlaying = false;
   isLoading = true;
   isNaN: any;
+  selectedFile: File | null = null;
+  isUpdateTrack = false;
+  trackFile = '';
+  newTrackFile = '';
+  isEditingTrack = false;
+  trackFileUrl: string | null = null;
+  urlDownload = environment.apiUrl;
+  volume = 1;
+  volumeControl = false;
+  isAdmin = false;
 
   constructor(private songService: SongsService,
     private authService: AuthService,
   ) {}
-  trackFileUrl: string | null = null;
-  urlDownload = environment.apiUrl;
-
-
-
 
   ngOnInit(){
     this.loadTrack(this.trackID);
     this.isAdminOrUser();
+    this.loadVolume();
     if (this.trackID && this.song) {
       this.trackFileUrl = this.songService.getTrackUrl(this.trackID);
       // this.loadTrackBlob(this.trackID);
       this.isLoading = false;
-      // this.loadTrack(this.trackID);
+      this.loadTrack(this.trackID);
     }
   }
 
-  loadTrackBlob(trackID: string): void {
-    this.songService.getTrackBlob(trackID).subscribe(blob => {
-      this.trackFileUrl = window.URL.createObjectURL(blob);
-    });
+  isAdminOrUser(){
+    const roleUser = this.authService.getLoggedUserRole();
+    const allowedRole = 'administrador'
+
+    if(roleUser == allowedRole){
+      this.isAdmin = true;
+    }else{
+      this.isAdmin = false;
+    }
   }
+
+// Function to load track
+  private async loadTrack(trackID: string) {
+    this.isLoading = true;
+    try {
+      this.track$ = this.songService.getTrack(trackID);
+      this.trackFile$ = this.songService.getTrackFile(trackID);
+
+      this.track$.subscribe({
+        next: () => this.isLoading = false,
+
+        error: () => this.isLoading = false
+
+      });
+
+      this.trackFile$.subscribe({
+        next: () => this.isLoading = false,
+        error: () => this.isLoading = false
+      });
+    } catch (error) {
+      console.error('Error loading track:', error);
+      this.isLoading = false;
+    }
+  }
+
+  //Handle volumen's visibility and controls
+  toggleAudio() {
+    const audioPlayer = this.audioPlayerRef?.nativeElement;
+    if (audioPlayer) {
+      if (this.isPlaying) {
+        audioPlayer.pause();
+        console.log('execute')
+      } else {
+        audioPlayer.play();
+      }
+      this.isPlaying = !this.isPlaying;
+    }
+  }
+  showVolumeControl(): void {
+    this.volumeControl = !this.volumeControl;
+    if (this.volumeControl) {
+      setTimeout(() => {
+        this.updateVolumeControlStyle(this.volume);
+      }, 0);
+    }
+  }
+  changeVolume(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.volume = parseFloat(inputElement.value);
+
+    // Actualizar el volumen del reproductor de audio
+    const audioPlayer = this.audioPlayerRef?.nativeElement;
+    if (audioPlayer) {
+      audioPlayer.volume = this.volume;
+    }
+
+    // Actualizar el estilo del pseudo-elemento ::before
+    inputElement.style.setProperty('--value', this.volume.toString());
+    this.updateVolumeControlStyle(this.volume);
+  }
+  loadVolume(): void {
+    const savedVolume = localStorage.getItem('volume');
+    if (savedVolume !== null) {
+      this.volume = parseFloat(savedVolume);
+    }
+  }
+  updateVolumeControlStyle(volume: number): void {
+    if (this.volumeControlRef) {
+      const inputElement = this.volumeControlRef.nativeElement;
+      inputElement.style.setProperty('--value', volume.toString());
+    }
+  }
+  saveVolume(): void{
+    localStorage.setItem('volume', this.volume.toString())
+  }
+
+  // loadTrackBlob(trackID: string): void {
+  //   this.songService.getTrackBlob(trackID).subscribe(blob => {
+  //     this.trackFileUrl = window.URL.createObjectURL(blob);
+  //   });
+  // }
   downloadTrack():void {
     console.log(this.song)
 
@@ -66,38 +159,11 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
 
     }
   }
-  // downloadTrack(): void {
-  //   if (this.trackFileUrl) {
-  //     const link = document.createElement('a');
-  //     link.href = this.trackFileUrl;
-  //     link.setAttribute('download', '');
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //   }
-  // }
-  isAdmin = false;
-  isAdminOrUser(){
-    const roleUser = this.authService.getLoggedUserRole();
-    const allowedRole = 'administrador'
 
-    if(roleUser == allowedRole){
-      this.isAdmin = true;
-    }else{
-      this.isAdmin = false;
-    }
-  }
-
-  selectedFile: File | null = null;
-  isUpdateTrack = false;
-
-  trackFile = '';
-  newTrackFile = '';
-  isEditingTrack = false;
+  // Handle editing track
   openModal(){
     this.isEditingTrack =! this.isEditingTrack;
   }
-
   onFileSelectedTrack(event: Event){
     const inputElement = event.target as HTMLInputElement;
     const file = inputElement?.files?.[0];
@@ -107,7 +173,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.selectedFile = file;
     }
   }
-
   updateTrack(track:File){
     console.log('inside updateTrack')
     this.isUpdateTrack = true;
@@ -130,52 +195,8 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
         }
       )
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['trackID'] && !changes['trackID'].firstChange) {
-      this.loadTrack(changes['trackID'].currentValue);
-      this.isLoading = false;
-    }
-  }
 
-
-  private async loadTrack(trackID: string) {
-    this.isLoading = true;
-    try {
-      console.log(this.song!._id)
-      this.track$ = this.songService.getTrack(trackID);
-      this.trackFile$ = this.songService.getTrackFile(trackID);
-
-      this.track$.subscribe({
-        next: () => this.isLoading = false,
-
-        error: () => this.isLoading = false
-
-      });
-      console.log('execute')
-
-      this.trackFile$.subscribe({
-        next: () => this.isLoading = false,
-        error: () => this.isLoading = false
-      });
-    } catch (error) {
-      console.error('Error loading track:', error);
-      this.isLoading = false;
-    }
-
-  }
-  toggleAudio() {
-    const audioPlayer = this.audioPlayerRef?.nativeElement;
-    if (audioPlayer) {
-      if (this.isPlaying) {
-        audioPlayer.pause();
-        console.log('execute')
-      } else {
-        audioPlayer.play();
-      }
-      this.isPlaying = !this.isPlaying;
-    }
-  }
-
+  // Handle track time
   formatTime(time: number): string {
     if (isNaN(time)) {
       return '--:--';
@@ -184,17 +205,23 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     const seconds: number = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   }
-
   seekTo(time: number) {
     const audioPlayer = this.audioPlayerRef.nativeElement;
     audioPlayer.currentTime = time;
   }
-
   onAudioEnded() {
     this.isPlaying = false;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['trackID'] && !changes['trackID'].firstChange) {
+      this.loadTrack(changes['trackID'].currentValue);
+      this.isLoading = false;
+    }
+  }
   ngAfterViewInit() {
+    this.updateVolumeControlStyle(this.volume);
+
     const audioPlayer = this.audioPlayerRef.nativeElement;
     if (audioPlayer) {
       audioPlayer.addEventListener('play', () => {

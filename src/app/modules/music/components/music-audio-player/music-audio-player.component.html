@@ -29,7 +29,7 @@
 
       <div class="controls"  >
 
-          <button class="volume_up" *ngIf="isAdmin" (click)="downloadTrack()" >
+          <button class="download_2" *ngIf="isAdmin" (click)="downloadTrack()" >
             <span>
               <mat-icon>
                 download_2
@@ -37,13 +37,20 @@
             </span>
           </button>
 
-          <button class="volume_up" >
-            <span>
-              <mat-icon>
-                volume_up
-              </mat-icon>
-            </span>
-          </button>
+          <div class="container_volumen_control">
+            <button class="volume_control"  (click)="showVolumeControl()"  >
+              <span>
+                <mat-icon>
+                  volume_up
+                </mat-icon>
+              </span>
+
+            </button>
+            <div class="volume-control" *ngIf="volumeControl"  >
+              <input #volumeControl type="range" min="0"max="1" step="0.1" [value]="volume" (input)="changeVolume($event)">
+            </div>
+          </div>
+
         <button class="skip_previous" >
           <span >
             <mat-icon>
