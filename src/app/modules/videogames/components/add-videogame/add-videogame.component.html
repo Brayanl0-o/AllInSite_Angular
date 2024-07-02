@@ -35,7 +35,7 @@
 
           <div class="relative top-4">
             <label class="text-black/80 font-semibold " for="gameImg">* Imagen del juego:<br></label>
-            <p class="text-sm font-semibold ml-2 text-slate-900/80">(Nota: Si copias la imagen y no se sube, te recomendamos subirla directamente desde tu computadora)</p>
+            <p class="text-sm font-semibold ml-2 text-slate-900/80">(Nota: Si copias la imagen y no se sube, subela directamente desde tu computadora)</p>
             <span *ngIf="errorResponseMessage" class="text-lg z-100 font-semibold  ml-0 text-red-800/80" >
               {{ errorResponseMessage }} <mat-icon class="material-symbols-outlined -mb-1"> warning </mat-icon>
             </span>
@@ -211,7 +211,7 @@
       <div class="containerButton">
         <button type="submit" [disabled]="isLoading" class="px-8 py-2.5 leading-5 border-blue-950 border-b-4 text-white transition-colors duration-300 transform bg-blue-700 rounded-md  hover:bg-[#006186]">
           <div class="flex items-center justify-center">
-            <span class="ml-2" *ngIf="!isLoading" aria-label="Botón de Subir videojuego">Subir videojuego</span>
+            <span class="ml-2" *ngIf="!isLoading" aria-label="Botón de Subir videojuego">Guardar</span>
           </div>
           <div class="containerButtonLoading" *ngIf="isLoading">
             <div role="status" class="flex items-center justify-center">
