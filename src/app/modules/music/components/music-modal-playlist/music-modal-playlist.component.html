@@ -1,0 +1,69 @@
+<div class="containerPlaylists">
+  <header>
+    <h4>Guardar canción en...</h4>
+    <span class="closeDetails"><mat-icon>close</mat-icon></span>
+  </header>
+
+
+  <form action="">
+    <ul>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>lock</mat-icon>
+      </div>
+
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>lock</mat-icon>
+      </div>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>lock</mat-icon>
+      </div>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>public</mat-icon>
+      </div>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>public</mat-icon>
+      </div>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>public</mat-icon>
+      </div>
+      <div class="containerInputAndLabel">
+        <input type="checkbox" name="playlist" id="">
+        <label for="playlist">Ejemplo...</label>
+        <mat-icon>public</mat-icon>
+      </div>
+    </ul>
+  </form>
+
+  <div class="containerCreatePlaylist">
+
+    <span (click)="togglevisibilityForm()" *ngIf="!visibilityForm"><mat-icon>add</mat-icon><span>Nueva playlist</span></span>
+
+    <form *ngIf="visibilityForm">
+      <label for="name_playlist">Nombre</label>
+      <input type="text" name="name_playlist" id="name_playlist" placeholder="Nombre de la lista de reproducción...">
+      <label for="privacy">Privacidad</label>
+      <select name="privacy" id="privacy">
+        <option value="publishes">Publica</option>
+        <option value="private">Privada</option>
+      </select>
+      <button>
+        Crear
+      </button>
+    </form>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,131 @@
+.containerPlaylists{
+  position: absolute;
+  top: 20%;
+  right: 40%;
+  border-radius: 10px;
+  border: 2px solid rgb(10, 5, 83);
+  background-color: rgba(58, 55, 55, 0.747);
+  color: whitesmoke;
+  width: max-content;
+  height: max-content;
+
+
+}
+header{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 50px;
+  width: max-content;
+  margin-top: 0;
+}
+header>h4{
+  font-size: 1rem;
+  color: rgba(171, 194, 209, 0.904);
+  margin: 10px;
+}
+header>span{
+  cursor: pointer;
+  align-self: center;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 5px 5px 10px 10px;
+
+}
+header>span>mat-icon{
+  margin: auto;
+  font-size: 1.5rem;
+  transition: all 0.5s ease-out;
+}
+header>span>mat-icon:hover{
+  transform: scale(1.2);
+}
+.containerCreatePlaylist,
+form{
+  padding: 10px;
+
+}
+form>ul{
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  height: fit-content;
+  overflow-y:scroll;
+  max-height: 250px;
+  overflow-x: hidden;
+}
+.containerInputAndLabel{
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 15px;
+  width: 100%;
+  /* max-width: 200px; */
+  max-height: 40%;
+  margin: 10px;
+  /* background-color: red; */
+
+}
+.containerInputAndLabel>input{
+  background:none;
+  background-color: rgba(51, 52, 105, 0.507);
+}
+.containerInputAndLabel>mat-icon{
+  position: relative;
+  right: -70px;
+  top: 0;
+
+}
+
+.containerCreatePlaylist>span{
+  /* background-color: red; */
+  cursor: pointer;
+  display: flex;
+  justify-content:left;
+  flex-flow: row nowrap;
+  margin: auto;
+  gap: 10px;
+
+}
+.containerCreatePlaylist>form{
+  display: flex;
+  flex-flow: column nowrap;
+  /* background-color: red; */
+  padding: 0px;
+  margin: 0px;
+}
+.containerCreatePlaylist>form>input,
+.containerCreatePlaylist>form>select,
+.containerCreatePlaylist>form>select>option{
+  background: none;
+  border: 0px;
+  border-bottom: 1px gray solid;
+
+}
+.containerCreatePlaylist>form>label,
+.containerCreatePlaylist>form>input,
+.containerCreatePlaylist>form>select{
+  font-size: 0.9rem;
+  padding: 0px;
+  margin: 0px;
+
+}
+#name_playlist,#privacy{
+  margin-bottom: 10px;
+}
+.containerCreatePlaylist>form>button{
+  border-radius: 50px;
+  width: fit-content;
+  margin: auto;
+  padding: 5px 10px;
+  z-index: 50;
+}
+.containerCreatePlaylist>form>button:hover{
+  background-color: rgba(11, 11, 206, 0.486);
+  border-radius: 50px;
+  width: fit-content;
+  margin: auto;
+  padding: 5px 10px;
+}
