@@ -95,8 +95,8 @@
             </mat-icon>
           </span>
         </button>
-        <button class="playlist_add_check"   >
-          <span >
+        <button class="playlist_add_check" (click)="togglePlaylistsVisibility()">
+          <span>
             <mat-icon>
               playlist_add_check
             </mat-icon>
@@ -112,8 +112,7 @@
       </div>
     </div>
 
-
-
+    <app-music-modal-playlist *ngIf="playlistsVisibility" class="playlistsContainer"></app-music-modal-playlist>
 
     <div class="modalUpdateTrack" *ngIf="isEditingTrack" >
       <span class="closeDetails" (click)="openModal()"><mat-icon>close</mat-icon></span>

@@ -32,11 +32,15 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   volume = 1;
   volumeControl = false;
   isAdmin = false;
-
+  playlistsVisibility = false;
   constructor(private songService: SongsService,
     private authService: AuthService,
   ) {}
 
+  togglePlaylistsVisibility(){
+    this.playlistsVisibility =!this.playlistsVisibility;
+    console.log(this.playlistsVisibility)
+  }
   ngOnInit(){
     this.loadTrack(this.trackID);
     this.isAdminOrUser();
@@ -90,7 +94,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     if (audioPlayer) {
       if (this.isPlaying) {
         audioPlayer.pause();
-        console.log('execute')
       } else {
         audioPlayer.play();
       }
@@ -141,7 +144,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   //   });
   // }
   downloadTrack():void {
-    console.log(this.song)
 
     if(this.trackFileUrl && this.song){
       const link = document.createElement('a');
@@ -155,7 +157,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
 
        // Remover el enlace del cuerpo
        document.body.removeChild(link);
-      console.log(link.download)
 
     }
   }
@@ -168,20 +169,15 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     const inputElement = event.target as HTMLInputElement;
     const file = inputElement?.files?.[0];
     if(file){
-      console.log('Archivo seleccionado:', file);
-
       this.selectedFile = file;
     }
   }
   updateTrack(track:File){
-    console.log('inside updateTrack')
     this.isUpdateTrack = true;
-    console.log( track)
       const songID = this.song!._id;
       this.songService.uploadTrack(songID, track).subscribe(
         (res) => {
 
-          console.log('inside sub')
 
           this.song!.trackID = this.trackID;
           this.isUpdateTrack = false;
