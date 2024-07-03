@@ -11,7 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MusicAudioPlayerComponent } from './components/music-audio-player/music-audio-player.component';
 import { CoreModule } from "../../core/core.module";
-import { MusicUpdateTrackComponent } from './components/music-update-track/music-update-track.component';
+import { MusicModalPlaylistComponent } from './components/music-modal-playlist/music-modal-playlist.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { MusicUpdateTrackComponent } from './components/music-update-track/music
     MusicUpdateComponent,
     MusicAddComponent,
     MusicAudioPlayerComponent,
-    MusicUpdateTrackComponent,
+    MusicModalPlaylistComponent,
   ],
   imports: [
     CommonModule,
