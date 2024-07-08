@@ -13,14 +13,20 @@
       <div class="containerAudioPlayer">
         <app-music-audio-player [trackID]="musicDetails.trackID" [song]="currentSong"></app-music-audio-player>
       </div>
+      <!-- <h1>{{musicDetails.songName}}</h1>
+      <h2>{{musicDetails.singer}}</h2> -->
     </div>
     <section>
       <div class="containerInformation">
-        <h1>{{musicDetails.songName}}</h1>
-        <h2>{{musicDetails.singer}}</h2>
+        <div class="title">
+          <h1>{{musicDetails.songName}}</h1>
+          <span class="lineMiddle">
+            <mat-icon>minimize</mat-icon>
+          </span>
+          <h2>{{musicDetails.singer}}</h2>
+        </div>
         <!-- <p>{{musicDetails.averageRating ? musicDetails.averageRating: 'No añadido.'}}</p> -->
         <!-- <p>{{musicDetails.releaseDate ? musicDetails.releaseDate: 'No añadido.'}}</p> -->
-
         <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 

@@ -115,15 +115,32 @@ body{
 .containerAudioPlayer{
   width: 50%;
 }
+.title{
+  display: flex;
+  flex-flow: row nowrap;
+
+}
 h1,h2{
   color: white;
   font-size: 2rem;
   font-weight: 600;
   padding-left: 10px;
+
+}
+.lineMiddle>mat-icon{
+  width: 35px;
+  height: 35px;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 h2{
   font-size: 1.5rem;
-
+  padding: 10px 0;
+  width: fit-content;
 }
 p{
   border-radius: 10px;
@@ -175,6 +192,19 @@ p{
   overflow: hidden;
 }
 
+.youtube:hover,
+.dezeer:hover,
+.spotify:hover {
+  background-image: linear-gradient(-135deg, #000000c5, #0400f0d7);
+  transform: scale(1.1);
+}
+@media screen and (max-width:950px ) {
+  body>section{
+    justify-content: center;
+    flex-flow: row wrap;
+  }
+}
+
 /* .youtube ::before,
 .dezeer ::before,
 .spotify ::before {
@@ -193,15 +223,3 @@ p{
 .spotify:hover::before {
   transform: translateY(100%) translateX(100%);
 } */
-.youtube:hover,
-.dezeer:hover,
-.spotify:hover {
-  background-image: linear-gradient(-135deg, #000000c5, #0400f0d7);
-  transform: scale(1.1);
-}
-@media screen and (max-width:950px ) {
-  body>section{
-    justify-content: center;
-    flex-flow: row wrap;
-  }
-}
