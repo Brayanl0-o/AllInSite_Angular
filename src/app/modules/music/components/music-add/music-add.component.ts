@@ -1,5 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 @Component({
   selector: 'app-music-add',
@@ -76,7 +76,7 @@ export class MusicAddComponent {
       songName: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       singer: ['', [Validators.required, Validators.minLength(4),Validators.maxLength(80)]],
       songImg: ['', [Validators.required]],
-      duration: ['', [Validators.required]],
+      // duration: ['', [Validators.required]],
       genre: ['', [Validators.required, Validators.minLength(2),Validators.maxLength(35)]],
       averageRating: ['', [ Validators.minLength(1),Validators.maxLength(2)]],
       releaseDate: ['', []],
