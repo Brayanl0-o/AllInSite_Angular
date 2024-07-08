@@ -10,7 +10,7 @@ export class WarningComponent {
 
   ngOnInit() {
     const lastVisited = localStorage.getItem('lastVisited');
-    if (!lastVisited || (Date.now() - parseInt(lastVisited, 10) > 3000000)) {
+    if (!lastVisited || (Date.now() - parseInt(lastVisited, 10) > 300000000)) {
         this.showModalWarning= true;
         localStorage.setItem('lastVisited', Date.now().toString());
     }
