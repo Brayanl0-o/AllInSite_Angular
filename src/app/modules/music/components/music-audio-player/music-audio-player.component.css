@@ -146,6 +146,11 @@ body{
   height: fit-content;
   gap: 20px;
 }
+.controls>button>span>mat-icon,
+.container_volumen_control>button>span>mat-icon{
+  display: flex;
+  margin: auto;
+}
 .controls>span{
   height: 600px;
   width: 600px;
