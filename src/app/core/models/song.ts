@@ -1,3 +1,5 @@
+import { Data } from "@angular/router";
+
 export interface Song{
   _id: string,
   songName: string;
@@ -17,4 +19,13 @@ export interface Track{
   trackID: string,
   songID: string,
   url: string,
+}
+
+export interface Playlist{
+  _id: string,
+  name: string,
+  songs: string,
+  createdBy: string,
+  createdAt: Data,
+  updatedAt: Data,
 }
