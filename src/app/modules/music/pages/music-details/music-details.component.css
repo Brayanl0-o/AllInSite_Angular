@@ -93,12 +93,15 @@ body{
   align-items: center;
   background: linear-gradient(to bottom, #33383e 0%, #17191d 100%);
   border-radius: 10px 10px 0px 0px;
+  padding-bottom: 1rem;
+
 }
 .album {
   border-radius: 50%;
   height: 205px;
   width: 205px;
   object-fit: cover;
+
   /* border: 2px rgb(2, 26, 70) solid; */
 }
 .center {
@@ -186,7 +189,7 @@ p{
   border-radius: 100%;
   background-image: linear-gradient(45deg, #000000c5, #0400f0d7);
   padding: 10px;
-  z-index: 50;
+  z-index: 0;
   transition: background-position 0.5s ease-out, transform 0.5s ease-out;
   position: relative;
   overflow: hidden;
