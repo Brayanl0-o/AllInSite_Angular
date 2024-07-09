@@ -1,21 +1,57 @@
 body{
-  color: #8b8d8f;
+  color: #d8d6d6;
+}
+.closeDetails>mat-icon{
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: whitesmoke;
+  font-size: 2rem;
+  width: 35px;
+  height: 35px;
 }
 .modalUpdateTrack{
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   margin: auto;
-  background-color:rgba(5, 15, 46, 0.534) ;
+  background-color:rgba(5, 15, 46, 0.699) ;
   width: fit-content;
   height: fit-content;
   padding: 20px;
   z-index: 50;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+.modalUpdateTrack>p{
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  gap: 10px;
 }
 
+.modalUpdateTrack>p>mat-icon{
+  margin-bottom: 1rem;
+  margin: auto;
+  color: red;
+  width: fit-content;
+}
+form>input{
+  margin-top: 1rem;
+  padding: 5px 30px;
+  border-radius: 2px;
+  width: fit-content;
+  height: fit-content;
+  background-color: rgba(223, 224, 233, 0.486);
 
+}
 .album {
   border-radius: 50%;
   height: 205px;

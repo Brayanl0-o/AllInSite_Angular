@@ -32,16 +32,20 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   volume = 1;
   volumeControl = false;
   isAdmin = false;
-  playlistsVisibility = false;
+  showModalPlaylist = false;
   constructor(private songService: SongsService,
     private authService: AuthService,
   ) {}
 
   togglePlaylistsVisibility(){
-    this.playlistsVisibility =!this.playlistsVisibility;
-    console.log(this.playlistsVisibility)
+    this.showModalPlaylist =! this.showModalPlaylist;
   }
+
   ngOnInit(){
+    this.songService.$modalPlaylist.subscribe((valu) => {
+      this.showModalPlaylist = valu
+    })
+
     this.loadTrack(this.trackID);
     this.isAdminOrUser();
     this.loadVolume();

@@ -95,7 +95,7 @@
             </mat-icon>
           </span>
         </button>
-        <button class="playlist_add_check" (click)="togglePlaylistsVisibility()">
+        <button class="playlist_add_check" (click)="togglePlaylistsVisibility()" >
           <span>
             <mat-icon>
               playlist_add_check
@@ -112,12 +112,12 @@
       </div>
     </div>
 
-    <app-music-modal-playlist *ngIf="playlistsVisibility" class="playlistsContainer"></app-music-modal-playlist>
+    <app-music-modal-playlist *ngIf="showModalPlaylist" class="playlistsContainer"></app-music-modal-playlist>
 
     <div class="modalUpdateTrack" *ngIf="isEditingTrack" >
       <span class="closeDetails" (click)="openModal()"><mat-icon>close</mat-icon></span>
 
-      <span>Solo archivos con extensión .mp3</span>
+       <p class="text"><mat-icon>warning</mat-icon>Solo archivos con extensión ".mp3"</p>
       <form>
         <label for="trackFile"></label>
         <input value="trackFile" name="trackFile" type="file" accept="mp3" id="trackFileInput"  (change)="onFileSelectedTrack($event)">
