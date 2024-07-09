@@ -67,7 +67,6 @@ export class MusicUpdateComponent {
     });
   }
   closeUpdateDetails(){
-    console.log('execute closeupdate')
     this.songService.$songUpdateDetails.emit(false);
   }
 
