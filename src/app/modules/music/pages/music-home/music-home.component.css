@@ -158,10 +158,13 @@ section#musicList{
   background: rgba(1, 59, 250, 0.842);
   border-radius: 10px;
   box-shadow: 1px 5px 5px black;
+  color: white;
+
 }
 .ngx-pagination li.current,
 .pagination ::ng-deep .ngx-pagination li a:hover {
-  background: rgba(1, 59, 250, 0.411);
+  background: rgba(233, 233, 233, 0.411);
+  color: black;
   border-radius: 10px;
   box-shadow: 1px 5px 5px black;
 }
