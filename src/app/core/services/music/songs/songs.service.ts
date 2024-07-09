@@ -17,6 +17,7 @@ export class SongsService {
 
   $songDetails = new EventEmitter<any>();
   $songUpdateDetails = new EventEmitter<any>();
+  $modalPlaylist = new EventEmitter<any>();
 
   public createSong(songData:any){
     console.log('songData:', songData);
