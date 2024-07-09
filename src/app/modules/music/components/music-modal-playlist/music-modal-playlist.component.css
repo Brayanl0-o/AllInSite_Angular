@@ -1,13 +1,17 @@
 .containerPlaylists{
   position: absolute;
-  top: 20%;
-  right: 40%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
   border-radius: 10px;
   border: 2px solid rgb(10, 5, 83);
   background-color: rgba(58, 55, 55, 0.747);
   color: whitesmoke;
   width: max-content;
   height: max-content;
+  z-index: 50;
 
 
 }
@@ -21,7 +25,7 @@ header{
 }
 header>h4{
   font-size: 1rem;
-  color: rgba(171, 194, 209, 0.904);
+  color: rgba(243, 245, 247, 0.904);
   margin: 10px;
 }
 header>span{
@@ -69,8 +73,14 @@ form>ul{
 
 }
 .containerInputAndLabel>input{
-  background:none;
+  background: none;
   background-color: rgba(51, 52, 105, 0.507);
+  margin-left: 5px;
+}
+.containerInputAndLabel>input:checked{
+  background-color: rgba(2, 4, 110, 0.507);
+
+
 }
 .containerInputAndLabel>mat-icon{
   position: relative;

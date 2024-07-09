@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SongsService } from 'src/app/core/services/music/songs/songs.service';
 
 @Component({
   selector: 'app-music-modal-playlist',
@@ -8,9 +9,14 @@ import { Component } from '@angular/core';
 export class MusicModalPlaylistComponent {
   visibilityForm = false;
 
-  constructor(){}
+  constructor(private songService: SongsService){}
+
 
   togglevisibilityForm(){
     this.visibilityForm = !this.visibilityForm;
+  }
+  closeModalPlaylist(){
+    // this.renderer.removeStyle(document.body, 'overflow');
+    this.songService.$modalPlaylist.emit(false);
   }
 }
