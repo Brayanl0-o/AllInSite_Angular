@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Song, Track } from 'src/app/core/models/song';
+import { Song, Track, Playlist } from 'src/app/core/models/song';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +87,63 @@ export class SongsService {
       formData.append('track',track)
     }
     return this.http.post(url, formData);
+  }
+
+
+  public CreatePlaylist(payload:any){
+    const url = `${this.apiUrl}songs/playlists/createplaylist`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+
+    return this.http.post<Playlist>(url, payload, httpOptions);
+  }
+  public GetPlaylist(playlistId: string): Observable<Playlist>{
+    const url = `${this.apiUrl}songs/playlists/get/${playlistId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.get<Playlist>(url, httpOptions);
+  }
+  public getPlaylists(){
+    const url = `${this.apiUrl}songs/playlists/get`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.get<Playlist[]>(url, httpOptions);
+  }
+  public addSongToPlaylist( playlistId: string,songId:string ){
+    const url = `${this.apiUrl}songs/playlists/${playlistId}/addSong/${songId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.post(url, httpOptions);
+  }
+  public deleteSongFromPlaylist( playlistId: string,songId:string ){
+    const url = `${this.apiUrl}songs/playlists/delete/${playlistId}/deleteSong/${songId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.patch(url, httpOptions);
+  }
+  public deletePlaylist( playlistId: string){
+    const url = `${this.apiUrl}songs/playlists/delete/${playlistId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token':localStorage.getItem('token')|| '',
+      })
+    }
+    return this.http.delete(url, httpOptions);
   }
 }
 
