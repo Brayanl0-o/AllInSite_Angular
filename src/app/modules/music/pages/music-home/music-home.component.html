@@ -23,7 +23,7 @@
     <!-- <button class="openAddSong">Añadir Canción<mat-icon>add</mat-icon></button> -->
     <ul class="container-list">
       <li *ngFor="let song of searchSongs() | paginate: {itemsPerPage:5, currentPage: page} " class="container-target">
-        <a  click="openDetailsSong()" [routerLink]="['song-details',song._id]" class="card" >
+        <a   [routerLink]="['song-details',song._id]" class="card" >
           <img [src]="song.songImg" width="250" height="250" alt="Song image" class="rounded-b-none rounded-t-md">
           <head class="rounded-t-none rounded-b-md">
             <div class="songAndsinger">
