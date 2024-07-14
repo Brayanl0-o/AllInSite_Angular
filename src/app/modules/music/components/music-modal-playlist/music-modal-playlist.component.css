@@ -56,20 +56,27 @@ form>ul{
   align-items: center;
   flex-flow: column nowrap;
   height: fit-content;
-  overflow-y:scroll;
   max-height: 250px;
   overflow-x: hidden;
+
+}
+form>ul>li{
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  min-width: 100%;
+  margin: 5px;
+
+
 }
 .containerInputAndLabel{
   display: flex;
   align-items: center;
   flex-flow: row nowrap;
-  gap: 15px;
-  width: 100%;
-  /* max-width: 200px; */
-  max-height: 40%;
-  margin: 10px;
-  /* background-color: red; */
+  gap: 5px;
 
 }
 .containerInputAndLabel>input{
@@ -83,9 +90,7 @@ form>ul{
 
 }
 .containerInputAndLabel>mat-icon{
-  position: relative;
-  right: -70px;
-  top: 0;
+
 
 }
 
