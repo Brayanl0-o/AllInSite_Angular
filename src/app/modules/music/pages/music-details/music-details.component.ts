@@ -60,14 +60,6 @@ export class MusicDetailsComponent  {
       }
     })
   }
-  openLinkToDeezer(){
-    this.musicDetails$.subscribe((song: Song) => {
-      const linkToDeezer = song.linkToDeezer;
-      if(linkToDeezer){
-        window.open(linkToDeezer, '_blank')
-      }
-    })
-  }
   openLinkToSpotify(){
     this.musicDetails$.subscribe((song: Song) => {
       const linkToSpotify = song.linkToSpotify;
