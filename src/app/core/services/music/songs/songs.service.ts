@@ -16,8 +16,8 @@ export class SongsService {
   }
 
   $songDetails = new EventEmitter<any>();
-  $songUpdateDetails = new EventEmitter<any>();
-  $modalPlaylist = new EventEmitter<any>();
+  $songUpdateDetails = new EventEmitter<boolean>();
+  $modalPlaylist = new EventEmitter<boolean>();
 
   public createSong(songData:any){
     console.log('songData:', songData);
@@ -125,7 +125,16 @@ export class SongsService {
         'x-access-token':localStorage.getItem('token')|| '',
       })
     }
-    return this.http.post(url, httpOptions);
+    return this.http.patch(url, httpOptions);
+  }
+  public removeSongFromPlaylist(playlistId: string, songId: string) {
+    const url = `${this.apiUrl}songs/playlists/${playlistId}/deleteSong/${songId}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token') || '',
+      })
+    };
+    return this.http.patch(url, httpOptions);
   }
   public deleteSongFromPlaylist( playlistId: string,songId:string ){
     const url = `${this.apiUrl}songs/playlists/delete/${playlistId}/deleteSong/${songId}`;
