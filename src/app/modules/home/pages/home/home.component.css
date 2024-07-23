@@ -1,70 +1,94 @@
-.slider-home{
- width: 100vh;
- height: 55vh;
- margin: auto;
+h1{
+  text-align: center;
+  padding: 2.5rem 0 0 0;
+  font-weight: 900;
+  font-size: 3rem;
+  
 }
-@media screen and (max-width: 1050px) {
-  .slider-home{
-    width: 80vh;
-    height: 40vh;
-    margin: 0 auto;
-  }
-  .containerImages {
-    margin: auto;
-    width: 80%;
-  }
+.wrapper{
+  text-align: center;
+  margin:1% auto;
+  width: 95%;
 }
-@media screen and (max-width:768px) {
-  .slider-home{
-    width: 90%;
-    height: 35vh;
-    margin: 0 auto;
-   }
-  .containerImages {
-    margin: auto;
-    width: 80%;
-  }
-  .containerImage{
-    margin-top: 5vh;
-  }
+.parent{
+  width: 30%;
+  margin: 0 20px;
+  height: 700px;
+  border: 1px solid blue;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.child{
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+.bg-one{background-image: url('../../../../../assets/img/slider-home/half_life-headcrab.webp'); background-position: center;}
+.bg-two{background-image: url('../../../../../assets/img/slider-home/half_life_2-black-whit.webp');background-position: center;}
+.bg-three{background-image: url('../../../../../assets/img/slider-home/halo.webp');background-position: center;}
+
+a>span{
+  display: none;
+  font-size: 35px;
+  color: #ffffff !important;
+  font-family: sans-serif;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 50px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-@media screen and (max-width:500px) {
-  .slider-home{
-    width: auto;
-    height: 30vh;
-    margin: 0 auto;
-  }
-  .containerImages {
-    flex-wrap: wrap;
-    width: 90%;
-    gap:5%;
-  }
-  .containerImage{
-    padding-bottom: 0px;
-  }
-  .containerImage>img {
-    width: 70px;
-    height: 70px;
-  }
-  .containerImage>button {
-    width: fit-content;
-    height: fit-content;
-  }
+.parent:hover .child, .parent:focus .child {
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
 }
-@media screen and (max-width: 350px) {
-  .slider-home{
-    width: auto;
-    height: 30vh;
-    margin: 0 auto;
-  }
-  .containerImages {
-    flex-wrap: wrap;
-    width: 90%;
-    gap:2%;
-  }
-  .containerImage>img {
-    width: 70px;
-    height: 70px;
-  }
+
+.parent:hover .child:before, .parent:focus .child:before {
+  display: block;
 }
+
+.parent:hover a span, .parent:focus a span {
+  display: block;
+}
+
+.child:before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(52,73,94,0.75);
+
+}
+.two-a{
+  margin-top:35%;
+  font-size: 1.3rem;
+
+}
+/* Media Queries */
+@media screen and (max-width: 960px) {
+  .parent {width: 100%; margin: 20px 0px}
+  .wrapper {padding: 20px 20px;}
+}
+
+.hello {display: none}
+
