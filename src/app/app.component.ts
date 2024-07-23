@@ -8,7 +8,7 @@ import { initFlowbite } from 'flowbite';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gameSite';
+  title = 'AllIn';
 
 
   ngOnInit(): void{

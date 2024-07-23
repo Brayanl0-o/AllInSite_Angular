@@ -24,7 +24,7 @@ export class RegisterComponent {
   isLoading = false;
 
   ngOnInit(): void {
-    this.contactForm = this.initFrom();
+    this.contactForm = this.initForm();
   }
 
   errorResponseMessageForm = '';
@@ -69,13 +69,13 @@ export class RegisterComponent {
       console.log('userData ts', userData)
       this.authService.signUp(userData, this.selectedFile).subscribe(
         (response) => {
-          this.contactForm = this.initFrom();
+          this.contactForm = this.initForm();
           const fileInput = document.getElementById('fileInput') as HTMLInputElement;
           if(fileInput){
             fileInput.value= '';
           }
           this.selectedFile = null;
-          this.isRegisterOk= true;
+          this.isRegisterOk = true;
         },
         (error) => {
           console.error('Error al registrarse in subscribe', error);
@@ -93,7 +93,7 @@ export class RegisterComponent {
     }
   }
 
-  initFrom(): FormGroup {
+  initForm(): FormGroup {
     return this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
       lastName: ['', [Validators.required, Validators.minLength(3),Validators.maxLength(30), Validators.pattern('[A-Za-z\\s]+')]],
