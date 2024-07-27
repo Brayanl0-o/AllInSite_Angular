@@ -2,27 +2,29 @@
   <h1 class="text-center font-extrabold text-transparent bg-clip-text  bg-gradient-to-br to-cyan-d via-purple-d  from-redpink-d">¡BIENVENID@!</h1>
 
   <div class="wrapper">
-    <div class="parent">
+    <div class="parent" (click)="navigateTo('videogames')">
       <div class="child bg-one">
         <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']">
-          <span>Videogames</span>
+          <span class="text-gradient one">Videojuegos</span>
         </a>
       </div>
     </div>
   
-    <div class="parent bg-two">
+    <div class="parent bg-two" (click)="navigateTo('music')">
       <div class="child bg-two">
         <a [routerLink]="['/music']">
-          <span>Music</span>
+          <span class="text-gradient two">Música</span>
         </a>
         
       </div>
     </div>
-    <div class="parent big-three">
+
+    <div class="parent big-three" (click)="navigateTo('cine')">
       <div class="child bg-three">
         <a [routerLink]="isUserLoggedIn() ? ['/videogames', { id: userId }] : ['/videogames']">
-          <span>Cine</span>
-        </a>
+          <span class="text-gradient three">Proximamente...</span>
+        </a>  
+
       </div>
     </div>
   </div>

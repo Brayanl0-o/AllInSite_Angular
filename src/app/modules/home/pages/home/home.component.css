@@ -1,13 +1,12 @@
 h1{
   text-align: center;
-  padding: 2.5rem 0 0 0;
+  padding: 3rem 0 1rem 0;
   font-weight: 900;
   font-size: 3rem;
-  
 }
 .wrapper{
   text-align: center;
-  margin:1% auto;
+  margin: auto;
   width: 95%;
 }
 .parent{
@@ -31,15 +30,14 @@ h1{
   -o-transition: all .5s;
   transition: all .5s;
 }
-.bg-one{background-image: url('../../../../../assets/img/slider-home/half_life-headcrab.webp'); background-position: center;}
-.bg-two{background-image: url('../../../../../assets/img/slider-home/half_life_2-black-whit.webp');background-position: center;}
-.bg-three{background-image: url('../../../../../assets/img/slider-home/halo.webp');background-position: center;}
+.bg-one{background-image: url('../../../../../assets/img/slider-home/videogames/videogames2.jpg'); background-position: center;}
+.bg-two{background-image: url('../../../../../assets/img/slider-home/music/MusicWallpaper.jpg');background-position: center;}
+.bg-three{background-image: url('../../../../../assets/img/slider-home/cine/wallppapermovies.jpg');background-position: center;}
 
-a>span{
+a span{
   display: none;
   font-size: 35px;
-  color: #ffffff !important;
-  font-family: sans-serif;
+  font-family: sans-serif;  
   text-align: center;
   margin: auto;
   position: absolute;
@@ -49,8 +47,16 @@ a>span{
   right: 0;
   height: 50px;
   cursor: pointer;
-  text-decoration: none;
 }
+.text-gradient {
+  font-weight: 800;
+  background-clip: text;
+  color: transparent;
+}
+.one{background-image: linear-gradient(to right, #350a58, #100e88); }
+.two{background-image: linear-gradient(to right, #350a58, #100e88); }
+.three{background-image: linear-gradient(to right, #350a58, #100e88);text-decoration: line-through rgba(14, 4, 39, 0.63);  }
+
 
 .parent:hover .child, .parent:focus .child {
   -ms-transform: scale(1.2);
