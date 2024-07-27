@@ -18,3 +18,15 @@ nav{
   border-color: rgba(64, 64, 212, 0.589);
   border-bottom: 2px solid;
 }
+.nav-big-screen-home{
+  display: none;
+}
+
+.nav-big-screen-other{
+  display: block;
+}
+@media (min-width: 768px) {
+    .md\:block {
+        display: block;
+    }
+}

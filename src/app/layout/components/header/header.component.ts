@@ -1,4 +1,4 @@
-import { Router} from '@angular/router';
+import { NavigationEnd, Router} from '@angular/router';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideogamesService } from 'src/app/core/services/videogames/videogames.service';
@@ -18,6 +18,7 @@ export class HeaderComponent {
   constructor(private userShared: SharedUsersService,
     public videogamesService: VideogamesService,
     private authService: AuthService,
+    private router: Router
     ){}
 
   user: User | null = null;
@@ -32,6 +33,21 @@ export class HeaderComponent {
       this.user = this.authService.user;
     })
     this.dataUser();
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
+        this.detectStateRoute();
+      }
+    })
+    this.detectStateRoute();
+  }
+  currentRouteClass = '';
+  detectStateRoute(){
+    const currentUrl = this.router.url;
+    if(currentUrl.includes('home')){
+        this.currentRouteClass = 'nav-big-screen-home';
+    }else{
+      this.currentRouteClass = 'nav-big-screen-other';
+    }
   }
   isUserLoggedIn() {
     return this.authService.isLoggedIn();
