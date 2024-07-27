@@ -34,7 +34,7 @@ h1{
 .bg-two{background-image: url('../../../../../assets/img/slider-home/music/MusicWallpaper.jpg');background-position: center;}
 .bg-three{background-image: url('../../../../../assets/img/slider-home/cine/wallppapermovies.jpg');background-position: center;}
 
-a span{
+span{
   display: none;
   font-size: 35px;
   font-family: sans-serif;  
@@ -70,7 +70,7 @@ a span{
   display: block;
 }
 
-.parent:hover a span, .parent:focus a span {
+.parent:hover span, .parent:focus span {
   display: block;
 }
 

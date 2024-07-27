@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -7,13 +8,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  public env: string = environment.apiUrl
-  userId: string | null = null;
+  constructor(private router: Router) {}
 
-  constructor() {}
-
-  isUserLoggedIn() {
-    return !!this.userId;
+  navigateTo(path: string){
+    this.router.navigate([path]);
+    console.log(path);
   }
-
 }
