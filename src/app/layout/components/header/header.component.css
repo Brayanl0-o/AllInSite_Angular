@@ -25,7 +25,10 @@ nav{
 .nav-big-screen-other{
   display: block;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+    .nav-big-screen-home{
+      display: none;
+    }
     .md\:block {
         display: block;
     }
