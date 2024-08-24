@@ -1,6 +1,6 @@
 <router-outlet *ngIf="$songDetails" ></router-outlet>
-<img  class="background-image" src="../../../../../assets/img/music/3d-gray.jpg" alt="">
 
+<img  class="background-image" src="../../../../../assets/img/music/3d-gray.jpg" alt="">
 <body>
 
   <header>
@@ -18,9 +18,11 @@
   <div class="buttonAddSong" *ngIf="isAdmin">
     <app-music-add *ngIf="showButtonAdd"></app-music-add>
   </div>
-  <section id="musicList" >
-    <!-- <app-music-add></app-music-add> -->
-    <!-- <button class="openAddSong">Añadir Canción<mat-icon>add</mat-icon></button> -->
+  
+  <app-skeleton-music-home id="musicListSkeleton" *ngIf="isLoading" class="z-50"></app-skeleton-music-home>
+
+  <section id="musicList" *ngIf="!isLoading">
+ 
     <ul class="container-list">
       <li *ngFor="let song of searchSongs() | paginate: {itemsPerPage:5, currentPage: page} " class="container-target">
         <a   [routerLink]="['song-details',song._id]" class="card" >
@@ -36,11 +38,13 @@
             </button>
           </head>
           <!-- <div class="score">{{song.averageRating}}</div> -->
-      </a>
+        </a>
       </li>
     </ul>
 
-    <pagination-controls class="pagination m-auto mt-0 mb-16" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
-
   </section>
+  <div class="containerPagination">
+    <pagination-controls class="pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
+  </div>
+
 </body>

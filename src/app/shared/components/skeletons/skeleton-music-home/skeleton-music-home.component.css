@@ -1,0 +1,46 @@
+.skeleton-music-home{
+    display:grid;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
+    gap: 50px;
+    width: 90%;
+    margin: 1rem auto 0 auto;
+}
+.item1,
+.item2,
+.item3,
+.item4,
+.item5{
+    grid-row: 1/8;
+    background-color: rgba(212, 212, 212, 0.274);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.img{
+    background-color: rgba(104, 104, 104, 0.068);
+    height: 75%;
+    width: 100%;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.head{
+    background-color: rgba(6, 6, 114, 0.459);
+    height: 75px;
+    width: 100%;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+/* .item1{
+  
+}
+.item2{
+  
+
+}
+.item3{
+
+}
+.item4{
+
+} */

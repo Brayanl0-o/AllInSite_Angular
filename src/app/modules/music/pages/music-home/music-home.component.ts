@@ -19,12 +19,15 @@ export class MusicHomeComponent {
   isAdmin = false;
   page: number = 1;
   notResultsOne = false;
+  isLoading = true;
 
   constructor(private songService:  SongsService,
     private authService: AuthService,
     private router:Router,
     private renderer: Renderer2){}
-  ngOnInit(){
+
+
+    ngOnInit(){
     this.songService.$songDetails.subscribe((value: boolean) => {
       this.showButtonAdd = !value;
     });
@@ -60,8 +63,12 @@ export class MusicHomeComponent {
     return results;
   }
   getSongData(){
+    this.isLoading = true;
     this.songService.getSongs().subscribe((data: Song[]) =>{
       this.songs = data;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1000); 
     })
   }
   openDetailsSong(){

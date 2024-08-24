@@ -24,12 +24,12 @@ import { MusicModalPlaylistComponent } from './components/music-modal-playlist/m
   ],
   imports: [
     CommonModule,
+    SharedModule,
     MatIconModule,
     MusicRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    SharedModule,
     CoreModule
   ]
 })

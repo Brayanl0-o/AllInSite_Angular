@@ -14,6 +14,7 @@ import { Forbidden403Component } from './components/errors/forbidden-403/forbidd
 import { Unauthorized401Component } from './components/errors/unauthorized-401/unauthorized-401.component';
 import { NotFound404Component } from './components/errors/not-found-404/not-found-404.component';
 import { sharedRoutingModule } from './shared-routing.module';
+import { SkeletonMusicHomeComponent } from './components/skeletons/skeleton-music-home/skeleton-music-home.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { sharedRoutingModule } from './shared-routing.module';
     InternalServerError500Component,
     Forbidden403Component,
     Unauthorized401Component,
+    SkeletonMusicHomeComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { sharedRoutingModule } from './shared-routing.module';
     SkeletonProfileComponent,
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
+    SkeletonMusicHomeComponent,
     WarningComponent,
     NotFound404Component,
     NoResultsComponent,

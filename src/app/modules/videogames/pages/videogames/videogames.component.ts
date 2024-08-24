@@ -50,7 +50,6 @@ export class VideogamesComponent {
     this.applyFilters({});
 
   }
-  detectRoute: boolean = false;
   showDetails: boolean = false;
   hideList: boolean = true;
   detectStateRoute() {
