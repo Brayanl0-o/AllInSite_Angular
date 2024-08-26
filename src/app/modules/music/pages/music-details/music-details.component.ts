@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, EventEmitter, Renderer2 } from '@angular/core';
+import { Component, HostListener, ElementRef, EventEmitter, Renderer2, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute,ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
@@ -10,7 +10,8 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   templateUrl: './music-details.component.html',
   styleUrls: ['./music-details.component.css']
 })
-export class MusicDetailsComponent  {
+export class MusicDetailsComponent {
+  @Input() songs: Song[] = [];
   private apiUrl =  environment.apiUrl;
   musicDetails$!: Observable<Song>;
   $songUpdateDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -27,6 +28,19 @@ export class MusicDetailsComponent  {
     this.songService.$songUpdateDetails.subscribe((valu) => { this.showUpdateModal = valu })
     this.loadDetailsSong();
     this.isAdminOrNot();
+    this.loadSongs();
+  }
+
+  loadSongs(){
+    this.songService.getSongs().subscribe((data)=>{
+      this.songs =  this.shuffleArray(this.filterSongs(data));
+    })
+  }
+  filterSongs(songs: Song[]): Song[] {
+    return songs.filter(song => song._id !== this.currentSong!._id);
+  }
+  shuffleArray(array: Song[]): Song[]{
+    return array.sort(() => Math.random() - 0.5);
   }
   loadDetailsSong(){
     this.route.paramMap.subscribe((params: ParamMap) =>{
@@ -35,7 +49,6 @@ export class MusicDetailsComponent  {
         this.musicDetails$ = this.songService.getSong(songId);
         this.musicDetails$?.subscribe(song => {
           this.renderer.setStyle(document.body, 'overflow', 'hidden');
-
           this.currentSong = song;
         });
       }

@@ -20,9 +20,7 @@
       <div class="containerInformation">
         <div class="title">
           <h1>{{musicDetails.songName}}</h1>
-          <span class="lineMiddle">
-            <mat-icon>minimize</mat-icon>
-          </span>
+     
           <h2>{{musicDetails.singer}}</h2>
         </div>
         <!-- <p>{{musicDetails.averageRating ? musicDetails.averageRating: 'No añadido.'}}</p> -->
@@ -30,10 +28,17 @@
         <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 
-      <div class="containerButtons">
-        <button type="button" class="youtube" (click)="openLinkToYoutube()"><img src="../../../../../assets/img/logos/youtube-icon.png" alt="Logo de Youtube"></button>
-        <button type="button" class="spotify" (click)="openLinkToSpotify()"><img src="../../../../../assets/img/logos/spotify-icon.png" alt="Logo de Spotify"></button>
-        <!-- <button type="button" class="dezeer" (click)="openLinkToDeezer()">Deezer</button> -->
+      <div class="recommended">
+        <ul *ngFor="let song of songs">
+          <li>
+            <img [src]="song.songImg" alt="Song image" class="album-recommended" >
+            <div class="info-recommended">
+              <h1>{{song.songName}}</h1>
+              <h2>{{song.singer}}</h2>
+            </div>
+          </li>
+          
+        </ul>
       </div>
     </section>
 

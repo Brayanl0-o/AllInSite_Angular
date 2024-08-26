@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SongsService } from 'src/app/core/services/music/songs/songs.service';
-import { environment } from 'src/environments/environment';
 import { Song } from 'src/app/core/models/song';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -12,10 +11,10 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class MusicHomeComponent {
   $songDetails:EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() searchValueChanged = new EventEmitter<string>();
+  songs: Song[]=[];
   showButtonAdd: boolean = true;
   showDetails: boolean = false;
   searchTerm: string = '';
-  songs: Song[]=[];
   isAdmin = false;
   page: number = 1;
   notResultsOne = false;
@@ -23,8 +22,7 @@ export class MusicHomeComponent {
 
   constructor(private songService:  SongsService,
     private authService: AuthService,
-    private router:Router,
-    private renderer: Renderer2){}
+    private router:Router){}
 
 
     ngOnInit(){
@@ -34,6 +32,16 @@ export class MusicHomeComponent {
     this.getSongData();
     this.detectRoute();
     this.isAdminOrNot();
+  }
+
+  getSongData(){
+    this.isLoading = true;
+    this.songService.getSongs().subscribe((data: Song[]) =>{
+      this.songs = data;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1000); 
+    })
   }
   onSearchInputChange() {
     this.searchValueChanged.emit(this.searchTerm);
@@ -62,15 +70,7 @@ export class MusicHomeComponent {
     this.notResultsOne = results.length === 0;
     return results;
   }
-  getSongData(){
-    this.isLoading = true;
-    this.songService.getSongs().subscribe((data: Song[]) =>{
-      this.songs = data;
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1000); 
-    })
-  }
+  
   openDetailsSong(){
     this.detectRoute();
   }
