@@ -29,11 +29,17 @@ export class MusicDetailsComponent {
     this.loadDetailsSong();
     this.isAdminOrNot();
     this.loadSongs();
-  }
 
+  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes['currentSong']) {
+  //     this.loadSongs();
+  //   }
+  // }
   loadSongs(){
     this.songService.getSongs().subscribe((data)=>{
       this.songs =  this.shuffleArray(this.filterSongs(data));
+      console.log('Filtered Songs:', this.songs);
     })
   }
   filterSongs(songs: Song[]): Song[] {

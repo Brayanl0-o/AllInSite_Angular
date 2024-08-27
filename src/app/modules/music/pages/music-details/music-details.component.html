@@ -1,7 +1,7 @@
 <app-music-update *ngIf="showUpdateModal && currentSong"  [song]="currentSong"></app-music-update>
 
 <body *ngIf="musicDetails$ | async as musicDetails" >
-  <div class="containerDetails">
+  <div class="containerDetails start-animation ">
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
     <span class="updateDetails" *ngIf="isAdmin" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
 
@@ -29,15 +29,16 @@
       </div>
 
       <div class="recommended">
-        <ul *ngFor="let song of songs">
-          <li>
-            <img [src]="song.songImg" alt="Song image" class="album-recommended" >
-            <div class="info-recommended">
-              <h1>{{song.songName}}</h1>
-              <h2>{{song.singer}}</h2>
-            </div>
-          </li>
-          
+        <ul>
+          <a [routerLink]="['/music/song-details',song._id]" *ngFor="let song of songs">
+            <li>
+              <img [src]="song.songImg" alt="Song image" class="album-recommended" >
+              <div class="info-recommended">
+                <h1>{{song.songName}}</h1>
+                <h2>{{song.singer}}</h2>
+              </div>
+            </li>
+          </a>
         </ul>
       </div>
     </section>
