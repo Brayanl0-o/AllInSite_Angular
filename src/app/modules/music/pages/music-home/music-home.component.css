@@ -6,7 +6,6 @@ body{
     rgba(3, 6, 43, 0.877),
     rgba(9, 2, 27, 0.979)
   );
-
   margin: 0;
   padding: 0;
 
@@ -18,12 +17,10 @@ body>header{
   background-size:cover;
   width: 100%;
   height: 80%;
-  /* background-image: url("../../../../../assets/img/music/3d-gray.jpg"); */
   z-index: 50;
 
 }
 .background-image{
-  /* background-image: url("../../../../../assets/img/music/3d-gray.jpg"); */
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -50,10 +47,8 @@ body>header>h3{
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(to right, #1922a3, #1582caa9);
-
 }
 .search,
-section#musicList,
 .card>head,
 .card>head>div,
 .play{
@@ -65,8 +60,6 @@ section#musicList,
 .play{
   color: rgb(115, 134, 221);
 }
-
-
 .search{
   padding: 2rem;
 }
@@ -82,40 +75,48 @@ input{
   vertical-align: middle;
   border: 1px solid rgba(125, 164, 216, 0.767);
 }
-.buttonAddSong{
+.button-add-song{
   position: absolute;
   top: 420px;
   left: 100px;
+  z-index: 50;
 }
-section#musicList{
-  flex-flow: row wrap;
-  margin: 0rem 0rem 0rem 0rem;
-  height: fit-content;
-  /* background-image: linear-gradient(150deg, #1b238f00, #2c44c900);
-  background-color: rgba(6, 6, 53, 0.959); */
 
+/* music list */
+#music-list{
+  width: 100%;
+  height: auto;
+  background-color: rgba(6, 6, 53, 0.753);
+  padding-bottom: 5rem;
 }
-.container-list{
-  width: 90%;
+ul.list{
   display: flex;
+  justify-content: center;  align-items: center;
   flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 0rem 2rem;
-  align-items: center;
+  gap: 20px;
+  width: 90%;
+  list-style: none;
+  padding: 0;
   margin: auto;
 
 }
+ul.list li{
+  border-radius: 10px;
+  width: 300px;
+  height:min-content;
+  padding: 0;
+  margin: 2rem auto;
+}
+
+/* inside card */
 .container-target{
   width: auto;
   height: auto;
   margin: auto;
 }
 .card{
-  /* border: 1px solid black; */
   border-radius: 10px;
   width: fit-content;
-  margin: 2rem 1rem 2rem 1rem;
   text-decoration: none;
 }
 .card>img{
@@ -128,7 +129,6 @@ section#musicList{
   padding: 0.5rem auto 1rem auto;
   padding: 10px;
   background-image: linear-gradient(150deg, rgba(15, 13, 175, 0.616), #0d102bc4);
-
 }
 .card>head>div{
   justify-content: flex-end;
@@ -153,6 +153,12 @@ section#musicList{
   gap: 10px;
 }
 
+/* pagination */
+.container-pagination{
+  width:fit-content;
+  height: 40px;
+  margin: auto;
+}
 .pagination ::ng-deep
 .ngx-pagination
 .current{
@@ -166,25 +172,8 @@ section#musicList{
   border-radius: 10px;
   box-shadow: 1px 5px 5px black;
 }
-.containerPagination{
-  display: flex;
-  height: 30px;
-  width: fit-content;
-  margin: 3rem auto 0 auto;
-}
-@media( max-width: 1060px ) {
 
-  .container-list{
-    justify-content: center;
-  }
-}
-@media( max-width: 546px ) {
-  .container-list{
-    width: 95%;
-    margin: auto;
-    gap: 5rem;
-  }
-}
+
 @media(max-width:500px) {
   body>h3{
     font-size: 4rem;

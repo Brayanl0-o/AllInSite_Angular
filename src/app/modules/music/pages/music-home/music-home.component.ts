@@ -40,7 +40,7 @@ export class MusicHomeComponent {
       this.songs = data;
       setTimeout(() => {
         this.isLoading = false;
-      }, 1000); 
+      }, 500); 
     })
   }
   onSearchInputChange() {

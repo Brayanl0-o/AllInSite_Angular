@@ -1,9 +1,7 @@
 <router-outlet *ngIf="$songDetails"></router-outlet>
 <img  class="background-image" src="../../../../../assets/img/music/3d-gray.jpg" alt="">
-<body>
-
+<body id="music">
   <header>
-
     <h3>Musicdoor</h3>
     <div class="search">
       <input type="text" placeholder="Busca tu tema..." class="rounded-l-md" [(ngModel)]="searchTerm" (input)="onSearchInputChange()" >
@@ -14,15 +12,14 @@
     </div>
   </header>
 
-  <div class="buttonAddSong" *ngIf="isAdmin">
+  <div class="button-add-song" *ngIf="isAdmin">
     <app-music-add *ngIf="showButtonAdd"></app-music-add>
   </div>
   
   <app-skeleton-music-home id="musicListSkeleton" *ngIf="isLoading" class="z-50"></app-skeleton-music-home>
 
-  <section id="musicList" *ngIf="!isLoading">
- 
-    <ul class="container-list">
+  <section id="music-list" *ngIf="!isLoading">
+    <ul class="list">
       <li *ngFor="let song of searchSongs() | paginate: {itemsPerPage:5, currentPage: page} " class="container-target">
         <a   [routerLink]="['song-details',song._id]" class="card" >
           <img [src]="song.songImg" width="250" height="250" alt="Song image" class="rounded-b-none rounded-t-md">
@@ -40,10 +37,9 @@
         </a>
       </li>
     </ul>
-
+    <div class="container-pagination">
+      <pagination-controls class="pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
+    </div>
   </section>
-  <div class="containerPagination">
-    <pagination-controls class="pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Proximo"></pagination-controls>
-  </div>
 
 </body>
