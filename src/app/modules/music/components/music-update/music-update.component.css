@@ -1,6 +1,6 @@
 body{
   background-color: rgba(5, 2, 51, 0.959);
-  width: 60%;
+  width:40%;
   height:fit-content;
   max-height: 65%;
   overflow-y: scroll;
@@ -44,7 +44,7 @@ form{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   color: white;
 }
 .container-form{
@@ -53,9 +53,8 @@ form{
   /* align-items: start; */
   flex-flow: row wrap;
   gap: 10px;
-  width: 95%;
+  width:80%;
   /* background-color: red; */
-  padding-bottom: 2rem;
 
 }
 .container-form>div{
