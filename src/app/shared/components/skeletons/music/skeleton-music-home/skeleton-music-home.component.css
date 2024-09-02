@@ -1,0 +1,58 @@
+ /* music list */
+#music-list{
+    width: 100%;
+    height: auto;
+    padding-bottom: 5rem;
+}
+  ul.list{
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    flex-flow: row wrap;
+    gap: 20px;
+    width: 90%;
+    list-style: none;
+    padding: 0;
+    margin: auto;
+  
+  }
+  ul.list li{
+    border-radius: 10px;
+    width: 300px;
+    height:300px;
+    background-color: rgba(212, 212, 212, 0.274);
+    padding: 0;
+    margin: 2rem auto;
+    /* border: 1px solid rgba(0, 0, 0, 0.527); */
+  }
+  
+  /* inside card */
+  .container-target{
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+  .card{
+    border-radius: 10px;
+    width: fit-content;
+    text-decoration: none;
+  }
+  .card>.img{
+    min-width: 300px;
+    max-width: 300px;
+    height: 200px;
+    background-color: rgba(104, 104, 104, 0.63);
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+  }
+  .card header{
+    height: 100px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem auto 1rem auto;
+    padding: 10px;
+    background-image: linear-gradient(150deg, rgba(15, 13, 175, 0.616), #0d102bc4);
+  }
+ 

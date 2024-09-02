@@ -18,6 +18,7 @@ export class MusicDetailsComponent {
   showUpdateModal = false;
   currentSong: Song | null = null;
   isAdmin = false;
+  isLoadingRecommends = true;
   constructor(private songService: SongsService,
     private route: ActivatedRoute,
     private router:Router,
@@ -29,7 +30,6 @@ export class MusicDetailsComponent {
     this.loadDetailsSong();
     this.isAdminOrNot();
     this.loadSongs();
-
   }
   // ngOnChanges(changes: SimpleChanges) {
   //   if (changes['currentSong']) {
@@ -38,8 +38,14 @@ export class MusicDetailsComponent {
   // }
   loadSongs(){
     this.songService.getSongs().subscribe((data)=>{
+
       this.songs =  this.shuffleArray(this.filterSongs(data));
-      console.log('Filtered Songs:', this.songs);
+      setTimeout(() => {
+        this.isLoadingRecommends = false;
+        console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
+      }, 5000); 
+     
+      console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
     })
   }
   filterSongs(songs: Song[]): Song[] {
@@ -49,6 +55,7 @@ export class MusicDetailsComponent {
     return array.sort(() => Math.random() - 0.5);
   }
   loadDetailsSong(){
+
     this.route.paramMap.subscribe((params: ParamMap) =>{
       const songId = params.get('songId');
       if(songId){
@@ -56,6 +63,7 @@ export class MusicDetailsComponent {
         this.musicDetails$?.subscribe(song => {
           this.renderer.setStyle(document.body, 'overflow', 'hidden');
           this.currentSong = song;
+
         });
       }
     })
@@ -70,23 +78,7 @@ export class MusicDetailsComponent {
       this.isAdmin = false;
     }
   }
-  openLinkToYoutube(){
-    this.musicDetails$.subscribe((song: Song) => {
-      const linkToYoutube = song.linkToYoutube;
-      console.log(linkToYoutube)
-      if(linkToYoutube){
-        window.open(linkToYoutube, '_blank')
-      }
-    })
-  }
-  openLinkToSpotify(){
-    this.musicDetails$.subscribe((song: Song) => {
-      const linkToSpotify = song.linkToSpotify;
-      if(linkToSpotify){
-        window.open(linkToSpotify, '_blank')
-      }
-    })
-  }
+  
   deleteSong(songId: string) {
     this.songService.deleteSong(songId).subscribe(
       (response) => {
@@ -117,4 +109,21 @@ export class MusicDetailsComponent {
 
   //     this.closeDetails();
   //   }
+  // }
+  // openLinkToYoutube(){
+  //   this.musicDetails$.subscribe((song: Song) => {
+  //     const linkToYoutube = song.linkToYoutube;
+  //     console.log(linkToYoutube)
+  //     if(linkToYoutube){
+  //       window.open(linkToYoutube, '_blank')
+  //     }
+  //   })
+  // }
+  // openLinkToSpotify(){
+  //   this.musicDetails$.subscribe((song: Song) => {
+  //     const linkToSpotify = song.linkToSpotify;
+  //     if(linkToSpotify){
+  //       window.open(linkToSpotify, '_blank')
+  //     }
+  //   })
   // }

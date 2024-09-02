@@ -1,6 +1,5 @@
 body#audio-player{
   color: #d8d6d6;
-  width: 100%;
   margin: auto;
   display: flex;
   align-items: center;
@@ -69,7 +68,7 @@ body#audio-player{
   justify-content: space-between;
   align-items: center;
   height: fit-content;
-  width: max-content;
+  width: 600px;
   margin: auto;
   gap: 20px;
 }
@@ -85,7 +84,6 @@ body#audio-player{
   max-width: 600px;
   min-height: 600px;
   min-width: 600px;
-  background-color: red;
   width: 10rem;
   color: whitesmoke;
 }
@@ -251,6 +249,9 @@ body#audio-player{
 
 
 @media(max-width:768px){
+  .controls{
+    width: fit-content;
+  }
   .controls>span{
     height: 400px;
     width: 400px;

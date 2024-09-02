@@ -25,8 +25,9 @@
         <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 
-      <div class="recommended">
-        <ul>
+      <app-skeleton-music-recommended *ngIf="isLoadingRecommends"></app-skeleton-music-recommended>
+      <div class="recommended" >
+        <ul *ngIf="isLoadingRecommends">
           <a [routerLink]="['/music/song-details',song._id]" *ngFor="let song of songs">
             <li>
               <img [src]="song.songImg" alt="Song image" class="album-recommended" >

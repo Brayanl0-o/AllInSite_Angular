@@ -14,7 +14,8 @@ import { Forbidden403Component } from './components/errors/forbidden-403/forbidd
 import { Unauthorized401Component } from './components/errors/unauthorized-401/unauthorized-401.component';
 import { NotFound404Component } from './components/errors/not-found-404/not-found-404.component';
 import { sharedRoutingModule } from './shared-routing.module';
-import { SkeletonMusicHomeComponent } from './components/skeletons/skeleton-music-home/skeleton-music-home.component';
+import { SkeletonMusicHomeComponent } from './components/skeletons/music/skeleton-music-home/skeleton-music-home.component';
+import { SkeletonMusicRecommendedComponent } from './components/skeletons/music/skeleton-music-recommended/skeleton-music-recommended.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SkeletonMusicHomeComponent } from './components/skeletons/skeleton-musi
     Forbidden403Component,
     Unauthorized401Component,
     SkeletonMusicHomeComponent,
+    SkeletonMusicRecommendedComponent,
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { SkeletonMusicHomeComponent } from './components/skeletons/skeleton-musi
     SkeletonHeaderComponent,
     SkeletonHomeComponent,
     SkeletonMusicHomeComponent,
+    SkeletonMusicRecommendedComponent,
     WarningComponent,
     NotFound404Component,
     NoResultsComponent,

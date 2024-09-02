@@ -15,7 +15,7 @@ body{
   position: absolute;
   height: fit-content;
   max-height: 70%;
-  width: calc(55% + 10vw);
+  width: calc(50% + 10vw);
   top: 0;
   left: 0;
   right: 0;
@@ -30,7 +30,7 @@ body{
   display: flex;
   flex-flow: row wrap;
   justify-content:center;
-  gap: 10%;
+  gap: 15%;
   align-items: center;
   background: linear-gradient(to bottom, #33383e 0%, #17191d 100%);
   border-radius: 10px 10px 0px 0px;
@@ -96,10 +96,8 @@ body{
 
 /* audio player */
 .containerAudioPlayer{
-  margin:auto ;
   padding-bottom: 2rem;
   background-color: #17191d;
-  width: 100%;
 }
 
 /* lyrics */
