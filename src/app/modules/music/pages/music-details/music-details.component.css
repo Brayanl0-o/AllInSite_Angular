@@ -15,8 +15,7 @@ body{
   position: absolute;
   height: fit-content;
   max-height: 70%;
-  width: 80%;
-  max-width: 60%;
+  width: calc(55% + 10vw);
   top: 0;
   left: 0;
   right: 0;
@@ -26,13 +25,12 @@ body{
   background-color: rgba(0, 0, 0, 0.685);
 }
 
-/* audio-player */
-
+/* album and details */
 .containerUp{
   display: flex;
   flex-flow: row wrap;
   justify-content:center;
-  gap: 8%;
+  gap: 10%;
   align-items: center;
   background: linear-gradient(to bottom, #33383e 0%, #17191d 100%);
   border-radius: 10px 10px 0px 0px;
@@ -44,7 +42,6 @@ body{
   height: 205px;
   width: 205px;
   object-fit: cover;
-  /* border: 2px rgb(2, 26, 70) solid; */
 }
 .album-recommended {
   height: 105px;
@@ -52,8 +49,6 @@ body{
 }
 .center {
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
   background: radial-gradient(
     at top left,
     rgba(46, 50, 58, 1) 0%,
@@ -71,42 +66,81 @@ body{
     10px 10px 16px 8px rgb(24, 26, 29);
   background: radial-gradient(at top left, rgba(28, 30, 35, 1) 0%, #131416 85%);
 }
-.containerAudioPlayer{
-  width: 50%;
-}
-
-/* details */
-.containerDetails>section{
-  display: flex;
-  flex-flow: row wrap;
-  align-items:flex-start;
-}
-.containerInformation{
-  min-width:50%;
-  width: 50%;
-  max-width:50%;
-}
-.title{
+.title,
+.title span{
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  margin-left: -70px;  
+  justify-content: space-between;
+  /* margin-left: -70px;   */
 }
-.recommended{
-  background-color: rgba(27, 23, 32, 0.534);
-  min-width:50%;
-  width: 50%;
-  max-width:50%;
+.title span{
+  flex-flow: row nowrap;
+  gap: 10px;
+  color: whitesmoke;
+}
+.title span mat-icon{
+  color:rgba(4, 43, 134, 0.63);
 }
 
+.title h1,h2{
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.title h2{
+  font-size: 1.5rem;
+  padding: 10px 0;
+  width: fit-content;
+}
+
+/* audio player */
+.containerAudioPlayer{
+  margin:auto ;
+  padding-bottom: 2rem;
+  background-color: #17191d;
+  width: 100%;
+}
+
+/* lyrics */
+section.down{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+.containerLyrics{
+  width: 50%;
+}
+p{
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 1rem;
+  padding: 5px;
+  background-color: rgba(80, 79, 79, 0.781);
+  overflow-y: scroll;
+  height: 250px;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+/* recommendations */
+.recommended{
+  background-color: rgba(27, 23, 32, 0.534);
+  width: 50%;
+}
 .recommended>ul{
   list-style: none;
   text-decoration: none;
-  /* display: grid;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr; */
   display: flex;
   flex-flow: column nowrap;
   gap: 20px;
+  min-width:fit-content;
+  width: fit-content;
+  max-width:fit-content;
+  margin: auto;
   margin-top: 2rem;
 }
 .recommended>ul>a>li{
@@ -115,7 +149,6 @@ body{
   align-items: center;
   flex-flow: row wrap;
   justify-content: space-evenly;
-
 }
 .info-recommended{
   background-color: rgba(9, 7, 71, 0.281);
@@ -128,13 +161,11 @@ body{
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
-
 }
 .info-recommended h2{
   font-size: 1.2rem;
 
 }
-
 
 /* buttons */
 .updateDetails>mat-icon,
@@ -174,38 +205,6 @@ body{
 }
 
 
-
-
-h1,h2{
-  color: white;
-  font-size: 2rem;
-  font-weight: 600;
-
-}
-h2{
-  font-size: 1.5rem;
-  padding: 10px 0;
-  width: fit-content;
-}
-p{
-  border-radius: 10px;
-  color: white;
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 1rem;
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.795);
-  overflow-y: scroll;
-  /* min-width:50%;
-  width: 50%
-  max-width:50%; */
-  height: 250px;
-  max-height: 20%;
-  text-overflow: ellipsis;
-  white-space: pre-line;
-
-
-}
 .start-animation{
   animation: spin_slow 0.5s linear 1;
 } 
@@ -219,5 +218,30 @@ p{
       transform: rotate(-360deg);
       opacity: 1;
 
+  }
+}
+@media(max-width:950px){
+  .containerAudioPlayer{
+    padding: auto 1rem;
+  }
+  section.down{
+    flex-flow: column;
+  }
+  .containerLyrics{
+    width: 100%;
+  }
+  .recommended{
+    width: 100%;
+  }
+}
+@media(max-width:500px){
+  .containerDetails{
+    width:90%;
+  }
+  .containerAudioPlayer{
+    padding: auto 0rem;
+  }
+  .title marquee{
+    width: 60%;
   }
 }

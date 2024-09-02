@@ -9,22 +9,19 @@
       <div class="center">
         <img [src]="musicDetails.songImg" alt="Song image" class="album">
       </div>
-
-      <div class="containerAudioPlayer">
-        <app-music-audio-player [trackID]="musicDetails.trackID" [song]="currentSong"></app-music-audio-player>
+      <div class="title">
+        <marquee behavior="alternative" direction="left"><h1>{{musicDetails.songName}}</h1></marquee>
+        <h2>{{musicDetails.singer}}</h2>
+        <span><mat-icon>calendar_month</mat-icon>{{musicDetails.releaseDate ? musicDetails.releaseDate: '01/01/2001.'}}</span>
       </div>
-      <!-- <h1>{{musicDetails.songName}}</h1>
-      <h2>{{musicDetails.singer}}</h2> -->
     </div>
-    <section>
-      <div class="containerInformation">
-        <div class="title">
-          <h1>{{musicDetails.songName}}</h1>
-     
-          <h2>{{musicDetails.singer}}</h2>
-        </div>
-        <!-- <p>{{musicDetails.averageRating ? musicDetails.averageRating: 'No añadido.'}}</p> -->
-        <!-- <p>{{musicDetails.releaseDate ? musicDetails.releaseDate: 'No añadido.'}}</p> -->
+
+    <div class="containerAudioPlayer">
+      <app-music-audio-player [trackID]="musicDetails.trackID" [song]="currentSong"></app-music-audio-player>
+    </div>
+    
+    <section class="down">
+      <div class="containerLyrics">
         <p>{{musicDetails.lyrics ? musicDetails.lyrics: 'No añadido.'}}</p>
       </div>
 

@@ -1,4 +1,5 @@
-body{
+body#music{
+  width: 100%;
   height: fit-content;
   min-height: 100%;
   background: linear-gradient(
@@ -77,23 +78,27 @@ input{
 }
 .button-add-song{
   position: absolute;
-  top: 420px;
-  left: 100px;
-  z-index: 50;
+  top: 65px;
+  left: 0px;
 }
-
+@media (min-width:768px) {
+  .button-add-song{
+    position: absolute;
+    top: 77px;
+    left: 0px;
+  }
+}
 /* music list */
 #music-list{
   width: 100%;
   height: auto;
-  background-color: rgba(6, 6, 53, 0.753);
   padding-bottom: 5rem;
 }
 ul.list{
   display: flex;
   justify-content: center;  align-items: center;
   flex-flow: row wrap;
-  gap: 20px;
+  gap: 10px;
   width: 90%;
   list-style: none;
   padding: 0;
@@ -105,7 +110,7 @@ ul.list li{
   width: 300px;
   height:min-content;
   padding: 0;
-  margin: 2rem auto;
+  margin: 1rem auto;
 }
 
 /* inside card */
@@ -175,7 +180,7 @@ ul.list li{
 
 
 @media(max-width:500px) {
-  body>h3{
+  body#music>header>h3{
     font-size: 4rem;
   }
   .search{
