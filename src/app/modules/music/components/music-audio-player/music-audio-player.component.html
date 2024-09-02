@@ -61,11 +61,14 @@
                   volume_up
                 </mat-icon>
               </span>
-
+            
             </button>
-            <div class="volume-control" *ngIf="volumeControl"  >
-              <input #volumeControl type="range" min="0"max="1" step="0.1" [value]="volume" (input)="changeVolume($event)">
+            <div class="container-input">
+              <div class="volume-control" *ngIf="volumeControl"  >
+                  <input #volumeControl type="range" min="0"max="1" step="0.1" [value]="volume" (input)="changeVolume($event)">
+              </div>
             </div>
+
           </div>
 
         <button class="skip_previous" >

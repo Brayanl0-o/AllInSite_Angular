@@ -18,7 +18,7 @@ export class MusicDetailsComponent {
   showUpdateModal = false;
   currentSong: Song | null = null;
   isAdmin = false;
-  isLoadingRecommends = true;
+  isLoadingRecommends = false;
   constructor(private songService: SongsService,
     private route: ActivatedRoute,
     private router:Router,
@@ -37,15 +37,13 @@ export class MusicDetailsComponent {
   //   }
   // }
   loadSongs(){
+    this.isLoadingRecommends = true;
     this.songService.getSongs().subscribe((data)=>{
-
       this.songs =  this.shuffleArray(this.filterSongs(data));
       setTimeout(() => {
         this.isLoadingRecommends = false;
         console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
-      }, 5000); 
-     
-      console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
+      }, 3000); 
     })
   }
   filterSongs(songs: Song[]): Song[] {
