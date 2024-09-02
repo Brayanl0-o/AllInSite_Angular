@@ -1,0 +1,52 @@
+/* recommendations */
+.album-recommended {
+  border-radius: 50%;
+  height: 105px;
+  width: 105px;
+  object-fit: cover;
+  background-color: rgba(22, 12, 59, 0.993);
+  position: relative;
+  right: -20px;
+  z-index: 50;
+}
+
+.recommended ul{
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 20px;
+    min-width:fit-content;
+    width: fit-content;
+    max-width:fit-content;
+    margin: auto;
+    margin-top: 2rem;
+    /* background-color: rgba(102, 5, 167, 0.747); */
+}
+.recommended ul a li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+
+}
+.info-recommended{
+    background-color: rgba(70, 68, 124, 0.63);
+    border-radius: 10px;
+    padding: 10px 40px;
+    width: 300px;
+    height: 100px;
+
+}
+.info-recommended h1{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.info-recommended h2{
+    font-size: 1.2rem;
+
+}
+  
