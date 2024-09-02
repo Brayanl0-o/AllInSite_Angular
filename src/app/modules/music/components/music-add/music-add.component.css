@@ -33,7 +33,7 @@ body{
 .containerForm{
   position: relative;
   background-color: rgba(5, 2, 51, 0.959);
-  width: 40%;
+  width:45%;
   height:fit-content;
   max-height: 80%;
   overflow-y: auto;
@@ -138,4 +138,14 @@ textarea{
   color: wheat;
   padding: 10px;
   margin: 0 auto 3rem auto;
+}
+@media (max-width:1468px){
+  .containerForm{
+    width:70%;
+  }
+}
+@media (max-width:768px){
+  .containerForm{
+    width:90%;
+  }
 }

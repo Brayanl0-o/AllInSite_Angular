@@ -246,12 +246,14 @@ body#audio-player{
   background: radial-gradient(at bottom right, #596fa0 0%, #0c1779 80%);
   color: black;
 }
-
-
-@media(max-width:768px){
+@media(max-width:1068px){
   .controls{
     width: fit-content;
   }
+}
+
+@media(max-width:768px){
+
   .controls>span{
     height: 400px;
     width: 400px;

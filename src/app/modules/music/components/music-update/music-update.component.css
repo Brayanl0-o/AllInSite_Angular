@@ -1,4 +1,4 @@
-body{
+body#music-update{
   background-color: rgba(5, 2, 51, 0.959);
   width:40%;
   height:fit-content;
@@ -100,4 +100,14 @@ textarea{
   color: wheat;
   padding: 10px;
   margin: 2.5rem auto;
+}
+@media (max-width:1468px){
+  body#music-update{
+    width:70%;
+  }
+}
+@media (max-width:768px){
+  body#music-update{
+    width:90%;
+  }
 }
