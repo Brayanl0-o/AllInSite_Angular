@@ -1,6 +1,24 @@
-<body>
+<body id="audio-player">
 
   <div>
+    <!-- <div class="container_upload_download">
+      <button class="download_2" *ngIf="isAdmin" (click)="downloadTrack()" >
+        <span>
+          <mat-icon>
+            download_2
+          </mat-icon>
+        </span>
+      </button>
+      <button class="upload" *ngIf="isAdmin" (click)="openModal()">
+        <span>
+          <mat-icon>
+            upload
+          </mat-icon>
+        </span>
+      </button>
+    </div> -->
+
+    
       <div class="slider">
         <div class="time">
           <div> {{formatTime(audioPlayer.currentTime)}}</div>
@@ -28,14 +46,13 @@
 
 
       <div class="controls"  >
-
-          <button class="download_2" *ngIf="isAdmin" (click)="downloadTrack()" >
-            <span>
-              <mat-icon>
-                download_2
-              </mat-icon>
-            </span>
-          </button>
+        <button class="download_2" *ngIf="isAdmin" (click)="downloadTrack()" >
+          <span>
+            <mat-icon>
+              download_2
+            </mat-icon>
+          </span>
+        </button>
 
           <div class="container_volumen_control">
             <button class="volume_control"  (click)="showVolumeControl()"  >
@@ -102,6 +119,7 @@
             </mat-icon>
           </span>
         </button>
+   
         <button class="upload" *ngIf="isAdmin" (click)="openModal()">
           <span>
             <mat-icon>
