@@ -12,7 +12,9 @@
       <div class="title">
         <marquee behavior="alternative" direction="left"><h1>{{musicDetails.songName}}</h1></marquee>
         <h2>{{musicDetails.singer}}</h2>
-        <span><mat-icon>calendar_month</mat-icon>{{musicDetails.releaseDate ? musicDetails.releaseDate: '01/01/2001.'}}</span>
+        <span>
+          <mat-icon>calendar_month</mat-icon>
+          {{musicDetails.releaseDate ? ( musicDetails.releaseDate | date: 'dd/MM/yyyy') : '01/01/2001.'}}</span>
       </div>
     </div>
 
