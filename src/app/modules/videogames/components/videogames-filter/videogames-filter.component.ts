@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FilterService } from 'src/app/core/services/filter/filter.service';
 
 @Component({
-  selector: 'app-aside',
-  templateUrl: './aside.component.html',
-  styleUrls: ['./aside.component.css']
+  selector: 'app-videogames-filter',
+  templateUrl: './videogames-filter.component.html',
+  styleUrls: ['./videogames-filter.component.css']
 })
-export class AsideComponent {
+export class VideogamesFilterComponent {
   constructor(private filterService: FilterService){}
 
   selectedFilters = {

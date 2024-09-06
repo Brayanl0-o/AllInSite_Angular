@@ -1,0 +1,157 @@
+<div class="group">
+    <button type="button" (click)="toggleFilters()"  aria-controls="speed-dial-menu-top-right" aria-expanded="false" class="flex items-center justify-center bg-blue-700 hover:border-b-2  text-white  border-blue-950 border-b-4 rounded-full w-14 h-14  dark:bg-blue-600  hover:bg-[#006186] focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+      </svg>
+      <svg class="w-2 h-2 transition-transform group-hover:rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+      </svg>
+      <span class="sr-only">Open actions menu</span>
+    </button>
+  
+    <div *ngIf="showFilters" class=" flex-col items-center  mt-4 space-y-2 " >
+      <div class="container-filters h-2/3 w-80 bg-white p-4 rounded shadow fixed right-0  overflow-y-auto  overflow-x-hidden ">
+        <h3 class="text-md font-semibold mb-0">Filtrar por:</h3>
+        <div class="mb-2">
+          <ul class="px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+            <div class="mt-2">
+              <label for="order" class="flex text-gray-600 font-semibold  text-lg  items-center flex-row justify-center  dark:text-white" (click)="toggleDeveloperDropdown()">
+                Calificación
+                  <svg class="w-4 h-4 text-yellow-400 mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                  </svg>
+              </label>
+              <div class="flex flex-row-reverse justify-center items-center text-lg w-auto p-2 gap-6">
+                <button class="cursor-pointer m-0 focus:outline-none rounded-full bg-slate-500/40  focus:rounded-full focus:border-blue-700 focus:border-solid focus:border-2" (click)="toggleOrderDropdown('asc')">
+                  <mat-icon class="text-4xl max-sm:text-3xl pr-10 pb-8   hover:transform hover:scale-105  hover:border-blue-800/60  material-symbols-outlined">
+                  trending_down
+                  </mat-icon>
+                </button>
+                <button class="cursor-pointer focus:outline-none rounded-full  bg-slate-500/40  first-letter:focus:rounded-full focus:border-blue-700 focus:border-solid focus:border-2" (click)="toggleOrderDropdown('desc')">
+                  <mat-icon class="text-4xl max-sm:text-3xl pr-10 pb-8 hover:transform hover:scale-105  focus:border-blue-700 hover:border-blue-800/60 material-symbols-outlined">
+                  trending_up
+                  </mat-icon>
+                </button>
+              </div>
+            </div>
+  
+            <div class="mb-4 mt-1 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+              <label for="genre" class=" flex items-center flex-row justify-center text-center py-1 text-lg text-gray-600 font-semibold " (click)="toggleGenreDropdown()">
+                Género
+                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </label>
+              <div *ngIf="showGenreDropdown" class="h-28 overflow-auto border-t-2" >
+                <div *ngFor="let genre of availableGenres" class="flex items-center pl-2  rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
+                  <label  class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                  <input type="checkbox"
+                      id="genre-{{ genre }}"
+                      [checked]="selectedFilters.genres.includes(genre)"
+                      (change)="toggleGenre(genre)"
+                      class="mr-2 cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                      {{ genre }}
+                    </label>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-4 mt-5 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+              <label for="platform" class=" flex items-center flex-row justify-center text-lg py-1 text-gray-600 font-semibold " (click)="togglePlatformDropdown()">
+                Plataformas
+                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </label>
+              <div *ngIf="showPlatformDropdown" class="h-28 overflow-auto border-t-2">
+                <div *ngFor="let platform of availablePlatforms" class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                  <label class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                    <input type="checkbox"
+                      id="platform-{{ platform }}"
+                      [checked]="selectedFilters.platforms.includes(platform)"
+                      (change)="togglePlatform(platform)"
+                      [value]="platform"
+                      class="mr-2 cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                    {{ platform }}</label>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-4 mt-5 shadow-lg shadow-sky-900/30 hover:shadow-sky-900/80 hover:shadow-sm">
+              <label for="developer " class="flex items-center flex-row justify-center text-lg py-1 text-gray-600 font-semibold" (click)="toggleDeveloperDropdown()">
+               Desarrollador
+                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </label>
+              <div *ngIf="showDeveloperDropdown" class="h-28 overflow-auto border-t-2" >
+                <div *ngFor="let developer of availableDevelopers" class="flex items-center pl-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600" >
+                  <label  class=" block cursor-pointer w-full py-2 ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
+                  <input type="checkbox"
+                      id="genre-{{ developer }}"
+                      [checked]="selectedFilters.developers.includes(developer)"
+                      (change)="toggleDeveloper(developer)"
+                      class="mr-2 cursor-pointer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+  
+                      {{ developer }}
+                    </label>
+                </div>
+              </div>
+            </div>
+  
+            <div>
+              <label for="order" class=" flex items-center flex-row justify-center text-xl text-gray-600 font-semibold mb-2" (click)="toggleDeveloperDropdown()">
+                Fecha de lanzamiento:
+              </label>
+              <div class="mb-4 flex items-center flex-row justify-center">
+                <div>
+                  <label for="startDate" class="flex items-center flex-row justify-center text-sm font-medium">Desde:</label>
+                  <div class="flex justify-center">
+                    <input type="date"
+                      id="startDate"
+                      [(ngModel)]="selectedFilters.startDate"
+                      class="w-9/12 cursor-pointer "
+                    />
+                  </div>
+                </div>
+                <span>-</span>
+                <div>
+                  <label for="endDate" class="flex items-center flex-row justify-center text-sm font-medium">Hasta:</label>
+                  <div class="flex justify-center">
+                    <input type="date"
+                      id="endDate"
+                      [(ngModel)]="selectedFilters.endDate"
+                      class="w-9/12 cursor-pointer"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </ul>
+  
+          <div class="flex justify-center gap-6" >
+            <button (click)="applyFilters()" class="w-auto z-50 bg-blue-700 border-b-4 border-black hover:border-b-2  text-white py-2 px-4 rounded hover:bg-[#004f99] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+              Aplicar Filtros
+            </button>
+            <button (click)="resetForm()" data-popover-target="popover-bottom" data-popover-placement="bottom" type="button"
+              class=" w-12 bg-white rounded ">
+              <svg  viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M154 260h568v700H154z" fill="#FF3B30" />
+                <path d="M624.428 261.076v485.956c0 57.379-46.737 103.894-104.391 103.894h-362.56v107.246h566.815V261.076h-99.864z" fill="#030504" />
+                <path d="M320.5 870.07c-8.218 0-14.5-6.664-14.5-14.883V438.474c0-8.218 6.282-14.883 14.5-14.883s14.5 6.664 14.5 14.883v416.713c0 8.219-6.282 14.883-14.5 14.883zM543.5 870.07c-8.218 0-14.5-6.664-14.5-14.883V438.474c0-8.218 6.282-14.883 14.5-14.883s14.5 6.664 14.5 14.883v416.713c0 8.219-6.282 14.883-14.5 14.883z" fill="#152B3C" />
+                <path d="M721.185 345.717v-84.641H164.437z" fill="#030504" /><path d="M633.596 235.166l-228.054-71.773 31.55-99.3 228.055 71.773z" fill="#FF3B30" />
+                <path d="M847.401 324.783c-2.223 0-4.475-0.333-6.706-1.034L185.038 117.401c-11.765-3.703-18.298-16.239-14.592-27.996 3.706-11.766 16.241-18.288 27.993-14.595l655.656 206.346c11.766 3.703 18.298 16.239 14.592 27.996-2.995 9.531-11.795 15.631-21.286 15.631z" fill="#FF3B30" />
+              </svg>
+              <div data-popover id="popover-bottom" role="tooltip" class="w-40 absolute  invisible inline-block text-lg dark:text-red-800 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:border-gray-600 dark:bg-gray-800">
+                <div class="  px-2 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700 dark:text-red-800" >
+                    <span class="font-semibold  dark:text-red-800">Limpiar Filtros</span>
+                </div>
+                <div data-popper-arrow></div>
+              </div>
+            </button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
