@@ -9,13 +9,13 @@ import { LayoutModule } from 'src/app/layout/layout.module';
 
 import { videogamesRoutingModule } from './videogames-routing.module';
 import { VideogamesComponent } from 'src/app/modules/videogames/pages/videogames/videogames.component';
-import { AsideComponent } from './components/aside/aside.component';
 import { HeaderSearchComponent } from './components/header-search/header-search.component';
 import { AddVideogameComponent } from './components/add-videogame/add-videogame.component';
 import { DetailsGameComponent } from './pages/details-game/details-game.component';
 import { AddRequirementsComponent } from './components/add-requirements/add-requirements.component';
 import { EditVideogameComponent } from './components/edit-videogame/edit-videogame.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { VideogamesFilterComponent } from './components/videogames-filter/videogames-filter.component';
 @NgModule({
   declarations: [
     VideogamesComponent,
@@ -23,10 +23,9 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     EditVideogameComponent,
     AddRequirementsComponent,
     AddVideogameComponent,
-    AsideComponent,
     HeaderSearchComponent,
     LoadingScreenComponent,
-
+    VideogamesFilterComponent,
   ],
   imports: [
     LayoutModule,

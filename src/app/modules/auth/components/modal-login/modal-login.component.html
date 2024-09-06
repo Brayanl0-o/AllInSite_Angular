@@ -37,15 +37,7 @@
                 ¡Mayúsculas Activadas!
               </div>
           </div>
-          <div class="flex justify-between">
-              <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                      <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
-                  </div>
-                  <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</label>
-              </div>
-              <a [routerLink]="'/send-email'" (click)="closeModal()" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Recuperar contraseña</a>
-          </div>
+        
           <div class="containerButton">
             <button  type="submit" (click)="login()" [disabled]="isLoading" class=" w-full   text-white bg-blue-700  hover:bg-[#004f99] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               <div class="flex items-center justify-center">
@@ -85,8 +77,10 @@
           class="absolute mt-3 ml-10 px-2 py-1 text-white text-lg bg-red-500 rounded-lg shadow-lg -top-10 left-1/2 transform -translate-x-1/2 z-50">
           {{ errorMessage }}
           </div>
-          <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-              No registrado? <a [routerLink]="'user/register'" (click)="closeModal()" class="text-blue-800 hover:underline dark:text-blue-500">Crear cuenta</a>
+          <div class="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
+              <span>No registrado? <a [routerLink]="'user/register'" (click)="closeModal()" class="text-blue-800 hover:underline dark:text-blue-500">Crear cuenta</a></span>
+                
+              <a [routerLink]="'/send-email'" (click)="closeModal()" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Recuperar contraseña</a>
           </div>
         </form>
 

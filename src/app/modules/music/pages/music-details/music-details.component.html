@@ -28,8 +28,8 @@
       </div>
 
       <app-skeleton-music-recommended *ngIf="isLoadingRecommends"></app-skeleton-music-recommended>
-      <div class="recommended" >
-        <ul *ngIf="isLoadingRecommends">
+      <div class="recommended"  *ngIf="!isLoadingRecommends">
+        <ul>
           <a [routerLink]="['/music/song-details',song._id]" *ngFor="let song of songs">
             <li>
               <img [src]="song.songImg" alt="Song image" class="album-recommended" >
@@ -40,7 +40,7 @@
             </li>
           </a>
         </ul>
-      </div>
+      </div>  
     </section>
 
     <span class="deleteSong" *ngIf="isAdmin" (click)="deleteSong(musicDetails._id)"><mat-icon>delete</mat-icon></span>
