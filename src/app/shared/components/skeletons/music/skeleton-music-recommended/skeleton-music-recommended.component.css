@@ -9,7 +9,11 @@
   right: -20px;
   z-index: 50;
 }
-
+.recommended{
+    background-color: rgba(27, 23, 32, 0.534);
+    width: 100%;
+    padding: 0;
+}
 .recommended ul{
     list-style: none;
     text-decoration: none;
@@ -29,14 +33,14 @@
     align-items: center;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin-bottom: 2rem;
+    margin:0 4rem 2rem 4rem;
 
 }
 .info-recommended{
     background-color: rgba(70, 68, 124, 0.63);
     border-radius: 10px;
     padding: 10px 40px;
-    width: 300px;
+    width: 320px;
     height: 100px;
 
 }

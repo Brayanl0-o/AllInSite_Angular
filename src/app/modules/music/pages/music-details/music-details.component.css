@@ -9,9 +9,9 @@ body{
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
+
 }
 .containerDetails{
-  overflow-y: auto;
   position: absolute;
   height: fit-content;
   max-height: 70%;
@@ -23,6 +23,9 @@ body{
   margin: auto;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.685);
+  overflow-y: auto;
+  scrollbar-width: none;
+
 }
 
 /* album and details */
@@ -43,10 +46,7 @@ body{
   width: 205px;
   object-fit: cover;
 }
-.album-recommended {
-  height: 105px;
-  width: 105px;
-}
+
 .center {
   border-radius: 50%;
   background: radial-gradient(
@@ -121,17 +121,29 @@ p{
   padding: 5px;
   background-color: rgba(80, 79, 79, 0.781);
   overflow-y: scroll;
-  height: 250px;
+  min-height: 300px;
+  height: auto;
+  max-height: 400px;
   text-overflow: ellipsis;
   white-space: pre-line;
+  scrollbar-width: none;
 }
 
 /* recommendations */
 .recommended{
   background-color: rgba(27, 23, 32, 0.534);
   width: 50%;
+  padding: 0;
+
 }
-.recommended>ul{
+.album-recommended {
+  height: 105px;
+  width: 105px;
+  position: relative;
+  right: -20px;
+  z-index: 50;
+}
+.recommended ul{
   list-style: none;
   text-decoration: none;
   display: flex;
@@ -143,7 +155,7 @@ p{
   margin: auto;
   margin-top: 2rem;
 }
-.recommended>ul>a>li{
+.recommended ul a li{
   display: flex;
   justify-content: center;
   align-items: center;

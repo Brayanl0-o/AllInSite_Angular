@@ -2,7 +2,10 @@
   background-image: radial-gradient(#203462 2px, transparent 2px);
   background-size: calc(10 * 2px) calc(10 * 2px);
 } */
-
+.modal-add-videogame{
+  overflow-y: auto;
+  scrollbar-width: none;
+}
 .container-list{
   width: 90%;
   display: flex;
@@ -12,6 +15,7 @@
   gap: 0rem 2rem;
   align-items: center;
   margin: 3.5rem 0rem 0rem 2rem ;
+
 }
 .container-target{
   position: relative;
