@@ -72,8 +72,8 @@ export class EditVideogameComponent {
       releaseDate: ['',[Validators.required]],
       developer:['',[Validators.minLength(4), Validators.maxLength(40), Validators.pattern('^[^-]+$')]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-      averageRating:['',[Validators.required, this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
-      descriptionGame:['',[Validators.required, Validators.maxLength(1050), Validators.pattern('^[^-]+$')]],
+      averageRating:['',[this.rangoNumericoValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+      descriptionGame:['',[Validators.required, Validators.maxLength(1050)]],
       gameTrailer:['',[ Validators.maxLength(450)]],
       linkToFree:['',[ Validators.maxLength(450)]],
       linkToBuy:['',[ Validators.maxLength(450)]]

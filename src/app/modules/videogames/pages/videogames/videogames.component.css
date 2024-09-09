@@ -2,24 +2,12 @@
   background-image: radial-gradient(#203462 2px, transparent 2px);
   background-size: calc(10 * 2px) calc(10 * 2px);
 } */
-.pagination ::ng-deep
-.ngx-pagination
-.current{
-  background: rgba(1, 59, 250, 0.842);
-  border-radius: 10px;
-  box-shadow: 1px 5px 5px black;
-}
-.ngx-pagination li.current,
-.pagination ::ng-deep .ngx-pagination li a:hover {
-  background: rgba(1, 59, 250, 0.411);
-  border-radius: 10px;
-  box-shadow: 1px 5px 5px black;
-}
+
 .container-list{
   width: 90%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   gap: 0rem 2rem;
   align-items: center;
@@ -166,7 +154,19 @@ header{
   -webkit-box-orient: vertical;
   white-space: normal;
 }
-
+.pagination ::ng-deep
+.ngx-pagination
+.current{
+  background: rgba(1, 59, 250, 0.842);
+  border-radius: 10px;
+  box-shadow: 1px 5px 5px black;
+}
+.ngx-pagination li.current,
+.pagination ::ng-deep .ngx-pagination li a:hover {
+  background: rgba(1, 59, 250, 0.411);
+  border-radius: 10px;
+  box-shadow: 1px 5px 5px black;
+}
 /* Media querys */
 @media( max-width: 1460px ) {
   .card {

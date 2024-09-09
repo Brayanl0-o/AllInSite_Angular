@@ -84,7 +84,7 @@ export class AddVideogameComponent {
       releaseDate: ['',[Validators.required]],
       developer:['',[Validators.minLength(4), Validators.maxLength(40)]],
       genre:['',[Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-      averageRating:['',[Validators.required,this.rangoNumericoValidator,this.numbersOnlyValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
+      averageRating:['',[this.rangoNumericoValidator,this.numbersOnlyValidator, Validators.pattern('^[0-9]+$',), Validators.pattern('^[^-]+$')]],
       descriptionGame:['',[Validators.required, Validators.maxLength(1050)]],
       gameTrailer:['',[ Validators.maxLength(450)]],
       linkToFree:['',[ Validators.maxLength(450)]],

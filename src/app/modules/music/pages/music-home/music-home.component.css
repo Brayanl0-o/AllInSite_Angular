@@ -79,13 +79,13 @@ input{
 .button-add-song{
   position: absolute;
   top: 65px;
-  left: 0px;
+  right: 0px;
 }
 @media (min-width:768px) {
   .button-add-song{
     position: absolute;
     top: 77px;
-    left: 0px;
+    right: 2px;
   }
 }
 /* music list */

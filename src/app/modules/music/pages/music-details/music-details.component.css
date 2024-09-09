@@ -220,7 +220,7 @@ p{
 
   }
 }
-@media(max-width:950px){
+@media(max-width:1050px){
   .containerAudioPlayer{
     padding: auto 1rem;
   }

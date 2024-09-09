@@ -72,7 +72,7 @@ export class DetailsGameComponent {
             if(game && game.gameImg){
               this.gameImgUrl = game.gameImg;
               this.detailsLoaded = !this.detailsLoaded;
-              timer(2000).subscribe(() => {
+              timer(1500).subscribe(() => {
                 this.isLoadingScreen = false;
                 this.renderer.removeStyle(document.body, 'overflow');
               });
@@ -88,7 +88,7 @@ export class DetailsGameComponent {
             if (game && game.gameImg) {
               this.gameImgUrl = game.gameImg;
               this.detailsLoaded = !this.detailsLoaded;
-              timer(2000).subscribe(() => {
+              timer(1500).subscribe(() => {
                 this.isLoadingScreen = false;
                 this.renderer.removeStyle(document.body, 'overflow');
               });

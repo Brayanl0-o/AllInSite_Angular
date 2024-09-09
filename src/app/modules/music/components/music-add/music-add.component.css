@@ -5,12 +5,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
+  width: 65px;
   height: 65px;
   font-weight: 700;
   color: white;
   z-index: 50;
   background-image: linear-gradient(150deg, #072299d3, #0c35a7ee) ;
+  border-bottom: 4px solid black;
+}
+.openAddSong:hover{
+  border-bottom: 0px solid black;
+
 }
 .openAddSong>mat-icon{
   margin: auto;
