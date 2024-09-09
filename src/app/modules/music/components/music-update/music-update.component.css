@@ -4,6 +4,7 @@ body#music-update{
   height:fit-content;
   max-height: 65%;
   overflow-y: scroll;
+  scrollbar-width: none;
   position: fixed;
   top: 0;
   left: 0;

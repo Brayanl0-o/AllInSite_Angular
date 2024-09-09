@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { ActivatedRoute,ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Song, Track } from 'src/app/core/models/song';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -33,15 +34,18 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   volumeControl = false;
   isAdmin = false;
   showModalPlaylist = false;
+  currentSong = '';
+  songList: string[] = []; 
+
   constructor(private songService: SongsService,
     private authService: AuthService,
+    private route: ActivatedRoute,
+    private router:Router,
   ) {}
 
-  togglePlaylistsVisibility(){
-    this.showModalPlaylist =! this.showModalPlaylist;
-  }
-
   ngOnInit(){
+    this.fetchSongs();
+    this.savePreviusSong();
     this.songService.$modalPlaylist.subscribe((valu) => {
       this.showModalPlaylist = valu
     })
@@ -56,7 +60,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.loadTrack(this.trackID);
     }
   }
-
   isAdminOrUser(){
     const roleUser = this.authService.getLoggedUserRole();
     const allowedRole = 'administrador'
@@ -67,8 +70,7 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.isAdmin = false;
     }
   }
-
-// Function to load track
+  // Function to load track
   private async loadTrack(trackID: string) {
     this.isLoading = true;
     try {
@@ -91,6 +93,43 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.isLoading = false;
     }
   }
+
+  // previus and next song
+  fetchSongs() {
+    this.songService.getSongs().subscribe(songs => {
+      this.songList = songs.map(song => song._id); 
+    });
+  }
+  savePreviusSong(){
+    this.route.paramMap.subscribe((params: ParamMap) =>{
+      const songId = params.get('songId');
+      if(songId){
+          this.currentSong = songId;
+          console.log(this.currentSong);
+      }
+    })
+    localStorage.setItem('song_previus',this.currentSong)
+  }
+  previusSong(){
+    const currentIndex = this.songList.indexOf(this.currentSong);
+    if (currentIndex > 0) {
+      const previousSong = this.songList[currentIndex - 1];
+      this.router.navigateByUrl(`music/song-details/${previousSong}`);
+    }
+  }
+  nextSong(){
+    const currentIndex = this.songList.indexOf(this.currentSong);
+    if (currentIndex < this.songList.length - 1) {
+      const nextSong = this.songList[currentIndex + 1];
+      this.router.navigateByUrl(`music/song-details/${nextSong}`);
+    }
+  }
+
+  // playlists
+  togglePlaylistsVisibility(){
+    this.showModalPlaylist =! this.showModalPlaylist;
+  }
+
 
   //Handle volumen's visibility and controls
   toggleAudio() {
@@ -147,21 +186,18 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
   //     this.trackFileUrl = window.URL.createObjectURL(blob);
   //   });
   // }
+  // download song's track
   downloadTrack():void {
-
     if(this.trackFileUrl && this.song){
       const link = document.createElement('a');
       link.href = this.trackFileUrl;
       // link.download = `${this.song.songName}  `;
        // Añadir el enlace al cuerpo
        document.body.appendChild(link);
-
        // Hacer clic en el enlace
        link.click();
-
        // Remover el enlace del cuerpo
        document.body.removeChild(link);
-
     }
   }
 
@@ -233,10 +269,10 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       audioPlayer.addEventListener('ended', () => {
         this.isPlaying = false;
       });
-      audioPlayer.addEventListener('timeupdate', () => {
-        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        this.progressWidth = `${progress}%`;
-      });
+        // audioPlayer.addEventListener('timeupdate', () => {
+        //   const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        //   this.progressWidth = `${progress}%`;
+        // });
     }
     if (audioPlayer) {
       setInterval(() => {

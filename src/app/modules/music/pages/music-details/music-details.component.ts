@@ -42,8 +42,8 @@ export class MusicDetailsComponent {
       this.songs =  this.shuffleArray(this.filterSongs(data));
       setTimeout(() => {
         this.isLoadingRecommends = false;
-        console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
-      }, 3000); 
+        // console.log('Filtered Songs:', this.songs, this.isLoadingRecommends);
+      }, 3000);
     })
   }
   filterSongs(songs: Song[]): Song[] {
