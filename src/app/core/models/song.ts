@@ -24,7 +24,7 @@ export interface Track{
 export interface Playlist{
   _id: string,
   name: string,
-  songs: string,
+  songs: string[],
   createdBy: string,
   createdAt: Data,
   updatedAt: Data,
