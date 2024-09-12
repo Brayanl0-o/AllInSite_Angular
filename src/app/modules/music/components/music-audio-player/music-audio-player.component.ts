@@ -43,6 +43,8 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     private router:Router,
   ) {}
 
+  audioDuration = 0;
+  audioCurrentTime = 0;
   ngOnInit(){
     this.fetchSongs();
     this.savePreviusSong();
@@ -60,10 +62,57 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.loadTrack(this.trackID);
     }
   }
+  ngAfterViewInit() {
+    const audioPlayer = this.audioPlayerRef.nativeElement;
+
+    if (audioPlayer) {
+      audioPlayer.addEventListener('timeupdate', () => this.updateProgress());
+    }
+    this.updateVolumeControlStyle(this.volume);
+
+    if (audioPlayer) {
+      audioPlayer.addEventListener('play', () => {
+        this.isPlaying = true;
+      });
+      audioPlayer.addEventListener('pause', () => {
+        this.isPlaying = false;
+      });
+      audioPlayer.addEventListener('ended', () => {
+        this.isPlaying = false;
+      });
+        // audioPlayer.addEventListener('timeupdate', () => {
+        //   const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        //   this.progressWidth = `${progress}%`;
+        // });
+    }
+    if (audioPlayer) {
+      setInterval(() => {
+        if (!audioPlayer.paused) {
+          this.currentTime = this.formatTime(audioPlayer.currentTime);
+        }
+      }, 1000); // Actualizar cada segundo
+    }
+  }
+  updateProgress(): void {
+    const audioPlayer = this.audioPlayerRef?.nativeElement;
+    if (audioPlayer) {
+      this.audioCurrentTime = audioPlayer.currentTime;
+      this.audioDuration = audioPlayer.duration;
+    }
+  }
+  seekAudio(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const newTime = parseFloat(inputElement.value);
+    const audioPlayer = this.audioPlayerRef?.nativeElement;
+    if (audioPlayer) {
+      audioPlayer.currentTime = newTime;
+    }
+  }
+
+
   isAdminOrUser(){
     const roleUser = this.authService.getLoggedUserRole();
     const allowedRole = 'administrador'
-
     if(roleUser == allowedRole){
       this.isAdmin = true;
     }else{
@@ -130,7 +179,6 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     this.showModalPlaylist =! this.showModalPlaylist;
   }
 
-
   //Handle volumen's visibility and controls
   toggleAudio() {
     const audioPlayer = this.audioPlayerRef?.nativeElement;
@@ -181,6 +229,7 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
     localStorage.setItem('volume', this.volume.toString())
   }
 
+ 
   // loadTrackBlob(trackID: string): void {
   //   this.songService.getTrackBlob(trackID).subscribe(blob => {
   //     this.trackFileUrl = window.URL.createObjectURL(blob);
@@ -255,31 +304,5 @@ export class MusicAudioPlayerComponent implements OnInit, OnChanges{
       this.isLoading = false;
     }
   }
-  ngAfterViewInit() {
-    this.updateVolumeControlStyle(this.volume);
-
-    const audioPlayer = this.audioPlayerRef.nativeElement;
-    if (audioPlayer) {
-      audioPlayer.addEventListener('play', () => {
-        this.isPlaying = true;
-      });
-      audioPlayer.addEventListener('pause', () => {
-        this.isPlaying = false;
-      });
-      audioPlayer.addEventListener('ended', () => {
-        this.isPlaying = false;
-      });
-        // audioPlayer.addEventListener('timeupdate', () => {
-        //   const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        //   this.progressWidth = `${progress}%`;
-        // });
-    }
-    if (audioPlayer) {
-      setInterval(() => {
-        if (!audioPlayer.paused) {
-          this.currentTime = this.formatTime(audioPlayer.currentTime);
-        }
-      }, 1000); // Actualizar cada segundo
-    }
-  }
+  
 }
