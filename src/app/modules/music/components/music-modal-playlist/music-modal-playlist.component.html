@@ -4,9 +4,9 @@
     <span class="closeDetails" (click)="closeModalPlaylist()"><mat-icon>close</mat-icon></span>
   </header>
 
-  <!-- <form [formGroup]="playlistForm">
-    <ul *ngFor="let playlist of playlists; let i = index">
-      <li>
+  <form [formGroup]="playlistForm">
+    <ul formArrayName="playlists">
+      <li *ngFor="let playlist of playlists; let i = index">
         <div class="containerInputAndLabel">
           <input type="checkbox"  [formControlName]="i" (change)="onCheckboxChange(i)">
           <label>{{playlists[i].name}}</label>
@@ -14,7 +14,7 @@
         <mat-icon>lock</mat-icon>
       </li>
     </ul>
-  </form> -->
+  </form>
 
   <div class="containerCreatePlaylist">
 
