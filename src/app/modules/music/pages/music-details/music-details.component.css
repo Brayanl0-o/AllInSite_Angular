@@ -1,4 +1,4 @@
-body{
+body#music-details{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@ body{
   position: absolute;
   height: fit-content;
   max-height: 70%;
-  width: calc(50% + 10vw);
+  width: calc(50% + 14vw);
   top: 0;
   left: 0;
   right: 0;
@@ -233,6 +233,10 @@ p{
   }
 }
 @media(max-width:1050px){
+  .containerUp{
+    flex-flow: column wrap;
+    gap: 5%;
+  }
   .containerAudioPlayer{
     padding: auto 1rem;
   }
@@ -246,9 +250,12 @@ p{
     width: 100%;
   }
 }
-@media(max-width:500px){
+@media(max-width:550px){
   .containerDetails{
-    width:90%;
+    width:95%;
+  }
+  .containerUp{
+    gap: 5%;
   }
   .containerAudioPlayer{
     padding: auto 0rem;

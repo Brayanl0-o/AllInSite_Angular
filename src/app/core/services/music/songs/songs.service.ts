@@ -97,10 +97,9 @@ export class SongsService {
         'x-access-token':localStorage.getItem('token')|| '',
       })
     }
-
     return this.http.post<Playlist>(url, payload, httpOptions);
   }
-  public GetPlaylist(playlistId: string): Observable<Playlist>{
+  public getPlaylist(playlistId: string): Observable<Playlist>{
     const url = `${this.apiUrl}songs/playlists/get/${playlistId}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -125,25 +124,16 @@ export class SongsService {
         'x-access-token':localStorage.getItem('token')|| '',
       })
     }
-    return this.http.patch(url, httpOptions);
+    return this.http.patch(url, {}, httpOptions);
   }
   public removeSongFromPlaylist(playlistId: string, songId: string) {
     const url = `${this.apiUrl}songs/playlists/${playlistId}/deleteSong/${songId}`;
     const httpOptions = {
       headers: new HttpHeaders({
-        'x-access-token': localStorage.getItem('token') || '',
-      })
-    };
-    return this.http.patch(url, httpOptions);
-  }
-  public deleteSongFromPlaylist( playlistId: string,songId:string ){
-    const url = `${this.apiUrl}songs/playlists/delete/${playlistId}/deleteSong/${songId}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
         'x-access-token':localStorage.getItem('token')|| '',
       })
-    }
-    return this.http.patch(url, httpOptions);
+    };
+    return this.http.patch(url, {}, httpOptions);
   }
   public deletePlaylist( playlistId: string){
     const url = `${this.apiUrl}songs/playlists/delete/${playlistId}`;

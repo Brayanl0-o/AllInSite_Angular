@@ -1,6 +1,6 @@
 <app-music-update *ngIf="showUpdateModal && currentSong"  [song]="currentSong" ></app-music-update>
 
-<body *ngIf="musicDetails$ | async as musicDetails" >
+<body id="music-details" *ngIf="musicDetails$ | async as musicDetails" >
   <div class="containerDetails start-animation ">
     <span class="closeDetails" (click)="closeDetails()"><mat-icon>close</mat-icon></span>
     <span class="updateDetails" *ngIf="isAdmin" (click)="openUpdateDetails()"><mat-icon>edit</mat-icon></span>
